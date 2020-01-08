@@ -1,0 +1,44 @@
+"Phrases"
+{
+	"GBRICK Menu Hitmarker"
+	{
+		"en"		"HitMarkers"
+		"hu"		"Találat jelzés"
+	}
+
+	"GBIRCK Menu Sound"
+	{
+		"en"		"Hit Sound"
+		"hu"		"Találat hang jelzés"
+	}
+
+	"Toggle Hitmarker"
+	{
+		"en"		"HitMarker"
+		"hu"		"Találat jelző"
+	}
+
+	"Toggle Sound"
+	{
+		"en"		"Hit Sound for HitMarker"
+		"hu"		"Találat hang jelző"
+	}
+
+	"ON420"
+	{
+		"en"		"On"
+		"hu"		"Be"
+	}
+
+	"OFF420"
+	{
+		"en"		"Off"
+		"hu"		"Ki"
+	}
+
+	"Title333"
+	{
+		"en"		"HitMarker & Sounds"
+		"hu"		"Találat jelző & Hang"
+	}
+}

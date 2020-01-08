@@ -1,0 +1,11 @@
+"Databases"
+{
+	"sourcebans"
+	{
+		"driver"		"mysql"
+		"host"			"Host"
+		"database"		"DataBase"
+		"user"			"User"
+		"pass"			"Pass"
+	}
+}

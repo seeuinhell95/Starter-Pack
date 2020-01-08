@@ -1,0 +1,40 @@
+"Phrases"
+{
+	"SM help commands"
+	{
+		"en"			"SourceMod Help: Command Information"
+		"hu"			"SourceMod Segítség: Parancs Információ"
+	}
+
+	"No description available"
+	{
+		"en"			"No description available"
+		"hu"			"Nincs elérhető leírás"
+	}
+
+	"No commands available"
+	{
+		"en"			"No commands available"
+		"hu"			"Nincs elérhető parancs"
+	}
+
+	"Type sm_help to see more"
+	{
+		"#format"		"{1:d}"
+		"en"			"Type 'sm_help {1}' to see more commands"
+		"hu"			"Írd be, hogy 'sm_help {1}' a további parancsokért"
+	}
+
+	"Entries n - m in page k"
+	{
+		"#format"		"{1:d},{2:d},{3:d}"
+		"en"			"Entries {1} - {2} in page {3}"
+		"hu"			"{1}. változótól a {2}. változóig a {3}. oldalon"
+	}
+
+	"No matching results found"
+	{
+		"en"			"No matching results found"
+		"hu"			"Nincs megfelelő eredmény"
+	}
+}

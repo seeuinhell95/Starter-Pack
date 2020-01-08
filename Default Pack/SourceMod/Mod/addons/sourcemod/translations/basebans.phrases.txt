@@ -1,0 +1,86 @@
+"Phrases"
+{
+	"Ban player"
+	{
+		"en"			"Ban player"
+		"hu"			"Játékos kitiltása"
+	}
+
+	"Ban reason"
+	{
+		"en"			"Ban reason"
+		"hu"			"Kitiltás indoka"
+	}
+
+	"Ban time"
+	{
+		"en"			"Ban time"
+		"hu"			"Kitiltás időtartama"
+	}
+
+	"Permabanned player"
+	{
+		"#format"		"{1:s}"
+		"en"			"Permanently banned player \"{1}\"."
+		"hu"			"\"{1}\" véglegesen kitiltva."
+	}
+
+	"Permabanned player reason"
+	{
+		"#format"		"{1:s},{2:s}"
+		"en"			"Permanently banned player \"{1}\". Reason: \"{2}\"."
+		"hu"			"\"{1}\" végleges kitiltást kapott. Indok: \"{2}\"."
+	}
+
+	"Banned player"
+	{
+		"#format"		"{1:s},{2:d}"
+		"en"			"Banned player \"{1}\" for {2} minutes."
+		"hu"			"\"{1}\" kitiltva {2} percre."
+	}
+
+	"Banned player reason"
+	{
+		"#format"		"{1:s},{2:d},{3:s}"
+		"en"			"Banned player \"{1}\" for {2} minutes. Reason: \"{3}\"."
+		"hu"			"\"{1}\" kitiltva {2} percre. Indok: \"{3}\"."
+	}
+
+	"Removed bans matching"
+	{
+		"#format"		"{1:s}"
+		"en"			"Removed bans matching filter: \"{1}\"."
+		"hu"			"Tiltás levétele a következőről: \"{1}\"."
+	}
+
+	"Ban added"
+	{
+		"en"			"Ban has been added."
+		"hu"			"Kitiltás hozzáadva."
+	}
+
+	"Cannot ban that IP"
+	{
+		"en"			"You cannot ban that IP address."
+		"hu"			"Nem tudod kitiltani ezt az IP címet."
+	}
+
+	"Custom ban reason explanation"
+	{
+		"#format"		"{1:s}"
+		"en"			"Enter the reason as a chat message. Use '{1}' to abort this."
+		"hu"			"Add meg a kitiltás indokát. Megszakításhoz használd a '{1}' parancsot."
+	}
+
+	"AbortBan applied successfully"
+	{
+		"en"			"Ban aborted."
+		"hu"			"Kitiltás megszakítva."
+	}
+
+	"AbortBan not waiting for custom reason"
+	{
+		"en"			"Not waiting for a ban reason to be typed in, no ban to abort."
+		"hu"			"Nem várunk kitiltás indokra, nincs megszakítható kitiltás."
+	}
+}

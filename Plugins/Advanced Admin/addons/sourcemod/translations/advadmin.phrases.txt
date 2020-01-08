@@ -1,0 +1,375 @@
+"Phrases"
+{
+	"CMD_OnlyInTeam"
+	{
+		"en"		"[SM] You can use only if the target client is in team!"
+		"hu"		"[SM] Csak csapatban lévő játékosokon használható!"
+	}
+	
+	"CMD_Invalid_Weapon"
+	{
+		"en"		"[SM] The target weapon is invalid, but the thing is given. Type sm_equipments in console to see valid weapons."
+		"hu"		"[SM] A fegyvernév érvénytelen, de a dolog adva lett. Írd sm_equipments a konzolba az elérhető fegyvernevekért."
+	}
+	
+	"CMD_Invalid_Team"
+	{
+		"en"		"[SM] The target team is invalid!"
+		"hu"		"[SM] A célcsapat érvénytelen!"
+	}
+	
+	"CMD_Extend"
+	{
+		"#format"	"{1:i}"
+		"en"		"Map extended for {1} minutes."
+		"hu"		"A pálya meghosszabbítva {1} perccel."
+	}
+	
+	"CMD_Extend_Usage"
+	{
+		"en"		"[SM] Usage: sm_extend <[+/-] minutes>"
+		"hu"		"[SM] Használat: sm_extend <[+/-] perc>"
+	}
+	
+	"CMD_ClearMap"
+	{
+		"en"		"The map has been cleared."
+		"hu"		"A pálya feltakarítva."
+	}
+	
+	"CMD_ClearChicken"
+	{
+		"en"		"Chickens deleted."
+		"hu"		"A csirkék eltávolítva."
+	}
+
+	"CMD_RestartGame"
+	{
+		"en"		"Restarting the game."
+		"hu"		"Játék újraindítása."
+	}
+	
+	"CMD_RestartRound"
+	{
+		"en"		"Restarting the round."
+		"hu"		"Kör újraindítása."
+	}
+
+	"CMD_Equipments_Weapons"
+	{
+		"#format"	"{1:s}"
+		"en"		"[SM] Valid weapon names: {1}"
+		"hu"		"[SM] Érvényes fegyvernevek: {1}"
+	}
+	
+	"CMD_Equipments_Items"
+	{
+		"#format"	"{1:s}"
+		"en"		"[SM] Valid item names: {1}"
+		"hu"		"[SM] Érvényes felszerelésnevek: {1}"
+	}
+	
+	"CMD_Equipments_Printed"
+	{
+		"en"		"[SM] Valid weapon and item names printed into your console!"
+		"hu"		"[SM] Az érvényes fegyvernevek ki lettek írva a konzolba!"
+	}
+	
+	"CMD_PlaySound_Usage"
+	{
+		"en"			"[SM] Usage: sm_playsound <target> <sound [directories/filename.extension]> <pitch 100[50 - 250]> <volume 100[1 - 100]> <multiplier 1[1 - 10]>"
+		"hu"			"[SM] Használat: sm_playsound <célpont> <hang: [mappák/fájl.kiterjesztés]> <gyorsaság: 100[50 - 250]> <hangerő: 100[1 - 100]> <szorzó: 1[1 - 10]>"
+	}
+	
+	"CMD_PlaySound"
+	{
+		"#format"		"{1:t},{2:s},{3:i},{4:i},{5:i}"
+		"en"			"Played a sound for: {1}, sound: {2}, pitch: {3}, volume: {4}, multiply: {5}"
+		"hu"			"Hangot játszott neki: {1}, hang: {2}, gyorsaság: {3}, hangerő: {4}, szorzó: {5}"
+	}
+	
+	"CMD_Teleport_Usage"
+	{
+		"en"		"[SM] Usage: sm_teleport <target 1> <leave blank to saved location | @blink to aim pos | target 2>"
+		"hu"		"[SM] Használat: sm_teleport <célpont1> <hagyd üresen a mentetthez | célpont2>"
+	}
+	
+	"CMD_Teleport_To_Blink"
+	{
+		"#format"	"{1:t}"
+		"en"		"{1} teleported to the aim position."
+		"hu"		"{1} teleportálva a célkereszt pozícióra."
+	}
+	
+	"CMD_Teleport_To_Player"
+	{
+		"#format"	"{1:t},{2:N}"
+		"en"		"{1} teleported to {2}"
+		"hu"		"{1} teleportálva hozzá {2}"
+	}
+	
+	"CMD_Teleport_NoSaved"
+	{
+		"en"		"[SM] You not have saved location!"
+		"hu"		"[SM] Nem rendelkezel mentett pozícióval!"
+	}
+	
+	"CMD_Teleport_To_Saved"
+	{
+		"#format"	"{1:t}"
+		"en"		"{1} teleported to saved location."
+		"hu"		"{1} teleportálva a mentett pozícióra."
+	}
+
+	"CMD_SaveVec"
+	{
+		"en"		"[SM] Your current location saved."
+		"hu"		"[SM] A jelenlegi pozíciód el lett mentve."
+	}
+	
+	"CMD_Team_Usage"
+	{
+		"en"		"[SM] Usage: sm_team <target> <[1-3] | SPEC | SPECTATOR | T | CT> <[0/1] now/next round>"
+		"hu"		"[SM] Használat: sm_team <célpont> <CsapatID | SPEC | SPECTATOR | T | CT> <[0/1] most/következő körben>"
+	}
+	
+	"CMD_Team_Spec"
+	{
+		"#format"	"{1:t}"
+		"en"		"{1} moved to team: Spectators"
+		"hu"		"{1} áthelyezve ebbe a csapatba: Megfigyelők"
+	}
+	
+	"CMD_Team_T"
+	{
+		"#format"	"{1:t}"
+		"en"		"{1} moved to team: Terrorists"
+		"hu"		"{1} áthelyezve ebbe a csapatba: Terroristák"
+	}
+	
+	"CMD_Team_CT"
+	{
+		"#format"	"{1:t}"
+		"en"		"{1} moved to team: Counter-Terrorists"
+		"hu"		"{1} áthelyezve ebbe a csapatba: Terrorista-Elhárítók"
+	}
+
+	"CMD_Swap_Usage"
+	{
+		"en"		"[SM] Usage: sm_swap <target> <[0/1] now/next round>"
+		"hu"		"[SM] Használat: sm_swap <célpont> <[0/1] most/következő körben>"
+	}
+	
+	"CMD_Swap"
+	{
+		"#format"	"{1:t}"
+		"en"		"{1} has been swapped"
+		"hu"		"{1} áthelyezve a másik csapatba"
+	}
+
+	"CMD_Team_Spec_Usage"
+	{
+		"en"		"[SM] Usage: sm_spec <target> <[0/1] now/next round>"
+		"hu"		"[SM] Használat: sm_spec <célpont> <[0/1] most/következő körben>"
+	}
+
+	"CMD_Scramble"
+	{
+		"en"		"Teams has been scrambled by skills."
+		"hu"		"Csapatok kiegyenlítve."
+	}
+	
+	"CMD_Give_Usage"
+	{
+		"en"		"[SM] Usage: sm_give <target> <leave blank for knife | weaponname | text>"
+		"hu"		"[SM] Használat: sm_give <célpont> <hagyd üresen a késhez | fegyvernév | valami>"
+	}
+	
+	"CMD_Give"
+	{
+		"#format"	"{1:t},{2:s}"
+		"en"		"{1} got this: {2}"
+		"hu"		"{1} ezt kapta: {2}"
+	}
+
+	"CMD_Equip_Usage"
+	{
+		"en"		"[SM] Usage: sm_equip <target> <leave blank for knife | weaponname | text>"
+		"hu"		"[SM] Használat: sm_equip <célpont> <hagyd üresen a késhez | fegyvernév | valami>"
+	}
+	
+	"CMD_Equip"
+	{
+		"#format"	"{1:t},{2:s}"
+		"en"		"{1} equipped this: {2}"
+		"hu"		"{1} felszerelve ezzel: {2}"
+	}
+	
+	"CMD_Disarm_Usage"
+	{
+		"en"		"[SM] Usage: sm_disarm <target>"
+		"hu"		"[SM] Használat: sm_disarm <célpont>"
+	}
+	
+	"CMD_Disarm"
+	{
+		"#format"	"{1:t}"
+		"en"		"{1} disarmed"
+		"hu"		"{1} fegyvertelenítve"
+	}
+	
+	"CMD_Bury_Usage"
+	{
+		"en"		"[SM] Usage: sm_bury <target> <[0/1] bury/unbury>"
+		"hu"		"[SM] Használat: sm_bury <célpont> <[0/1] elásás/kiásás>"
+	}
+	"CMD_Bury"
+	{
+		"#format"	"{1:t}"
+		"en"		"{1} buried/unburied"
+		"hu"		"{1} elásva/kiásva"
+	}
+
+	"CMD_Speed_Usage"
+	{
+		"en"		"[SM] Usage: sm_speed <target> <multipiler [0-500]>"
+		"hu"		"[SM] Használat: sm_speed <célpont> <[0-500] sebesség>"
+	}
+
+	"CMD_Speed"
+	{
+		"#format"	"{1:t},{2:s}"
+		"en"		"{1}'s speed set to: {2}"
+		"hu"		"{1} sebessége megváltoztatva erre: {2}"
+	}
+
+	"CMD_Respawn_Usage"
+	{
+		"en"		"[SM] Usage: sm_respawn <target>"
+		"hu"		"[SM] Használat: sm_respawn <célpont>"
+	}
+	
+	"CMD_Respawn"
+	{
+		"#format"	"{1:t}"
+		"en"		"{1} respawned"
+		"hu"		"{1} újraélesztve"
+	}
+	
+	"CMD_HRespawn_Usage"
+	{
+		"en"		"[SM] Usage: sm_hrespawn <target>"
+		"hu"		"[SM] Használat: sm_hrespawn <célpont>"
+	}
+	
+	"CMD_HRespawn"
+	{
+		"#format"	"{1:t}"
+		"en"		"{1} respawned on last position"
+		"hu"		"{1} újraélesztve az utolsó pozícióján"
+	}
+	
+	"CMD_God_Usage"
+	{
+		"en"		"[SM] Usage: sm_god <target> <[0/1] off/on>"
+		"hu"		"[SM] Használat: sm_god <célpont> <0/1>"
+	}
+	
+	"CMD_God"
+	{
+		"#format"	"{1:t},{2:i}"
+		"en"		"{1}'s godmode set to: {2}"
+		"hu"		"{1} istenmódja beállítva erre: {2}"
+	}
+
+	"CMD_Helmet_Usage"
+	{
+		"en"		"[SM] Usage: sm_helmet <target> <[0/1] off/on>"
+		"hu"		"[SM] Használat: sm_helmet <célpont> <0/1>"
+	}
+	
+	"CMD_Helmet"
+	{
+		"#format"	"{1:t},{2:i}"
+		"en"		"{1}'s helmet set to: {2}"
+		"hu"		"{1} sisakja beállítva erre: {2}"
+	}
+	
+	"CMD_Health_Usage"
+	{
+		"en"		"[SM] Usage: sm_hp <target> <[+/-] amount>"
+		"hu"		"[SM] Használat: sm_hp <célpont> <[+/-] összeg>"
+	}
+	
+	"CMD_Health"
+	{
+		"#format"	"{1:t},{2:i}"
+		"en"		"{1}'s health set to: {2}"
+		"hu"		"{1} élete beállítva erre: {2}"
+	}
+
+	"CMD_Armor_Usage"
+	{
+		"en"		"[SM] Usage: sm_armor <target> <[+/-] amount>"
+		"hu"		"[SM] Használat: sm_armor <célpont> <[+/-] összeg>"
+	}
+	
+	"CMD_Armor"
+	{
+		"#format"	"{1:t},{2:i}"
+		"en"		"{1}'s armor set to: {2}"
+		"hu"		"{1} páncélja beállítva erre: {2}"
+	}
+
+	"CMD_Cash_Usage"
+	{
+		"en"		"[SM] Usage: sm_cash <target> <[+/-] amount>"
+		"hu"		"[SM] Használat: sm_cash <célpont> <[+/-] összeg>"
+	}
+	
+	"CMD_Cash"
+	{
+		"#format"	"{1:t},{2:i}"
+		"en"		"{1}'s cash set to: ${2}"
+		"hu"		"{1} pénze beállítva erre: ${2}"
+	}
+
+	"CMD_SetStats_Usage"
+	{
+		"en"		"[SM] Usage: sm_setstats <target> <statname> <[+/-] value>"
+		"hu"		"[SM] Usage: sm_setstats <célpont> <statnév> <[+/-]érték>"
+	}
+	
+	"CMD_SetStats"
+	{
+		"#format"	"{1:t},{2:s},{3:s}"
+		"en"		"{1}'s {2} stat modified to: {3}"
+		"hu"		"{1} {2} statisztikája módosítva erre: {3}"
+	}
+	
+	"CMD_SetStats_Values"
+	{
+		"en"		"Invalid value. Valid values are: kills, assists, deaths, mvps, scores, clan."
+		"hu"		"Érvénytelen érték. Érvényes értékek: kills, assists, deaths, mvps, scores, clan."
+	}
+	
+	"CMD_TeamScores_Usage"
+	{
+		"en"		"[SM] Usage: sm_teamscores <[2/3] | T | CT> <[+/-] amount>"
+		"hu"		"[SM] Használat: sm_teamscores <CsapatID | T | CT> <[+/-] összeg>"
+	}
+	
+	"CMD_TeamScores_T"
+	{
+		"#format"	"{1:i}"
+		"en"		"Terrorists scores set to: {1}"
+		"hu"		"Terroristák pontjai beállítva erre: {1}"
+	}
+	
+	"CMD_TeamScores_CT"
+	{
+		"#format"	"{1:i}"
+		"en"		"Counter-Terrorists scores set to: {1}"
+		"hu"		"Terrorista-Elhárítók pontjai beállítva erre: {1}"
+	}
+}

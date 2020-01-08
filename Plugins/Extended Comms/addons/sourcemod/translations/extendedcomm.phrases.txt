@@ -1,0 +1,807 @@
+"Phrases"
+{
+	"Prefix_Chat"
+	{
+		"#format"	""
+		"en"		"Comm: "
+		"hu"		"Némítás: "
+	}
+
+	"Prefix_Console"
+	{
+		"#format"	""
+		"en"		"Comm: "
+		"hu"		"Némítás: "
+	}
+
+	"AdminMenu_Not_Available"
+	{
+		"#format"	""
+		"en"		"The player you selected is no longer available."
+		"hu"		"A kiválasztott játékos már nem elérhető."
+	}
+
+	"Command_Target_Not_Targetable"
+	{
+		"#format"	""
+		"en"		"You cannot target this player."
+		"hu"		"Ezt a játékost, nem választhatja ki."
+	}
+
+	"AdminMenu_Display_None"
+	{
+		"#format"	"{1:s}"
+		"en"		"[  ] {1}"
+		"hu"		"[  ] {1}"
+	}
+
+	"AdminMenu_Display_Muted"
+	{
+		"#format"	"{1:s}"
+		"en"		"[M] {1}"
+		"hu"		"[M] {1}"
+	}
+
+	"AdminMenu_Display_Gagged"
+	{
+		"#format"	"{1:s}"
+		"en"		"[G] {1}"
+		"hu"		"[G] {1}"
+	}
+
+	"AdminMenu_Display_Silenced"
+	{
+		"#format"	"{1:s}"
+		"en"		"[S] {1}"
+		"hu"		"[S] {1}"
+	}
+
+	"AdminMenu_Main"
+	{
+		"#format"	""
+		"en"		"Comm Commands"
+		"hu"		"Némítás parancsok"
+	}
+
+	"AdminMenu_Select_Main"
+	{
+		"#format"	""
+		"en"		"Comm Commands:"
+		"hu"		"Némítás parancsok:"
+	}
+
+	"AdminMenu_Title_Durations"
+	{
+		"#format"	""
+		"en"		"Select Duration:"
+		"hu"		"Válassz időszakot:"
+	}
+
+	"AdminMenu_Title_Reasons"
+	{
+		"#format"	""
+		"en"		"Select Reason:"
+		"hu"		"Válassz indokot:"
+	}
+
+	"AdminMenu_List"
+	{
+		"#format"	""
+		"en"		"View Punishments"
+		"hu"		"Büntetés részletek"
+	}
+
+	"AdminMenu_Select_List"
+	{
+		"#format"	""
+		"en"		"Select Player:"
+		"hu"		"Válassz játékost:"
+	}
+
+	"AdminMenu_Gag"
+	{
+		"#format"	""
+		"en"		"Issue Gag"
+		"hu"		"Írás tiltás"
+	}
+
+	"AdminMenu_Select_Gag"
+	{
+		"#format"	""
+		"en"		"Select Player:"
+		"hu"		"Válassz játékost:"
+	}
+
+	"AdminMenu_Mute"
+	{
+		"#format"	""
+		"en"		"Issue Mute"
+		"hu"		"Beszéd tiltás"
+	}
+
+	"AdminMenu_Select_Mute"
+	{
+		"#format"	""
+		"en"		"Select Player:"
+		"hu"		"Válassz játékost:"
+	}
+
+	"AdminMenu_Silence"
+	{
+		"#format"	""
+		"en"		"Issue Silence"
+		"hu"		"Írás/Beszéd tiltás"
+	}
+
+	"AdminMenu_Select_Silence"
+	{
+		"#format"	""
+		"en"		"Select Player:"
+		"hu"		"Válassz játékost:"
+	}
+
+	"AdminMenu_Gagged"
+	{
+		"#format"	""
+		"en"		"Remove Gag"
+		"hu"		"Írás tiltás feloldása"
+	}
+
+	"AdminMenu_Select_Gagged"
+	{
+		"#format"	""
+		"en"		"Select Player:"
+		"hu"		"Válassz játékost:"
+	}
+
+	"AdminMenu_Muted"
+	{
+		"#format"	""
+		"en"		"Remove Mute"
+		"hu"		"Beszéd tiltás feloldása"
+	}
+
+	"AdminMenu_Select_Muted"
+	{
+		"#format"	""
+		"en"		"Select Player:"
+		"hu"		"Válassz játékost:"
+	}
+
+	"AdminMenu_Silenced"
+	{
+		"#format"	""
+		"en"		"Remove Silence"
+		"hu"		"Írás/Beszéd tiltás feloldása"
+	}
+
+	"AdminMenu_Select_Silenced"
+	{
+		"#format"	""
+		"en"		"Select Player:"
+		"hu"		"Válassz játékost:"
+	}
+
+	"AdminMenu_Option_Mute_Empty"
+	{
+		"#format"	""
+		"en"		"No Muted Players"
+		"hu"		"Nincsenek beszéd tiltott játékosok!"
+	}
+
+	"AdminMenu_Option_Gag_Empty"
+	{
+		"#format"	""
+		"en"		"No Gagged Players"
+		"hu"		"Nincsenek írás tiltott játékosok!"
+	}
+
+	"AdminMenu_Option_Silence_Empty"
+	{
+		"#format"	""
+		"en"		"No Silenced Players"
+		"hu"		"Nincsenek beszéd/írás tiltott játékosok!"
+	}
+
+	"ListMenu_Option_Empty"
+	{
+		"#format"	""
+		"en"		"No Punished Clients"
+		"hu"		"Jelenleg nincsenek némított játékosok a szerveren!"
+	}
+
+	"ListMenu_Option_Mute"
+	{
+		"#format"	""
+		"en"		"Muted"
+		"hu"		"Némítva"
+	}
+
+	"ListMenu_Option_Gag"
+	{
+		"#format"	""
+		"en"		"Gagged"
+		"hu"		"Írása letiltva"
+	}
+
+	"ListMenu_Option_Duration"
+	{
+		"#format"	""
+		"en"		"- Duration: "
+		"hu"		"- Időtartam: "
+	}
+
+	"ListMenu_Option_Duration_Perm"
+	{
+		"#format"	""
+		"en"		"Permanent"
+		"hu"		"Végleges"
+	}
+
+	"ListMenu_Option_Duration_Time"
+	{
+		"#format"	"{1:d}"
+		"en"		"{1} Minutes"
+		"hu"		"{1} Perc"
+	}
+
+	"ListMenu_Option_Duration_Temp"
+	{
+		"#format"	""
+		"en"		"Temporary"
+		"hu"		"Ideiglenes"
+	}
+
+	"ListMenu_Option_Expire"
+	{
+		"#format"	""
+		"en"		"- Expires: "
+		"hu"		"- Lejár: "
+	}
+
+	"ListMenu_Option_Expire_Perm"
+	{
+		"#format"	""
+		"en"		"Never"
+		"hu"		"Soha"
+	}
+
+	"ListMenu_Option_Expire_Time"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1}"
+		"hu"		"{1}"
+	}
+
+	"ListMenu_Option_Expire_Temp"
+	{
+		"#format"	""
+		"en"		"Map Change"
+		"hu"		"Pályaváltás"
+	}
+
+	"ListMenu_Option_Expire_Temp_Reconnect"
+	{
+		"#format"	""
+		"en"		"Reconnect"
+		"hu"		"Újracsatlakozás"
+	}
+
+	"ListMenu_Option_Admin"
+	{
+		"#format"	"{1:s}"
+		"en"		"- Admin: {1}"
+		"hu"		"- Admin: {1}"
+	}
+
+	"ListMenu_Option_Issue"
+	{
+		"#format"	"{1:s}"
+		"en"		"- Issued: {1}"
+		"hu"		"- Időpont: {1}"
+	}
+
+	"ListMenu_Option_Reason"
+	{
+		"#format"	""
+		"en"		"- View Reason"
+		"hu"		"- Indok részletek"
+	}
+
+	"ListMenu_Option_Reason_None"
+	{
+		"#format"	""
+		"en"		"- Reason: None"
+		"hu"		"- Indok: Nincs"
+	}
+
+	"ReasonPanel_Punishment_Mute"
+	{
+		"#format"	""
+		"en"		"Muted: "
+		"hu"		"Némítás: "
+	}
+
+	"ReasonPanel_Punishment_Gag"
+	{
+		"#format"	""
+		"en"		"Gagged: "
+		"hu"		"Írás tilás: "
+	}
+
+	"ReasonPanel_Perm"
+	{
+		"#format"	""
+		"en"		"Permanent"
+		"hu"		"Végleges"
+	}
+
+	"ReasonPanel_Time"
+	{
+		"#format"	"{1:d}"
+		"en"		"{1} Minutes"
+		"hu"		"{1} Perc"
+	}
+
+	"ReasonPanel_Temp"
+	{
+		"#format"	""
+		"en"		"Temporary"
+		"hu"		"Ideiglenes"
+	}
+
+	"ReasonPanel_Reason"
+	{
+		"#format"	"{1:s}"
+		"en"		"Reason: {1}"
+		"hu"		"Indok: {1}"
+	}
+
+	"ReasonPanel_Back"
+	{
+		"#format"	""
+		"en"		"Exit"
+		"hu"		"Kilépés"
+	}
+
+	"Command_Mute_Issue_Immunity"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} was unable to be muted due to already being silenced by a higher administrator!"
+		"hu"		"{1} Nem bírtad némítani, mert már lenémította egy magasabb szintű adminisztrátor!"
+	}
+
+	"Command_Mute_Remove_Immunity"
+	{
+		"#format"	"{1:N}"
+		"en"		"The mute on {1} was unable to be removed due to being muted by a higher administrator!"
+		"hu"		"Nem bírtad levenni, róla: {1} a némítást, mert egy magasabb szintű adminisztrátor némította!"
+	}
+
+	"Command_Gag_Issue_Immunity"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} was unable to be gagged due to already being gagged by a higher administrator!"
+		"hu"		"{1} Nem bírtad letiltani az írás jogát, mert már letiltotta egy magasabb szintű adminisztrátor!"
+	}
+
+	"Command_Gag_Remove_Immunity"
+	{
+		"#format"	"{1:N}"
+		"en"		"The gag on {1} was unable to be removed due to being gagged by a higher administrator!"
+		"hu"		"Nem bírtad levenni, róla: {1} az írás tiltást, mert egy magasabb szintű adminisztrátor tiltotta le!"
+	}
+
+	"Command_Silence_Issue_Immunity"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} was unable to be silenced due to already being silenced by a higher administrator!"
+		"hu"		"{1} Nem bírtad letiltani az írás/beszéd jogát, mert már letiltotta egy magasabb szintű adminisztrátor!"
+	}
+
+	"Command_Silence_Issue_Immunity_Gag"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} was unable to be gagged due to already being silenced by a higher administrator!"
+		"hu"		"{1} Nem bírtad letiltani az írás jogát, mert már letiltotta egy magasabb szintű adminisztrátor!"
+	}
+
+	"Command_Silence_Issue_Immunity_Mute"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} was unable to be muted due to already being silenced by a higher administrator!"
+		"hu"		"{1} Nem bírtad némítani, mert már lenémította egy magasabb szintű adminisztrátor!"
+	}
+
+	"Command_Silence_Remove_Immunity"
+	{
+		"#format"	"{1:N}"
+		"en"		"The silence on {1} was unable to be removed due to being silenced by a higher administrator!"
+		"hu"		"Nem bírtad levenni, róla: {1} az írás/beszéd tiltást, mert egy magasabb szintű adminisztrátor tiltotta le!"
+	}
+
+	"Command_Silence_Remove_Immunity_Gag"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} could not be ungagged due to being gagged by a higher administrator!"
+		"hu"		"Nem bírtad levenni, róla: {1} az írás tiltást, mert egy magasabb szintű adminisztrátor tiltotta le!"
+	}
+
+	"Command_Silence_Remove_Immunity_Mute"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} could not be unmuted due to being muted by a higher administrator!"
+		"hu"		"Nem bírtad levenni, róla: {1} a némítást, mert egy magasabb szintű adminisztrátor némította!"
+	}
+
+	"Command_Issue_Mute_Usage"
+	{
+		"#format"	""
+		"en"		"[SM] Usage: sm_mute <player> <optional:time (in minutes)>
+		"hu"		"[SM] Használat: sm_mute <játékos> <perc>"
+	}
+
+	"Command_Remove_Mute_Usage"
+	{
+		"#format"	""
+		"en"		"[SM] Usage: sm_unmute <player> <bool:remove>"
+		"hu"		"[SM] Használat: sm_unmute <játékos> <perc>"
+	}
+
+	"Command_Issue_Mute_Permission_Perm"
+	{
+		"#format"	""
+		"en"		"You lack the permission to permanently mute!"
+		"hu"		"Nincs engedélyed véglegesen némítani!"
+	}
+
+	"Command_Issue_Mute_Permission_Time"
+	{
+		"#format"	"{1:d}"
+		"en"		"You lack the permission to mute for more than {1} minutes!"
+		"hu"		"Nincs engedélyed {1} percnél, több időre némítani!"
+	}
+
+	"Command_Issue_Gag_Usage"
+	{
+		"#format"	""
+		"en"		"[SM] Usage: sm_gag <player> <optional:time (in minutes)>"
+		"hu"		"[SM] Használat: sm_gag <játékos> <perc>"
+	}
+
+	"Command_Remove_Gag_Usage"
+	{
+		"#format"	""
+		"en"		"[SM] Usage: sm_ungag <player> <bool:remove>"
+		"hu"		"[SM] Használat: sm_ungag <játékos> <perc>"
+	}
+
+	"Command_Issue_Gag_Permission_Perm"
+	{
+		"#format"	""
+		"en"		"You lack the permission to permanently gag!"
+		"hu"		"Nincs engedélyed véglegesen írás jogot letiltani!"
+	}
+
+	"Command_Issue_Gag_Permission_Time"
+	{
+		"#format"	"{1:d}"
+		"en"		"You lack the permission to gag for more than {1} minutes!"
+		"hu"		"Nincs engedélyed {1} percnél több időre írás jogot letiltani!"
+	}
+
+	"Command_Issue_Silence_Usage"
+	{
+		"#format"	""
+		"en"		"[SM] Usage: sm_silence <player> <optional:time (in minutes)>"
+		"hu"		"[SM] Használat: sm_silence <játékos> <perc>"
+	}
+
+	"Command_Remove_Silence_Usage"
+	{
+		"#format"	""
+		"en"		"[SM] Usage: sm_unsilence <player> <bool:remove>"
+		"hu"		"[SM] Használat: sm_unsilence <játékos> <perc>"
+	}
+
+	"Command_Issue_Silence_Permission_Perm"
+	{
+		"#format"	""
+		"en"		"You lack the permission to permanently silence!"
+		"hu"		"Nincs engedélyed véglegesen beszéd/írás jogot letiltani!"
+	}
+
+	"Command_Issue_Silence_Permission_Time"
+	{
+		"#format"	"{1:d}"
+		"en"		"You lack the permission to silence for more than {1} minutes!"
+		"hu"		"Nincs engedélyed {1} percnél több időre beszéd/írás jogot letiltani!"
+	}
+
+	"Command_Database_Invalid"
+	{
+		"#format"	""
+		"en"		"You cannot use this feature as ExtendedComm is not connected to a database!"
+		"hu"		"Ez a szolgáltatás nem használható mivel a Némítás Plugin nem csatlakozik az adatbázishoz!"
+	}
+
+	"Command_List_Game_Only"
+	{
+		"#format"	""
+		"en"		"This command can only be used in-game."
+		"hu"		"Ez a parancs csak a játékban használható!"
+	}
+
+	"Commande_Prune_Complete"
+	{
+		"#format"	"{1:d},{2:d}"
+		"en"		"The pruning operation has completed! {1} entries were removed and {2} entries were updated!"
+		"hu"		"A metszési művelet befejeződött! {1} bejegyzéseket eltávolítottuk és a {2} bejegyzéseket frissítettük!"
+	}
+
+	"Log_Mute_Issue_Temp"
+	{
+		"#format"	"{1:L},{2:L}"
+		"en"		"{1} issued a temporary mute on {2}."
+		"hu"		"{1} kiadott egy ideiglenes némítást {2}."
+	}
+
+	"Log_Mute_Remove_Temp"
+	{
+		"#format"	"{1:L},{2:L}"
+		"en"		"{1} removed a temporary mute from {2}."
+		"hu"		"{1} feloldott egy ideiglenes némítást {2}."
+	}
+
+	"Log_Mute_Issue_Perm"
+	{
+		"#format"	"{1:L},{2:L}"
+		"en"		"{1} issued a permanent mute on {2}."
+		"hu"		"{1} kiadott egy végleges némítást {2}. Indok: {3}"
+	}
+
+	"Log_Mute_Remove_Perm"
+	{
+		"#format"	"{1:L},{2:L}"
+		"en"		"{1} removed a permanent mute from {2}."
+		"hu"		"{1} feloldott egy végleges némítást {2}."
+	}
+
+	"Log_Mute_Issue_Time"
+	{
+		"#format"	"{1:L},{2:L},{3:d}"
+		"en"		"{1} issued an extended mute on {2} for {3} minutes."
+		"hu"		"{1} kiadott egy hosszabb némítást, neki: {2}, {3} percre."
+	}
+
+	"Log_Mute_Remove_Time"
+	{
+		"#format"	"{1:L},{2:L},{3:d}"
+		"en"		"{1} removed an extended mute for {3} minutes from {2}."
+		"hu"		"{1} feloldott egy hosszabb némítást, neki: {2}, {3} percről."
+	}
+
+	"Log_Gag_Issue_Temp"
+	{
+		"#format"	"{1:L},{2:L}"
+		"en"		"{1} issued a temporary gag on {2}."
+		"hu"		"{1} kiadott egy ideiglenes írás tiltást {2}."
+	}
+
+	"Log_Gag_Remove_Temp"
+	{
+		"#format"	"{1:L},{2:L}"
+		"en"		"{1} removed a temporary gag from {2}."
+		"hu"		"{1} feloldott egy ideiglenes írás tiltást {2}."
+	}
+
+	"Log_Gag_Issue_Perm"
+	{
+		"#format"	"{1:L},{2:L}"
+		"en"		"{1} issued a permanent gag on {2}."
+		"hu"		"{1} kiadott egy végleges írás tiltást {2}."
+	}
+
+	"Log_Gag_Remove_Perm"
+	{
+		"#format"	"{1:L},{2:L}"
+		"en"		"{1} removed a permanent gag from {2}."
+		"hu"		"{1} feloldott egy végleges írás tiltást {2}."
+	}
+
+	"Log_Gag_Issue_Time"
+	{
+		"#format"	"{1:L},{2:L},{3:d}"
+		"en"		"{1} issued an extended gag on {2} for {3} minutes."
+		"hu"		"{1} kiadott egy hosszabb írás tiltást, neki: {2}, {3} percre."
+	}
+
+	"Log_Gag_Remove_Time"
+	{
+		"#format"	"{1:L},{2:L},{3:d}"
+		"en"		"{1} removed an extended gag for {3} minutes from {2}."
+		"hu"		"{1} feloldott egy hosszabb írás tiltást, neki: {2}, {3} percről."
+	}
+
+	"Log_Silence_Issue_Temp"
+	{
+		"#format"	"{1:L},{2:L}"
+		"en"		"{1} issued a temporary silence on {2}."
+		"hu"		"{1} kiadott egy ideiglenes beszéd/írás tiltást {2}."
+	}
+
+	"Log_Silence_Remove_Temp"
+	{
+		"#format"	"{1:L},{2:L}"
+		"en"		"{1} removed a temporary silence from {2}."
+		"hu"		"{1} feloldott egy ideiglenes beszéd/írás tiltást {2}."
+	}
+
+	"Log_Silence_Remove_Misc"
+	{
+		"#format"	"{1:L},{2:L}"
+		"en"		"{1} removed a miscellaneous silence from {2}."
+		"hu"		"{1} feloldott mindenféle némítást {2}."
+	}
+
+	"Log_Silence_Issue_Perm"
+	{
+		"#format"	"{1:L},{2:L}"
+		"en"		"{1} issued a permanent silence on {2}."
+		"hu"		"{1} kiadott egy végleges beszéd/írás tiltást {2}."
+	}
+
+	"Log_Silence_Remove_Perm"
+	{
+		"#format"	"{1:L},{2:L}"
+		"en"		"{1} removed a permanent silence from {2}."
+		"hu"		"{1} feloldott egy végleges beszéd/írás tiltást {2}. Indok: {3}"
+	}
+
+	"Log_Silence_Issue_Time"
+	{
+		"#format"	"{1:L},{2:L},{3:d}"
+		"en"		"{1} issued an extended silence on {2} for {3} minutes."
+		"hu"		"{1} kiadott egy hosszabb beszéd/írás tiltást, neki: {2}, {3} percre."
+	}
+
+	"Log_Silence_Remove_Time"
+	{
+		"#format"	"{1:L},{2:L}"
+		"en"		"{1} removed an extended silence from {2}."
+		"hu"		"{1} feloldott egy hosszabb beszéd/írás tiltást, neki: {2}"
+	}
+
+	"Show_Activity_Mute_Issue_Temp"
+	{
+		"#format"	"{1:N}"
+		"en"		"Issued a temporary mute on {1}."
+		"hu"		"Kapott egy ideiglenes némítást, ő: {1}."
+	}
+
+	"Show_Activity_Mute_Remove_Temp"
+	{
+		"#format"	"{1:N}"
+		"en"		"Removed a temporary mute from {1}."
+		"hu"		"Fel lett oldva egy ideiglenes némítás, neki: {1}."
+	}
+
+	"Show_Activity_Mute_Issue_Perm"
+	{
+		"#format"	"{1:N}"
+		"en"		"Issued a permanent mute on {1}."
+		"hu"		"Kapott egy végleges némítást, ő: {1}."
+	}
+
+	"Show_Activity_Mute_Remove_Perm"
+	{
+		"#format"	"{1:N}"
+		"en"		"Removed a permanent mute from {1}."
+		"hu"		"Fel lett oldva egy végleges némítás, neki: {1}."
+	}
+
+	"Show_Activity_Mute_Issue_Time"
+	{
+		"#format"	"{1:N},{2:d}"
+		"en"		"Issued an extended mute on {1} for {2} minutes."
+		"hu"		"Kapott egy hosszab némítást, ő: {1}, {2} percre."
+	}
+
+	"Show_Activity_Mute_Remove_Time"
+	{
+		"#format"	"{1:N},{2:d}"
+		"en"		"Removed an extended mute for {2} minutes from {1}."
+		"hu"		"Fel lett oldva egy hosszab némítás {2} percről, neki: {1}."
+	}
+
+	"Show_Activity_Gag_Issue_Temp"
+	{
+		"#format"	"{1:N}"
+		"en"		"Issued a temporary gag on {1}."
+		"hu"		"Kapott egy ideiglenes írás tiltást, ő: {1}."
+	}
+
+	"Show_Activity_Gag_Remove_Temp"
+	{
+		"#format"	"{1:N}"
+		"en"		"Removed a temporary gag from {1}."
+		"hu"		"Fel lett oldva egy ideiglenes írás tiltás, neki: {1}."
+	}
+
+	"Show_Activity_Gag_Issue_Perm"
+	{
+		"#format"	"{1:N}"
+		"en"		"Issued a permanent gag on {1}."
+		"hu"		"Kapott egy végleges írás tiltást, ő: {1}."
+	}
+
+	"Show_Activity_Gag_Remove_Perm"
+	{
+		"#format"	"{1:N}"
+		"en"		"Removed a permanent gag from {1}."
+		"hu"		"Fel lett oldva egy végleges írás tiltás, neki: {1}."
+	}
+
+	"Show_Activity_Gag_Issue_Time"
+	{
+		"#format"	"{1:N},{2:d}"
+		"en"		"Issued an extended gag on {1} for {2} minutes."
+		"hu"		"Kapott egy hosszab írás tiltást, ő: {1}, {2} percre."
+	}
+
+	"Show_Activity_Gag_Remove_Time"
+	{
+		"#format"	"{1:N},{2:d}"
+		"en"		"Removed an extended gag for {2} minutes from {1}."
+		"hu"		"Fel lett oldva egy hosszab írás tiltás {2} percről, neki: {1}."
+	}
+
+	"Show_Activity_Silence_Issue_Temp"
+	{
+		"#format"	"{1:N}"
+		"en"		"Issued a temporary silence on {1}."
+		"hu"		"Kapott egy ideiglenes beszéd/írás tiltást, ő: {1}."
+	}
+
+	"Show_Activity_Silence_Remove_Temp"
+	{
+		"#format"	"{1:N}"
+		"en"		"Removed a temporary silence from {1}."
+		"hu"		"Fel lett oldva egy ideiglenes beszéd/írás tiltás, neki: {1}."
+	}
+
+	"Show_Activity_Silence_Remove_Misc"
+	{
+		"#format"	"{1:N}"
+		"en"		"Removed a miscellaneous silence from {1}."
+		"hu"		"Fel lett oldva mindenféle némítás, írás/beszéd tiltás, neki: {1}."
+	}
+
+	"Show_Activity_Silence_Issue_Perm"
+	{
+		"#format"	"{1:N}"
+		"en"		"Issued a permanent silence on {1}."
+		"hu"		"Kapott egy végleges beszéd/írás tiltást, ő: {1}."
+	}
+
+	"Show_Activity_Silence_Remove_Perm"
+	{
+		"#format"	"{1:N}"
+		"en"		"Removed a permanent silence from {1}."
+		"hu"		"Fel lett oldva egy végleges beszéd/írás tiltás, neki: {1}."
+	}
+
+	"Show_Activity_Silence_Issue_Time"
+	{
+		"#format"	"{1:N},{2:d}"
+		"en"		"Issued an extended silence on {1} for {2} minutes."
+		"hu"		"Kapott egy hosszab beszéd/írás tiltást, ő: {1}, {2} percre."
+	}
+
+	"Show_Activity_Silence_Remove_Time"
+	{
+		"#format"	"{1:N}"
+		"en"		"Removed an extended silence from {1}."
+		"hu"		"Fel lett oldva minden beszéd/írás tiltás, neki: {1}."
+	}
+}

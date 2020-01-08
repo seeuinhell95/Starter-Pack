@@ -1,0 +1,614 @@
+"Phrases"
+{
+	"SCOPE_DETECTED"
+	{
+		"en"			"[{green}Emotes{default}] {darkred}You can't use emotes while scoping!"
+		"hu"			"[{green}Emotes{default}] {darkred}Az animációk nem használhatóak Scope közben!"
+	}
+
+	"NO_DANCES_ACCESS_FLAG"
+	{
+		"en"			"[{green}Emotes{default}] {darkred}You don't have access to use dances!"
+		"hu"			"[{green}Emotes{default}] {darkred}Nincs engedélyed a tánc animációk használatához!"
+	}
+
+	"NO_EMOTES_ACCESS_FLAG"
+	{
+		"en"			"[{green}Emotes{default}] {darkred}You don't have access to use emotes!"
+		"hu"			"[{green}Emotes{default}] {darkred}Nincs engedélyed az érzelem animációk használatához!"
+	}
+
+	"MUST_BE_ALIVE"
+	{
+		"en"			"[{green}Emotes{default}] {darkred}You must be alive to use this!"
+		"hu"			"[{green}Emotes{default}] {darkred}Csak élőként lehet animációkat használni!"
+	}
+
+	"STAY_ON_GROUND"
+	{
+		"en"			"[{green}Emotes{default}] {darkred}You must stay on the ground to use this!"
+		"hu"			"[{green}Emotes{default}] {darkred}A földön kell lenned az animációk használatához!"
+	}
+
+	"COOLDOWN_EMOTES"
+	{
+		"en"			"[{green}Emotes{default}] {darkred}It is on cooldown! {lime}3 {darkred}seconds!"
+		"hu"			"[{green}Emotes{default}] {darkred}Próbáld újra {lime}3 {darkred}másodperc múlva!"
+	}
+
+	"AMIN_1_INVALID"
+	{
+		"en"			"[{green}Emotes{default}] {darkred}Argument 1 is invalid!"
+		"hu"			"[{green}Emotes{default}] {darkred}Argument 1 is invalid!"
+	}
+
+	"CANNOT_USE_NOW"
+	{
+		"en"			"[{green}Emotes{default}] {darkred}You can't use it right now!"
+		"hu"			"[{green}Emotes{default}] {darkred}Jelenleg nem lehet animációkat használni!"
+	}
+
+	"INVALID_EMOTE_ID"
+	{
+		"en"			"[{green}Emotes{default}] {darkred}Invalid Emote ID, Should be between 1-86!"
+		"hu"			"[{green}Emotes{default}] {darkred}Érvénytelen animáció ID, 1 és 86 között kell lennie!"
+	}
+
+	"RANDOM_EMOTE"
+	{
+		"en"			"Random Emote"
+		"hu"			"Véletlenszerű érzelem animáció"
+	}
+
+	"RANDOM_DANCE"
+	{
+		"en"			"Random Dance"
+		"hu"			"Véletlenszerű tánc animáció"
+	}
+
+	"EMOTES_LIST"
+	{
+		"en"			"Emotes List"
+		"hu"			"Érzelem animációk"
+	}
+
+	"DANCES_LIST"
+	{
+		"en"			"Dances List"
+		"hu"			"Tánc animációk"
+	}
+
+	"EMOTE_PLAYER"
+	{
+		"en"			"Emote Player"
+		"hu"			"Animáció játékosokon"
+	}	
+
+	"SELECT_EMOTE"
+	{
+		"en"			"Select Emote"
+		"hu"			"Válassz animációt"
+	}
+
+	"TITLE_MAIM_MENU"
+	{
+		"en"			"Emotes and Dances"
+		"hu"			"Érzelem és Tánc animációk"
+	}
+
+	"TITLE_EMOTES_MENU"
+	{
+		"en"			"Emotes"
+		"hu"			"Érzelmek"
+	}	
+
+	"TITLE_DANCES_MENU"
+	{
+		"en"			"Dances"
+		"hu"			"Táncok"
+	}	
+
+	"Emote_Fonzie_Pistol"
+	{
+		"en"			"Finger Guns"
+		"hu"			"Finger Guns"
+	}
+
+	"Emote_Bring_It_On"
+	{
+		"en"			"Come To Me"
+		"hu"			"Come To Me"
+	}
+
+	"Emote_ThumbsDown"
+	{
+		"en"			"Thumbs Down"
+		"hu"			"Thumbs Down"
+	}
+
+	"Emote_ThumbsUp"
+	{
+		"en"			"Thumbs Up"
+		"hu"			"Thumbs Up"
+	}
+
+	"Emote_Celebration_Loop"
+	{
+		"en"			"Celebration"
+		"hu"			"Celebration"
+	}
+
+	"Emote_BlowKiss"
+	{
+		"en"			"Blow Kiss"
+		"hu"			"Blow Kiss"
+	}
+
+	"Emote_Calculated"
+	{
+		"en"			"Calculated"
+		"hu"			"Calculated"
+	}
+
+	"Emote_Confused"
+	{
+		"en"			"Confused"
+		"hu"			"Confused"
+	}
+
+	"Emote_Chug"
+	{
+		"en"			"Chug"
+		"hu"			"Chug"
+	}
+
+	"Emote_Cry"
+	{
+		"en"			"Cry"
+		"hu"			"Cry"
+	}
+
+	"Emote_DustingOffHands"
+	{
+		"en"			"Band of the Fort"
+		"hu"			"Band of the Fort"
+	}
+
+	"Emote_Facepalm"
+	{
+		"en"			"FacePalm"
+		"hu"			"FacePalm"
+	}
+
+	"Emote_Fishing"
+	{
+		"en"			"On the Hook (Fishing)"
+		"hu"			"On the Hook (Fishing)"
+	}
+
+	"Emote_Flex"
+	{
+		"en"			"Flex"
+		"hu"			"Flex"
+	}
+
+	"Emote_golfclap"
+	{
+		"en"			"Golf Clap"
+		"hu"			"Golf Clap"
+	}
+
+	"Emote_HandSignals"
+	{
+		"en"			"Hand Signals"
+		"hu"			"Hand Signals"
+	}
+
+	"Emote_HeelClick"
+	{
+		"en"			"Click!"
+		"hu"			"Click!"
+	}
+
+	"Emote_Hotstuff"
+	{
+		"en"			"Hot Stuff"
+		"hu"			"Hot Stuff"
+	}
+
+	"Emote_IBreakYou"
+	{
+		"en"			"Breaking Point"
+		"hu"			"Breaking Point"
+	}
+
+	"Emote_IHeartYou"
+	{
+		"en"			"True Love"
+		"hu"			"True Love"
+	}
+
+	"Emote_Kung-Fu_Salute"
+	{
+		"en"			"Kung-Fu Salute"
+		"hu"			"Kung-Fu Salute"
+	}
+
+	"Emote_Laugh"
+	{
+		"en"			"Laugh"
+		"hu"			"Laugh"
+	}
+
+	"Emote_Luchador"
+	{
+		"en"			"Luchador"
+		"hu"			"Luchador"
+	}
+
+	"Emote_Make_It_Rain"
+	{
+		"en"			"Make it Rain"
+		"hu"			"Make it Rain"
+	}
+
+	"Emote_NotToday"
+	{
+		"en"			"No Hoy"
+		"hu"			"No Hoy"
+	}
+
+	"Emote_RockPaperScissor_Rock"
+	{
+		"en"			"Rock"
+		"hu"			"Rock"
+	}
+
+	"Emote_RockPaperScissor_Paper"
+	{
+		"en"			"Paper"
+		"hu"			"Paper"
+	}
+
+	"Emote_RockPaperScissor_Scissor"
+	{
+		"en"			"Scissors"
+		"hu"			"Scissors"
+	}
+
+	"Emote_Salt"
+	{
+		"en"			"Salt"
+		"hu"			"Salt"
+	}
+
+	"Emote_Salute"
+	{
+		"en"			"Salute"
+		"hu"			"Salute"
+	}
+
+	"Emote_Wave2"
+	{
+		"en"			"Salute 2"
+		"hu"			"Salute 2"
+	}
+
+	"Emote_SmoothDrive"
+	{
+		"en"			"Drive Car"
+		"hu"			"Drive Car"
+	}
+
+	"Emote_Snap"
+	{
+		"en"			"Snap"
+		"hu"			"Snap"
+	}
+
+	"Emote_StageBow"
+	{
+		"en"			"Stage Bow"
+		"hu"			"Stage Bow"
+	}
+
+	"Emote_Yeet"
+	{
+		"en"			"Yeet"
+		"hu"			"Yeet"
+	}
+
+	"DanceMoves"
+	{
+		"en"			"Dance Moves"
+		"hu"			"Dance Moves"
+	}
+
+	"Emote_Mask_Off_Intro"
+	{
+		"en"			"Orange Justice"
+		"hu"			"Orange Justice"
+	}
+
+	"Emote_Zippy_Dance"
+	{
+		"en"			"Rambunctious"
+		"hu"			"Rambunctious"
+	}
+
+	"ElectroShuffle"
+	{
+		"en"			"Electro Shuffle"
+		"hu"			"Electro Shuffle"
+	}
+
+	"Emote_AerobicChamp"
+	{
+		"en"			"Aerobic"
+		"hu"			"Aerobic"
+	}
+
+	"Emote_Bendy"
+	{
+		"en"			"Bendy"
+		"hu"			"Bendy"
+	}
+
+	"Emote_BandOfTheFort"
+	{
+		"en"			"Best Mates"
+		"hu"			"Best Mates"
+	}
+
+	"Emote_Boogie_Down_Intro"
+	{
+		"en"			"Boogie"
+		"hu"			"Boogie"
+	}
+
+	"Emote_Capoeira"
+	{
+		"en"			"Capoeira"
+		"hu"			"Capoeira"
+	}
+
+	"Emote_Charleston"
+	{
+		"en"			"Flapper"
+		"hu"			"Flapper"
+	}
+
+	"Emote_Chicken"
+	{
+		"en"			"Chicken"
+		"hu"			"Chicken"
+	}
+
+	"Emote_Dance_NoBones"
+	{
+		"en"			"Boneless"
+		"hu"			"Boneless"
+	}
+
+	"Emote_Dance_Shoot"
+	{
+		"en"			"Hype"
+		"hu"			"Hype"
+	}
+
+	"Emote_Dance_SwipeIt"
+	{
+		"en"			"Shake It Up"
+		"hu"			"Shake It Up"
+	}
+
+	"Emote_DustOffShoulders"
+	{
+		"en"			"Shake It Up 2"
+		"hu"			"Shake It Up 2"
+	}
+
+	"Emote_Dance_Disco_T3"
+	{
+		"en"			"Disco Fever"
+		"hu"			"Disco Fever"
+	}
+
+	"Emote_DG_Disco"
+	{
+		"en"			"Disco Fever 2"
+		"hu"			"Disco Fever 2"
+	}
+
+	"Emote_Dance_Worm"
+	{
+		"en"			"The Worm"
+		"hu"			"The Worm"
+	}
+
+	"Emote_Dance_Loser"
+	{
+		"en"			"Take The L"
+		"hu"			"Take The L"
+	}
+
+	"Emote_Dance_Breakdance"
+	{
+		"en"			"Break Dance"
+		"hu"			"Break Dance"
+	}
+
+	"Emote_Dance_Pump"
+	{
+		"en"			"Pump"
+		"hu"			"Pump"
+	}
+
+	"Emote_Dance_RideThePony"
+	{
+		"en"			"Ride The Pony"
+		"hu"			"Ride The Pony"
+	}
+
+	"Emote_Dab"
+	{
+		"en"			"Dab"
+		"hu"			"Dab"
+	}
+
+	"Emote_EasternBloc_Start"
+	{
+		"en"			"Eastern Bloc"
+		"hu"			"Eastern Bloc"
+	}
+
+	"Emote_FancyFeet"
+	{
+		"en"			"Dream Feet"
+		"hu"			"Dream Feet"
+	}
+
+	"Emote_FlossDance"
+	{
+		"en"			"Floss"
+		"hu"			"Floss"
+	}
+
+	"Emote_FlippnSexy"
+	{
+		"en"			"Flippn"
+		"hu"			"Flippn"
+	}
+
+	"Emote_Fresh"
+	{
+		"en"			"Fresh"
+		"hu"			"Fresh"
+	}
+
+	"Emote_GrooveJam"
+	{
+		"en"			"Grefg"
+		"hu"			"Grefg"
+	}
+
+	"Emote_guitar"
+	{
+		"en"			"Guitar"
+		"hu"			"Guitar"
+	}
+
+	"Emote_Hillbilly_Shuffle_Intro"
+	{
+		"en"			"Shuffle"
+		"hu"			"Shuffle"
+	}
+
+	"Emote_Hiphop_01"
+	{
+		"en"			"Hip Hop"
+		"hu"			"Hip Hop"
+	}
+
+	"Emote_Hula_Start"
+	{
+		"en"			"Hula Hop"
+		"hu"			"Hula Hop"
+	}
+
+	"Emote_InfiniDab_Intro"
+	{
+		"en"			"Infinite Dab"
+		"hu"			"Infinite Dab"
+	}
+
+	"Emote_Intensity_Start"
+	{
+		"en"			"Intensity"
+		"hu"			"Intensity"
+	}
+
+	"Emote_IrishJig_Start"
+	{
+		"en"			"Turkish Dabke"
+		"hu"			"Turkish Dabke"
+	}
+
+	"Emote_KoreanEagle"
+	{
+		"en"			"Eagle"
+		"hu"			"Eagle"
+	}
+
+	"Emote_Kpop_02"
+	{
+		"en"			"True Heart"
+		"hu"			"True Heart"
+	}
+
+	"Emote_LivingLarge"
+	{
+		"en"			"Living Large"
+		"hu"			"Living Large"
+	}
+
+	"Emote_Maracas"
+	{
+		"en"			"Maracas"
+		"hu"			"Maracas"
+	}
+
+	"Emote_PopLock"
+	{
+		"en"			"Pop Lock"
+		"hu"			"Pop Lock"
+	}
+
+	"Emote_PopRock"
+	{
+		"en"			"Star Power"
+		"hu"			"Star Power"	
+	}
+
+	"Emote_RobotDance"
+	{
+		"en"			"Robot"
+		"hu"			"Robot"
+	}
+
+	"Emote_T-Rex"
+	{
+		"en"			"T-Rex"
+		"hu"			"T-Rex"
+	}
+
+	"Emote_TechnoZombie"
+	{
+		"en"			"Reanimated"
+		"hu"			"Reanimated"
+	}
+
+	"Emote_Twist"
+	{
+		"en"			"Twist"
+		"hu"			"Twist"
+	}
+
+	"Emote_WarehouseDance_Start"
+	{
+		"en"			"Ware House"
+		"hu"			"Ware House"
+	}
+
+	"Emote_Wiggle"
+	{
+		"en"			"Wiggle"
+		"hu"			"Wiggle"
+	}
+
+	"Emote_Youre_Awesome"
+	{
+		"en"			"You're Awesome"
+		"hu"			"You're Awesome"
+	}
+}

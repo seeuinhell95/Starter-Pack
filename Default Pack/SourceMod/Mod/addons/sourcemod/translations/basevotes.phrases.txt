@@ -1,0 +1,120 @@
+"Phrases"
+{
+	"Initiate Vote"
+	{
+		"#format"		"{1:s}"
+		"en"			"Initiated a vote: {1}"
+		"hu"			"Szavazás indítása: {1}"
+	}
+
+	"Initiated Vote Map"
+	{
+		"en"			"Initiated a map vote."
+		"hu"			"Pályaszavazás indítása."
+	}	
+
+	"Initiated Vote Kick"
+	{
+		"#format"		"{1:s}"
+		"en"			"Initiated a kick vote against \"{1}\"."
+		"hu"			"\"{1}\" játékos kirúgásának szavazása."
+	}
+
+	"Initiated Vote Ban"
+	{
+		"#format"		"{1:s}"
+		"en"			"Initiated a ban vote against \"{1}\"."
+		"hu"			"\"{1}\" játékos kitiltásának szavazása."
+	}
+
+	"Map Vote"
+	{
+		"#format"		"{1:s}"
+		"en"			"Map Vote: {1}"
+		"hu"			"Pályaszavazás: {1}"
+	}
+
+	"Map Vote In Use"
+	{
+		"en"			"Another admin is currently using the map vote menu."
+		"hu"			"Egy másik admin jelenleg is használja a szavazás menüt."
+	}
+
+	"Change Map To"
+	{
+		"#format"		"{1:s}"
+		"en"			"Change map to \"{1}\"?"
+		"hu"			"Elváltsunk a(z) \"{1}\" pályára?"
+	}	
+
+	"Votekick Player"
+	{
+		"#format"		"{1:s}"
+		"en"			"Kick \"{1}\"?"
+		"hu"			"Kidobjuk \"{1}\" játékost?"
+	}
+
+	"Voteban Player"
+	{
+		"#format"		"{1:s}"
+		"en"			"Ban \"{1}\"?"
+		"hu"			"Kitiltsuk \"{1}\" játékost?"
+	}
+
+	"Vote Successful"
+	{
+		"#format"		"{1:d},{2:d}"
+		"en"			"Vote successful! (Received {1}%% of {2} votes)"
+		"hu"			"Sikeres szavazás! (Bejött {1}%% a {2} szavazatoknak)"
+	}	
+
+	"Vote Failed"
+	{
+		"#format"		"{1:d},{2:d},{3:d}"
+		"en"			"Vote failed. {1}%% vote required. (Received {2}%% of {3} votes)"
+		"hu"			"Szavazás sikertelen. {1}%% szavazat kellett volna. (Bejött {2}%% a {3} szavazatoknak)"
+	}
+
+	"Vote End"
+	{
+		"#format"		"{1:s},{2:s}"
+		"en"			"The answer to \"{1}\" is:\"{2}\"."
+		"hu"			"Válasz a(z) \"{1}\" kérdésre: \"{2}\"."
+	}
+
+	"Kick vote"
+	{
+		"en"			"Kick vote"
+		"hu"			"Kirúgás szavazás"
+	}
+
+	"Ban vote"
+	{
+		"en"			"Ban vote"
+		"hu"			"Kititltás szavazás"
+	}
+
+	"Map vote"
+	{
+		"en"			"Map vote"
+		"hu"			"Pálya szavazás"
+	}
+
+	"Confirm Vote"
+	{
+		"en"			"Confirm Vote"
+		"hu"			"Szavazás elfogadása"
+	}
+
+	"Please select a map"
+	{
+		"en"			"Please select a map"
+		"hu"			"Válassz egy pályát"
+	}
+
+	"Start the Vote"
+	{
+		"en"			"Start the Vote"
+		"hu"			"Szavazás elindítása"
+	}
+}

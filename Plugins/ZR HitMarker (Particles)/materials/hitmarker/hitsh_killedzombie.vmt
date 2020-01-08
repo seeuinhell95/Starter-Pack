@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+	"$basetexture" "hitmarker/hitsh_killedzombie"
+	"$nocull" 1
+	"$translucent" 1
+}

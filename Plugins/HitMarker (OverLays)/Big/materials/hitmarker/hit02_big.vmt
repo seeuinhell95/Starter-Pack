@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+	"$basetexture" "hitmarker\hit02_big"
+	"$translucent" 1
+	"$decalscale" 0.5
+}

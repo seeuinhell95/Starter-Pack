@@ -1,0 +1,86 @@
+"Phrases"
+{
+	"Rock The Vote"
+	{
+		"en"			"Rock The Vote:"
+		"hu"			"Pályaváltás:"
+	}
+
+	"RTV Not Allowed"
+	{
+		"en"			"Rock the Vote is not allowed yet."
+		"hu"			"Még nem lehet pályaszavazást indítani."
+	}
+
+	"RTV Started"
+	{
+		"en"			"Rock the Vote has already started."
+		"hu"			"Pályaszavazás elindítva."
+	}
+
+	"RTV Ended"
+	{
+		"en"			"RTV has already ended, you cannot start it again or nominate maps."
+		"hu"			"A pályaszavazás véget ért, jelenleg nem lehet újat indítani vagy pályát megjelölni."
+
+	}
+
+	"Already Voted"
+	{
+ 		"#format"		"{1:d},{2:d}"
+	 	"en"			"You have already voted to Rock the Vote. {1} votes, {2} required."
+		"hu"			"Már szavaztál pályaszavazás indítására. {1} szükséges szavazatból {2} van eddig."
+	}
+
+	"Minimal Players Not Met"
+	{
+		"en"			"The minimal number of players required has not been met."
+		"hu"			"Nincs elegendő játékos pályaszavazáshoz."
+	}
+
+	"RTV Requested"
+	{
+		"#format"		"{1:s},{2:d},{3:d}"
+		"en"			"{1} wants to rock the vote. {2} votes, {3} required."
+		"hu"			"{1} pályaszavazást szeretne. {3} szükséges szavazatból {2} van eddig."
+	}
+
+	"RTV Vote Ready"
+	{
+		"en"			"Rocking the Vote!"
+		"hu"			"Pályaszavazás véget ért!"
+
+	}
+
+	"Don't Change"
+	{
+		"en"			"Keep Current Map"
+		"hu"			"Jelenlegi pálya maradjon"
+	}
+
+	"Selected Map"
+	{
+		"#format"		"{1:s},{2:s}"
+		"en"			"{1} has selected: '{2}'"
+		"hu"			"{1} szavazata: '{2}'"
+	}
+
+	"No Votes"
+	{
+		"en"			"No votes received for Rock the Vote, keeping current map."
+		"hu"			"Senki sem szavazott pályaváltásra, marad a jelenlegi pálya."
+	}
+
+	"Current Map Stays"
+	{
+		"en"			"Current map continues! Rock the Vote has spoken!"
+		"hu"			"A jelenlegi pálya folytatódik! A pályaszavazás eredménye!"
+	}
+
+	"Changing Maps"
+	{
+		"#format"		"{1:s}"
+		"en"			"Changing map to: '{1}'! Rock the Vote has spoken!"
+		"hu"			"Pályaváltás a következőre: '{1}'! A pályaszavazás eredménye!"
+	}
+}

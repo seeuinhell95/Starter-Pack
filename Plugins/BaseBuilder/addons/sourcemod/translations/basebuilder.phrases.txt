@@ -1,0 +1,225 @@
+"Phrases"
+{
+	"Last mover"
+	{
+		"#format"		"{1:s}"
+		"en"			"Last mover is {red}{1}"
+		"hu"			"Az utolsó mozgató {red}{1}"
+	}
+
+	"Not moved"
+	{
+		"en"			"Block is not moved by anyone!"
+		"hu"			"A blokkot jelenleg senki sem mozgatja!"
+	}
+
+	"Locked"
+	{
+		"en"			"Block locked!"
+		"hu"			"Blokk lezárva!"
+	}
+
+	"Unlocked"
+	{
+		"en"			"Block unlocked!"
+		"hu"			"Blokk feloldva!"
+	}
+
+	"Max locked"
+	{
+		"#format"		"{1:i}"
+		"en"			"You can maximum lock <font color='#ff0000'>{1}</font> blocks!"
+		"hu"			"Maximum csak <font color='#ff0000'>{1}</font> blokkot zárhatsz le!"
+	}
+
+	"Already locked"
+	{
+		"#format"		"{1:s}"
+		"en"			"You can't lock the block, block is already locked by <font color='#ff0000'>{1}</font>"
+		"hu"			"Ezt a blokot nem zárhatod le, mivel már lezárta <font color='#ff0000'>{1}</font>"
+	}
+
+	"Kill"
+	{
+		"en"			"Kill command is blocked!"
+		"hu"			"Az öngyilkosság tilos!"
+	}
+
+	"Party left game"
+	{
+		"en"			"Your friend in party has left the game!"
+		"hu"			"A barátod kilépett a közös csapatodból!"
+	}
+
+	"Party not found"
+	{
+		"en"			"User not found!"
+		"hu"			"Játékos nem található!"
+	}
+
+	"Party different teams"
+	{
+		"#format"		"{1:s}"
+		"en"			"Your not in the same team with {red}{1}"
+		"hu"			"Nem ugyanabban a csapatban vagy, vele: {red}{1}"
+	}
+
+	"Party self invite"
+	{
+		"en"			"You can't invite yourself to party!"
+		"hu"			"Nem hívhatod meg saját magad egy közös csapatba!"
+	}
+
+	"Party user in party"
+	{
+		"#format"		"{1:s}"
+		"en"			"Player {red}{1}{default} is already in party!"
+		"hu"			"{red}{1}{default} már benne van egy közös csapatban!"
+	}
+
+	"Party invited"
+	{
+		"#format"		"{1:s}"
+		"en"			"You invited {red}{1}{default} to party!"
+		"hu"			"Meghívtad őt: {red}{1}{default} egy közös csapatba!"
+	}
+
+	"Party got invite"
+	{
+		"#format"		"{1:s}"
+		"en"			"{red}{1}{default} invited you to party. Write {purple}!accept{default} in {red}20 seconds{default}, to join the party."
+		"hu"			"{red}{1}{default} meghívott téged egy közös csapatba. Írd be {purple}!accept {red}20 másodpercen {default}belül, ha csatlakozni szeretnél."
+	}
+
+	"Party writes accept without invite"
+	{
+		"en"			"Your not invited to any party!"
+		"hu"			"Nem hívtak be egy közös csapatba sem!"
+	}
+
+	"Party different teams"
+	{
+		"#format"		"{1:s}"
+		"en"			"You can't accept, because you are not in one team with {red}{1}{default}!"
+		"hu"			"Nem tudod elfogadni, mivel nem vagy egy csapatban vele: {red}{1}{default}!"
+	}
+
+	"Party already in different party"
+	{
+		"#format"		"{1:s}"
+		"en"			"{red}{1}{default} has already joined different party!"
+		"hu"			"{red}{1}{default} már csatlakozott egy másik csapathoz!"
+	}
+
+	"Party Im in party"
+	{
+		"en"			"Your already in party, you can't join another one!"
+		"hu"			"Már benne vagy egy közös csapatban, nem tudsz egy másikhoz is csatlakozni!"
+	}
+
+	"Party success"
+	{
+		"#format"		"{1:s}"
+		"en"			"Your in party with {red}{1}{default}. If you want to leave party, write {purple}!stopparty"
+		"hu"			"Egy csapatban vagy vele: {red}{1}{default}. Ha kiszeretnél lépni a csapatból akkor írd be, hogy {purple}!stopparty"
+	}
+
+	"Party success2"
+	{
+		"#format"		"{1:s}"
+		"en"			"{red}{1}{default} has accepted your party invite! To leave party write {purple}!stopparty"
+		"hu"			"{red}{1}{default} elfogadta a csapat meghívást! Csapatból való kilépéshez {purple}!stopparty"
+	}
+
+	"Party left"
+	{
+		"en"			"You have left the party!"
+		"hu"			"Elhagytad a közös csapatot!"
+	}
+
+	"Party left2"
+	{
+		"en"			"Your friend has left the party!"
+		"hu"			"A barátod elhagyta a közös csapatot!"
+	}
+
+	"Respawn"
+	{
+		"en"			"You can respawn only during build/prep time."
+		"hu"			"Csak az építési idő alatt lehet újraéledni."
+	}
+
+	"Shop not enough money"
+	{
+		"en"			"Sorry, you don't have enough money."
+		"hu"			"Nincs elég pénzed."
+	}
+
+	"Shop bought item"
+	{
+		"#format"		"{1:s}"
+		"en"			"You have bought {red}{1}"
+		"hu"			"Ezt vásároltad: {red}{1}"
+	}
+
+	"Class change after death"
+	{
+		"en"			"Your class will change after death!"
+		"hu"			"A kategóriád a halálod után fog megváltozni!"
+	}
+
+	"New zombie"
+	{
+		"#format"		"{1:s}"
+		"en"			"You are now: {1}"
+		"hu"			"Jelenlegi kategóriád: {1}"
+	}
+
+	"Join message"
+	{
+		"en"			"Press {purple}'E'{default} to move block, {purple}'G'{default} to lock the block, {red}'MOUSE1'{default} to move block forward, {red}'MOUSE2'{default} to move block backward"
+		"hu"			"Nyomd meg az {purple}'E'{default} gombot a blokkok mozgatásához, {purple}'G'{default} gombot a blokkok lezárásához, {red}'MOUSE1'{default} gombot a blokkok előre tolásához és {red}'MOUSE2'{default} gombot pedig a blokkok hátulra tolásához."
+	}
+
+	"Money returned"
+	{
+		"en"			"Money returned, you can't buy this item twice!"
+		"hu"			"Ezt a tárgyat nem vásárolhatod meg kétszer egymás után!"
+	}
+
+	"VIP class fail change"
+	{
+		"en"			"Sorry, you can't select VIP class!"
+		"hu"			"Ez a kategória csak a ViP/Admin tagoknak elérhető!"
+	}
+
+	"Pick Up block"
+	{
+		"en"			" Pick up block with 'E'"
+		"hu"			" Vedd fel a blokkkot az 'E' gomb használatával"
+	}
+
+	"Lock block"
+	{
+		"en"			" Lock block with 'G'"
+		"hu"			" Zárd le a blokkot a 'G' gomb használatával"
+	}
+
+	"Rotate block"
+	{
+		"en"			" Rotate block with 'R'"
+		"hu"			" Forgasd a blokkot az 'R' gomb használatával"
+	}
+
+	"Push Pull"
+	{
+		"en"			" Push, pull block with 'mouse1/mouse2'"
+		"hu"			" Taszítsd és húzd a blokkokat a 'mouse1' és a 'mouse2' gombok használatával"
+	}
+
+	"Class"
+	{
+		"en"			" Change zm class by typing !class"
+		"hu"			" Válassz zombi kategóriát a !class parancs használatával"
+	}
+}

@@ -1,0 +1,312 @@
+"Phrases"
+{
+	"Yes"
+	{
+		"en"			"Yes"
+		"hu"			"Igen"
+	}
+
+	"No"
+	{
+		"en"			"No"
+		"hu"			"Nem"
+	}
+
+	"No matching client"
+	{
+		"en"			"No matching client was found."
+		"hu"			"Nem találom a célpontot."
+	}
+
+	"No matching clients"
+	{
+		"en"			"No matching clients were found."
+		"hu"			"Nem találom a célpontokat."
+	}
+
+	"More than one client matches"
+	{
+		"#format"		"{1:s}"
+		"en"			"More than one client matches the pattern \"{1}\"."
+		"hu"			"Több mint 1 kliens felelt meg a \"{1}\" kritériumoknak."
+	}
+
+	"More than one client matched"
+	{
+		"en"			"More than one client matched the given pattern."
+		"hu"			"Több mint 1 kliens felelt meg a kritériumoknak."
+	}
+
+	"Player no longer available"
+	{
+		"en"			"The player you selected is no longer available."
+		"hu"			"A játékos jelenleg nem elérhető."
+	}
+
+	"Kick player"
+	{
+		"en"			"Kick player"
+		"hu"			"Játékos kirúgása"
+	}
+
+	"Kicked by admin"
+	{
+		"en"			"Kicked by administrator"
+		"hu"			"Kirúgott egy adminisztrátor"
+	}
+
+	"Changing map"
+	{
+		"#format"		"{1:s}"
+		"en"			"Changing map to: {1}"
+		"hu"			"Pályaváltás a következőre: {1}"
+	}
+
+	"Map was not found"
+	{
+		"#format"		"{1:s}"
+		"en"			"Map \"{1}\" was not found."
+		"hu"			"\"{1}\" pálya nem található."
+	}
+
+	"Unable to target"
+	{
+		"en"			"You cannot target this player."
+		"hu"			"Nem tudod befogni ezt a játékost."
+	}
+
+	"Name"
+	{
+		"en"			"Name"
+		"hu"			"Név"
+	}
+
+	"Access"
+	{
+		"en"			"Access"
+		"hu"			"Hozzáférés"
+	}
+
+	"See console for output"
+	{
+		"en"			"See console for output."
+		"hu"			"Nézd meg a konzolt az információkért."
+	}
+
+	"Cannot target bot"
+	{
+		"en"			"Unable to perform this command on a BOT."
+		"hu"			"BOT játékosokon nem lehet végrehajtani ezt a parancsot."
+	}
+
+	"Unable to find cvar"
+	{
+		"#format"		"{1:s}"
+		"en"			"Unable to find cvar: \"{1}\"."
+		"hu"			"Ez a parancs nem található: \"{1}\"."
+	}
+
+	"No access to cvar"
+	{
+		"en"			"You do not have access to this cvar."
+		"hu"			"Ennek a parancsnak a használatához nincs jogosultságod."
+	}
+
+	"Value of cvar"
+	{
+		"#format"		"{1:s},{2:s}"
+		"en"			"Value of cvar \"{1}\": \"{2}\"."
+		"hu"			"\"{1}\" parancs értéke: \"{2}\"."
+	}
+
+	"Cvar changed"
+	{
+		"#format"		"{1:s},{2:s}"
+		"en"			"Changed cvar \"{1}\" to \"{2}\"."
+		"hu"			"\"{1}\" parancs megváltoztatva erre: \"{2}\"."
+	}
+
+	"Config not found"
+	{
+		"#format"		"{1:s}"
+		"en"			"Config file: \"{1}\" not found."
+		"hu"			"\"{1}\" konfig fájl nem található."
+	}
+
+	"Executed config"
+	{
+		"#format"		"{1:s}"
+		"en"			"Executed config: \"{1}\"."
+		"hu"			"\"{1}\" konfig végrehajtva."
+	}
+
+	"Invalid Amount"
+	{
+		"en"			"Invalid amount specified."
+		"hu"			"Nem valós érték."
+	}
+
+	"Cannot be performed on dead"
+	{
+		"#format"		"{1:s}"
+		"en"			"This action cannot be performed on dead client \"{1}\"."
+		"hu"			"\"{1}\" játékos halott. A parancsot így nem lehet végrehajtani."
+	}
+
+	"Player has since died"
+	{
+		"en"			"Action cannot be performed, the player has since died."
+		"hu"			"Amíg a játékos halott nem lehet végrehajtani a parancsot."
+	}
+
+	"Vote in Progress"
+	{
+		"en"			"A vote is already in progress."
+		"hu"			"Jelenleg folyamatban van egy szavazás."
+	}
+
+	"Vote Not In Progress"
+	{
+		"en"			"A vote is not in progress at this time."
+		"hu"			"Jelenleg nincs folyamatban lévő szavazás."
+	}
+
+	"Cancelled Vote"
+	{
+		"en"			"Cancelled the vote."
+		"hu"			"Szavazás visszavonva."
+	}
+
+	"Cancel vote"
+	{
+		"en"			"Cancel vote"
+		"hu"			"Szavazás visszavonása"
+	}
+
+	"Vote Select"
+	{
+		"#format"		"{1:s},{2:s}"
+		"en"			"\"{1}\" has chosen: \"{2}\"."
+		"hu"			"\"{1}\" a következőre szavazott: \"{2}\"."
+	}
+
+	"No Votes Cast"
+	{
+		"en"			"No votes were cast."
+		"hu"			"Nincs érvényes szavazat."
+	}	
+
+	"Vote Delay Minutes"
+	{
+		"#format"		"{1:d}"
+		"en"			"You must wait {1} minutes before starting another vote."
+		"hu"			"Várnod kell {1} percet mielőtt újra szavazást indíthatnál."
+	}
+
+	"Vote Delay Seconds"
+	{
+		"#format"		"{1:d}"
+		"en"			"You must wait {1} seconds before starting another vote."
+		"hu"			"Várnod kell {1} másodpercet mielőtt újra szavazást indíthatnál."
+	}
+
+	"Could not connect to database"
+	{
+		"en"			"Could not connect to the database."
+		"hu"			"Jelenleg nincs kapcsolat az adatbázissal."
+	}
+
+	"Failed to query database"
+	{
+		"en"			"Failed to query database!"
+		"hu"			"Hibás lekérdezés az adatbázisból!"
+	}
+
+	"Invalid SteamID specified"
+	{
+		"en"			"You have specified an invalid Steam ID. Must start with: 'STEAM_'."
+		"hu"			"Nem valós Steam ID azonosítót adtál meg. Helyes elkezdésű: 'STEAM_'."
+	}
+
+	"Reload admins"
+	{
+		"en"			"Reload admins"
+		"hu"			"Admin adatbázis újraindítása"
+	}
+
+	"Command is in-game only"
+	{
+		"en"			"This command can only be used in-game."
+		"hu"			"Csak játékban használható parancs."
+	}
+
+	"Target must be dead"
+	{
+		"en"			"This command can only be used on dead players."
+		"hu"			"Csak halott játékosokon használható parancs."
+	}
+
+	"Target must be alive"
+	{
+		"en"			"This command can only be used on alive players."
+		"hu"			"Csak élő játékosokon használható parancs."
+	}
+
+	"Target is not in game"
+	{
+		"en"			"The given player is not fully in-game yet."
+		"hu"			"A kiválasztott játékos még nem csatlakozott fel teljesen a szerverre."
+	}
+
+	"Cannot participate in vote"
+	{
+		"en"			"You cannot participate in this vote."
+		"hu"			"Jelenleg te nem vehetsz részt a szavazásban."
+	}
+
+	"Cannot change vote"
+	{
+		"en"			"You cannot change your selection for this vote."
+		"hu"			"Jelenleg nem változtathatod meg a szavazatodat."
+	}
+
+	"On"
+	{
+		"en"			"On"
+		"hu"			"Be"
+	}
+
+	"Off"
+	{
+		"en"			"Off"
+		"hu"			"Ki"
+	}
+
+	"Say all"
+	{
+		"#format"		"{1:s}"
+		"en"			"[ADMIN] {1}"
+		"hu"			"[ADMIN] {1}"
+	}
+
+	"Chat admins"
+	{
+		"#format"		"{1:N}"
+		"en"			"(ADMINS) {1}"
+		"hu"			"(ADMINOK) {1}"
+	}
+
+	"Chat to admins"
+	{
+		"#format"		"{1:N}"
+		"en"			"(TO ADMINS) {1}"
+		"hu"			"(ADMINOKNAK) {1}"
+	}
+
+	"Private say to"
+	{
+		"#format"		"{1:N},{2:N}"
+		"en"			"(Private to {1}) {2}"
+		"hu"			"(Privát üzenet neki: \"{1}\") {2}"
+	}
+}

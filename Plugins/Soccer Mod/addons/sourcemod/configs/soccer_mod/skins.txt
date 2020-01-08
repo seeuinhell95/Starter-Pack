@@ -1,0 +1,4 @@
+models/player/custom_player/kodua/goku/goku.mdl
+models/player/custom_player/kodua/vegeta/vegeta.mdl
+models/player/custom_player/kuristaja/banana_joe/banana_joe.mdl
+models/player/custom_player/legacy/invexgaming/carrot/carrot.mdl

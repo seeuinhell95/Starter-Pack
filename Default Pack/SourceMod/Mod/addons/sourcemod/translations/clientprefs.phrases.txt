@@ -1,0 +1,60 @@
+"Phrases"
+{
+	"Cookie List"
+	{
+		"en"			"SourceMod Cookie List"
+		"hu"			"SourceMod Sütik listája"
+	}
+
+	"Printing Cookie List"
+	{
+		"en"			"Printing cookie list to console"
+		"hu"			"Sütik listájának megjelenítése konzolba"
+	}
+
+	"Cookie not Found"
+	{
+		"#format"		"{1:s}"
+		"en"			"Could not find cookie \"{1}\"."
+		"hu"			"\"{1}\" nem létező süti."
+	}
+
+	"Cookie Value"
+	{
+		"#format"		"{1:s},{2:s}"
+		"en"			"\"{1}'s\" value is \"{2}\"."
+		"hu"			"\"{1}\" süti értéke \"{2}\"."
+	}
+
+	"Protected Cookie"
+	{
+		"#format"		"{1:s}"
+		"en"			"Cannot change the value of protected cookie! (\"{1}\")"
+		"hu"			"Védett sütinek nem lehet megváltoztatni az értékét! \(\"{1}\")"
+	}
+
+	"Cookie Changed Value"
+	{
+		"#format"		"{1:s},{2:s}"
+		"en"			"Changed the value of cookie: \"{1}\" to \"{2}\"."
+		"hu"			"Süti értéke módosítva erről: \"{1}\" erre: \"{2}\"."
+	}
+
+	"No Console"
+	{
+		"en"			"Cannot display settings menu to console."
+		"hu"			"Nem lehet konzolban megjeleníteni a beállítások menüjét."
+	}
+
+	"Choose Option"
+	{
+		"en"			"Choose Option"
+		"hu"			"Válassz egy lehetőséget"
+	}
+
+	"Client Settings"
+	{
+		"en"			"Client Settings"
+		"hu"			"Kliens beállítások"
+	}	
+}

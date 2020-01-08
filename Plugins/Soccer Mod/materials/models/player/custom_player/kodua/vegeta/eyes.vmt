@@ -1,0 +1,8 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models\player\custom_player\kodua\vegeta\eye"		  
+	"$lightwarptexture"   "models\player\custom_player\kodua\vegeta\eye_lightwarp"
+
+	"$halflambert" "1"
+	"$model" "1"
+}

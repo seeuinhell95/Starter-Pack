@@ -1,0 +1,137 @@
+"Phrases"
+{
+	"Timeleft"
+	{
+		"en"		"Time remaining for map: "
+		"hu"		"Hátralévő idő a pályán: "
+	}
+
+	"Thetime"
+	{
+		"#format"	"{1:s}"	
+		"en"		"The current server time is: {1}"
+		"hu"		"Jelenlegi idő: {1}"
+	}
+
+	"Friendly Fire On"
+	{
+		"en"		"Friendly Fire is enabled."
+		"hu"		"Csapattárs sebzés bekapcsolva."
+	}
+
+	"Friendly Fire Off"
+	{
+		"en"		"Friendly Fire is disabled."
+		"hu"		"Csapattárs sebzés kikapcsolva."
+	}
+
+	"Current Map"
+	{
+		"#format"	"{1:s}"
+		"en"		"The current map is: {1}"
+		"hu"		"Jelenlegi pálya: {1}"
+	}
+
+	"WinLimitAppend"
+	{
+		"en"		", or change map after a team wins one round."
+		"hu"		", vagy pályaváltás amint az egyik csapat megnyer egy kört."
+	}
+
+	"WinLimit"
+	{
+		"en"		"Map will change after a team wins one round."
+		"hu"		"Pályaváltás amint az egyik csapat megnyer egy kört."
+	}
+
+	"MaxRoundsAppend"
+	{
+		"en"		", or change map after one more round."
+		"hu"		", vagy pályaváltás egy kör múlva."
+	}
+
+	"MaxRounds"
+	{
+		"en"		"Map will change after one more round."
+		"hu"		"Pályaváltás egy kör múlva."
+	}
+
+	"FragLimitAppend"
+	{
+		"en"		", or change map after player reaches one frag."
+		"hu"		", vagy pályaváltás amint egy játékos megöl valakit."
+	}
+
+	"FragLimit"
+	{
+		"en"		"Map will change after a player reaches one frag."
+		"hu"		"Pályaváltás amint egy játékos megöl valakit."
+	}
+
+	"WinLimitAppendPlural"
+	{
+		"#format"	"{1:i}"
+		"en"		", or change map after a team wins {1} rounds."
+		"hu"		", vagy {1} győztes kör után pályaváltás."
+	}
+
+	"WinLimitPlural"
+	{
+		"#format"	"{1:i}"
+		"en"		"Map will change after a team wins {1} rounds."
+		"hu"		"{1} győztes kör után pályaváltás következik."
+	}
+
+	"MaxRoundsAppendPlural"
+	{
+		"#format"	"{1:i}"
+		"en"		", or change map after {1} more rounds."
+		"hu"		", vagy {1} kör után pályaváltás."
+	}
+
+	"MaxRoundsPlural"
+	{
+		"#format"	"{1:i}"
+		"en"		"Map will change after {1} more rounds."
+		"hu"		"{1} kör után pályaváltás lesz."
+	}
+
+	"FragLimitAppendPlural"
+	{
+		"#format"	"{1:i}"
+		"en"		", or change map after player reaches {1} frags."
+		"hu"		", vagy pályaváltás amint egy játékos megölt {1} embert."
+	}
+
+	"FragLimitPlural"
+	{
+		"#format"	"{1:i}"
+		"en"		"Map will change after a player reaches {1} frags."
+		"hu"		"Pályaváltás amint egy játékos megölt {1} embert."
+	}
+
+	"LastRound"
+	{
+		"en"		"This is the last round!"
+		"hu"		"Ez az utolsó kör!"
+	}
+
+	"NoTimelimit"
+	{
+		"en"		"No timelimit for map!"
+		"hu"		"Nincs időkorlát a pályán!"
+	}
+
+	"Next Map"
+	{
+		"#format"	"{1:s}"
+		"en"		"Next Map: {1}"
+		"hu"		"Következő pálya: {1}"
+	}
+
+	"Pending Vote"
+	{
+		"en"		"Pending vote..."
+		"hu"		"Szavazás van folyamatban..."
+	}
+}

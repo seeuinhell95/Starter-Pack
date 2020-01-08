@@ -1,0 +1,10 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\player\custom_player\kodua\goku\boot3"
+    	 "$bumpmap" "models\player\custom_player\kodua\goku\boot_normal"
+	"$phong" "1"
+	"$phongboost" ".2"
+	"$phongexponent" "5"									
+	"$phongfresnelranges"	"[.2 .6  1]"
+   	 "$halflambert" 1
+}

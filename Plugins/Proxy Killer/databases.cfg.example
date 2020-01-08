@@ -1,0 +1,11 @@
+"Databases"
+{
+	"ProxyKiller"
+	{
+		"driver"		"mysql"
+		"host"			"Host"
+		"database"		"DataBase"
+		"user"			"User"
+		"pass"			"Pass"
+	}
+}

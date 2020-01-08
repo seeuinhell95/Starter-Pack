@@ -1,0 +1,1178 @@
+"Phrases"
+{
+	"Name"
+	{
+		"en"		"Name"
+		"hu"		"Név"
+	}
+
+	"No"
+	{
+		"en"		"No"
+		"hu"		"Nem"
+	}
+
+	"Yes"
+	{
+		"en"		"Yes"
+		"hu"		"Igen"
+	}
+
+	"Admin"
+	{
+		"en"		"Admin"
+		"hu"		"Admin"
+	}
+
+	"Settings"
+	{
+		"en"		"Settings"
+		"hu"		"Beállítások"
+	}
+
+	"Spec player"
+	{
+		"en"		"Spec player"
+		"hu"		"Játékos nézése"
+	}
+
+	"Allowed maps"
+	{
+		"en"		"Allowed maps"
+		"hu"		"Engedélyezett pályák"
+	}
+
+	"Add"
+	{
+		"en"		"Add"
+		"hu"		"Hozzáadás"
+	}
+
+	"Change"
+	{
+		"en"		"Map Change"
+		"hu"		"Pályaváltás"
+	}
+
+	"Remove"
+	{
+		"en"		"Remove"
+		"hu"		"Törlés"
+	}
+
+	"Cap"
+	{
+		"en"		"Capitan"
+		"hu"		"Kapitány"
+	}
+
+	"Put all players to spectator"
+	{
+		"en"		"Put all players to spectator"
+		"hu"		"Az összes játékos nézőbe helyezése"
+	}
+
+	"Add random player"
+	{
+		"en"		"Add random player"
+		"hu"		"Véletlenszerű játékos hozzáadása"
+	}
+
+	"Start cap fight"
+	{
+		"en"		"Start cap fight"
+		"hu"		"Kapitány harc megkezdése"
+	}
+
+	"Pick"
+	{
+		"en"		"Pick"
+		"hu"		"Választ"
+	}
+
+	"Positions"
+	{
+		"en"		"Positions"
+		"hu"		"Pozíciók"
+	}
+
+	"Goalkeeper"
+	{
+		"en"		"Goalkeeper"
+		"hu"		"Kapus"
+	}
+
+	"Left back"
+	{
+		"en"		"Left back"
+		"hu"		"Balhátvéd"
+	}
+
+	"Right back"
+	{
+		"en"		"Right back"
+		"hu"		"Jobbhátvéd"
+	}
+
+	"Midfielder"
+	{
+		"en"		"Midfielder"
+		"hu"		"Középpályás"
+	}
+
+	"Left wing"
+	{
+		"en"		"Left wing"
+		"hu"		"Balszárny"
+	}
+
+	"Right wing"
+	{
+		"en"		"Right wing"
+		"hu"		"Jobbszárny"
+	}
+
+	"Credits"
+	{
+		"en"		"Credits"
+		"hu"		"Foci mód készítők"
+	}
+
+	"Script"
+	{
+		"en"		"Script"
+		"hu"		"Plugin író"
+	}
+
+	"Player models"
+	{
+		"en"		"Player models"
+		"hu"		"Játékos karakter modellező"
+	}
+
+	"Soccer Mod group"
+	{
+		"en"		"Soccer Mod group"
+		"hu"		"Foci Mód Steam csoport"
+	}
+
+	"Soccer Mod version"
+	{
+		"en"		"Soccer Mod version: 1.0"
+		"hu"		"Foci Mód verzió: 1.0"
+	}
+
+	"Help"
+	{
+		"en"		"Help"
+		"hu"		"Segítség"
+	}
+
+	"Chat commands"
+	{
+		"en"		"Chat commands"
+		"hu"		"Chat parancsok"
+	}
+
+	"Hold the walk key to sprint"
+	{
+		"en"		"Hold the walk key (default = shift) to sprint"
+		"hu"		"Sprint használata: Shift gomb"
+	}
+
+	"Guide"
+	{
+		"en"		"Guide"
+		"hu"		"Útmutató"
+	}
+
+	"Match"
+	{
+		"en"		"Match"
+		"hu"		"Meccs"
+	}
+
+	"Start"
+	{
+		"en"		"Start"
+		"hu"		"Kezdés"
+	}
+
+	"Pause"
+	{
+		"en"		"Pause"
+		"hu"		"Szünet"
+	}
+
+	"Unpause"
+	{
+		"en"		"Unpause"
+		"hu"		"Szünet vége"
+	}
+
+	"Stop"
+	{
+		"en"		"Stop"
+		"hu"		"Leállítás"
+	}
+
+	"Score"
+	{
+		"en"		"Score"
+		"hu"		"Pontszám"
+	}
+
+	"Add a goal to $team"
+	{
+		"#format"	"{1:s}"
+		"en"		"Add a goal to {1}."
+		"hu"		"Gól hozzáadása a {1} csapatnak."
+	}
+
+	"Remove a goal from $team"
+	{
+		"#format"	"{1:s}"
+		"en"		"Remove a goal from {1}."
+		"hu"		"Gól törlése a {1} csapatnak."
+	}
+
+	"Reset"
+	{
+		"en"		"Reset"
+		"hu"		"Újraindítás"
+	}
+
+	"Ranking"
+	{
+		"en"		"Ranking"
+		"hu"		"Rangsorolás"
+	}
+
+	"Last connected"
+	{
+		"en"		"Last connected"
+		"hu"		"Utolsó felcsatlakozott"
+	}
+
+	"Match top $number"
+	{
+		"#format"	"{1:i}"
+		"en"		"Match top {1}"
+		"hu"		"Meccs rangsorolás {1}"
+	}
+
+	"Public top $number"
+	{
+		"#format"	"{1:i}"
+		"en"		"Public top {1}"
+		"hu"		"Nyilvános rangsorolás {1}"
+	}
+
+	"Match personal"
+	{
+		"en"		"Match personal"
+		"hu"		"Személyes meccs"
+	}
+
+	"Public personal"
+	{
+		"en"		"Public personal"
+		"hu"		"Nyilvános személy"
+	}
+
+	"Referee"
+	{
+		"en"		"Referee"
+		"hu"		"Játékvezető"
+	}
+
+	"Yellow card"
+	{
+		"en"		"Yellow card"
+		"hu"		"Sárga lap"
+	}
+
+	"Yellow"
+	{
+		"en"		"Yellow"
+		"hu"		"Sárga"
+	}
+
+	"Red card"
+	{
+		"en"		"Red card"
+		"hu"		"Piros lap"
+	}
+
+	"Remove red card"
+	{
+		"en"		"Remove red card"
+		"hu"		"Piros lap törlése"
+	}
+
+	"Remove all cards"
+	{
+		"en"		"Remove all cards"
+		"hu"		"Minden lap törlése"
+	}
+
+	"Statistics"
+	{
+		"en"		"Statistics"
+		"hu"		"Statisztikák"
+	}
+
+	"Team CT"
+	{
+		"en"		"Team CT"
+		"hu"		"CT Csapat"
+	}
+
+	"Team T"
+	{
+		"en"		"Team T"
+		"hu"		"T Csapat"
+	}
+
+	"Player"
+	{
+		"en"		"Player"
+		"hu"		"Játékos"
+	}
+
+	"Current match"
+	{
+		"en"		"Current match"
+		"hu"		"Jelenlegi meccs"
+	}
+
+	"Current round"
+	{
+		"en"		"Current round"
+		"hu"		"Jelenlegi kör"
+	}
+
+	"Assists"
+	{
+		"en"		"Assists"
+		"hu"		"Segítségek"
+	}
+
+	"Ball losses"
+	{
+		"en"		"Ball losses"
+		"hu"		"Labda veszteség"
+	}
+
+	"Goals"
+	{
+		"en"		"Goals"
+		"hu"		"Gólok"
+	}
+
+	"Hits"
+	{
+		"en"		"Hits"
+		"hu"		"Találatok"
+	}
+
+	"Interceptions"
+	{
+		"en"		"Interceptions"
+		"hu"		"Lehallgatás"
+	}
+
+	"MOTM"
+	{
+		"en"		"MOTM"
+		"hu"		"MOTM"
+	}
+
+	"MVP"
+	{
+		"en"		"MVP"
+		"hu"		"MVP"
+	}
+
+	"Own goals"
+	{
+		"en"		"Own goals"
+		"hu"		"Öngólok"
+	}
+
+	"Passes"
+	{
+		"en"		"Passes"
+		"hu"		"Passzok"
+	}
+
+	"Points"
+	{
+		"en"		"Points"
+		"hu"		"Pontszámok"
+	}
+
+	"Possession"
+	{
+		"en"		"Possession"
+		"hu"		"Birtok"
+	}
+
+	"Rounds lost"
+	{
+		"en"		"Rounds lost"
+		"hu"		"Kör veszteség"
+	}
+
+	"Rounds won"
+	{
+		"en"		"Rounds won"
+		"hu"		"Kör győzelem"
+	}
+
+	"Saves"
+	{
+		"en"		"Saves"
+		"hu"		"Mentés"
+	}
+
+	"Training"
+	{
+		"en"		"Training"
+		"hu"		"Bemelegítés"
+	}
+
+	"Cannon"
+	{
+		"en"		"Cannon"
+		"hu"		"Labda ágyú"
+	}
+
+	"Set cannon position"
+	{
+		"en"		"Set cannon position"
+		"hu"		"Labda ágyú pozíciójának beállítása"
+	}
+
+	"Set cannon aim"
+	{
+		"en"		"Set cannon aim"
+		"hu"		"Labda ágyú céljának beállítása"
+	}
+
+	"Select ball"
+	{
+		"en"		"Select ball"
+		"hu"		"Labda választás"
+	}
+
+	"Cannon on"
+	{
+		"en"		"Cannon on"
+		"hu"		"Labda ágyú be"
+	}
+
+	"Cannon off"
+	{
+		"en"		"Cannon off"
+		"hu"		"Labda ágyú ki"
+	}
+
+	"Randomness"
+	{
+		"en"		"Randomness"
+		"hu"		"Véletlenszerű"
+	}
+
+	"Fire rate"
+	{
+		"en"		"Fire rate"
+		"hu"		"Tüzelési sebesség"
+	}
+
+	"Power"
+	{
+		"en"		"Power"
+		"hu"		"Erő"
+	}
+
+	"Disable goals"
+	{
+		"en"		"Disable goals"
+		"hu"		"Gólok kikapcsolása"
+	}
+
+	"Enable goals"
+	{
+		"en"		"Enable goals"
+		"hu"		"Gólok bekapcsolása"
+	}
+
+	"Spawn/remove ball"
+	{
+		"en"		"Spawn/remove ball"
+		"hu"		"Labda létrehozása/törlése"
+	}
+
+	"$player has put $target to spectator"
+	{
+		"#format"	"{1:N},{2:N}"
+		"en"		"{1} has put {2} to spectator."
+		"hu"		"{1} áthelyezte {2} játékost a nézőkhöz."
+	}
+
+	"$player has restarted the round"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has restarted the round."
+		"hu"		"{1} újraindította a kört."
+	}
+
+	"$player has changed the map to $map"
+	{
+		"#format"	"{1:N},{2:s}"
+		"en"		"{1} has changed the map to {2}"
+		"hu"		"{1} elváltotta a pályát a következőre: {2}"
+	}
+
+	"$player has forced $target as random player"
+	{
+		"#format"	"{1:N},{2:N}"
+		"en"		"{1} has forced {2} as random player."
+		"hu"		"{1} véletlenszerű játékosként kényszerítette {2} játékost."
+	}
+
+	"$player has put all players to spectator"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has put all players to spectator."
+		"hu"		"{1} áthelyezett mindenkit a nézőkhöz."
+	}
+
+	"$player has started a cap fight"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has started a cap fight."
+		"hu"		"{1} elindította a kapitány harcot."
+	}
+
+	"Cap fight will start in $number seconds"
+	{
+		"#format"	"{1:i}"
+		"en"		"Cap fight will start in {1} seconds."
+		"hu"		"Kapitány harc megkezdése {1} másodperc múlva."
+	}
+
+	"FIGHT!"
+	{
+		"en"		"FIGHT!"
+		"hu"		"HARC!"
+	}
+
+	"$player has picked $target"
+	{
+		"#format"	"{1:N},{2:N}"
+		"en"		"{1} has picked {2}."
+		"hu"		"{1} választotta {2} játékost."
+	}
+
+	"$player has added a goal to $team"
+	{
+		"#format"	"{1:N},{2:s}"
+		"en"		"{1} has added a goal to {2}."
+		"hu"		"{1} gólt adott a {2} csapatnak."
+	}
+
+	"$player has paused the match"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has paused the match."
+		"hu"		"{1} szüneteltette a meccset."
+	}
+
+	"$player has removed a goal from $team"
+	{
+		"#format"	"{1:N},{2:s}"
+		"en"		"{1} has removed a goal from {2}."
+		"hu"		"{1} gólt törölt a {2} csapatnak."
+	}
+
+	"$player has reset the score"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has reset the score."
+		"hu"		"{1} újraindította a pontszámot."
+	}
+
+	"$player has started a match"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has started a match."
+		"hu"		"{1} elindította a meccset."
+	}
+
+	"$player has stopped the match"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has stopped the match."
+		"hu"		"{1} leállította a meccset."
+	}
+
+	"$player has unpaused the match"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has unpaused the match."
+		"hu"		"{1} meccs szüneltetés vége."
+	}
+
+	"Final score"
+	{
+		"en"		"Final score"
+		"hu"		"Végső pontszám"
+	}
+
+	"Goal scored"
+	{
+		"en"		"Goal scored"
+		"hu"		"Gólt szerzett"
+	}
+
+	"Golden goal"
+	{
+		"en"		"Golden goal"
+		"hu"		"Arany gól"
+	}
+
+	"Half time"
+	{
+		"en"		"Half time"
+		"hu"		"Félidő"
+	}
+
+	"Kick off $team"
+	{
+		"#format"	"{1:s}"
+		"en"		"Kick off {1}."
+		"hu"		"Kirúgva a {1} csapat."
+	}
+
+	"The match ended in a draw and will continue with a golden goal"
+	{
+		"en"		"The match ended in a draw and will continue with a golden goal."
+		"hu"		"A mérkőzés döntetlen lett ezért arany góllal folytatódik."
+	}
+
+	"Paused"
+	{
+		"en"		"Paused"
+		"hu"		"Szüneteltetve"
+	}
+
+	"Period break"
+	{
+		"en"		"Period break"
+		"hu"		"Időszakos szünet"
+	}
+
+	"$player has been put to spectator because the maximum number of players per team during a match is $number"
+	{
+		"#format"	"{1:N},{2:i}"
+		"en"		"{1} has been put to spectator because the maximum number of players per team during a match is {2}."
+		"hu"		"{1} nézőbe került, mert a mérkőzés során a csapatonkénti maximális játékos szám {2}."
+	}
+
+	"Unpausing in 1 second"
+	{
+		"en"		"Unpausing in 1 second."
+		"hu"		"Szünet vége 1 másodperc múlva."
+	}
+
+	"Unpausing in $number seconds"
+	{
+		"#format"	"{1:i}"
+		"en"		"Unpausing in {1} seconds."
+		"hu"		"Szünet vége {1} másodperc múlva."
+	}
+
+	"$player is ranked $rank with $number points"
+	{
+		"#format"	"{1:N},{2:i},{3:i},{4:i}"
+		"en"		"{1} is ranked {2}/{3} with {4} points."
+		"hu"		"{1} rangsorolása {2}/{3} és {4} pontszám."
+	}
+
+	"$player has given a red card to $target"
+	{
+		"#format"	"{1:N},{2:N}"
+		"en"		"{1} has given a red card to {2}."
+		"hu"		"{1} piros lapot adott {2} játékosnak."
+	}
+
+	"$player has given a second yellow card to $target"
+	{
+		"#format"	"{1:N},{2:N}"
+		"en"		"{1} has given a second yellow card to {2}."
+		"hu"		"{1} a második sárga lapot adta {2} játékosnak."
+	}
+
+	"$player has given a yellow card to $target"
+	{
+		"#format"	"{1:N},{2:N}"
+		"en"		"{1} has given a yellow card to {2}."
+		"hu"		"{1} sárga lapot adott {2} játékosnak."
+	}
+
+	"$player has removed all cards"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has removed all cards."
+		"hu"		"{1} törölte az összes lapot."
+	}
+
+	"$player has removed the red card from $target"
+	{
+		"#format"	"{1:N},{2:s}"
+		"en"		"{1} has removed the red card from {2}."
+		"hu"		"{1} törölte a piros lapját {2} játékosnak."
+	}
+
+	"Assist given by $player"
+	{
+		"#format"	"{1:s}"
+		"en"		"Assist given by {1}."
+		"hu"		"Segítséget adott {1} játékos."
+	}
+
+	"Goal scored by $player"
+	{
+		"#format"	"{1:s}"
+		"en"		"Goal scored by {1}."
+		"hu"		"Gólt szerzett {1} játékos."
+	}
+
+	"The man of the match was $player with $number points"
+	{
+		"#format"	"{1:s},{2:i}"
+		"en"		"The man of the match was {1} with {2} points."
+		"hu"		"A mérkőzés legjobbja {1} játékos volt {2} pontszámmal."
+	}
+
+	"MOTM: No player scored more than 0 points this match"
+	{
+		"en"		"MOTM: No player scored more than 0 points this match."
+		"hu"		"MOTM: Egy játékos sem szerzett 0 pontszámnál többet a mérkőzésen."
+	}
+
+	"MVP: No player scored more than 0 points this round"
+	{
+		"en"		"MVP: No player scored more than 0 points this round."
+		"hu"		"MVP: Egy játékos sem szerzett 0 pontszámnál többet a körben."
+	}
+
+	"Own goal scored by $player"
+	{
+		"#format"	"{1:s}"
+		"en"		"Own goal scored by {1}."
+		"hu"		"Öngólt szerzett {1} játékos."
+	}
+
+	"$player was the MVP this round with $number points"
+	{
+		"#format"	"{1:s},{2:i}"
+		"en"		"{1} was the MVP this round with {2} points."
+		"hu"		"{1} játékos lett az MVP a körben {2} pontszámmal."
+	}
+
+	"$player has disabled the goals"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has disabled the goals."
+		"hu"		"{1} kikapcsolta a gólokat."
+	}
+
+	"$player has enabled the goals"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has enabled the goals."
+		"hu"		"{1} bekapcsolta a gólokat."
+	}
+
+	"$player has set the cannon aim position"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has set the cannon aim position."
+		"hu"		"{1} beállította a labda ágyú cél pozícióját."
+	}
+
+	"$player has set the cannon position"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has set the cannon position."
+		"hu"		"{1} beállította a labda ágyú pozícióját."
+	}
+
+	"$player has set the cannon fire rate to $number"
+	{
+		"#format"	"{1:N},{2:.1f}"
+		"en"		"{1} has set the cannon fire rate to {2}."
+		"hu"		"{1} beállította a labda ágyú tüzelési sebességét: {2}."
+	}
+
+	"$player has set the cannon randomness to $number"
+	{
+		"#format"	"{1:N},{2:.0f}"
+		"en"		"{1} has set the cannon randomness to {2}."
+		"hu"		"{1} véletlenszerű beállította a labda ágyút {2} tüzelési sebességre."
+	}
+
+	"$player has set the cannon power to $number"
+	{
+		"#format"	"{1:N},{2:.3f}"
+		"en"		"{1} has set the cannon power to {2}"
+		"hu"		"{1} beállította a labda ágyú erejét: {2}"
+	}
+
+	"$player has turned the cannon off"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has turned the cannon off."
+		"hu"		"{1} kikapcsolta a labda ágyút."
+	}
+
+	"$player has turned the cannon on"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} has turned the cannon on."
+		"hu"		"{1} bekapcsolta a labda ágyút."
+	}
+
+	"Ball cannon entity is invalid"
+	{
+		"en"		"Ball cannon entity is invalid."
+		"hu"		"Labda ágyú entitás érvénytelen."
+	}
+
+	"All players already are in spectator"
+	{
+		"en"		"All players already are in spectator."
+		"hu"		"Minden játékos már nézőben van."
+	}
+
+	"No players in spectator"
+	{
+		"en"		"No players in spectator."
+		"hu"		"Nincsenek játékosok nézőben."
+	}
+
+	"Player is already in spectator"
+	{
+		"en"		"Player is already in spectator."
+		"hu"		"A játékos már a nézőben van."
+	}
+
+	"Player is no longer on the server"
+	{
+		"en"		"Player is no longer on the server."
+		"hu"		"A játékos már nincs a szerveren."
+	}
+
+	"Soccer Mod is not allowed on this map"
+	{
+		"en"		"Soccer Mod is not allowed on this map."
+		"hu"		"Ezen a pályán a Foci Mód nem engedélyezett jelenleg."
+	}
+
+	"You are not allowed to use this option"
+	{
+		"en"		"You are not allowed to use this option."
+		"hu"		"Nem használhatja ezt a pozíciót."
+	}
+
+	"You can not use this option during a match"
+	{
+		"en"		"You can not use this option during a match."
+		"hu"		"Ezt az opciót nem használhatja mérkőzés közben."
+	}
+
+	"Allowed maps list is empty"
+	{
+		"en"		"Allowed maps list is empty."
+		"hu"		"Az engedélyezett pályák listája üres."
+	}
+
+	"$map added to the allowed maps list"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} added to the allowed maps list."
+		"hu"		"{1} pálya hozzáadva az engedélyezett pályákhoz."
+	}
+
+	"$map is already added to the allowed maps list"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} is already added to the allowed maps list."
+		"hu"		"{1} pálya már hozzá van adva az engedélyezett pályákhoz."
+	}
+
+	"$map is already removed from the allowed maps list"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} is already removed from the allowed maps list."
+		"hu"		"{1} pálya már törölve van az engedélyezett pályákból."
+	}
+
+	"$map removed from the allowed maps list"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} removed from the allowed maps list."
+		"hu"		"{1} pálya törölve az engedélyezett pályákból."
+	}
+
+	"Cap fight already started"
+	{
+		"en"		"Cap fight already started."
+		"hu"		"A kapitány harc már elkezdődött."
+	}
+
+	"It is not your turn to pick"
+	{
+		"en"		"It is not your turn to pick."
+		"hu"		"Nem te vagy a soros a választásban."
+	}
+
+	"No players available to pick"
+	{
+		"en"		"No players available to pick."
+		"hu"		"Nincsenek választható játékosok."
+	}
+
+	"Please set your position to help the caps with picking"
+	{
+		"en"		"Please set your position to help the caps with picking."
+		"hu"		"Kérjük állítsa be a pozícióját, hogy segítse a kapitányokat a választásban."
+	}
+
+	"You are not a cap"
+	{
+		"en"		"You are not a cap."
+		"hu"		"Nem vagy kapitány jelenleg."
+	}
+
+	"Enables or disables the goalkeeper skin"
+	{
+		"en"		"Enables or disables the goalkeeper skin"
+		"hu"		"Kikapcsolása vagy bekapcsolása a kapus kinézetnek"
+	}
+
+	"Opens the Soccer Mod admin menu"
+	{
+		"en"		"Opens the Soccer Mod admin menu"
+		"hu"		"Foci Mód admin menü megnyitása"
+	}
+
+	"Opens the Soccer Mod cap match menu"
+	{
+		"en"		"Opens the Soccer Mod cap match menu"
+		"hu"		"Foci Mód kapitány meccs menü megnyitása"
+	}
+
+	"Opens the Soccer Mod cap picking menu"
+	{
+		"en"		"Opens the Soccer Mod cap picking menu"
+		"hu"		"Foci Mód csapatválasztó menü megnyitása"
+	}
+
+	"Opens the Soccer Mod commands menu"
+	{
+		"en"		"Opens the Soccer Mod commands menu"
+		"hu"		"Foci Mód parancsok menü megnyitása"
+	}
+
+	"Opens the Soccer Mod credits menu"
+	{
+		"en"		"Opens the Soccer Mod credits menu"
+		"hu"		"Foci Mód kreditek menü megnyitása"
+	}
+
+	"Opens the Soccer Mod help menu"
+	{
+		"en"		"Opens the Soccer Mod help menu"
+		"hu"		"Foci Mód segítség menü megnyitása"
+	}
+
+	"Opens the Soccer Mod main menu"
+	{
+		"en"		"Opens the Soccer Mod main menu"
+		"hu"		"Foci Mód főmenüjének a megnyitása"
+	}
+
+	"Opens the Soccer Mod match menu"
+	{
+		"en"		"Opens the Soccer Mod match menu"
+		"hu"		"Foci Mód meccs menüjének a megnyitása"
+	}
+
+	"Opens the Soccer Mod statistics menu"
+	{
+		"en"		"Opens the Soccer Mod statistics menu"
+		"hu"		"Foci Mód statisztikák menüjének a megnyitása"
+	}
+
+	"Opens the Soccer Mod training menu"
+	{
+		"en"		"Opens the Soccer Mod training menu"
+		"hu"		"Foci Mód bemelegítő menüjének a megnyitása"
+	}
+
+	"Restarts the round"
+	{
+		"en"		"Restarts the round"
+		"hu"		"Kör újraindítása"
+	}
+
+	"Shows your public ranking"
+	{
+		"en"		"Shows your public ranking"
+		"hu"		"Nyilvános rangsorolás megnézése"
+	}
+
+	"Match already paused"
+	{
+		"en"		"Match already paused."
+		"hu"		"A meccs már szüneteltetve van."
+	}
+
+	"Match already started"
+	{
+		"en"		"Match already started."
+		"hu"		"A meccs már elkezdődött."
+	}
+
+	"Match already unpaused"
+	{
+		"en"		"Match already unpaused."
+		"hu"		"A meccs szüneteltetésnek már vége."
+	}
+
+	"No match started"
+	{
+		"en"		"No match started."
+		"hu"		"A meccs nem kezdődött még el."
+	}
+
+	"Score is already 0"
+	{
+		"en"		"Score is already 0."
+		"hu"		"A pontszámod már 0."
+	}
+
+	"No players are ranked yet"
+	{
+		"en"		"No players are ranked yet."
+		"hu"		"Nincs játékos jelenleg rangsorolva."
+	}
+
+	"No players found"
+	{
+		"en"		"No players found."
+		"hu"		"Játékos nem található."
+	}
+
+	"You are not ranked yet"
+	{
+		"en"		"You are not ranked yet."
+		"hu"		"Jelenleg még nem vagy rangsorolva."
+	}
+
+	"All players already have a red card"
+	{
+		"en"		"All players already have a red card."
+		"hu"		"Minden játékos kapott már egy piros lapot."
+	}
+
+	"Player already has a red card"
+	{
+		"en"		"Player already has a red card."
+		"hu"		"A játékos már kapott egy piros lapot."
+	}
+
+	"Red card already removed"
+	{
+		"en"		"Red card already removed."
+		"hu"		"A piros lap már el lett távolítva."
+	}
+
+	"There are no players with a red card"
+	{
+		"en"		"There are no players with a red card."
+		"hu"		"Jelenleg senkinek sincs piros lapja."
+	}
+
+	"You have been put to spectator because you have a red card"
+	{
+		"en"		"You have been put to spectator because you have a red card."
+		"hu"		"Nézőbe kerültél mivel kaptál egy piros lapot."
+	}
+
+	"Goalkeeper skin disabled"
+	{
+		"en"		"Goalkeeper skin disabled."
+		"hu"		"Kapus kinézet kikapcsolva."
+	}
+
+	"Goalkeeper skin enabled"
+	{
+		"en"		"Goalkeeper skin enabled."
+		"hu"		"Kapus kinézet bekapcsolva."
+	}
+
+	"Skins"
+	{
+		"en"		"Skins"
+		"hu"		"Kinézetek"
+	}
+
+	"Cant spawn model $model"
+	{
+		"#format"	"{1:s}"
+		"en"		"Can't spawn model {1}"
+		"hu"		"Ez a kinézet jelenleg nem elérhető: {1}"
+	}
+
+	"Cannon is already off"
+	{
+		"en"		"Cannon is already off."
+		"hu"		"A labda ágyú már ki van kapcsolva."
+	}
+
+	"Cannon is already on"
+	{
+		"en"		"Cannon is already on."
+		"hu"		"A labda ágyú már be van kapcsolva."
+	}
+
+	"Goals are already disabled"
+	{
+		"en"		"Goals are already disabled."
+		"hu"		"A gólok már kivannak kapcsolva."
+	}
+
+	"Goals are already enabled"
+	{
+		"en"		"Goals are already enabled."
+		"hu"		"A gólok már bevannak kapcsolva."
+	}
+
+	"More than one possible ball found"
+	{
+		"en"		"More than one possible ball found."
+		"hu"		"Több mint 1 lehetséges labda található."
+	}
+
+	"Type a value between $min and $max"
+	{
+		"#format"	"{1:.3f},{2:.3f}"
+		"en"		"Type a value between {1} and {2}."
+		"hu"		"Írj be egy értéket {1} és {2} között."
+	}
+}

@@ -1,0 +1,224 @@
+"Phrases"
+{
+	"headshot"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} Headshot"
+		"hu"		"{1} Fejlövés"
+	}
+
+	"headshot 1"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} Headshot"
+		"hu"		"{1} Fejlövés"
+	}
+
+	"headshot 3"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} Hattrick"
+		"hu"		"{1} Mesterhármas"
+	}
+
+	"headshot 5"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} Head Hunter"
+		"hu"		"{1} Fejvadász"
+	}
+
+	"killsound 4"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} is Dominating"
+		"hu"		"{1} Uralkodó"
+	}
+
+	"killsound 6"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} is on Rampage"
+		"hu"		"{1} Tombol"
+	}
+
+	"killsound 8"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} is on a Killing Spree"
+		"hu"		"{1} Vérfürdő"
+	}
+
+	"killsound 10"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} just got a Monster Kill"
+		"hu"		"{1} Szörnyeteges kivégzés"
+	}
+
+	"killsound 14"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} is Unstoppable"
+		"hu"		"{1} Megállíthatatlan"
+	}
+
+	"killsound 16"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} Ultrakill"
+		"hu"		"{1} Végső kivégzés"
+	}
+
+	"killsound 18"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} is Godlike"
+		"hu"		"{1} Isteni kivégzés"
+	}
+
+	"killsound 20"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} is Wicked Sick"
+		"hu"		"{1} Kíméletlenül Beteg kivégzés"
+	}
+
+	"killsound 22"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} is Impressive"
+		"hu"		"{1} Hatásos kivégzés"
+	}
+
+	"killsound 24"
+	{
+		"#format"	"{1:s}"
+		"en"		"Ludicrous Kill by {1}"
+		"hu"		"Nevetségesen könnyű vérengzés {1}"
+	}
+
+	"killsound 26"
+	{
+		"#format"	"{1:s}"
+		"en"		"HOLY SHIT, {1} is a bad ass"
+		"hu"		"AZT A KURVA, {1} egy őrült vadállat"
+	}
+
+	"combo 2"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} just pulled off a Double Kill"
+		"hu"		"{1} éppen behúzott egy Kettős gyilkosságot"
+	}
+
+	"combo 3"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} just pulled off a Triple Kill"
+		"hu"		"{1} éppen behúzott egy Hármas gyilkosságot"
+	}
+
+	"combo 4"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} just pulled off a Quadruple Combo"
+		"hu"		"{1} éppen behúzott egy Négyszeres gyilkosságot"
+	}
+
+	"combo 5"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} is a Combo Whore"
+		"hu"		"{1} ez egy kibaszott Ötös kombó"
+	}
+
+	"first blood"
+	{
+		"#format"	"{1:s}"
+		"en"		"First Blood"
+		"hu"		"Első vér"
+	}
+
+	"grenade"
+	{
+		"#format"	"{1:s},{2:s}"
+		"en"		"{1} detonated {2} with a grenade"
+		"hu"		"{1} felrobantotta {2} játékost egy gránáttal"
+	}
+
+	"selfkill"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} humiliated himself"
+		"hu"		"{1} megalázta saját magát"
+	}
+
+	"round play"
+	{
+		"en"		"Play"
+		"hu"		"Játék"
+	}
+
+	"knife"
+	{
+		"#format"	"{1:s},{2:s}"
+		"en"		"{2} was embarrassed with the knife by {1}"
+		"hu"		"{2} játékost megalázta kés öléssel {1}"
+	}
+
+	"teamkill"
+	{
+		"#format"	"{1:s},{2:s}"
+		"en"		"{1} just victimized his team teammate {2}"
+		"hu"		"{1} csapaton belüli kivégzés áldozata lett {2} által"
+	}
+
+	"announce message"
+	{
+		"en"		"Say !quake or /quake to set your quake sounds preferences."
+		"hu"		"Írd be a !quake parancsot a Quake hangok beállításaihoz."
+	}
+
+	"quake menu"
+	{
+		"en"		"Quake Menu"
+		"hu"		"Quake Menü"
+	}
+
+	"enable text"
+	{
+		"en"		"Enable Text Display"
+		"hu"		"Chat kiírás: Kikapcsolva"
+	}
+
+	"disable text"
+	{
+		"en"		"Disable Text Display"
+		"hu"		"Chat kiírás: Bekapcsolva"
+	}
+
+	"no quake sounds"
+	{
+		"en"		"No Quake Sounds"
+		"hu"		"Quake hangok kikapcsolása"
+	}
+
+	"standard_hun"
+	{
+		"en"		"Male Hungarian Sounds"
+		"hu"		"Férfi magyar hangok bekapcsolása"
+	}
+
+	"standard"
+	{
+		"en"		"Male Standard English Sounds"
+		"hu"		"Férfi angol hangok bekapcsolása"
+	}
+
+	"female"
+	{
+		"en"		"Female English Sounds"
+		"hu"		"Női angol hangok beapcsolása"
+	}
+}

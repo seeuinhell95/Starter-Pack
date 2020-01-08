@@ -1,0 +1,13 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models\player\custom_player\kodua\vegeta\face"
+	"$bumpmap" "models\player\custom_player\kodua\vegeta\face_normal"
+
+	"$phong" "1"
+	"$phongboost" ".1"	
+	"$lightwarptexture" "models\player\custom_player\kodua\vegeta\Skin_Lightwarp_blue1"
+	"$phongfresnelranges"	"[.3 1 8]"
+
+	"$model" "1"
+	"$halflambert" "0"
+}

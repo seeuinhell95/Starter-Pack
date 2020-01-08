@@ -1,0 +1,38 @@
+"Phrases"
+{
+	"Disable"
+	{
+		"en"		"Enable sounds"
+		"hu"		"Fegyver hangok bekapcsolása"
+	}
+
+	"Stop Sound"
+	{
+		"en"		"Disable sounds"
+		"hu"		"Fegyver hangok kikapcsolása"
+	}
+
+	"Replace to Silenced Sound"
+	{
+		"en"		"Replace to Silenced Sound"
+		"hu"		"Fegyver hangok kicserélése hangtompítósra"
+	}
+
+	"1"
+	{
+		"en"		"Turn on first paragraph"
+		"hu"		"Az első lehetőség van bekapcsolva"
+	}
+
+	"2"
+	{
+		"en"		"Turn on second paragraph"
+		"hu"		"A második lehetőség van bekapcsolva"
+	}
+
+	"3"
+	{
+		"en"		"Turn on three paragraph"
+		"hu"		"A harmadik lehetőség van bekapcsolva"
+	}
+}

@@ -1,0 +1,100 @@
+"vote_warnings"
+{
+	"default"
+	{
+		"message"			"{TIME} seconds until vote."
+		"notification"		"S"
+		"sound"				""
+	}
+
+	"59"
+	{
+		"message"			"60 seconds until vote."
+		"notification"		"S"
+		"sound"				"mapchooser/sixty_seconds.mp3"
+	}
+
+	"30"
+	{
+		"message"			"30 seconds until vote."
+		"notification"		"S"
+		"sound"				"mapchooser/thirty_seconds.mp3"
+	}
+
+	"20"
+	{
+		"message"			"20 seconds until vote."
+		"notification"		"S"
+		"sound"				"mapchooser/twenty_seconds.mp3"
+	}
+
+	"11"
+	{
+		"message"			"10 seconds until vote."
+		"notification"		"S"
+		"sound"				"mapchooser/ten_seconds.mp3"
+	}
+
+	"9"
+	{
+		"message"			"9 seconds until vote."
+		"notification"		"S"
+		"sound"				"mapchooser/nine.mp3"
+	}
+
+	"8"
+	{
+		"message"			"8 seconds until vote."
+		"notification"		"S"
+		"sound"				"mapchooser/eight.mp3"
+	}
+
+	"7"
+	{
+		"message"			"7 seconds until vote."
+		"notification"		"S"
+		"sound"				"mapchooser/seven.mp3"
+	}
+
+	"6"
+	{
+		"message"			"6 seconds until vote."
+		"notification"		"S"
+		"sound"				"mapchooser/six.mp3"
+	}
+
+	"5"
+	{
+		"message"			"5 seconds until vote."
+		"notification"		"S"
+		"sound"				"mapchooser/five.mp3"
+	}
+
+	"4"
+	{
+		"message"			"4 seconds until vote."
+		"notification"		"S"
+		"sound"				"mapchooser/four.mp3"
+	}
+
+	"3"
+	{
+		"message"			"3 seconds until vote."
+		"notification"		"S"
+		"sound"				"mapchooser/three.mp3"
+	}
+
+	"2"
+	{
+		"message"			"2 seconds until vote."
+		"notification"		"S"
+		"sound"				"mapchooser/two.mp3"
+	}
+
+	"1"
+	{
+		"message"			"1 seconds until vote."
+		"notification"		"S"
+		"sound"				"mapchooser/one.mp3"
+	}
+}

@@ -1,0 +1,11 @@
+"Groups"
+{
+	"All"					"@all"
+	"Bots"					"@bots"
+	"Alive"					"@alive"
+	"Dead"					"@dead"
+	"Humans"				"@humans"
+	"Current aim"			"@aim"
+	"Terrorists"			"@t"
+	"Counter-Terrorists"	"@ct"
+}

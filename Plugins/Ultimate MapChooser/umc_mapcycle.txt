@@ -1,0 +1,16 @@
+"umc_mapcycle"
+{
+	"Bomb Maps"
+	{
+		"maps_invote"								"5"
+		"default_min_players"						"1"
+		"default_max_players"						"24"
+
+		"de_dust2"									{ }
+		"de_cache"									{ }
+		"de_overpass"								{ }
+		"de_nuke"									{ }
+		"de_mirage"									{ }
+		"de_inferno"								{ }
+	}
+}

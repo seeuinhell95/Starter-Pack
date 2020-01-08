@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models\player\custom_player\kodua\goku\iris"
+	"$halflambert" 1
+	"$lightwarptexture" "models\player\custom_player\kodua\goku\eye_lightwarp"
+}

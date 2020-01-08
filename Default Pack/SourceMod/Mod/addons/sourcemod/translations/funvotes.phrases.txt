@@ -1,0 +1,127 @@
+"Phrases"
+{
+	"Initiated Vote Gravity"
+	{
+		"en"			"Initiated a gravity vote."
+		"hu"			"Gravitáció szavazás."
+	}	
+
+	"Initiated Vote Burn"
+	{
+		"#format"		"{1:s}"
+		"en"			"Initiated a burn vote against \"{1}\"."
+		"hu"			"\"{1}\" felgyújtása szavazásra bocsájtva."
+	}
+
+	"Initiated Vote Slay"
+	{
+		"#format"		"{1:s}"
+		"en"			"Initiated a slay vote against \"{1}\"."
+		"hu"			"Levágas szavazás \"{1}\" ellen."
+	}
+
+	"Initiated Vote Alltalk"
+	{
+		"en"			"Initiated an alltalk vote."
+		"hu"			"Közös beszéd szavazás."
+	}
+
+	"Initiated Vote FF"
+	{
+		"en"			"Initiated a friendly fire vote."
+		"hu"			"Csapatsebzés szavazás."
+	}	
+
+	"Gravity Vote"
+	{
+		"#format"		"{1:s}"
+		"en"			"Gravity vote: {1}"
+		"hu"			"Gravitáció szavazás: {1}"
+	}
+
+	"Change Gravity To"
+	{
+		"#format"		"{1:s}"
+		"en"			"Change gravity to \"{1}\"?"
+		"hu"			"Gravitációs érték változtatása a következőre: \"{1}\"?"
+	}
+
+	"Voteburn player"
+	{
+		"#format"		"{1:s}"
+		"en"			"Burn player \"{1}\"?"
+		"hu"			"\"{1}\" felgyújtása?"
+	}
+
+	"Voteslay Player"
+	{
+		"#format"		"{1:s}"
+		"en"			"Slay \"{1}\"?"
+		"hu"			"\"{1}\" levágása?"
+	}
+
+	"Votealltalk Off"
+	{
+		"#format"		"{1:s}"
+		"en"			"Turn alltalk off? {1}"
+		"hu"			"Kikapcsoljuk a közös beszédet? {1}"
+	}
+
+	"Votealltalk On"
+	{
+		"#format"		"{1:s}"
+		"en"			"Turn alltalk on? {1}"
+		"hu"			"Bekapcsoljuk a közös beszédet? {1}"
+	}	
+
+	"Voteff Off"
+	{
+		"#format"		"{1:s}"
+		"en"			"Turn friendly fire off? {1}"
+		"hu"			"Kikapcsoljuk a csapatsebzést? {1}"
+	}
+
+	"Voteff On"
+	{
+		"#format"		"{1:s}"
+		"en"			"Turn friendly fire on? {1}"
+		"hu"			"Bekapcsoljuk a csapatsebzést? {1}"
+	}
+
+	"Gravity vote"
+	{
+		"en"			"Gravity vote"
+		"hu"			"Gravitáció szavazás"
+	}
+
+	"Vote FF"
+	{
+		"en"			"Vote FF"
+		"hu"			"Csapatsebzés szavazás"
+	}
+
+	"Burn vote"
+	{
+		"en"			"Burn vote"
+		"hu"			"Felgyújtás szavazás"
+	}
+
+	"Alltalk vote"
+	{
+		"en"			"Alltalk vote"
+		"hu"			"Közös beszéd szavazás"
+	}
+
+	"Slay vote"
+	{
+		"en"			"Slay vote"
+		"hu"			"Levágás szavazás"
+	}
+
+	"Slayed player"
+	{
+		"#format"		"{1:s}"
+		"en"			"Slayed player: \"{1}\"."
+		"hu"			"Megölt játékos: \"{1}\"."
+	}
+}

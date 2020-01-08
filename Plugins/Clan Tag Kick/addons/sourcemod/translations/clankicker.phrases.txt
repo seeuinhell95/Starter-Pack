@@ -1,0 +1,16 @@
+"Phrases"
+{
+	"DisallowedName"
+	{
+		"#format"	"{1:s}"
+		"en"		"Your name has a disallowed tag: \"{1}\", please change it"
+		"hu"		"A nevedben nem engedélyezett tag van: \"{1}\", kérlek változtasd meg"
+	}
+
+	"BlockMessage"
+	{
+		"#format"	"{1:i}"
+		"en"		"Clan name changing disabled for {1} minute(s)."
+		"hu"		"Az újbóli klánnév váltás {1} percre tiltva van."
+	}
+}

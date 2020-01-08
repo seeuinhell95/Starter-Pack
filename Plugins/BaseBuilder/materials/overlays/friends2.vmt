@@ -1,0 +1,8 @@
+"UnlitGeneric"
+{
+	"$spriteorientation"    "vp_parallel"
+    	"$spriteorigin"        "[ 0.50 0.50 ]"
+	"$basetexture" "overlays/friends2"
+	"$translucent" 1
+	"$alphatest" "0"
+}

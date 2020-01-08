@@ -1,0 +1,32 @@
+"Phrases"
+{
+	"TimeOver"
+	{
+		"en"		"Time limit reached!"
+		"hu"		"Lejárt a kör idő!"
+	}
+
+	"RandomTR"
+	{
+		"en"		"Random terrorist chosen."
+		"hu"		"Véletlenszerű terrorista kiválasztva."
+	}
+
+	"KillPrevent"
+	{
+		"en" 		"Kill command disabled!"
+		"hu" 		"Tilos az öngyilkosság!"
+	}
+
+	"Cant Change"
+	{
+		"en" 		"*** Terrorists Can't Change Team! ***"
+		"hu" 		"*** Terrorista nem változtathat csapatot! ***"
+	}
+
+	"Team Limit"
+	{
+		"en"		"*** Terrorist Team Limited to 1 player! ***"
+		"hu"		"*** Terrorista csapatban csak 1 játékos lehet! ***"
+	}
+}

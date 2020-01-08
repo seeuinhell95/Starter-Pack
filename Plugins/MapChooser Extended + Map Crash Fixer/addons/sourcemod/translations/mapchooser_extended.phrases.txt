@@ -1,0 +1,127 @@
+"Phrases"
+{
+	"Vote Nextmap"
+	{
+		"en"				"Vote for the next map!"
+		"hu"				"Szavazz a következő pályára!"
+	}
+
+	"Nextmap Voting Started"
+	{
+		"en"				"Voting for next map has started!"
+		"hu"				"A következő pálya szavazása megkezdődött!"
+	}
+
+	"Nextmap Voting Finished"
+	{
+		"#format"			"{1:s},{2:i},{3:i}"
+		"en"				"Map voting has finished. The next map will be: '{1}'. Received {2}%% of {3} votes."
+		"hu"				"A pályaszavazás lezárult. A következő pálya a következő lesz: '{1}'. Kapott {2}%%-ot a(z) {3} szavazatból."
+	}
+
+	"Current Map Extended"
+	{
+		"#format"			"{1:i},{2:i}"
+		"en"				"The current map has been extended. Received {1}%% of {2} votes."
+		"hu"				"Az aktuális pálya meg lett hosszabítva! Kapott {1}%%-ot a(z) {2} szavazatból."
+	}
+
+	"Extend Map"
+	{
+		"en"				"Extend Current Map"
+		"hu"				"Az aktuális pálya meghosszabítása"
+	}
+
+	"Dont Change"
+	{
+		"en"				"Don't Change"
+		"hu"				"Pálya hosszabítás"
+	}
+
+	"Current Map Stays"
+	{
+		"#format"			"{1:i},{2:i}"
+		"en"				"Current map continues! The Vote has spoken! Received {1}%% of {2} votes."
+		"hu"				"Az aktuális pálya folytatódik! A szavazás lezárult! Kapott {1}%%-ot a(z) {2} szavazatból."
+	}
+
+	"Changed Next Map"
+	{
+		"#format"			"{1:s}"
+		"en"				"Changed nextmap to: {1}"
+		"hu"				"Pályaváltás a következőre: {1}"
+	}
+
+	"Runoff Vote Nextmap"
+	{
+		"en"				"Runoff Vote for the next map!"
+		"hu"				"A szavazás tovább folytatódik! Szavazz a következő pályára!"
+	}
+
+	"Number Of Votes"
+	{
+		"en"				"Number of votes"
+		"hu"				"Szavazatok száma"
+	}
+
+	"Custom"
+	{
+		"#format"			"{1:s}"
+		"en"				"{1} (Custom)"
+		"hu"				"{1} (Egyedi)"
+	}
+
+	"Revote Is Needed"
+	{
+		"#format"			"{1:i}"
+		"en"				"No map has received more than {1}%% of the vote. So, which map will win? A revote is needed!"
+		"hu"				"Ugyanannyi szavazatot kaptak a pályák a szavazás során. ({1}%%) Újraszavazás szükséges!"
+	}
+
+	"Revote Warning"
+	{
+		"#format"			"{1:i}"
+		"en"				"Runoff vote will start in {1} seconds!"
+		"hu"				"A szavazás folytatódik {1} másodperc múlva!"
+	}
+
+	"Vote Warning"
+	{
+		"#format"			"{1:i}"
+		"en"				"Voting for the next map will begin in {1} seconds!"
+		"hu"				"A következő pálya szavazása {1} másodperc múlva elkezdődik!"
+	}
+
+	"Line One"
+	{
+		"en"				"Consider which map you want to play..."
+		"hu"				"Nincsen 1-es gomb, nincs Reflex1..."
+	}
+
+	"Line Two"
+	{
+		"en"				"...and don't hit buttons thoughtlessly! =D"
+		"hu"				"...Jól fontold meg, hogy melyik pályára szavazol! =D"
+	}
+
+	"Cannot Start Vote"
+	{
+		"#format"			"{1:i}"
+		"en"				"Vote already in progress. Retrying in {1} seconds!"
+		"hu"				"A szavazás már folyamatban van. Újra próbálkozhatsz {1} másodperc múlva!"
+	}
+
+	"Tie Vote"
+	{
+		"#format"			"{1:i}"
+		"en"				"The top {1} maps had the same number of votes. A revote is needed!"
+		"hu"				"{1} pálya azonos számú szavazatot kapott. Újraszavazáshoz van szükség!"
+	}
+
+	"Custom Marked"
+	{
+		"#format"			"{1:s}"
+		"en"				"*{1}"
+		"hu"				"*{1}"
+	}
+}

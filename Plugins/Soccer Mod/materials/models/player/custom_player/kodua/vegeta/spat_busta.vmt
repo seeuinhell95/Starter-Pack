@@ -1,0 +1,16 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models\player\custom_player\kodua\vegeta\spat_bustA"
+	"$bumpmap" "models\player\custom_player\kodua\vegeta\spat_bustA_normal"
+
+	"$phong" "1"
+	"$phongboost" ".3"	
+	"$lightwarptexture" "models\player\custom_player\kodua\vegeta\bust_lightwarp_blue"
+	"$phongfresnelranges"	"[.3 1 8]"
+	"$halflambert" "1"
+
+	// Rim lighting parameters
+	"$rimlight" "1"												// To enable rim lighting (requires phong)
+	"$rimlightexponent" "33"										// Exponent for phong component of rim lighting	
+	"$rimlightboost" "2"										// Boost for ambient cube component of rim lighting
+}

@@ -1,0 +1,16 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/player/custom_player/zombie/crimsonhead/crimsonheadhead_d"
+  	"$bumpmap" "models/player/custom_player/zombie/crimsonhead/crimsonheadhead_n"
+
+	"$phong" 			"1"
+	"$phongexponent" 		"15"
+	"$phongboost"		"2"
+	"$phongfresnelranges"	"[.05 .1 .2]"
+
+	"$phongexponenttexture"	"models/player/custom_player/zombie/crimsonhead/crimsonheadhead_s"
+	"$phongalbedotint" "1"
+
+	"$normalmapalphaenvmapmask" "1"
+	"$model" "1"
+}

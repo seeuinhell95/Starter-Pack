@@ -1,0 +1,20 @@
+"Games"
+{
+	"csgo"
+	{
+		"Offsets"
+		{
+			"CBaseVPhysicsTrigger::PassesTriggerFilters"
+			{
+				"windows"		"199"
+				"linux"			"200"
+			}
+
+			"CBaseTrigger::PassesTriggerFilters"
+			{
+				"windows"		"209"
+				"linux"			"210"
+			}
+		}
+	}
+}

@@ -1,0 +1,108 @@
+"Phrases"
+{
+	"No Access"
+	{
+		"en"			"You do not have access to this command"
+		"hu"			"Nincs hozzáférési jogod"
+	}
+
+	"Back"
+	{
+		"en"			"Back"
+		"hu"			"Vissza"
+	}
+
+	"Next"
+	{
+		"en"			"Next"
+		"hu"			"Következő"
+	}
+
+	"Exit"
+	{
+		"en"			"Exit"
+		"hu"			"Kilépés"
+	}
+
+	"Previous"
+	{
+		"en"			"Previous"
+		"hu"			"Előző"
+	}
+
+	"all players"
+	{
+		"en"			"All players"
+		"hu"			"Mindenki"
+	}
+
+	"all humans"
+	{
+		"en"			"All humans"
+		"hu"			"Minden ember"
+	}
+
+	"all bots"
+	{
+		"en"			"All bots"
+		"hu"			"Minden BOT"
+	}
+
+	"all dead players"
+	{
+		"en"			"All dead players"
+		"hu"			"Minden halott játékos"
+	}
+
+	"all alive players"
+	{
+		"en"			"All alive players"
+		"hu"			"Minden élő játékos"
+	}
+
+	"all spectators"
+	{
+		"en"			"All spectators"
+		"hu"			"Minden néző"
+	}
+
+	"Vote Count"
+	{
+		"#format"		"{1:i},{2:i},{3:i}"
+		"en"			"Votes: {1}/{2}, {3}s left"
+		"hu"			"Szavazatok: {1}/{2}, {3} másodperc van még hátra"
+	}
+
+	"Voted For"
+	{
+		"#format"		"{1:s},{2:s}"
+		"en"			"\"{1}\" voted for: \"{1}\"."
+		"hu"			"\"{1}\" szavazott a következőre: \"{2}\"."
+	}
+
+	"Changed Vote"
+	{
+		"#format"		"{1:s},{2:s}"
+		"en"			"\"{1}\" changed their vote to: \"{2}\"."	
+		"hu"			"\"{1}\" megváltoztatta a szavazatát a következőre: \"{2}\"."
+	}
+
+	"No Vote"
+	{
+		"en"			"No Vote"
+		"hu"			"Tartózkodom"
+	}
+
+	"Name Reserved"
+	{
+		"en"			"Your name is reserved by SourceMod; set your password to use it."
+		"hu"			"A neved a SourceMod védi ezen a szerveren, használathoz állítsd be a jelszavad."
+	}
+
+	"_s"
+	{
+		"#format"		"{1:s}"
+		"en"			"{1}"
+		"hu"			"{1}"
+	}
+}

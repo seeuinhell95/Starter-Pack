@@ -1,0 +1,56 @@
+"Phrases"
+{
+	"GloveMenuTitle"
+	{
+		"en"	"Gloves Menu"
+		"hu"	"Kesztyű Menü"
+	}
+
+	"CT"
+	{
+		"en"	"Counter-Terrorist"
+		"hu"	"Terrorista-Elhárító"
+	}
+
+	"T"
+	{
+		"en"	"Terrorist"
+		"hu"	"Terrorista"
+	}
+
+	"Increase"
+	{
+		"en"	"Increase by %d%%"
+		"hu"	"Növelés %d%%-kal"
+	}
+
+	"Decrease"
+	{
+		"en"	"Decrease by %d%%"
+		"hu"	"Csökkentés %d%%-kal"
+	}
+
+	"ChooseLanguage"
+	{
+		"en"	"Select language for glove names:"
+		"hu"	"Válassz nyelvet a kesztyűk nevéhez:"
+	}
+
+	"DefaultGloves"
+	{
+		"en"	"Default"
+		"hu"	"Alap"
+	}
+
+	"RandomGloves"
+	{
+		"en"	"Random"
+		"hu"	"Véletlenszerű"
+	}
+
+	"SetFloat"
+	{
+		"en"	"Gloves Condition: "
+		"hu"	"Kesztyű Állapot: "
+	}
+}

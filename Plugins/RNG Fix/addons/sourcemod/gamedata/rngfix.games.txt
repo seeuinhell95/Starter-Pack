@@ -1,0 +1,79 @@
+"Games"
+{
+	"#default"
+	{
+		"Keys"
+		{
+			"IGameMovement"			"GameMovement001"
+
+			"IServerGameEnts"		"ServerGameEnts001"
+		}
+
+		"Signatures"
+		{
+			"CreateInterface"
+			{
+				"library"			"server"
+				"windows"			"@CreateInterface"
+				"linux"				"@CreateInterface"
+			}
+		}
+
+		"Offsets"
+		{
+			"ProcessMovement"
+			{
+				"windows"			"1"
+				"linux"				"2"
+			}
+		}
+	}
+
+	"csgo"
+	{
+		"Offsets"
+		{
+			"CBaseVPhysicsTrigger::PassesTriggerFilters"
+			{
+				"windows"			"199"
+				"linux"				"200"
+			}
+
+			"CBaseTrigger::PassesTriggerFilters"
+			{
+				"windows"			"209"
+				"linux"				"210"
+			}
+
+			"IServerGameEnts::MarkEntitiesAsTouching"
+			{
+				"windows"			"1"
+				"linux"				"2"
+			}
+		}
+	}
+
+	"cstrike"
+	{
+		"Offsets"
+		{
+			"CBaseVPhysicsTrigger::PassesTriggerFilters"
+			{
+				"windows"			"188"
+				"linux"				"189"
+			}
+
+			"CBaseTrigger::PassesTriggerFilters"
+			{
+				"windows"			"197"
+				"linux"				"198"
+			}
+
+			"IServerGameEnts::MarkEntitiesAsTouching"
+			{
+				"windows"			"2"
+				"linux"				"3"
+			}
+		}
+	}
+}

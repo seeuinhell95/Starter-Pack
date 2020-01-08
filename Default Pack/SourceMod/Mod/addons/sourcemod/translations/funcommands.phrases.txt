@@ -1,0 +1,212 @@
+"Phrases"
+{
+	"Burn player"
+	{
+		"en"			"Burn player"
+		"hu"			"Játékos felgyújtása"
+	}
+
+	"FireBomb player"
+	{
+		"en"			"Firebomb player"
+		"hu"			"Játékos felrobbantása"
+	}
+
+	"Freeze player"
+	{
+		"en"			"Freeze player"
+		"hu"			"Játékos lebénítása"
+	}
+
+	"FreezeBomb player"
+	{
+		"en"			"Freezebomb player"
+		"hu"			"Bénító bomba"
+	}	
+
+	"TimeBomb player"
+	{
+		"en"			"Timebomb player"
+		"hu"			"Időzített bomba"
+	}	
+
+	"Beacon player"
+	{
+		"en"			"Beacon player"
+		"hu"			"Játékos megjelölése"
+	}
+
+	"NoClip player"
+	{
+		"en"			"NoClip player"
+		"hu"			"Falon átjárás"
+	}
+
+	"Blind player"
+	{
+		"en"			"Blind player"
+		"hu"			"Játékos megvakítása"
+	}
+
+	"Drug player"
+	{
+		"en"			"Drug player"
+		"hu"			"Játékos bedrogozása"
+	}
+
+	"Gravity player"
+	{
+		"en"			"Gravity player"
+		"hu"			"Játékos súlyának megváltoztatása"
+	}
+
+	"Blind amount"
+	{
+		"en"			"How blind?"
+		"hu"			"Vakítás mértéke?"
+	}
+
+	"Fully blind"
+	{
+		"en"			"Fully blind"
+		"hu"			"Tejlesen vak"
+	}
+
+	"Half blind"
+	{
+		"en"			"Half blind"
+		"hu"			"Félig vak"
+	}
+
+	"No blind"
+	{
+		"en"			"No blind"
+		"hu"			"Vakítás feloldása"
+	}
+
+	"Gravity amount"
+	{
+		"en"			"Gravity?"
+		"hu"			"Gravitáció mértéke?"
+	}
+
+	"Gravity Very High"
+	{
+		"en"			"Gravity Very High"
+		"hu"			"Nagyon magas gravitáció"
+	}
+
+	"Gravity High"
+	{
+		"en"			"Gravity High"
+		"hu"			"Magas gravitáció"
+	}
+
+	"Gravity Normal"
+	{
+		"en"			"Gravity Normal"
+		"hu"			"Normális gravitáció"
+	}
+
+	"Gravity Low"
+	{
+		"en"			"Gravity Low"
+		"hu"			"Alacsony gravitáció"
+	}
+
+	"Gravity Very Low"
+	{
+		"en"			"Gravity Very Low"
+		"hu"			"Nagyon alacsony gravitáció"
+	}
+
+	"Set target on fire"
+	{
+		"#format"		"{1:t}"
+		"en"			"Set \"{1}\" on fire."
+		"hu"			"\"{1}\" meggyújtása."
+	}
+
+	"Toggled FireBomb on target"
+	{
+		"#format"		"{1:t}"
+		"en"			"Toggled firebomb on \"{1}\"."
+		"hu"			"\"{1}\" bombáva lett."
+	}
+
+	"Froze target"
+	{
+		"#format"		"{1:t}"
+		"en"			"Froze \"{1}\"."
+		"hu"			"\"{1}\" lebénítva."
+	}
+
+	"Unfrozen"
+	{
+		"en"			"You are now unfrozen."
+		"hu"			"Most már nem vagy lebénítva."
+	}
+
+	"You will be unfrozen"
+	{
+		"#format"		"{1:d}"
+		"en"			"You will be unfrozen in {1} seconds."
+		"hu"			"Felolvasztás {1} másodperc múlva."
+	}
+
+	"Toggled FreezeBomb on target"
+	{
+		"#format"		"{1:t}"
+		"en"			"Toggled freezebomb on \"{1}\"."
+		"hu"			"\"{1}\" bénító bombáva lett."
+	}	
+
+	"Toggled beacon on target"
+	{
+		"#format"		"{1:t}"
+		"en"			"Toggled beacon on \"{1}\"."
+		"hu"			"\"{1}\" megjelölve."
+	}
+
+	"Toggled TimeBomb on target"
+	{
+		"#format"		"{1:t}"
+		"en"			"Toggled timebomb on \"{1}\"."
+		"hu"			"\"{1}\" időzített bomba lett"
+	}
+
+	"Toggled noclip on target"
+	{
+		"#format"		"{1:t}"
+		"en"			"Toggled noclip on {1}."
+		"hu"			"{1} átjárhat a falakon."
+	}
+
+	"Toggled drug on target"
+	{
+		"#format"		"{1:t}"
+		"en"			"Toggled drugs on \"{1}\"."
+		"hu"			"\"{1}\" bedrogozva."
+	}	
+
+	"Set blind on target"
+	{
+		"#format"		"{1:t}"
+		"en"			"Used blind on \"{1}\"."
+		"hu"			"\"{1}\" megvakítva."
+	}
+
+	"Set gravity on target"
+	{
+		"#format"		"{1:t}"
+		"en"			"Set \"{1}'s\" gravity."
+		"hu"			"\"{1}\" súlya megváltoztatva."
+	}
+
+	"Till Explodes"
+	{
+		"#format"		"{1:s},{2:d}"
+		"en"			"{2} seconds until {1} explodes."
+		"hu"			"{1} {2} másodperc múlva felrobban."
+	}
+}

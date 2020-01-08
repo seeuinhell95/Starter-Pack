@@ -1,0 +1,74 @@
+"Phrases"
+{
+	"300"
+	{
+		"en"	"{darkred}[AutoRR] {green}Auto Round Restart: {darkred}5 {gold}minutes!"
+		"hu"	"{darkred}[AutoRR] {green}Auto kör újraindítás: {darkred}5 {gold}perc!"
+	}
+
+	"150"
+	{
+		"en"	"{darkred}[AutoRR] {green}Auto Round Restart: {darkred}2,5 {gold}minutes!"
+		"hu"	"{darkred}[AutoRR] {green}Auto kör újraindítás: {darkred}2,5 {gold}perc!"
+	}
+
+	"60"
+	{
+		"en"	"{darkred}[AutoRR] {green}Auto Round Restart: {darkred}1 {gold}minutes!"
+		"hu"	"{darkred}[AutoRR] {green}Auto kör újraindítás: {darkred}1 {gold}perc!"
+	}
+
+	"30"
+	{
+		"en"	"{darkred}[AutoRR] {green}Auto Round Restart: {darkred}30 {gold}seconds!"
+		"hu"	"{darkred}[AutoRR] {green}Auto kör újraindítás: {darkred}30 {gold}másodperc!"
+	}
+
+	"15"
+	{
+		"en"	"{darkred}[AutoRR] {green}Auto Round Restart: {darkred}15 {gold}seconds!"
+		"hu"	"{darkred}[AutoRR] {green}Auto kör újraindítás: {darkred}15 {gold}másodperc!"
+	}
+
+	"10"
+	{
+		"en"	"{darkred}[AutoRR] {green}Auto Round Restart: {darkred}10 {gold}seconds!"
+		"hu"	"{darkred}[AutoRR] {green}Auto kör újraindítás: {darkred}10 {gold}másodperc!"
+	}
+
+	"5"
+	{
+		"en"	"{darkred}[AutoRR] {green}Auto Round Restart: {darkred}5 {gold}seconds!"
+		"hu"	"{darkred}[AutoRR] {green}Auto kör újraindítás: {darkred}5 {gold}másodperc!"
+	}
+
+	"4"
+	{
+		"en"	"{darkred}[AutoRR] {green}Auto Round Restart: {darkred}4 {gold}seconds!"
+		"hu"	"{darkred}[AutoRR] {green}Auto kör újraindítás: {darkred}4 {gold}másodperc!"
+	}
+
+	"3"
+	{
+		"en"	"{darkred}[AutoRR] {green}Auto Round Restart: {darkred}3 {gold}seconds!"
+		"hu"	"{darkred}[AutoRR] {green}Auto kör újraindítás: {darkred}3 {gold}másodperc!"
+	}
+
+	"2"
+	{
+		"en"	"{darkred}[AutoRR] {green}Auto Round Restart: {darkred}2 {gold}seconds!"
+		"hu"	"{darkred}[AutoRR] {green}Auto kör újraindítás: {darkred}2 {gold}másodperc!"
+	}
+
+	"1"
+	{
+		"en"	"{darkred}[AutoRR] {green}Auto Round Restart: {darkred}1 {gold}seconds!"
+		"hu"	"{darkred}[AutoRR] {green}Auto kör újraindítás: {darkred}1 {gold}másodperc!"
+	}
+
+	"0"
+	{
+		"en"	"{darkred}[AutoRR] {green}Round Restart! {gold}- {darkred}Round End!"
+		"hu"	"{darkred}[AutoRR] {green}A kör újraindul! {gold}- {darkred}Körvége!"
+	}
+}

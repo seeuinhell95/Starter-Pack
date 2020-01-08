@@ -1,0 +1,53 @@
+"Phrases"
+{
+	"Name changed"
+	{
+		"en"			"An admin has changed your name!"
+		"hu"			"Az admin megváltoztatta a nevedet!"
+	}
+
+	"Renamed target"
+	{
+		"#format"		"{1:t}"
+		"en"			"Renamed {1}."
+		"hu"			"{1} átnevezve."
+	}
+
+	"Rename player"
+	{
+		"en"			"Rename player"
+		"hu"			"Játékos átnevezése"
+	}
+
+	"Slap player"
+	{
+		"en"			"Slap player"
+		"hu"			"Játékos megütése"
+	}
+
+	"Slap damage"
+	{
+		"en"			"Slap damage"
+		"hu"			"Ütés erőssége"
+	}
+
+	"Slay player"
+	{
+		"en"			"Slay player"
+		"hu"			"Játékos levágása"
+	}
+
+	"Slapped target"
+	{
+		"#format"		"{1:t}"
+		"en"			"Slapped {1}."
+		"hu"			"{1} megütve."
+	}
+
+	"Slayed target"
+	{
+		"#format"		"{1:t}"
+		"en"			"Slayed {1}."
+		"hu"			"{1} levágva."
+	}
+}

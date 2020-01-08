@@ -1,0 +1,30 @@
+"Phrases"
+{
+	"CMD_UpTime_DayHourMinSec"
+	{
+		"#format"	"{1:d},{2:d},{3:d},{4:d}"
+		"en"		"[SM] The server is running: {1} days, {2} hours, {3} minutes, {4} seconds."
+		"hu"		"[SM] A szerver fut: {1} napja, {2} órája, {3} perce, {4} másodperce."
+	}
+
+	"CMD_UpTime_HourMinSec"
+	{
+		"#format"	"{1:d},{2:d},{3:d}"
+		"en"		"[SM] The server is running: {1} hours, {2} minutes, {3} seconds."
+		"hu"		"[SM] A szerver fut: {1} órája, {2} perce, {3} másodperce."
+	}
+
+	"CMD_UpTime_MinSec"
+	{
+		"#format"	"{1:d},{2:d}"
+		"en"		"[SM] The server is running: {1} minutes, {2} seconds."
+		"hu"		"[SM] A szerver fut: {1} perce, {2} másodperce."
+	}
+
+	"CMD_UpTime_Sec"
+	{
+		"#format"	"{1:d}"
+		"en"		"[SM] The server is running: {1} seconds."
+		"hu"		"[SM] A szerver fut: {1} másodperce."
+	}
+}

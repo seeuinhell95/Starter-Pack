@@ -1,0 +1,10 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/player/custom_player/zombie/romeo_zombie/hair"
+  	"$bumpmap" "models/player/custom_player/zombie/romeo_zombie/hair_n"
+
+	"$phong" 			"1"
+	"$phongexponent" 		"15"
+	"$phongboost"		"2"
+	"$phongfresnelranges"	"[.05 .1 .2]"
+}

@@ -1,0 +1,15 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\player\custom_player\kodua\goku\hair"
+    	 "$bumpmap" "models\player\custom_player\kodua\goku\hair_normal"
+	"$phong" "1"
+	"$phongboost" ".3"
+	"$phongexponent" "5"							
+	"$phongfresnelranges"	"[0 .6  1]"
+	"$rimlight" "1"
+	"$rimlightexponent" "4"
+	"$rimlightboost" ".2"
+	"$rimmask" "1"
+	"$model" "1"
+   	 "$halflambert" 1
+}

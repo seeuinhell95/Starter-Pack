@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture" "hitmarker/hitsh"
+	"$translucent" 1
+}

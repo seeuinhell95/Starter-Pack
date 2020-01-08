@@ -1,0 +1,13 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/player/hyperborea/hb2/hyperborea_hand"
+	"$bumpmap" "models/player/hyperborea/hb2/hyperborea_hand_normal"
+
+	"$phong"			"1"
+	"$phongboost"		".3"
+	"$phongexponent"		"50"
+	"$phongfresnelranges"	"[.8 .8 .6]"
+
+	//"$halflambert" "1"
+ 	"$lightwarptexture" "models/player/hyperborea/hb2/hyperborea_lightwarp"		
+}
