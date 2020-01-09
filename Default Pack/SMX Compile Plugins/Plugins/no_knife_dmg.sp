@@ -8,9 +8,9 @@
 public Plugin myinfo =
 {
 	name = "[CSGO] No Knife Damage",
-	author = "Bara | Edited: somebody.", 
-	description = "No Knife Damage", 
-	version = "1.0", 
+	author = "Bara | Edited: somebody.",
+	description = "No Knife Damage",
+	version = "1.0",
 	url = "http://sourcemod.net"
 }
 

@@ -1,0 +1,20 @@
+"Databases"
+{
+	"mostactive"
+	{
+		"driver"		"mysql"
+		"host"			"Host"
+		"database"		"DataBase"
+		"user"			"User"
+		"pass"			"Pass"
+	}
+
+	"mostactive_month"
+	{
+		"driver"		"mysql"
+		"host"			"Host"
+		"database"		"DataBase"
+		"user"			"User"
+		"pass"			"Pass"
+	}
+}
