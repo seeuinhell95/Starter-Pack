@@ -9,11 +9,11 @@ char mapname[128];
 
 public Plugin myinfo =
 {
-	name		= "[CSGO] Deathrun Fix",
-	author		= "Cherry | Edited: somebody.",
-	description = "Deathrun Fix",
-	version		= "1.0",
-	url			= "http://sourcemod.net"
+	name		=	"[CSGO] Deathrun Weapon Pick Fix",
+	author		=	"Cherry | Edited: somebody.",
+	description =	"Deathrun Weapon Pick Fix",
+	version		=	"1.0",
+	url			=	"http://sourcemod.net"
 };
 
 public void OnMapStart() 
