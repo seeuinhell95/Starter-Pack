@@ -52,7 +52,7 @@ public OnClientPutInServer(client)
 
 public Action: OnClientCommandKeyValues(client, KeyValues: keyvalue)
 {
-	if(!(GetUserFlagBits(client) & ADMFLAG_GENERIC))
+	if(!(GetUserFlagBits(client) & ADMFLAG_RESERVATION))
 	{
 		new String: buffer[16];
 		if(KvGetSectionName(keyvalue, buffer, sizeof(buffer)) && StrEqual(buffer, "ClanTagChanged", false))
@@ -76,7 +76,7 @@ public Action: OnClientCommandKeyValues(client, KeyValues: keyvalue)
 
 public Action: CMD_Say(client, const String: command[], args) 
 {
-	if(!IsClientValid(client) || !IsClientInGame(client) || (GetUserFlagBits(client) & ADMFLAG_GENERIC))
+	if(!IsClientValid(client) || !IsClientInGame(client) || (GetUserFlagBits(client) & ADMFLAG_RESERVATION))
 	{
 		return Plugin_Continue;
 	}
@@ -106,7 +106,7 @@ public Action: Timer_Check(Handle: timer)
 	new String: buffer[32];
 	for(new client = 1; client <= MaxClients; client ++)
 	{
-		if(IsClientInGame(client) && !(GetUserFlagBits(client) & ADMFLAG_GENERIC))
+		if(IsClientInGame(client) && !(GetUserFlagBits(client) & ADMFLAG_RESERVATION))
 		{
 			CS_GetClientClanTag(client, buffer, sizeof(buffer));
 			for(new i = 0; i < sizeof(DisallowedClan); i++)
