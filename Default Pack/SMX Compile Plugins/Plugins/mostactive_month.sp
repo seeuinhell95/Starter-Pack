@@ -28,7 +28,7 @@ int g_iSeconds;
 public Plugin myinfo =
 {
 	name = "[CSGO] Most Active Month",
-	author = "Franc1sco & Shanapu | Edited: somebody.",
+	author = "Franc1sco & Shanapu | Edited: Cherry & somebody.",
 	description = "Most Active Month",
 	version = "1.0",
 	url = "http://sourcemod.net"
@@ -52,6 +52,17 @@ public void OnPluginStart()
 {
 	RegConsoleCmd("sm_activem", DOMenu);
 	RegAdminCmd("sm_wastedm", Command_Wasted, ADMFLAG_RESERVATION, "Wasted command");
+
+	int day;
+
+	char sday[2];
+	FormatTime(sday, sizeof(sday), "%d");
+	day = StringToInt(sday);
+
+	if (day == 1)
+	{
+		PruneDatabase();
+	}
 
 	SQL_TConnect(OnSQLConnect, "mostactive_month");
 }
@@ -83,7 +94,6 @@ public int OnSQLConnect(Handle owner, Handle hndl, char [] error, any data)
 			
 			SQL_TQuery(g_hDB, OnSQLConnectCallback, g_sSQLBuffer);
 		}
-		PruneDatabase();
 	}
 }
 
@@ -253,14 +263,14 @@ public void PruneDatabase()
 	}
 
 	int maxlastaccuse;
-	maxlastaccuse = GetTime() - (IDAYS * 86400);
+	maxlastaccuse = 1;
 
 	char buffer[1024];
 
 	if(g_bIsMySQl)
-		Format(buffer, sizeof(buffer), "DELETE FROM `mostactive_month` WHERE `last_accountuse`<'%d' AND `last_accountuse`>'0';", maxlastaccuse);
+		Format(buffer, sizeof(buffer), "DELETE FROM `mostactive_month` WHERE `last_accountuse`>'%d' AND `last_accountuse`>'0';", maxlastaccuse);
 	else
-		Format(buffer, sizeof(buffer), "DELETE FROM mostactive_month WHERE last_accountuse<'%d' AND last_accountuse>'0';", maxlastaccuse);
+		Format(buffer, sizeof(buffer), "DELETE FROM mostactive_month WHERE last_accountuse>'%d' AND last_accountuse>'0';", maxlastaccuse);
 
 	SQL_TQuery(g_hDB, PruneDatabaseCallback, buffer);
 }
