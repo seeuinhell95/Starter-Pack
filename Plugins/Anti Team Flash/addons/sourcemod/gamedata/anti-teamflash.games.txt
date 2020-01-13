@@ -1,0 +1,64 @@
+"Games"
+{
+	"csgo"
+	{
+		"Offsets"
+		{
+			"Blind"
+			{
+				"windows"		"547"
+				"linux"			"550"
+			}
+			"Detonate"
+			{
+				"windows"		"237"
+				"linux"			"238"
+			}
+			"SetPlayerDSP"
+			{
+				"windows"		"11"
+				"linux"			"11"
+			}
+		}
+		"Signatures"
+		{
+			"CreateInterface"
+			{
+				"library"		"engine"
+				"windows"		"@CreateInterface"
+				"linux"			"@CreateInterface"
+			}
+		}
+	}
+
+	"cstrike"
+	{
+		"Offsets"
+		{
+			"Blind"
+			{
+				"windows"		"466"
+				"linux"			"469"
+			}
+			"Detonate"
+			{
+				"windows"		"225"
+				"linux"			"226"
+			}
+			"SetPlayerDSP"
+			{
+				"windows"		"10"
+				"linux"			"10"
+			}
+		}
+		"Signatures"
+		{
+			"CreateInterface"
+			{
+				"library"		"engine"
+				"windows"		"@CreateInterface"
+				"linux"			"@CreateInterface"
+			}
+		}
+	}
+}
