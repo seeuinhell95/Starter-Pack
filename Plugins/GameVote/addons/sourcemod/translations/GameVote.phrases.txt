@@ -1,0 +1,88 @@
+"Phrases"
+{
+	"gv_voted_for_ban"
+	{
+		"#format"		"{1:s},{2:s},{3:d},{4:d}"
+		"en"			"Player {1} voted for ban {2}. ({3}/{4})"
+		"hu"			"{1} szavazott {2} kitiltására. ({3}/{4})"
+	}
+
+	"gv_voted_for_kick"
+	{
+		"#format"		"{1:s},{2:s},{3:d},{4:d}"
+		"en"			"Player {1} voted for kick {2}. ({3}/{4})"
+		"hu"			"{1} szavazott {2} kirúgására. ({3}/{4})"
+	}
+
+	"gv_voted_for_mute"
+	{
+		"#format"		"{1:s},{2:s},{3:d},{4:d}"
+		"en"			"Player {1} voted for mute {2}. ({3}/{4})"
+		"hu"			"{1} szavazott {2} némítására. ({3}/{4})"
+	}
+
+	"gv_wait_before_startvote"
+	{
+		"#format"		"{1:d}"
+		"en"			"Please wait {1} seconds before start public vote."
+		"hu"			"Kérlek várj {1} másodpercet mielőtt szavazást kezdeményeznél."
+	}
+
+	"gv_min_players"
+	{
+		"#format"		"{1:d}"
+		"en"			"Minimum players for voting: {1}."
+		"hu"			"Szavazáshoz szükséges játékosok száma: {1}."
+	}
+
+	"gv_ban_title"
+	{
+		"en"			"BAN"
+		"hu"			"KITILTÁS"
+	}
+
+	"gv_kick_title"
+	{
+		"en"			"KICK"
+		"hu"			"KIRÚGÁS"
+	}
+
+	"gv_mute_title"
+	{
+		"en"			"MUTE"
+		"hu"			"NÉMÍTÁS"
+	}
+
+	"gv_ban_title_question"
+	{
+		"#format"		"{1:s}"
+		"en"			"BAN {1}?"
+		"hu"			"{1} KITILTÁSA?"
+	}
+
+	"gv_kick_title_question"
+	{
+		"#format"		"{1:s}"
+		"en"			"KICK {1}?"
+		"hu"			"{1} KIRÚGÁSA?"
+	}
+
+	"gv_mute_title_question"
+	{
+		"#format"		"{1:s}"
+		"en"			"MUTE {1}?"
+		"hu"			"{1} NÉMÍTÁSA?"
+	}
+
+	"gv_yes"
+	{
+		"en"			"Yes"
+		"hu"			"Igen"
+	}
+
+	"gv_no"
+	{
+		"en"			"No"
+		"hu"			"Nem"
+	}
+}
