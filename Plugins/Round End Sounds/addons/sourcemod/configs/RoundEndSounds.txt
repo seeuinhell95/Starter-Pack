@@ -1,0 +1,7 @@
+"RoundEndSounds"
+{
+	"example.mp3"
+	{
+		"songname"		"Example"
+	}
+}

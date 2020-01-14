@@ -1,0 +1,39 @@
+"Phrases"
+{
+	"VOLUME"
+	{
+		"en"			"Volume"
+		"hu"			"Hangerő"
+	}
+
+	"Selected"
+	{
+		"en"			"(✔)"
+		"hu"			"(✔)"
+	}
+
+	"Sound Menu Title"
+	{
+		"en"			"Select sound volume"
+		"hu"			"Válassz hangerőt"
+	}
+
+	"RES_ON"
+	{
+		"en"			"Round End Sounds: ON"
+		"hu"			"Körvégi Zene: Bekapcsolva"
+	}
+
+	"RES_OFF"
+	{
+		"en"			"Round End Sounds: OFF"
+		"hu"			"Körvégi Zene: Kikapcsolva"
+	}
+
+	"mp3 print"
+	{
+		"#format"		"{1:s}"
+		"en"			"{1}"
+		"hu"			"{1}"
+	}
+}
