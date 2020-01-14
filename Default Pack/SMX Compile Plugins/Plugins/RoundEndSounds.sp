@@ -189,7 +189,7 @@ public Action abnermenu(int client, int args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	int cookievalue = GetIntCookie(client, g_ResPlayCookie);
 	Handle g_CookieMenu = CreateMenu(AbNeRMenuHandler);
 	SetMenuTitle(g_CookieMenu, "Körvégi Zene");
@@ -211,7 +211,6 @@ public Action abnermenu(int client, int args)
 
 	Format(Item, sizeof(Item), "%t", "VOLUME");
 	AddMenuItem(g_CookieMenu, "volume", Item);
-
 
 	SetMenuExitBackButton(g_CookieMenu, true);
 	SetMenuExitButton(g_CookieMenu, true);
@@ -258,9 +257,8 @@ public int AbNeRMenuHandler(Handle menu, MenuAction action, int client, int para
 	return 0;
 }
 
-void VolumeMenu(int client){
-	
-
+void VolumeMenu(int client)
+{
 	float volumeArray[] = { 1.0, 0.75, 0.50, 0.25, 0.10 };
 	float selectedVolume = GetClientVolume(client);
 
@@ -270,10 +268,10 @@ void VolumeMenu(int client){
 
 	for(int i = 0; i < sizeof(volumeArray); i++)
 	{
-		char strInfo[10];
+		char strInfo[16];
 		Format(strInfo, sizeof(strInfo), "%0.2f", volumeArray[i]);
 
-		char display[20], selected[5];
+		char display[32], selected[16];
 		if(volumeArray[i] == selectedVolume)
 			Format(selected, sizeof(selected), "%t", "Selected");
 
@@ -287,8 +285,9 @@ void VolumeMenu(int client){
 
 public int VolumeMenuHandler(Menu menu, MenuAction action, int client, int param2)
 {
-	if(action == MenuAction_Select){
-		char sInfo[10];
+	if(action == MenuAction_Select)
+	{
+		char sInfo[16];
 		GetMenuItem(menu, param2, sInfo, sizeof(sInfo));
 		SetClientCookie(client, g_ResVolumeCookie, sInfo);
 		VolumeMenu(client);

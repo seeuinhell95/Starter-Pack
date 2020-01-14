@@ -482,7 +482,7 @@ public void SetChoise(int type, int client, int target)
 					char c_name[32],t_name[32];
 					GetClientName(client, c_name, sizeof(c_name));
 					GetClientName(target, t_name, sizeof(t_name));
-					PrintToChatAll("[GameVoting] %t", "gv_voted_for_ban", c_name, t_name, current, needed);
+					PrintToChatAll("[\x04GameVoting\x01] \x06%t", "gv_voted_for_ban", c_name, t_name, current, needed);
 					
 					LOGS_ENABLED {
 						char auth1[32];//,auth2[32];
@@ -497,7 +497,7 @@ public void SetChoise(int type, int client, int target)
 					char c_name[32],t_name[32];
 					GetClientName(client, c_name, sizeof(c_name));
 					GetClientName(target, t_name, sizeof(t_name));
-					PrintToChatAll("[GameVoting] %t", "gv_voted_for_kick", c_name, t_name, current, needed);
+					PrintToChatAll("[\x04GameVoting\x01] \x06%t", "gv_voted_for_kick", c_name, t_name, current, needed);
 					
 					LOGS_ENABLED {
 						char auth1[32];//,auth2[32];
@@ -512,7 +512,7 @@ public void SetChoise(int type, int client, int target)
 					char c_name[32],t_name[32];
 					GetClientName(client, c_name, sizeof(c_name));
 					GetClientName(target, t_name, sizeof(t_name));
-					PrintToChatAll("[GameVoting] %t", "gv_voted_for_mute", c_name, t_name, current, needed);
+					PrintToChatAll("[\x04GameVoting\x01] \x06%t", "gv_voted_for_mute", c_name, t_name, current, needed);
 					
 					LOGS_ENABLED {
 						char auth1[32];//,auth2[32];
@@ -610,16 +610,17 @@ public void CheckCommand(int client, const char[] args, const char[] pref)
 	}
 
 	if(CountPlayers_withoutImmunity() < CONVAR_MIN_PLAYERS.IntValue) {
-		PrintToChat(client, "[GameVoting] %t", "gv_min_players", CONVAR_MIN_PLAYERS.IntValue);
+		PrintToChat(client, "[\x04GameVoting\x01] \x06%t", "gv_min_players", CONVAR_MIN_PLAYERS.IntValue);
 		return;
 	}
-	
+
 	if(CONVAR_AUTODISABLE.IntValue > 0) {
 		if(adminsonserver()) {
+			PrintToChat(client, "[\x04GameVoting\x01] \x06Jelenleg nem lehet szavazást indítani mivel van fent legalább egy adminisztrátor.");
 			return;
 		}
 	}
-	
+
 	if(StrEqual(command, BAN_COMMAND, false)) {
 		if(CONVAR_BAN_ENABLE.IntValue < 1) {
 			return;
@@ -658,7 +659,7 @@ public bool StartVoteFlag(int client) {
 	}
 
 	if(g_startvote_delay > GetTime() && CONVAR_START_VOTE_ENABLE.IntValue > 0 ) {
-		PrintToChat(client, "[GameVoting] %t", "gv_wait_before_startvote", ((g_startvote_delay)-GetTime()));
+		PrintToChat(client, "[\x04GameVoting\x01] \x06%t", "gv_wait_before_startvote", ((g_startvote_delay)-GetTime()));
 		return false;
 	}
 
@@ -752,7 +753,7 @@ public void StartVote(int client, int target, int type) {
 
 	VALID_PLAYER { VALID_TARGET {
 		if(g_startvote_delay > GetTime()) {
-			PrintToChat(client, "[GameVoting] %t", "gv_wait_before_startvote", ((g_startvote_delay)-GetTime()));
+			PrintToChat(client, "[\x04GameVoting\x01] \x06%t", "gv_wait_before_startvote", ((g_startvote_delay)-GetTime()));
 			return;
 		}
 

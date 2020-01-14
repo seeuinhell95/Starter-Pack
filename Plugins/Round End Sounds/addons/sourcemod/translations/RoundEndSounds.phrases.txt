@@ -8,8 +8,8 @@
 
 	"Selected"
 	{
-		"en"			"(✔)"
-		"hu"			"(✔)"
+		"en"			"(✓)"
+		"hu"			"(✓)"
 	}
 
 	"Sound Menu Title"
@@ -21,13 +21,13 @@
 	"RES_ON"
 	{
 		"en"			"Round End Sounds: ON"
-		"hu"			"Körvégi Zene: Bekapcsolva"
+		"hu"			"Körvégi Zene: Be"
 	}
 
 	"RES_OFF"
 	{
 		"en"			"Round End Sounds: OFF"
-		"hu"			"Körvégi Zene: Kikapcsolva"
+		"hu"			"Körvégi Zene: Ki"
 	}
 
 	"mp3 print"

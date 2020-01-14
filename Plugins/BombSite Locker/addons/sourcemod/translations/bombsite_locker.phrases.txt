@@ -6,11 +6,4 @@
 		"en"			"> BombSite '{1}' is restricted due to fewer Counter-Terrorists than '{2}'."
 		"hu"			"> '{1}' bombalerakó tiltva van ebben a körben mivel kevesebb Terrorelhárító van, mint '{2}'."
 	}
-
-	"Bombsite Disabled"
-	{
-		"#format"		"{1:c}"
-		"en"			"BombSite '{1}' is restricted this round."
-		"hu"			"'{1}' bombalerakó tiltva van ebben a körben."
-	}
 }

@@ -121,7 +121,6 @@ public Action Timer_HandleFreezeEnd(Handle timer, any data)
 			AcceptEntityInput(g_RestrictedSite != 'A' ? g_SiteB : g_SiteA, "Disable");
 
 			PrintToChatAll("[\x04C4\x01] %t", "Bombsite Disabled Reason", g_RestrictedSite, g_RestrictedSiteLimit);
-			PrintCenterTextAll("%t", "Bombsite Disabled", g_RestrictedSite);
 		}
 	}
 

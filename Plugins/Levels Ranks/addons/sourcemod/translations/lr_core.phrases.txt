@@ -205,14 +205,14 @@
 	"LevelUpAll"
 	{
 		"#format"	"{1:N},{2:s}"
-		"en"		"Player {OLIVE}{1} {WHITE}raised his rank to {LIME}{2}"
+		"en"		"Player {OLIVE}{1} {WHITE}raised his rank to {LIME}{2}{WHITE}!"
 		"hu"		"{OLIVE}{1} {WHITE}szintet lépett! {LIME}{2} {WHITE}az új rangja!"
 	}
 
 	"LevelDownAll"
 	{
 		"#format"	"{1:N},{2:s}"
-		"en"		"Player {OLIVE}{1} {WHITE}lowered his rank to {RED}{2}"
+		"en"		"Player {OLIVE}{1} {WHITE}lowered his rank to {RED}{2}{WHITE}!"
 		"hu"		"{OLIVE}{1} {WHITE}szintet esett! {RED}{2} {WHITE}az új rangja!"
 	}
 
