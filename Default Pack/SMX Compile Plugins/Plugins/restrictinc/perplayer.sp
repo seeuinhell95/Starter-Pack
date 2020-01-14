@@ -38,7 +38,7 @@ void PerPlayerInit()
 	}
 	
 	char szPerPlayerFile[PLATFORM_MAX_PATH];
-	BuildPath(Path_SM, szPerPlayerFile, sizeof(szPerPlayerFile), "configs/restrict/perplayerrestrict.txt");
+	BuildPath(Path_SM, szPerPlayerFile, sizeof(szPerPlayerFile), "configs/WeaponRestrict/perplayer.txt");
 	
 	if(!FileExists(szPerPlayerFile))
 	{
