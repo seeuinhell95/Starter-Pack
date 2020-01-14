@@ -75,7 +75,7 @@
 	"rank_13"
 	{
 		"en"		"Master Guardian Elite"
-		"hu"		"Védelmező Elit Mester"
+		"hu"		"Elit Védelmező Mester"
 	}
 
 	"rank_14"
