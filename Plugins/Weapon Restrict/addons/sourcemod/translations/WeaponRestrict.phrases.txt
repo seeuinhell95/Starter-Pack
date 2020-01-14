@@ -247,8 +247,8 @@
 	"IsRestrictedBuyT"
 	{
 		"#format"	"{1:i}"
-		"en"		"is currently restricted to {1} for Terrorists and cannot be bought."
-		"hu"		"fegyver jelenleg korlátozva van {1} darabra a Terroristák számára ezért nem vásárolhatod meg."
+		"en"		"is currently restricted to {1} for Terrorists and cannot be bought."
+		"hu"		"fegyver jelenleg korlátozva van {1} darabra a Terroristák számára ezért nem vásárolhatod meg."
 	}
 	"IsRestrictedBuyCT"
 	{
