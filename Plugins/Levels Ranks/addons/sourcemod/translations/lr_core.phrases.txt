@@ -40,14 +40,14 @@
 	"AdminGive"
 	{
 		"#format"	"{1:i},{2:s}"
-		"en"		"Your exp: {GRAY}{1} [{2} from the admin]"
+		"en"		"Your exp: {GRAY}{1} [+{2} from the admin]"
 		"hu"		"Pontjaid: {GRAY}{1} [+{2} egy admintól]"
 	}
 
 	"AdminTake"
 	{
 		"#format"	"{1:i},{2:s}"
-		"en"		"Your exp: {GRAY}{1} [{2} from the admin]"
+		"en"		"Your exp: {GRAY}{1} [-{2} from the admin]"
 		"hu"		"Pontjaid: {GRAY}{1} [-{2} egy admintól]"
 	}
 
