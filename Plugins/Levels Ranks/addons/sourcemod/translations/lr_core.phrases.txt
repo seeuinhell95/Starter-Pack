@@ -1,0 +1,410 @@
+"Phrases"
+{
+	"Prefix"
+	{
+		"en"		"{RED}[LR]{WHITE}"
+		"hu"		"{RED}[LR]{WHITE}"
+	}
+
+	"MainMenu"
+	{
+		"#format"	"{1:T},{2:s},{3:i},{4:i}"
+		"en"		"Rank: {1}\nExp: {2}\nPlace: {3}. of {4}\n "
+		"hu"		"Rang: {1}\nPont: {2}\nHelyezés: {3}. a {4} játékosból\n "
+	}
+
+	"MainMenu_Admin"
+	{
+		"en"		"Admin's Panel"
+		"hu"		"Admin Panel"
+	}
+
+	"ReloadAllConfigs"
+	{
+		"en"		"Reload plugin settings"
+		"hu"		"Plugin beállítások újraindítása"
+	}
+
+	"ConfigUpdated"
+	{
+		"en"		"Configuration settings updated"
+		"hu"		"Konfigurációs beállítások frissítve"
+	}
+
+	"GiveTakeMenuExp"
+	{
+		"en"		"Give/Take exp. points"
+		"hu"		"Pont adás/elvétel"
+	}
+
+	"AdminGive"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {GRAY}{1} [{2} from the admin]"
+		"hu"		"Pontjaid: {GRAY}{1} [+{2} egy admintól]"
+	}
+
+	"AdminTake"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {GRAY}{1} [{2} from the admin]"
+		"hu"		"Pontjaid: {GRAY}{1} [-{2} egy admintól]"
+	}
+
+	"ExpChange"
+	{
+		"#format"	"{1:N},{2:i},{3:s}"
+		"en"		"{1} - {GRAY}{2} ({3})"
+	}
+
+	"MainMenu_MyStats"
+	{
+		"en"		"My stats"
+		"hu"		"Statisztikáim"
+	}
+
+	"MyStatsInfo"
+	{
+		"#format"	"{1:02d},{2:02d},{3:02d},{4:i},{5:i},{6:i},{7:i},{8:i},{9:.2f},{10:i},{11:i}"
+		"en"		"My stats\n \nPlayed: {1} h. {2} m. {3} sec.\n \nKills: {4}\nDeaths: {5}\nAssists: {6}\nHeadshots: {7} ({8}%%) \nKDR: {9}\n \nAccuracy: {10}%%\nWinrate: {11}%%"
+		"hu"		"Statisztikáim\n \nJátszott idő: {1} óra {2} perc {3} mp.\n \nÖlések: {4}\nHalálok: {5}\nSegítségek: {6}\nFejlövések: {7} ({8}%%) \nKDR szám: {9}\n \nPontosság: {10}%%\nGyőzelmi arány: {11}%%"
+	}
+
+	"MyStatsSecondary"
+	{
+		"en"		"Secondary stats"
+		"hu"		"Másodlagos statisztikáim"
+	}
+
+	"MyStatsSession"
+	{
+		"en"		"Session data"
+		"hu"		"Jelenlegi munkamenet adatai"
+	}
+
+	"MyStatsSessionInfo"
+	{
+		"#format"	"{1:s},{2:s},{3:02d},{4:02d},{5:02d},{6:i},{7:i},{8:i},{9:i},{10:i},{11:.2f},{12:i},{13:i}"
+		"en"		"Session data\n \nExp. points: {1} \nPlace: {2}\n \nPlayed: {3} h {4} m {5} sec\n \nKills: {6}\nDeaths: {7}\nAssists: {8}\nHeadshots: {9} ({10}%%)\nKDR: {11}\n \nAccuracy: {12}%%\nWinrate: {13}%%"
+		"hu"		"Jelenlegi statisztikáim\n \nPontok: {1} \nHelyezés: {2}\n \nJátszott idő: {3} óra {4} perc {5} mp.\n \nÖlések: {6}\nHalálok: {7}\nSegítségek: {8}\nFejlövések: {9} ({10}%%)\nKDR szám: {11}\n \nPontosság: {12}%%\nGyőzelmi arány: {13}%%"
+	}
+
+	"MyStatsReset"
+	{
+		"en"		"Reset my stats"
+		"hu"		"Statisztikáim újraindítása"
+	}
+
+	"MyStatsResetCooldown"
+	{
+		"#format"	"{1:02d},{2:02d},{3:02d}"
+		"en"		"Reset my stats\n    Cooldown: {1} h. {2} m. {3} sec."
+		"hu"		"Statisztikáim újraindítása\n    Újraindítási lehetőség: {1} óra {2} perc {3} mp. múlva"
+	}
+
+	"MyStatsResetInfo"
+	{
+		"en"		"Reset the statistics?\n \nYou reset all your options, \nlevels, frags and the like. \nYou are sure?!"
+		"hu"		"Újraindítod a statisztikáidat?\n \nMinden beállításod, \nszinted, öléseid és hasonlók eltünnek. \nBiztos vagy benne?!"
+	}
+
+	"MainMenu_MyPrivilegesSettings"
+	{
+		"en"		"Privileges and settings"
+		"hu"		"Beállítások"
+	}
+
+	"MainMenu_TopPlayers"
+	{
+		"en"		"Top players"
+		"hu"		"Top játékosok"
+	}
+
+	"OverAllTopPlayersExp"
+	{
+		"en"		"Top 10 by exp. points"
+		"hu"		"Top 10 pontok alapján"
+	}
+
+	"OverAllTopPlayersExp_Slot"
+	{
+		"#format"	"{1:i},{2:i},{3:s}"
+		"en"		"{1} - [ {2} ] - {3}"
+	}
+
+	"OverAllTopPlayersTime"
+	{
+		"en"		"Top 10 by activity"
+		"hu"		"Top 10 aktivitás szerint"
+	}
+
+	"OverAllTopPlayersTime_Slot"
+	{
+		"#format"	"{1:i},{2:.1f},{3:s}"
+		"en"		"{1} - [ {2} h. ] - {3}"
+		"hu"		"{1} - [ {2} óra ] - {3}"
+	}
+
+	"You"
+	{
+		"en"		"(You)"
+		"hu"		"(Te)"
+	}
+
+	"NoData"
+	{
+		"en"		"No data!"
+		"hu"		"Nincs adat!"
+	}
+
+	"MainMenu_Ranks"
+	{
+		"en"		"All Ranks"
+		"hu"		"Minden Rang"
+	}
+
+	"RankPlayer"
+	{
+		"#format"	"{1:N},{2:i},{3:i},{4:i},{5:i},{6:i},{7:.2f}"
+		"en"		"Player {GREEN}{1} {WHITE}is ranked at {GREEN}{2} / {3} {WHITE}with {OLIVE}{4} {WHITE}exp, {OLIVE}{5} {WHITE}kills, {OLIVE}{6} {WHITE}deaths and KDR {OLIVE}{7}"
+		"hu"		"{GREEN}{1} {WHITE}rangsorolása: {GREEN}{2} / {3} {WHITE}| {OLIVE}{4} {WHITE}pont, {OLIVE}{5} {WHITE}ölés, {OLIVE}{6} {WHITE}halál és KDR szám: {OLIVE}{7}"
+	}
+
+	"PlayerDataDeleted"
+	{
+		"#format"	"{1:s}"
+		"en"		"Deletion request sent successfully! STEAM_ID - {1}"
+	}
+
+	"RoundStartCheckCount"
+	{
+		"#format"	"{1:i},{2:i}"
+		"en"		"There are only {RED}{1} {WHITE}players from {RED}{2}{WHITE}."
+		"hu"		"Csak {RED}{1} {WHITE}játékos van fent a szükséges {RED}{2} {WHITE}játékosból."
+	}
+
+	"RoundStartMessageRanks"
+	{
+		"en"		"Enter: {PURPLE}!lvl {WHITE}- main menu"
+	}
+
+	"LevelUp"
+	{
+		"#format"	"{1:s}"
+		"en"		"Your rank has been promoted to {LIME}{1}{WHITE}!"
+		"hu"		"Szintet léptél! {LIME}{1} {WHITE}az új rangod!"
+	}
+
+	"LevelDown"
+	{
+		"#format"	"{1:s}"
+		"en"		"Your rank has been lowered to {RED}{1}{WHITE}!"
+		"hu"		"Szintet estél! {RED}{1} {WHITE}az új rangod!"
+	}
+
+	"LevelUpAll"
+	{
+		"#format"	"{1:N},{2:s}"
+		"en"		"Player {OLIVE}{1} {WHITE}raised his rank to {LIME}{2}"
+		"hu"		"{OLIVE}{1} {WHITE}szintet lépett! {LIME}{2} {WHITE}az új rangja!"
+	}
+
+	"LevelDownAll"
+	{
+		"#format"	"{1:N},{2:s}"
+		"en"		"Player {OLIVE}{1} {WHITE}lowered his rank to {RED}{2}"
+		"hu"		"{OLIVE}{1} {WHITE}szintet esett! {RED}{2} {WHITE}az új rangja!"
+	}
+
+	"Suicide"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {RED}{1} [{2} for suicide]"
+	}
+
+	"Kill"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {GREEN}{1} [{2} for a kill]"
+	}
+
+	"MyDeath"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {RED}{1} [{2} for dying]"
+	}
+
+	"TeamKill"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {RED}{1} [{2} for teamkill]"
+	}
+
+	"HeadShotKill"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {OLIVE}{1} [{2} for a headshot]"
+	}
+
+	"AssisterKill"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {BLUE}{1} [{2} for an assist]"
+	}
+
+	"RoundWin"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {GREEN}{1} [{2} your team won]"
+	}
+
+	"RoundLose"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {RED}{1} [{2} your team lost]"
+	}
+
+	"RoundMVP"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {BLUE}{1} [{2} MVP]"
+	}
+
+	"BombPlanted"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {LIME}{1} [{2} for planting the bomb]"
+	}
+
+	"BombDefused"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {LIME}{1} [{2} for defusing the bomb]"
+	}
+
+	"BombPickup"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {GREEN}{1} [{2} for bomb pickup]"
+	}
+
+	"BombDropped"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {RED}{1} [{2} for dropping the bomb]"
+	}
+
+	"HostageRescued"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {LIGHTBLUE}{1} [{2} you rescued the hostage]"
+	}
+
+	"HostageKilled"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {RED}{1} [{2} you killed the hostage]"
+	}
+
+	"DoubleKill"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {PURPLE}{1} [{2} for DoubleKill]"
+	}
+
+	"TripleKill"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {PURPLE}{1} [{2} for TripleKill]"
+	}
+
+	"Domination"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {PURPLE}{1} [{2} for Domination]"
+	}
+
+	"Rampage"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {PURPLE}{1} [{2} for Rampage]"
+	}
+
+	"MegaKill"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {PURPLE}{1} [{2} for MegaKill]"
+	}
+
+	"Ownage"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {PURPLE}{1} [{2} for Ownage]"
+	}
+
+	"UltraKill"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {PURPLE}{1} [{2} for UltraKill]"
+	}
+
+	"KillingSpree"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {PURPLE}{1} [{2} for Killing Spree]"
+	}
+
+	"MonsterKill"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {PURPLE}{1} [{2} for MonsterKill]"
+	}
+
+	"Unstoppable"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {PURPLE}{1} [{2} for Unstoppable]"
+	}
+
+	"GodLike"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {PURPLE}{1} [{2} for God Like]"
+	}
+
+	"WickedSick"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {PURPLE}{1} [{2} for WickedSick]"
+	}
+
+	"HolyShit"
+	{
+		"#format"	"{1:i},{2:s}"
+		"en"		"Your exp: {PURPLE}{1} [{2} for HolyShit]"
+	}
+
+	"RoundExpResultGive"
+	{
+		"#format"	"{1:i}"
+		"en"		"You earned {GREEN}{1} {WHITE}experience points per round"
+	}
+
+	"RoundExpResultTake"
+	{
+		"#format"	"{1:i}"
+		"en"		"You lost {RED}{1} {WHITE}experience points per round"
+	}
+
+	"RoundExpResultNothing"
+	{
+		"en"		"You didn’t earn experience points in a round!"
+	}
+
+	"RoundExpResultAll"
+	{
+		"#format"	"{1:i}"
+		"en"		"Total: {PURPLE}{1} {WHITE}exp. points"
+		"hu"		"Összesen: {PURPLE}{1} {WHITE}pont"
+	}
+}

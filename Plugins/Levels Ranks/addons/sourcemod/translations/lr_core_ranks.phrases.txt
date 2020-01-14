@@ -1,0 +1,110 @@
+"Phrases"
+{
+	"rank_1"
+	{
+		"en"		"Silver I"
+		"hu"		"Ezüst I"
+	}
+
+	"rank_2"
+	{
+		"en"		"Silver II"
+		"hu"		"Ezüst II"
+	}
+
+	"rank_3"
+	{
+		"en"		"Silver III"
+		"hu"		"Ezüst III"
+	}
+
+	"rank_4"
+	{
+		"en"		"Silver IV"
+		"hu"		"Ezüst IV"
+	}
+
+	"rank_5"
+	{
+		"en"		"Silver Elite"
+		"hu"		"Ezüst Elit"
+	}
+
+	"rank_6"
+	{
+		"en"		"Silver Elite Master"
+		"hu"		"Ezüst Elit Mester"
+	}
+
+	"rank_7"
+	{
+		"en"		"Gold Nova I"
+		"hu"		"Arany Nova I"
+	}
+
+	"rank_8"
+	{
+		"en"		"Gold Nova II"
+		"hu"		"Arany Nova II"
+	}
+
+	"rank_9"
+	{
+		"en"		"Gold Nova III"
+		"hu"		"Arany Nova III"
+	}
+
+	"rank_10"
+	{
+		"en"		"Gold Nova Master"
+		"hu"		"Arany Nova Mester"
+	}
+
+	"rank_11"
+	{
+		"en"		"Master Guardian I"
+		"hu"		"Védelmező Mester I"
+	}
+
+	"rank_12"
+	{
+		"en"		"Master Guardian II"
+		"hu"		"Védelmező Mester II"
+	}
+
+	"rank_13"
+	{
+		"en"		"Master Guardian Elite"
+		"hu"		"Védelmező Elit Mester"
+	}
+
+	"rank_14"
+	{
+		"en"		"Distinguished Master Guardian"
+		"hu"		"Kiváló Védelmező Mester"
+	}
+
+	"rank_15"
+	{
+		"en"		"Legendary Eagle"
+		"hu"		"Legendás Sas"
+	}
+
+	"rank_16"
+	{
+		"en"		"Legendary Eagle Master"
+		"hu"		"Legendás Sas Mester"
+	}
+
+	"rank_17"
+	{
+		"en"		"Supreme Master First Class"
+		"hu"		"Legfőbb Főmester"
+	}
+
+	"rank_18"
+	{
+		"en"		"The Global Elite"
+		"hu"		"A Globális Elit"
+	}
+}
