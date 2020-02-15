@@ -11,6 +11,6 @@ Az itt megtalálható pluginokat / bővítményeket kizárólag privát felhaszn
 
 **WARNING:**
 
-The plugins / extensions you have found here have been edited for private use only and collected on our own servers by our friends. We do not intend to harm anyone. It's not private in Repository because we want to share plugins with more than 3 friends. Anyone can use what you find here if you want.
+The plugins are designed for private use only. They had been collected by friends from our own servers. We do not intend to harm anyone. The Repository is not private because we want to share plugins with more people. The plugins you find here can be used by anyone freely.
 
 **Peace! =)**
