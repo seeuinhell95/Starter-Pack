@@ -11,6 +11,6 @@ The plugins / extensions are edited for private use only and they had been colle
 
 **FIGYELMEZTETÉS:**
 
-Az itt megtalálható pluginokat / bővítményeket kizárólag privát felhasználásra szerkesztettük és gyűjtöttük össze a saját szervereinkre a barátainkkal. Nem áll szándékunkban senkinek sem a megkárosítása. Azért nem privát a Repository mivel több, mint 3 ismerőssel szeretnénk megosztani a pluginokat. Bárki nyugodtan felhasználhatja az itt találtakat, ha szeretné.
+Az itt megtalálható pluginokat / bővítményeket kizárólag privát felhasználásra szerkesztettük és gyűjtöttük össze a saját szervereinkre a barátainkkal. Nem áll szándékunkban senkinek sem a megkárosítása. Azért nem privát a Repository mivel több ismerőssel szeretnénk megosztani a pluginokat. Bárki nyugodtan felhasználhatja az itt találtakat, ha szeretné.
 
 **Peace! =)**
