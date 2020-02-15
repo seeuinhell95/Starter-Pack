@@ -9,7 +9,6 @@ Az itt megtalálható pluginokat / bővítményeket kizárólag privát felhaszn
 
 Peace! =)
 
-
 ENG:
 
 WARNING:
