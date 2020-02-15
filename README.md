@@ -1,7 +1,7 @@
 # Starter-Pack
 CSGO Starter Pack
 
-**HUN:**
+**HUNGARIAN:**
 
 **FIGYELMEZTETÉS:**
 
@@ -9,7 +9,7 @@ Az itt megtalálható pluginokat / bővítményeket kizárólag privát felhaszn
 
 **Peace! =)**
 
-**ENG:**
+**ENGLISH:**
 
 **WARNING:**
 
