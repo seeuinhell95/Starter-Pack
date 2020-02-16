@@ -1,0 +1,1017 @@
+#pragma semicolon 1
+
+#include <sourcemod>
+#include <sdktools>
+#include <sdkhooks>
+#include <hexprops>
+#include <hexstocks>
+
+#pragma newdecls required
+
+Handle fOnPressProp;
+int iEntHP[MAX_ENTITIES];
+
+bool bMoveProp[MAXPLAYERS+1];
+bool bPhysicProp[MAXPLAYERS+1];
+
+char sPropPath[PLATFORM_MAX_PATH];
+
+KeyValues PropKv;
+
+ArrayList PropsArray;
+
+#include "HexProps/model_moving.sp"
+
+public Plugin myinfo =
+{
+	name = "[CSGO] HexProps",
+	author = "Hexah | Edited: somebody.",
+	description = "HexProps",
+	version = "1.0",
+	url = "http://sourcemod.net"
+};
+
+public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
+{
+	RegPluginLibrary("hexprops");
+	CreateNative("IsEntProp", Native_IsEntProp);
+
+	fOnPressProp = CreateGlobalForward("OnPlayerPressProp", ET_Ignore, Param_Cell, Param_Cell);
+}
+
+public void OnPluginStart()
+{
+	PropsArray = new ArrayList();
+
+	RegAdminCmd("sm_props", Cmd_Props, ADMFLAG_CHEATS);
+
+	if (!HookEventEx("round_poststart", Event_RoundStart))
+		if (!HookEventEx("round_start", Event_RoundStart))
+			if (!HookEventEx("dod_round_start", Event_RoundStart))
+				SetFailState("Unable to hook any round start event!");
+}
+
+public void OnMapStart()
+{
+	PreparePropKv();
+}
+
+void PreparePropKv()
+{
+	char sMap[64];
+	GetCurrentMap(sMap, sizeof(sMap));
+
+	BuildPath(Path_SM, sPropPath, sizeof(sPropPath), "configs/props/%s.props.txt", sMap);
+	delete PropKv;
+	PropKv = new KeyValues("Props");
+
+	if (!FileExists(sPropPath))
+		if (!PropKv.ExportToFile(sPropPath))
+			SetFailState(" - Props - Unable to (Kv)File: %s", sPropPath);
+
+	if (!PropKv.ImportFromFile(sPropPath))
+		SetFailState("- Props - Unable to import: %s", sPropPath);
+}
+
+public Action Cmd_Props(int client, int args)
+{
+	CreateMainMenu(client).Display(client, MENU_TIME_FOREVER);
+	return Plugin_Handled;
+}
+
+public void OnClientDisconnect(int client)
+{
+	bMoveProp[client] = false;
+	bPhysicProp[client] = false;
+}
+
+public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
+{
+	PropsArray.Clear();
+	LoadProps();
+}
+
+public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3], float angles[3], int &weapon, int &subtype, int &cmdnum, int &tickcount, int &seed, int mouse[2])
+{
+	Moving_OnPlayerRunCmd(client, buttons);
+	
+	if (buttons & IN_USE)
+	{
+		int iEnt = GetAimEnt(client);
+		
+		if (FindInArray(iEnt) == -1)
+		{
+			Call_StartForward(fOnPressProp);
+			Call_PushCell(client);
+			Call_PushCell(iEnt);
+			Call_Finish();
+		}
+	}
+}
+
+Menu CreateMainMenu(int client)
+{
+	Menu MainMenu = new Menu(Handler_Main);
+
+	MainMenu.SetTitle("Props");
+
+	char sMoveDisplay[32];
+	char sPhysicDisplay[32];
+	Format(sMoveDisplay, sizeof(sMoveDisplay), "Move: %s", bMoveProp[client]? "On" : "Off");
+	Format(sPhysicDisplay, sizeof(sPhysicDisplay), "Physic: %s", bPhysicProp[client]? "On" : "Off");
+
+	MainMenu.AddItem("Place", "Place New Prop");
+	MainMenu.AddItem("Remove", "Remove Props");
+	MainMenu.AddItem("Edit", "Edit Props");
+	MainMenu.AddItem("Safe", "Save Props");
+	MainMenu.AddItem("Move", sMoveDisplay);
+	MainMenu.AddItem("Physic", sPhysicDisplay);
+	MainMenu.AddItem("Reset", "Reset Props");
+	MainMenu.AddItem("DeleteAll", "Delete All Props");
+
+	return MainMenu;
+}
+
+Menu CreatePropMenu()
+{
+	char sPath[PLATFORM_MAX_PATH];
+	BuildPath(Path_SM, sPath, sizeof(sPath), "configs/props/props_list.txt");
+	
+	KeyValues kv = new KeyValues("Props");
+	
+	if (!kv.ImportFromFile(sPath))
+		SetFailState("- Props - Unable to import: %s", sPath);
+	
+	if (!kv.GotoFirstSubKey())
+		SetFailState(" - Props - Unable to read: %s", sPath);
+	
+	Menu PropMenu = new Menu(Handler_Props);
+	
+	PropMenu.SetTitle("Props");
+	
+	do
+	{
+		char sName[64];
+		char sModel[PLATFORM_MAX_PATH];
+		
+		kv.GetSectionName(sName, sizeof(sName));
+		kv.GetString("model", sModel, sizeof(sModel));
+		PropMenu.AddItem(sModel, sName);
+	}
+	while (kv.GotoNextKey());
+	
+	delete kv;
+	
+	PropMenu.ExitBackButton = true;
+	
+	return PropMenu;
+}
+
+Menu CreateEditMenu()
+{
+	Menu EditMenu = new Menu(Handler_Edit);
+	
+	EditMenu.SetTitle("Edit");
+	
+	EditMenu.AddItem("Alpha", "Set Transparency");
+	EditMenu.AddItem("Color", "Set Color");
+	EditMenu.AddItem("Life", "Set LifePoints");
+	EditMenu.AddItem("Solid", "Set Consistency");
+	EditMenu.AddItem("Size", "Set Size (Not working on all props)");
+	EditMenu.AddItem("Physic", "Make Physic");
+	
+	EditMenu.ExitBackButton = true;
+	
+	return EditMenu;
+}
+
+Menu CreateDeleteAllMenu()
+{
+	Menu DeleteAllMenu = new Menu(Handler_DeleteAll);
+	
+	DeleteAllMenu.SetTitle("Are you sure?");
+	
+	DeleteAllMenu.AddItem("", "If you want to go back", ITEMDRAW_DISABLED);
+	DeleteAllMenu.AddItem("", "after you deleted the props", ITEMDRAW_DISABLED);
+	DeleteAllMenu.AddItem("", "press Reset Props and do NOT save the props!", ITEMDRAW_DISABLED);
+	DeleteAllMenu.AddItem("0", "NO");
+	DeleteAllMenu.AddItem("1", "YES");
+	
+	DeleteAllMenu.ExitBackButton = true;
+	return DeleteAllMenu;
+}
+
+Menu CreateColorMenu()
+{
+	Menu ColorMenu = new Menu(Handler_Color);
+	
+	ColorMenu.SetTitle("Color");
+	
+	ColorMenu.AddItem("Default", "Default");
+	ColorMenu.AddItem("Red", "Red");
+	ColorMenu.AddItem("Blue", "Blue");
+	ColorMenu.AddItem("Green", "Green");
+	ColorMenu.AddItem("Yellow", "Yellow");
+	ColorMenu.AddItem("Pink", "Pink");
+	ColorMenu.AddItem("Black", "Black");
+	
+	ColorMenu.ExitBackButton = true;
+	
+	return ColorMenu;
+}
+
+Menu CreateAlphaMenu()
+{
+	Menu AlphaMenu = new Menu(Handler_Alpha);
+	
+	AlphaMenu.SetTitle("Trasparency");
+	
+	AlphaMenu.AddItem("255", "Full Visible");
+	AlphaMenu.AddItem("191", "75% Visible");
+	AlphaMenu.AddItem("127", "Half Visible");
+	AlphaMenu.AddItem("63", "25% Visible");
+	AlphaMenu.AddItem("0", "Invisible");
+	
+	AlphaMenu.ExitBackButton = true;
+	
+	return AlphaMenu;
+}
+
+Menu CreateLifeMenu()
+{
+	Menu LifeMenu = new Menu(Handler_Life);
+	
+	LifeMenu.SetTitle("LifePoints");
+	
+	LifeMenu.AddItem("0", "Unbreakable");
+	LifeMenu.AddItem("50", "50HP");
+	LifeMenu.AddItem("100", "100HP");
+	LifeMenu.AddItem("200", "200HP");
+	
+	LifeMenu.ExitBackButton = true;
+	
+	return LifeMenu;
+}
+
+Menu CreateSolidMenu()
+{
+	Menu SolidMenu = new Menu(Handler_Solid);
+	
+	SolidMenu.SetTitle("Consistency");
+	
+	SolidMenu.AddItem("6", "Solid");
+	SolidMenu.AddItem("1", "Un-Solid");
+	
+	SolidMenu.ExitBackButton = true;
+	
+	return SolidMenu;
+}
+
+Menu CreateSizeMenu()
+{
+	Menu SizeMenu = new Menu(Handler_Size);
+	
+	SizeMenu.SetTitle("Size");
+	
+	SizeMenu.AddItem("1.0", "Default");
+	SizeMenu.AddItem("2.0", "Double");
+	SizeMenu.AddItem("3.0", "Triple");
+	SizeMenu.AddItem("4.0", "Quadruple");
+	SizeMenu.AddItem("0.5", "Half");
+	
+	SizeMenu.ExitBackButton = true;
+	
+	return SizeMenu;
+}
+
+public int Handler_Main(Menu menu, MenuAction action, int param1, int param2)
+{
+	if (action == MenuAction_Select)
+	{
+		char info[64];
+		menu.GetItem(param2, info, sizeof(info));
+		
+		if (StrEqual(info, "Place"))
+		{
+			CreatePropMenu().DisplayAt(param1, param2, MENU_TIME_FOREVER);
+		}
+		else if(StrEqual(info, "Remove"))
+		{
+			if (RemoveProp(param1))
+			{
+				PrintToChat(param1, "[HexProps] Prop successfully removed!");
+			}
+			else
+			{
+				PrintToChat(param1, "[HexProps] Prop couldn't be found!");
+			}
+			
+			CreateMainMenu(param1).Display(param1, MENU_TIME_FOREVER);
+		}
+		else if(StrEqual(info, "Edit"))
+		{
+			CreateEditMenu().Display(param1, MENU_TIME_FOREVER);
+		}
+		else if (StrEqual(info, "Move"))
+		{
+			bMoveProp[param1] = !bMoveProp[param1];
+			
+			CreateMainMenu(param1).Display(param1, MENU_TIME_FOREVER);
+		}
+		else if (StrEqual(info, "Physic"))
+		{
+			bPhysicProp[param1] = !bPhysicProp[param1];
+			
+			CreateMainMenu(param1).Display(param1, MENU_TIME_FOREVER);
+		}
+		else if (StrEqual(info, "Safe"))
+		{
+			bool bSaved = SaveProps();
+			if (bSaved)
+			{
+				PrintToChat(param1, "[HexProps] Props successfully saved!");
+			}
+			else
+			{
+				PrintToChat(param1, "[HexProps] No props were saved!");
+			}
+			CreateMainMenu(param1).Display(param1, MENU_TIME_FOREVER);
+		}
+		else if (StrEqual(info, "Reset"))
+		{
+			ResetProps();
+			PrintToChat(param1, "[HexProps] Props successfully resetted!");
+			CreateMainMenu(param1).Display(param1, MENU_TIME_FOREVER);
+		}
+		else
+		{
+			CreateDeleteAllMenu().Display(param1, 20);
+		}
+	}
+	else if (action == MenuAction_End)
+	{
+		delete menu;
+	}
+	return 1;
+}
+
+public int Handler_Props(Menu menu, MenuAction action, int param1, int param2)
+{
+	if (action == MenuAction_Select)
+	{
+		char info[PLATFORM_MAX_PATH];
+		menu.GetItem(param2, info, sizeof(info));
+		
+		if (!IsModelPrecached(info))
+			PrecacheModel(info);
+		
+		char sClass[64] = "prop_dynamic_override";
+		if (bPhysicProp[param1])
+		{
+			strcopy(sClass, sizeof(sClass), "prop_physics_multiplayer");
+		}
+
+		SpawnTempProp(param1, sClass, info);
+		CreatePropMenu().DisplayAt(param1, GetMenuSelectionPosition(), MENU_TIME_FOREVER);
+	}
+	else if (action == MenuAction_Cancel)
+	{
+		CreateMainMenu(param1).Display(param1, MENU_TIME_FOREVER);
+	}
+	else if (action == MenuAction_End)
+	{
+		delete menu;
+	}
+}
+
+public int Handler_Edit(Menu menu, MenuAction action, int param1, int param2)
+{
+	if (action == MenuAction_Select)
+	{
+		char info[64];
+		menu.GetItem(param2, info, sizeof(info));
+		
+		if (StrEqual(info, "Alpha"))
+		{
+			CreateAlphaMenu().Display(param1, MENU_TIME_FOREVER);
+		}
+		else if (StrEqual(info, "Color"))
+		{
+			CreateColorMenu().Display(param1, MENU_TIME_FOREVER);
+		}
+		else if (StrEqual(info, "Life"))
+		{
+			CreateLifeMenu().Display(param1, MENU_TIME_FOREVER);
+		}
+		else if (StrEqual(info, "Solid"))
+		{
+			CreateSolidMenu().Display(param1, MENU_TIME_FOREVER);
+		}
+		else if (StrEqual(info, "Size"))
+		{
+			CreateSizeMenu().Display(param1, MENU_TIME_FOREVER);
+		}
+		else
+		{
+			MakePhysic(param1);
+			CreateEditMenu().Display(param1, MENU_TIME_FOREVER);
+		}
+		
+	}
+	else if (action == MenuAction_Cancel)
+	{
+		CreateMainMenu(param1).Display(param1, MENU_TIME_FOREVER);
+	}
+	else if (action == MenuAction_End)
+	{
+		delete menu;
+	}
+}
+
+void MakePhysic(int client)
+{
+	int iEnt = GetAimEnt(client);
+	
+	if (iEnt == -1)
+	{
+		PrintToChat(client, "[HexProps] Prop couldn't be found");
+		return;
+	}
+
+	int iIndex = FindInArray(iEnt);
+
+	if (!iIndex || iIndex == -1)
+	{
+		PrintToChat(client, "[HexProps] Prop couldn't be found");
+		return;
+	}
+
+	char sModel[PLATFORM_MAX_PATH];
+	float vPos[3];
+	GetEntityModel(iEnt, sModel);
+	GetEntityOrigin(iEnt, vPos);
+
+	AcceptEntityInput(iEnt, "kill");
+	PropsArray.Erase(iIndex);
+
+	iEnt = -1;
+	iEnt = CreateEntityByName("prop_physics_multiplayer");
+
+	if (iEnt == -1)
+	{
+		PrintToChat(client, "[HexProps] Error occured while creating the physic prop!");
+		return;
+	}
+
+	DispatchKeyValue(iEnt, "Physics Mode", "1");
+	SetEntityModel(iEnt, sModel);
+	DispatchSpawn(iEnt);
+	
+	TeleportEntity(iEnt, vPos, NULL_VECTOR, NULL_VECTOR);
+
+	PropsArray.Push(EntIndexToEntRef(iEnt));
+
+}
+public int Handler_DeleteAll(Menu menu, MenuAction action, int param1, int param2)
+{
+	if (action == MenuAction_Select)
+	{
+		char info[64];
+		menu.GetItem(param2, info, sizeof(info));
+		bool bDelete = view_as<bool>(StringToInt(info));
+		
+		if (bDelete)
+		{
+			if (!PropKv.GotoFirstSubKey())
+				SetFailState("- HexProps - Failed to read: %s", sPropPath);
+				
+			do 
+			{
+				PropKv.DeleteThis();
+			}
+			while (PropKv.GotoNextKey());
+			PropKv.Rewind();
+			
+			for (int i = 0; i < PropsArray.Length; i++)
+			{
+				int iEnt = EntRefToEntIndex(PropsArray.Get(i));
+				if (iEnt == INVALID_ENT_REFERENCE)
+					continue;
+					
+				AcceptEntityInput(iEnt, "kill");
+			}
+			ReplyToCommand(param1, "[SM] Props deleted!");
+		}
+		CreateMainMenu(param1).Display(param1, MENU_TIME_FOREVER);
+	}
+	else if (action == MenuAction_Cancel)
+	{
+		CreateEditMenu().Display(param1, MENU_TIME_FOREVER);
+	}
+	else if (action == MenuAction_End)
+	{
+		delete menu;
+	}
+}
+
+public int Handler_Color(Menu menu, MenuAction action, int param1, int param2)
+{
+	if (action == MenuAction_Select)
+	{
+		int r, g, b;
+		char info[64];
+		menu.GetItem(param2, info, sizeof(info));
+		
+		if (StrEqual(info, "Red"))
+		{
+			r = 255;
+		}
+		else if (StrEqual(info, "Green"))
+		{
+			g = 255;
+		}
+		else if (StrEqual(info, "Blue"))
+		{
+			b = 255;
+		}
+		else if (StrEqual(info, "Pink"))
+		{
+			r = 255;
+			g = 102;
+			b = 178;
+		}
+		else if (StrEqual(info, "Yellow"))
+		{
+			r = 255;
+			g = 255;
+		}
+		else if (StrEqual(info, "Default"))
+		{
+			r = 255;
+			g = 255;
+			b = 255;
+		}
+		else{}
+		
+		int iAimEnt = GetAimEnt(param1);
+		
+		if (FindInArray(iAimEnt) != -1)
+		{
+			int r2, g2, b2, a;
+			
+			GetEntityRenderColor(iAimEnt, r2, g2, b2, a);
+			SetEntityRenderColor(iAimEnt, r, g, b, a);
+		}
+		else
+		{
+			PrintToChat(param1, "[HexProps] Prop couldn't be found");
+		}
+		
+		CreateColorMenu().Display(param1, MENU_TIME_FOREVER);
+		
+	}
+	else if (action == MenuAction_Cancel)
+	{
+		CreateEditMenu().Display(param1, MENU_TIME_FOREVER);
+	}
+	else if (action == MenuAction_End)
+	{
+		delete menu;
+	}
+}
+
+public int Handler_Alpha(Menu menu, MenuAction action, int param1, int param2)
+{
+	if (action == MenuAction_Select)
+	{
+		char info[64];
+		menu.GetItem(param2, info, sizeof(info));
+		
+		int iAimEnt = GetAimEnt(param1);
+		
+		if (FindInArray(iAimEnt) != -1)
+		{
+			int r, g, b, a;
+			SetEntityRenderMode(iAimEnt, RENDER_TRANSCOLOR);
+			GetEntityRenderColor(iAimEnt, r, g, b, a);
+			SetEntityRenderColor(iAimEnt, r, g, b, StringToInt(info));
+		}
+		else
+		{
+			PrintToChat(param1, "[HexProps] Prop couldn't be found");
+		}
+		
+		CreateAlphaMenu().Display(param1, MENU_TIME_FOREVER);
+		
+	}
+	else if (action == MenuAction_Cancel)
+	{
+		CreateEditMenu().Display(param1, MENU_TIME_FOREVER);
+	}
+	else if (action == MenuAction_End)
+	{
+		delete menu;
+	}
+}
+
+public int Handler_Life(Menu menu, MenuAction action, int param1, int param2)
+{
+	if (action == MenuAction_Select)
+	{
+		char info[64];
+		menu.GetItem(param2, info, sizeof(info));
+		
+		int r, b, g, a;
+		int iLife;
+		
+		int iAimEnt = GetAimEnt(param1);
+		
+		if (FindInArray(iAimEnt) != -1)
+		{
+			GetEntityRenderColor(iAimEnt, r, g, b, a);
+			iLife = StringToInt(info);
+			
+			if (iLife)
+			{
+				iEntHP[iAimEnt] = iLife;
+				SetEntProp(iAimEnt, Prop_Data, "m_takedamage", 2);
+				SetEntProp(iAimEnt, Prop_Data, "m_iHealth", iLife);
+			}
+		}
+		else
+		{
+			PrintToChat(param1, "[HexProps] Prop couldn't be found");
+		}
+		
+		CreateLifeMenu().Display(param1, MENU_TIME_FOREVER);
+	}
+	else if (action == MenuAction_Cancel)
+	{
+		CreateEditMenu().Display(param1, MENU_TIME_FOREVER);
+	}
+	else if (action == MenuAction_End)
+	{
+		delete menu;
+	}
+}
+
+public int Handler_Solid(Menu menu, MenuAction action, int param1, int param2)
+{
+	if (action == MenuAction_Select)
+	{
+		char info[64];
+		menu.GetItem(param2, info, sizeof(info));
+		
+		int iAimEnt = GetAimEnt(param1);
+		
+		if (FindInArray(iAimEnt) != -1)
+		{
+			SetEntProp(iAimEnt, Prop_Send, "m_nSolidType", StringToInt(info));
+		}
+		else
+		{
+			PrintToChat(param1, "[HexProps] Prop couldn't be found");
+		}
+		
+		CreateSolidMenu().Display(param1, MENU_TIME_FOREVER);
+	}
+	else if (action == MenuAction_Cancel)
+	{
+		CreateEditMenu().Display(param1, MENU_TIME_FOREVER);
+	}
+	else if (action == MenuAction_End)
+	{
+		delete menu;
+	}
+}
+
+public int Handler_Size(Menu menu, MenuAction action, int param1, int param2)
+{
+	if (action == MenuAction_Select)
+	{
+		char info[64];
+		menu.GetItem(param2, info, sizeof(info));
+		
+		int iAimEnt = GetAimEnt(param1);
+		
+		if (FindInArray(iAimEnt) != -1)
+		{
+			SetEntPropFloat(iAimEnt, Prop_Send, "m_flModelScale", StringToFloat(info));
+		}
+		else
+		{
+			PrintToChat(param1, "[HexProps] Prop couldn't be found");
+		}
+		
+		CreateSizeMenu().Display(param1, MENU_TIME_FOREVER);
+	}
+	else if (action == MenuAction_Cancel)
+	{
+		CreateEditMenu().Display(param1, MENU_TIME_FOREVER);
+	}
+	else if (action == MenuAction_End)
+	{
+		delete menu;
+	}
+}
+
+int SpawnProp(const char[] classname, const char[] model, float vPos[3], float vAng[3], int r, int g, int b, int a, bool solid, int iLife, float fSize)
+{
+	int iEnt = CreateEntityByName(classname);
+	
+	if (iEnt == -1)
+		return -1;
+	
+	if (!IsModelPrecached(model))
+		PrecacheModel(model);
+	
+	SetEntityModel(iEnt, model);
+	SetEntityRenderMode(iEnt, RENDER_TRANSCOLOR);
+	SetEntityRenderColor(iEnt, r, b, g, a);
+	
+	SetEntProp(iEnt, Prop_Send, "m_nSolidType", 6);
+	
+	if (!solid)
+		SetEntProp(iEnt, Prop_Send, "m_nSolidType", 1);
+	
+	if (iLife)
+	{
+		SetEntProp(iEnt, Prop_Data, "m_takedamage", 2);
+		iEntHP[iEnt] = iLife;
+		SetEntProp(iEnt, Prop_Data, "m_iHealth", iLife);
+	}
+	
+	SetEntPropFloat(iEnt, Prop_Send, "m_flModelScale", fSize);
+	
+	if (StrContains(classname, "physics") != -1)
+	{
+		DispatchKeyValue(iEnt, "Physics Mode", "1");
+		DispatchSpawn(iEnt);
+	}
+
+	TeleportEntity(iEnt, vPos, vAng, NULL_VECTOR);
+	return iEnt;
+}
+
+int SpawnTempProp(int client, const char[] classname, const char[] model)
+{
+	int iEnt = CreateEntityByName(classname);
+	
+	if (iEnt == -1)
+	{
+		CreatePropMenu().Display(client, MENU_TIME_FOREVER);
+		return -1;
+	}
+	
+	SetEntityModel(iEnt, model);
+	SetEntProp(iEnt, Prop_Send, "m_nSolidType", 6);
+	SetEntityRenderMode(iEnt, RENDER_TRANSCOLOR);
+	SetEntityRenderColor(iEnt);
+	
+	float vClientPos[3];
+	float vClientAng[3];
+	float vEndPoint[3];
+	float vEndAng[3];
+	
+	GetClientEyePosition(client, vClientPos);
+	GetClientEyeAngles(client, vClientAng);
+	
+	TR_TraceRayFilter(vClientPos, vClientAng, MASK_SOLID, RayType_Infinite, TraceRayDontHitPlayer, client);
+	
+	if (TR_DidHit())
+	{
+		TR_GetEndPosition(vEndPoint);
+		TR_GetPlaneNormal(INVALID_HANDLE, vEndAng);
+		GetVectorAngles(vEndAng, vEndAng);
+		vEndAng[0] += 90.0;
+	}
+	else
+	{
+		CreatePropMenu().Display(client, MENU_TIME_FOREVER);
+		return -1;
+	}
+	
+	if (StrContains(classname, "physics") != -1)
+	{
+		DispatchKeyValue(iEnt, "Physics Mode", "1");
+		DispatchSpawn(iEnt);
+	}
+
+	TeleportEntity(iEnt, vEndPoint, vEndAng, NULL_VECTOR);
+	
+	int iIndex = PropsArray.Push(EntIndexToEntRef(iEnt));
+	
+	SetEntityName(iEnt, "Prop_%i", iIndex);
+	
+	return iEnt;
+}
+
+bool RemoveProp(int client)
+{
+	int iAimEnt = GetAimEnt(client);
+	int iIndex;
+	
+	if (iAimEnt == -1)
+		return false;
+	
+	iIndex = FindInArray(iAimEnt) != -1;
+
+	if (!iIndex)
+		return false;
+	
+	AcceptEntityInput(iAimEnt, "kill");
+	PropsArray.Erase(iIndex);
+	
+	return true;
+}
+
+bool SaveProps()
+{
+	ClearPropKv();
+	
+	char sKey[8];
+	int iCount;
+	bool bReturn = false;
+	
+	for (int i = 0; i < PropsArray.Length; i++)
+	{
+		PropKv.Rewind();
+		IntToString(++iCount, sKey, sizeof(sKey));
+		
+		if (PropKv.JumpToKey(sKey, true))
+		{
+			int iEnt = EntRefToEntIndex(PropsArray.Get(i));
+			
+			if (iEnt == INVALID_ENT_REFERENCE)
+				continue;
+			
+			char sClass[64];
+			char sModel[PLATFORM_MAX_PATH];
+			char sColor[16];
+			float vPos[3];
+			float vAng[3];
+			int r, b, g, a;
+			
+			GetEntityClassname(iEnt, sClass, sizeof(sClass));
+			GetEntityModel(iEnt, sModel);
+			GetEntityOrigin(iEnt, vPos);
+			GetEntityAngles(iEnt, vAng);
+			GetEntityRenderColor(iEnt, r, g, b, a);
+			bool solid = (GetEntProp(iEnt, Prop_Send, "m_nSolidType") == 6);
+			int iLife = iEntHP[iEnt];
+			float fSize = GetEntPropFloat(iEnt, Prop_Send, "m_flModelScale");
+			
+			ColorToString(sColor, sizeof(sColor), r, b, g, a);
+			
+			PropKv.SetString("classname", sClass);
+			PropKv.SetString("model", sModel);
+			PropKv.SetVector("position", vPos);
+			PropKv.SetVector("angles", vAng);
+			PropKv.SetString("color", sColor);
+			PropKv.SetNum("solid", solid);
+			PropKv.SetNum("life", iLife);
+			PropKv.SetFloat("size", fSize);
+			bReturn = true;
+		}
+	}
+	PropKv.Rewind();
+	PropKv.ExportToFile(sPropPath);
+	return bReturn;
+}
+
+void LoadProps()
+{
+	if (!PropKv.GotoFirstSubKey())
+		return;
+	
+	PropsArray.Clear();	
+	do
+	{
+		char sClass[64];
+		char sModel[PLATFORM_MAX_PATH];
+		float vPos[3];
+		float vAng[3];
+		char sColors[16];
+		int r, g, b, a;
+		
+		PropKv.GetString("classname", sClass, sizeof(sClass), "prop_dynamic_override");
+		PropKv.GetString("model", sModel, sizeof(sModel));
+		PropKv.GetVector("position", vPos);
+		PropKv.GetVector("angles", vAng);
+		PropKv.GetString("color", sColors, sizeof(sColors));
+		
+		bool solid = view_as<bool>(PropKv.GetNum("solid"));
+		int iLife = PropKv.GetNum("life");
+		float fSize = PropKv.GetFloat("size");
+		
+		StringToColor(sColors, r, g, b, a);
+		int iEnt = SpawnProp(sClass, sModel, vPos, vAng, r, g, b, a, solid, iLife, fSize);
+		
+		if (iEnt != -1)
+		{
+			int iIndex = PropsArray.Push(EntIndexToEntRef(iEnt));
+			SetEntityName(iEnt, "Prop_%i", iIndex);
+		}
+	}
+	while (PropKv.GotoNextKey());
+	
+	PropKv.Rewind();
+}
+
+void ResetProps()
+{
+	for (int i = 0; i < PropsArray.Length; i++)
+	{
+		int iEnt = EntRefToEntIndex(PropsArray.Get(i));
+		
+		if (iEnt != INVALID_ENT_REFERENCE)
+			AcceptEntityInput(iEnt, "kill");
+	}
+	PropsArray.Clear();
+	
+	LoadProps();
+}
+
+public bool TraceRayDontHitPlayer(int entity, int mask, any data)
+{
+	if(entity != data && entity > MaxClients)
+	{
+		return true;
+	}
+	return false;
+}
+
+void ColorToString(char[] sColor, int maxlength, int r, int g, int b, int a)
+{
+	Format(sColor, maxlength, "%i %i %i %i", r, g, b, a);
+}
+
+void StringToColor(char[] sColors, int &r, int &g, int &b, int &a)
+{
+	char sColorsL[4][64];
+	ExplodeString(sColors, " ", sColorsL, sizeof(sColorsL), sizeof(sColorsL[]));
+	
+	r = StringToInt(sColorsL[0]);
+	g = StringToInt(sColorsL[1]);
+	b = StringToInt(sColorsL[2]);
+	a = StringToInt(sColorsL[3]);
+}
+
+void ClearPropKv()
+{
+	if (!PropKv.GotoFirstSubKey())
+		return;
+	
+	do
+	{
+		PropKv.DeleteThis();
+	}
+	while (PropKv.GotoNextKey());
+	
+	PropKv.Rewind();
+}
+
+int FindInArray(int iEnt)
+{
+	if (iEnt == -1)
+		return 0;
+
+	for (int i = 0; i < PropsArray.Length; i++)
+	{
+		int iSavedEnt = EntRefToEntIndex(PropsArray.Get(i));
+		
+		if (iSavedEnt == INVALID_ENT_REFERENCE)
+			return 0;
+
+		if (iSavedEnt == iEnt)
+		{
+			return i;
+		}
+	}
+	return 0;
+}
+
+int GetAimEnt(int client)
+{
+	float vClientPos[3];
+	float vClientAng[3];
+
+	GetClientEyePosition(client, vClientPos);
+	GetClientEyeAngles(client, vClientAng);
+
+	TR_TraceRayFilter(vClientPos, vClientAng, MASK_ALL, RayType_Infinite, TraceRayDontHitPlayer, client);
+
+	int iEnt = TR_GetEntityIndex();
+
+	if (iEnt == 0)
+		iEnt = -1;
+
+	return iEnt;
+}
+
+public int Native_IsEntProp(Handle plugin, int numParams)
+{
+	int iEnt = GetNativeCell(1);
+
+	return (FindInArray(iEnt) == -1);
+}

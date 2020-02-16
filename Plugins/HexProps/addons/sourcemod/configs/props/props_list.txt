@@ -1,0 +1,167 @@
+"Props"
+{
+	"Kicsi kerítés"
+	{
+		"model"		"models/props/de_dust/hr_dust/dust_fences/dust_chainlink_fence_001_128_links.mdl"
+	}
+
+	"Nagy kerítés (szürke)"
+	{
+		"model"		"models/props_c17/fence03a.mdl"
+	}
+
+	"Nagy kerítés (sárga)"
+	{
+		"model"		"models/props_wasteland/interior_fence002d.mdl"
+	}
+
+	"Nagy kerítés felső akadállyal"
+	{
+		"model"		"models/props_wasteland/exterior_fence002e.mdl"
+	}
+
+	"Doboz"
+	{
+		"model"		"models/props/cs_assault/dryer_box.mdl"
+	}
+
+	"Lámpa pózna"
+	{
+		"model"		"models/props_c17/lamppost03a_off.mdl"
+	}
+
+	"Asztal"
+	{
+		"model"		"models/props/cs_militia/table_kitchen.mdl"
+	}
+
+	"Szikla"
+	{
+		"model"		"models/props/de_inferno/de_inferno_boulder_01.mdl"
+	}
+
+	"Irattartó A"
+	{
+		"model"		"models/props/cs_office/file_cabinet1.mdl"
+	}
+
+	"Irattartó B"
+	{
+		"model"		"models/props/cs_office/file_cabinet2.mdl"
+	}
+
+	"Irattartó C"
+	{
+		"model"		"models/props/cs_office/file_cabinet3.mdl"
+	}
+
+	"Hordó"
+	{
+		"model"		"models/props_c17/oildrum001.mdl"
+	}
+
+	"Szökőkút"
+	{
+		"model"		"models/props/de_inferno/fountain.mdl"
+	}
+
+	"Processzor"
+	{
+		"model"		"models/props/de_train/processor_nobase.mdl"
+	}
+
+	"Kanapé 1"
+	{
+		"model"		"models/props/cs_militia/couch.mdl"
+	}
+
+	"Kanapé 2"
+	{
+		"model"		"models/props/cs_office/sofa.mdl"
+	}
+
+	"Csövek"
+	{
+		"model"		"models/props_pipes/pipecluster32d_001a.mdl"
+	}
+
+	"Kőtömb"
+	{
+		"model"		"models/props/de_dust/stoneblock01a.mdl"
+	}
+
+	"Monitor"
+	{
+		"model"		"models/props_lab/monitor02.mdl"
+	}
+
+	"Pad"
+	{
+		"model"		"models/props/cs_militia/wood_bench.mdl"
+	}
+
+	"Pózna"
+	{
+		"model"		"models/props/cs_assault/pylon.mdl"
+    }
+
+	"Cső"
+	{
+		"model"		"models/props_pipes/concrete_pipe001c.mdl"
+	}
+
+	"Vészvilágítás"
+	{
+		"model"		"models/props/de_nuke/emergency_lighta.mdl"
+	}
+
+	"Könyvespolc"
+	{
+		"model"		"models/props/cs_office/Bookshelf1.mdl"
+	}
+
+	"Élelmiszeres dobozok"
+	{
+		"model"		"models/props/cs_militia/food_stack.mdl"
+	}
+
+	"Talicska"
+	{
+		"model"		"models/props_junk/Wheebarrow01a.mdl"
+	}
+
+	"Üveg"
+	{
+		"model"		"models/props_junk/garbage_glassbottle001a.mdl"
+	}
+
+	"Bója"
+	{
+		"model"		"models/props_junk/TrafficCone001a.mdl"
+	}
+
+	"Betontömb"
+	{
+		"model"		"models/props_junk/CinderBlock01a.mdl"
+	}
+
+	"Tábla"
+	{
+		"model"		"models/props_c17/signpole001.mdl"
+	}
+
+	"Roncsautó"
+	{
+		"model"		"models/props_vehicles/van001a.mdl"
+	}
+
+	"WC"
+	{
+		"model"		"models/props/cs_militia/toilet.mdl"
+	}
+
+	"Görögdinnye"
+	{
+		"model"		"models/props_junk/watermelon01.mdl"
+	}
+}
