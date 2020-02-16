@@ -29,7 +29,7 @@
 	"Extend Map"
 	{
 		"en"				"Extend Current Map"
-		"hu"				"Pálya hosszabbítás"
+		"hu"				"Pályahosszabbítás"
 	}
 
 	"Dont Change"

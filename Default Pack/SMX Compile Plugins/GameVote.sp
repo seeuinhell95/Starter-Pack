@@ -616,7 +616,7 @@ public void CheckCommand(int client, const char[] args, const char[] pref)
 
 	if(CONVAR_AUTODISABLE.IntValue > 0) {
 		if(adminsonserver()) {
-			PrintToChat(client, "[\x04GameVoting\x01] \x02> \x06Jelenleg nem lehet szavazást indítani mivel van fent legalább egy adminisztrátor.");
+			PrintToChat(client, "[\x04GameVoting\x01] \x02> \x06Jelenleg nem lehet szavazást indítani mivel van fent legalább egy \x02adminisztrátor\x06.");
 			return;
 		}
 	}
