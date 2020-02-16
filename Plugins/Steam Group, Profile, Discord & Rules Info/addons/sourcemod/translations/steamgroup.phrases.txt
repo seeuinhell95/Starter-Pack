@@ -1,0 +1,32 @@
+"Phrases"
+{
+	"CMD_SteamGroup"
+	{
+		"en"	"For the server's Steam page, open the scoreboard and click to the \"SERVER WEBSITE\" button."
+		"hu"	"A szerver Steam csoportjának megnyitásához kattints a ponttáblázaton található \"SZERVERHONLAP\" gombra."
+	}
+
+	"CMD_SteamLink"
+	{
+		"en"	"The Steam group on the server: steamcommunity.com/groups/GroupName"
+		"hu"	"A szerver Steam csoportja: steamcommunity.com/groups/GroupName"
+	}
+
+	"CMD_Discord"
+	{
+		"en"	"The Discord group on the server: discord.gg/ABcDeF"
+		"hu"	"A szerver Discord csoportja: discord.gg/ABcDeF"
+	}
+
+	"CMD_Rules"
+	{
+		"en"	"The server rules is in the Steam group! Steam group: !steam"
+		"hu"	"A szerver szabályzata a Steam csoportban található! Steam csoport: !steam"
+	}
+
+	"CMD_SteamProfile"
+	{
+		"en"	"Steam profile of the server owner: steamcommunity.com/id/ownerexp"
+		"hu"	"A szerver tulajdonos Steam profilja: steamcommunity.com/id/ownerexp"
+	}
+}

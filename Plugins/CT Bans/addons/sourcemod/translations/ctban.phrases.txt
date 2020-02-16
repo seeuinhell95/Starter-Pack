@@ -1,0 +1,319 @@
+"Phrases"
+{
+	"Feature Not Availalbe"
+	{
+		"en"		"This feature is not available on your version. Upgrade your version of SourceMod ClientPrefs extension."
+		"hu"		"Ez a funkció nem elérhető ebben a verzióban. Töltsd le a legújabb verzióját a SourceMod ClientPrefs kiterjesztésből."
+	}
+
+	"Banned AuthId"
+	{
+		"#format"	"{1:s}"
+		"en"		"Added Steam Id {1} to the CT Bans database."
+		"hu"		"Steam ID {1} hozzáadva a CT Kitiltás adatbázishoz."
+	}
+
+	"Unbanned AuthId"
+	{
+		"#format"	"{1:s}"
+		"en"		"Removed Steam Id {1} from the CT Bans database."
+		"hu"		"Steam ID {1} törölve a CT Kitiltás adatbázisból."
+	}
+
+	"No Targets"
+	{
+		"en"		"No targets are available to ban."
+		"hu"		"Nem található kitiltható célpont."
+	}
+
+	"Ready to CT Ban"
+	{
+		"#format"	"{1:s}"
+		"en"		"Ready to CT Ban {1}."
+		"hu"		"{1} CT csapatból való kitiltása."
+	}
+
+	"CT Ban Removed"
+	{
+		"#format"	"{1:N}"
+		"en"		"Removed CT ban on {1}."
+		"hu"		"CT Kitiltás eltávolítva {1} játékosról."
+	}
+
+	"CT Ban Auto Removed"
+	{
+		"#format"	"{1:N}"
+		"en"		"Auto-removed an expired CT ban for {1}."
+		"hu"		"CT Kitiltás autómatikusan eltávolítva {1} játékosról."
+	}
+
+	"Already CT Banned"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} is already CT Banned."
+		"hu"		"{1} már ki van tiltva a CT csapatból."
+	}
+
+	"Enforcing CT Ban"
+	{
+		"en"		"CT Bans is enforcing a ban on your Steam ID."
+		"hu"		"Jelenleg nem tudsz ebbe a csapatba állni, mivel CT Kitiltásod van."
+	}
+
+	"Last CT Banned On"
+	{
+		"#format"	"{1:s},{2:s}"
+		"en"		"You were last CT banned on {1}. {2}"
+		"hu"		"Legutolsó CT Kitiltásod dátuma: {1}. {2}"
+	}
+
+	"Cookie Status Unavailable"
+	{
+		"en"		"Unable to get cookie status."
+		"hu"		"Sikertelen süti státusz lekérés."
+	}
+
+	"Rage Ban"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} rage banned from CT indefinitely."
+		"hu"		"{1} véglegesen kitiltva CT csapatból a kilépése után."
+	}
+
+	"Permanent CT Ban"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} banned from CT indefinitely."
+		"hu"		"{1} véglegesen kitiltva a CT csapatból."
+	}
+
+	"Temporary CT Ban"
+	{
+		"#format"	"{1:N},{2:d}"
+		"en"		"{1} banned from CT for {2} minutes spent alive."
+		"hu"		"{1} kitilva a CT csapatból {2} élve eltöltött percre."
+	}
+
+	"Permanent CT Ban and Reason"
+	{
+		"#format"	"{1:N},{2:s}"
+		"en"		"{1} banned from CT indefinitely. ({2})"
+		"hu"		"{1} véglegesen kitiltva a CT csapatból. ({2})"
+	}
+
+	"Temporary CT Ban and Reason"
+	{
+		"#format"	"{1:N},{2:d},{3:s}"
+		"en"		"{1} banned from CT for {2} minutes spent alive. ({3})"
+		"hu"		"{1} kitilva a CT csapatból {2} élve eltöltött percre. ({3})"
+	}
+
+	"Not CT Banned"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} is NOT banned from CT."
+		"hu"		"{1} nincs kitilva a CT csapatból."
+	}
+
+	"Rage Ban Menu Title"
+	{
+		"en"		"CT Ban the Following Rage Quitter:"
+		"hu"		"CT Kitiltás erre a kilépett játékosra:"
+	}
+
+	"Feature Not Available On Console"
+	{
+		"en"		"Feature not available on the server console."
+		"hu"		"A funkció nem elérhető a szerver konzolban."
+	}
+
+	"CT Ban Menu Title"
+	{
+		"en"		"CT Ban Player:"
+		"hu"		"Kitiltandó Játékos:"
+	}
+
+	"CT Ban Length Menu"
+	{
+		"#format"	"{1:N}"
+		"en"		"CT Banning {1} for Length:"
+		"hu"		"{1} játékos CT kitiltásának ideje:"
+	}
+
+	"CT Ban Reason Menu"
+	{
+		"#format"	"{1:N}"
+		"en"		"CTBanning {1} for Reason:"
+		"hu"		"{1} játékos CT kitiltásának indoka:"
+	}
+
+	"CT Ban Reason 1"
+	{
+		"en"		"Freekill Massacre"
+		"hu"		"Indokolatlan Mészárlás"
+	}
+
+	"CT Ban Reason 2"
+	{
+		"en"		"Cheating/Exploiting"
+		"hu"		"Csalás/Kiaknázás"
+	}
+
+	"CT Ban Reason 3"
+	{
+		"en"		"Mic Spamming"
+		"hu"		"Mikrofon Spam"
+	}
+
+	"CT Ban Reason 4"
+	{
+		"en"		"Poor Quality Mic"
+		"hu"		"Rossz minőségü mikrofon"
+	}
+
+	"CT Ban Reason 5"
+	{
+		"en"		"Freekilling"
+		"hu"		"Szabad ölés"
+	}
+
+	"CT Ban Reason 6"
+	{
+		"en"		"Gun Planting"
+		"hu"		"Fegyver dobálás"
+	}
+
+	"CT Ban Reason 7"
+	{
+		"en"		"Breaking Rules"
+		"hu"		"Szabályszegés"
+	}
+
+	"IsBanned Permanent"
+	{
+		"#format"	"{1:N},{2:s},{3:s},{4:s}"
+		"en"		"{1} banned from CT indefinitely by admin {2} on {3}. ({4})"
+		"hu"		"{1} végleg kitiltva a CT csapatból {2} adminisztrátor által {3} időpontban. ({4})"
+	}
+
+	"IsBanned Temporary"
+	{
+		"#format"	"{1:N},{2:d},{3:s},{4:s},{5:s}"
+		"en"		"{1} banned from CT for {2} minutes spent alive by admin {3} on {4}. ({5})"
+		"hu"		"{1} kitiltva a CT csapatból {2} életben töltött percre {3} adminisztrátor által {4} időpontban. ({5})"
+	}
+
+	"IsBanned Permanent String Name"
+	{
+		"#format"	"{1:s},{2:s},{3:s},{4:s}"
+		"en"		"{1} banned from CT indefinitely by admin {2} on {3}. ({4})"
+		"hu"		"{1} végleg kitiltva a CT csapatból {2} adminisztrátor által {3} időpontban. ({4})"
+	}
+
+	"IsBanned Temporary String Name"
+	{
+		"#format"	"{1:s},{2:d},{3:s},{4:s},{5:s}"
+		"en"		"{1} banned from CT for {2} minutes spent alive by admin {3} on {4}. ({5})"
+		"hu"		"{1} kitiltva a CT csapatból {2} életben töltött percre {3} adminisztrátor által {4} időpontban. ({5})"
+	}
+
+	"Reason Required"
+	{
+		"en"		"Provide a reason for the CT Ban"
+		"hu"		"Add meg a CT Kitiltás indokát"
+	}
+
+	"Reset Cookies"
+	{
+		"en"		"Issued RESET command for ALL CT Bans!"
+		"hu"        "Kiadott VISSZAÁLLÍTÁS minden CT Kitiltásra!"
+	}
+
+	"Command Usage"
+	{
+		"#format"	"{1:s}"
+		"en"		"Usage: {1}"
+		"hu"        "Használat: {1}"
+	}
+
+	"Reset Cookie Confirmation"
+	{
+		"en"		"WARNING! This command will wipe away ALL CTBan information! Confirm destruction by appending 'force' as in 'sm_reset_ctban_cookies force'."
+		"hu"        "FIGYELEM! Ez a parancs törölni fog minden információt a CT Kitiltásokról! Erősítsd meg a törlést azzal, hogy mellékeled a 'force' szót az 'sm_reset_ctban_cookies' változó után. (sm_reset_ctban_cookies force)"
+	}
+
+	"Force CT"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} was forced to CT team."
+		"hu"		"{1} átkényszerítve a CT csapatba."
+	}
+
+	"Unforce CT"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} is no longer allowed on CT."
+		"hu"		"{1} eltávolítva a CT csapatból."
+	}
+
+	"Remove CT Ban Menu Title"
+	{
+		"en"		"Remove CT Ban on Player:"
+		"hu"		"CT Kitiltás levétele róla:"
+	}
+
+	"CTBanList Menu Title"
+	{
+		"en"		"List of CT Banned Players:"
+		"hu"		"CT Tiltott játékosok listája:"
+	}
+
+	"Force CT Menu Title"
+	{
+		"en"		"Override CTBan and Swap Player to CT:"
+		"hu"		"CT Tiltás felülírása és játékos áthelyezése:"
+	}
+
+	"UnForce CT Menu Title"
+	{
+		"en"		"Remove CTBan Override on Player:"
+		"hu"		"CT Tiltás fülirásának eltávolítása róla:"
+	}
+
+	"CT Ban Admin Menu"
+	{
+		"en"		"CT Ban"
+		"hu"		"CT Kitiltások"
+	}
+
+	"Force CT Admin Menu"
+	{
+		"en"		"Force CT"
+		"hu"		"CT-be kényszerít"
+	}
+
+	"UnForce CT Admin Menu"
+	{
+		"en"		"UnForce CT"
+		"hu"		"Kényszerítés feloldása"
+	}
+
+	"Remove CT Ban Admin Menu"
+	{
+		"en"		"Remove CT Ban"
+		"hu"		"CT Kitiltás eltávolítása"
+	}
+
+	"Rage Ban Admin Menu"
+	{
+		"en"		"Rage Ban"
+		"hu"		"Lelépett játékos CT Kitiltása"
+	}
+
+	"CTBanned Player On CT Team"
+	{
+		"#format"	"{1:N}"
+		"en"		"{1} was put on CT but is CT Banned. Use !forcect to temporarily override a CT Ban."
+		"hu"		"{1} áthelyezve CT csapatba, de ki van tiltva onnan. Használd a !forcect parancsot, hogy átmenetileg felülírd a kitiltást."
+	}
+}

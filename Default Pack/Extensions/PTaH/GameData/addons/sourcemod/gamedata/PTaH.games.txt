@@ -19,8 +19,6 @@
 		}
 		"Signatures"
 		{
-			//CCStrike15ItemDefinition__GetLoadoutSlot(CCStrike15ItemDefinition *this, int team)
-			//CEconItemDefinition::GetLoadoutSlot() - does not work, always returns 0
 			"GetLoadoutSlot"
 			{
 				"library"		"server"
@@ -86,8 +84,8 @@
 			}
 			"GetClassName"
 			{
-				"windows"		"448"
-				"linux"			"448"
+				"windows"		"444"
+				"linux"			"444"
 			}
 			"GetCustomPaintKitIndex"
 			{

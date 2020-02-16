@@ -59,7 +59,7 @@
 	{
 		"#format"		"{1:s}"
 		"en"			"Changing map to: {1}"
-		"hu"			"Pályaváltás a következőre: {1}"
+		"hu"			"Pályaváltás a következőre: {1}"
 	}
 
 	"Map was not found"
