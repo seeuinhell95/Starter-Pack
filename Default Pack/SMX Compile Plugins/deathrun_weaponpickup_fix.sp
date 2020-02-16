@@ -9,9 +9,9 @@ char mapname[128];
 
 public Plugin myinfo =
 {
-	name		=	"[CSGO] Deathrun Weapon Pick Fix",
+	name		=	"[CSGO] Deathrun Weapon Pickup Fix",
 	author		=	"Cherry | Edited: somebody.",
-	description =	"Deathrun Weapon Pick Fix",
+	description =	"Deathrun Weapon Pickup Fix",
 	version		=	"1.0",
 	url			=	"http://sourcemod.net"
 };
