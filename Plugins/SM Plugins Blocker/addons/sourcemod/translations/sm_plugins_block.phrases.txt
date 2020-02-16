@@ -1,0 +1,8 @@
+"Phrases"
+{
+	"NoChance"
+	{
+		"en"	">>> Server's plugin list: https://github.com/VaaLaaKi/Starter-Pack"
+		"hu"	">>> A szerveren lévő pluginok listája: https://github.com/VaaLaaKi/Starter-Pack"
+	}
+}
