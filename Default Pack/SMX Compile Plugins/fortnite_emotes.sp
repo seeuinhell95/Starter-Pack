@@ -3,8 +3,8 @@
 #include <sourcemod>
 #include <sdktools>
 #include <sdkhooks>
-#include <colorvariables>
-
+#include <multicolors>
+#include <autoexecconfig>
 #undef REQUIRE_PLUGIN
 #include <adminmenu>
 
@@ -18,8 +18,10 @@ TopMenu hTopMenu;
 ConVar g_cvFlagEmotesMenu;
 ConVar g_cvFlagDancesMenu;
 ConVar g_cvCooldown;
+ConVar g_cvSoundVolume;
 ConVar g_cvEmotesSounds;
 ConVar g_cvHideWeapons;
+ConVar g_cvTeleportBack;
 
 int g_iEmoteEnt[MAXPLAYERS+1];
 int g_iEmoteSoundEnt[MAXPLAYERS+1];
@@ -36,8 +38,11 @@ bool g_bEmoteCooldown[MAXPLAYERS+1];
 int g_iWeaponHandEnt[MAXPLAYERS+1];
 
 Handle g_EmoteForward;
-
+Handle g_EmoteForward_Pre;
 bool g_bHooked[MAXPLAYERS + 1];
+
+float g_fLastAngles[MAXPLAYERS+1][3];
+float g_fLastPosition[MAXPLAYERS+1][3];
 
 public Plugin myinfo =
 {
@@ -51,12 +56,18 @@ public Plugin myinfo =
 public void OnPluginStart()
 {	
 	LoadTranslations("common.phrases");
-	LoadTranslations("fortnite_emotes_extended.phrases");
+	LoadTranslations("fortnite_emotes.phrases");
 
 	RegConsoleCmd("sm_emotes", Command_Menu);
 	RegConsoleCmd("sm_emote", Command_Menu);
-	RegConsoleCmd("sm_dances", Command_Menu);	
+	RegConsoleCmd("sm_dances", Command_Menu);
 	RegConsoleCmd("sm_dance", Command_Menu);
+	RegConsoleCmd("sm_anims", Command_Menu);
+	RegConsoleCmd("sm_anim", Command_Menu);
+	RegConsoleCmd("sm_animations", Command_Menu);
+	RegConsoleCmd("sm_animation", Command_Menu);
+	RegConsoleCmd("sm_fortnites", Command_Menu);
+	RegConsoleCmd("sm_fortnite", Command_Menu);
 
 	RegAdminCmd("sm_setemotes", Command_Admin_Emotes, ADMFLAG_GENERIC, "[SM] Usage: sm_setemotes <#userid|name> [Emote ID]");
 	RegAdminCmd("sm_setemote", Command_Admin_Emotes, ADMFLAG_GENERIC, "[SM] Usage: sm_setemotes <#userid|name> [Emote ID]");
@@ -67,14 +78,20 @@ public void OnPluginStart()
 	HookEvent("player_hurt", 	Event_PlayerHurt, 	EventHookMode_Pre);
 	HookEvent("round_prestart",  Event_Start);
 
-	g_cvEmotesSounds = CreateConVar("sm_emotes_sounds", "1", "Enable/Disable sounds for emotes.", _, true, 0.0, true, 1.0);
-	g_cvCooldown = CreateConVar("sm_emotes_cooldown", "3.0", "Cooldown for emotes in seconds. -1 or 0 = no cooldown.");
-	g_cvFlagEmotesMenu = CreateConVar("sm_emotes_admin_flag_menu", "", "admin flag for emotes (empty for all players)");
-	g_cvFlagDancesMenu = CreateConVar("sm_dances_admin_flag_menu", "", "admin flag for dances (empty for all players)");
-	g_cvHideWeapons = CreateConVar("sm_emotes_hide_weapons", "1", "Hide weapons when dancing", _, true, 0.0, true, 1.0);
-	g_cvHidePlayers = CreateConVar("sm_emotes_hide_enemies", "0", "Hide enemy players when dancing", _, true, 0.0, true, 1.0);
+	AutoExecConfig_SetFile("fortnite_emotes");
 
-	AutoExecConfig(true, "fortnite_emotes_extended");
+	g_cvEmotesSounds = AutoExecConfig_CreateConVar("sm_emotes_sounds", "1", "Enable/Disable sounds for emotes.", _, true, 0.0, true, 1.0);
+	g_cvCooldown = AutoExecConfig_CreateConVar("sm_emotes_cooldown", "3.0", "Cooldown for emotes in seconds. -1 or 0 = no cooldown.");
+	g_cvSoundVolume = AutoExecConfig_CreateConVar("sm_emotes_soundvolume", "0.5", "Sound volume for the emotes.");
+	g_cvFlagEmotesMenu = AutoExecConfig_CreateConVar("sm_emotes_admin_flag_menu", "", "admin flag for emotes (empty for all players)");
+	g_cvFlagDancesMenu = AutoExecConfig_CreateConVar("sm_dances_admin_flag_menu", "", "admin flag for dances (empty for all players)");
+	g_cvHideWeapons = AutoExecConfig_CreateConVar("sm_emotes_hide_weapons", "1", "Hide weapons when dancing", _, true, 0.0, true, 1.0);
+	g_cvHidePlayers = AutoExecConfig_CreateConVar("sm_emotes_hide_enemies", "0", "Hide enemy players when dancing", _, true, 0.0, true, 1.0);
+	g_cvTeleportBack = AutoExecConfig_CreateConVar("sm_emotes_teleportonend", "0", "Teleport back to the exact position when he started to dance. (Some maps need this for teleport triggers)", _, true, 0.0, true, 1.0);
+
+	AutoExecConfig_ExecuteFile();
+
+	AutoExecConfig_CleanFile();
 
 	g_cvThirdperson = FindConVar("sv_allow_thirdperson");
 	if (!g_cvThirdperson) SetFailState("sv_allow_thirdperson not found!");
@@ -86,9 +103,10 @@ public void OnPluginStart()
 	if (LibraryExists("adminmenu") && ((topmenu = GetAdminTopMenu()) != null))
 	{
 		OnAdminMenuReady(topmenu);
-	}	
+	}
 
 	g_EmoteForward = CreateGlobalForward("fnemotes_OnEmote", ET_Ignore, Param_Cell);
+	g_EmoteForward_Pre = CreateGlobalForward("fnemotes_OnEmote_Pre", ET_Event, Param_Cell);
 }
 
 public void OnPluginEnd()
@@ -252,6 +270,7 @@ public void OnMapStart()
 	PrecacheSound("*/kodua/fortnite_emotes/athena_emote_hot_music.wav");
 }
 
+
 public void OnClientPutInServer(int client)
 {
 	if (IsValidClient(client))
@@ -311,12 +330,10 @@ void Event_PlayerHurt(Event event, const char[] name, bool dontBroadcast)
 void Event_Start(Event event, const char[] name, bool dontBroadcast)
 {
 	for (int i = 1; i <= MaxClients; i++)
-            if (IsValidClient(i, false) && g_bClientDancing[i])
-			{
+            if (IsValidClient(i, false) && g_bClientDancing[i]) {
 				ResetCam(i);
-				//StopEmote(client);
 				WeaponUnblock(i);
-
+				
 				g_bClientDancing[i] = false;
 			}
 }
@@ -334,7 +351,7 @@ public Action Command_Menu(int client, int args)
 	{
 		Menu_Dance(client);
 	}
-	else CPrintToChat(client, "%t", "NO_DANCE_ACCESS_FLAG");	
+	else CPrintToChat(client, "%t", "NO_DANCES_ACCESS_FLAG");	
 
 	return Plugin_Handled;
 }
@@ -343,34 +360,47 @@ Action CreateEmote(int client, const char[] anim1, const char[] anim2, const cha
 {
 	if (!IsValidClient(client))
 		return Plugin_Handled;
+	
+	if(g_EmoteForward_Pre != null)
+	{
+		Action res = Plugin_Continue;
+		Call_StartForward(g_EmoteForward_Pre);
+		Call_PushCell(client);
+		Call_Finish(res);
 
+		if (res != Plugin_Continue)
+		{
+			return Plugin_Handled;
+		}
+	}
+	
 	if (!IsPlayerAlive(client))
 	{
-		CPrintToChat(client, "%t", "MUST_BE_ALIVE");
+		CReplyToCommand(client, "%t", "MUST_BE_ALIVE");
 		return Plugin_Handled;
 	}
 
 	if (!(GetEntityFlags(client) & FL_ONGROUND))
 	{
-		CPrintToChat(client, "%t", "STAY_ON_GROUND");
+		CReplyToCommand(client, "%t", "STAY_ON_GROUND");
 		return Plugin_Handled;
 	}
 	
 	if (GetEntProp(client, Prop_Send, "m_bIsScoped"))
 	{
-		CPrintToChat(client, "%t", "SCOPE_DETECTED");
+		CReplyToCommand(client, "%t", "SCOPE_DETECTED");
 		return Plugin_Handled;
 	}
 
 	if (CooldownTimers[client])
 	{
-		CPrintToChat(client, "%t", "COOLDOWN_EMOTES");
+		CReplyToCommand(client, "%t", "COOLDOWN_EMOTES");
 		return Plugin_Handled;
 	}
 
 	if (StrEqual(anim1, ""))
 	{
-		CPrintToChat(client, "%t", "AMIN_1_INVALID");
+		CReplyToCommand(client, "%t", "AMIN_1_INVALID");
 		return Plugin_Handled;
 	}
 
@@ -379,7 +409,7 @@ Action CreateEmote(int client, const char[] anim1, const char[] anim2, const cha
 
 	if (GetEntityMoveType(client) == MOVETYPE_NONE)
 	{
-		CPrintToChat(client, "%t", "CANNOT_USE_NOW");
+		CReplyToCommand(client, "%t", "CANNOT_USE_NOW");
 		return Plugin_Handled;
 	}
 
@@ -392,6 +422,9 @@ Action CreateEmote(int client, const char[] anim1, const char[] anim2, const cha
 		float vec[3], ang[3];
 		GetClientAbsOrigin(client, vec);
 		GetClientAbsAngles(client, ang);
+		
+		g_fLastPosition[client] = vec;
+		g_fLastAngles[client] = ang;
 
 		char emoteEntName[16];
 		FormatEx(emoteEntName, sizeof(emoteEntName), "emoteEnt%i", GetRandomInt(1000000, 9999999));
@@ -464,7 +497,7 @@ Action CreateEmote(int client, const char[] anim1, const char[] anim2, const cha
 					FormatEx(g_sEmoteSound[client], PLATFORM_MAX_PATH, "kodua/fortnite_emotes/%s.mp3", soundNameBuffer);
 				}
 
-				EmitSoundToAll(g_sEmoteSound[client], EmoteSoundEnt, SNDCHAN_AUTO, SNDLEVEL_CONVO, _, 0.8, _, _, vec, _, _, _);
+				EmitSoundToAll(g_sEmoteSound[client], EmoteSoundEnt, SNDCHAN_AUTO, SNDLEVEL_CONVO, _, g_cvSoundVolume.FloatValue, _, _, vec, _, _, _);
 			}
 		} else
 		{
@@ -566,8 +599,15 @@ void StopEmote(int client)
 	int iEmoteEnt = EntRefToEntIndex(g_iEmoteEnt[client]);
 	if (iEmoteEnt && iEmoteEnt != INVALID_ENT_REFERENCE && IsValidEntity(iEmoteEnt))
 	{
-		AcceptEntityInput(client, "ClearParent", client, client, 0);
-		AcceptEntityInput(iEmoteEnt, "Kill");
+		char emoteEntName[50];
+		GetEntPropString(iEmoteEnt, Prop_Data, "m_iName", emoteEntName, sizeof(emoteEntName));
+		SetVariantString(emoteEntName);
+		AcceptEntityInput(client, "ClearParent", iEmoteEnt, iEmoteEnt, 0);
+		DispatchKeyValue(iEmoteEnt, "OnUser1", "!self,Kill,,1.0,-1");
+		AcceptEntityInput(iEmoteEnt, "FireUser1");
+		
+		if(g_cvTeleportBack.BoolValue)
+			TeleportEntity(client, g_fLastPosition[client], g_fLastAngles[client], NULL_VECTOR);
 		
 		ResetCam(client);
 		WeaponUnblock(client);
@@ -605,8 +645,12 @@ void TerminateEmote(int client)
 	int iEmoteEnt = EntRefToEntIndex(g_iEmoteEnt[client]);
 	if (iEmoteEnt && iEmoteEnt != INVALID_ENT_REFERENCE && IsValidEntity(iEmoteEnt))
 	{
-		AcceptEntityInput(client, "ClearParent", client, client, 0);
-		AcceptEntityInput(iEmoteEnt, "Kill");
+		char emoteEntName[50];
+		GetEntPropString(iEmoteEnt, Prop_Data, "m_iName", emoteEntName, sizeof(emoteEntName));
+		SetVariantString(emoteEntName);
+		AcceptEntityInput(client, "ClearParent", iEmoteEnt, iEmoteEnt, 0);
+		DispatchKeyValue(iEmoteEnt, "OnUser1", "!self,Kill,,1.0,-1");
+		AcceptEntityInput(iEmoteEnt, "FireUser1");
 
 		g_iEmoteEnt[client] = 0;
 		g_bClientDancing[client] = false;
@@ -758,9 +802,14 @@ int MenuHandler1(Menu menu, MenuAction action, int param1, int param2)
 				case 2: EmotesMenu(client);
 				case 3: DancesMenu(client);
 			}
-		}	
+		}
+		case MenuAction_End:
+		{
+			delete menu;
+		}
 	}
 }
+
 
 Action EmotesMenu(int client)
 {
@@ -1034,7 +1083,7 @@ int MenuHandlerDances(Menu menu, MenuAction action, int client, int param2)
 					case 13:
 					CreateEmote(client, "Emote_Dance_Shoot", "none", "athena_emotes_music_shoot_v7", true);
 					case 14:
-					CreateEmote(client, "Emote_Dance_SwipeIt", "none", "Emote_Dance_SwipeIt", true);
+					CreateEmote(client, "Emote_Dance_SwipeIt", "none", "Athena_Emotes_Music_SwipeIt", true);
 					case 15:
 					CreateEmote(client, "Emote_Dance_Disco_T3", "none", "athena_emote_disco", true);
 					case 16:
@@ -1046,7 +1095,7 @@ int MenuHandlerDances(Menu menu, MenuAction action, int client, int param2)
 					case 19:
 					CreateEmote(client, "Emote_Dance_Breakdance", "none", "athena_emote_breakdance_music", false);
 					case 20:
-					CreateEmote(client, "Emote_Dance_Pump", "none", "Emote_Dance_Pump.wav", true);
+					CreateEmote(client, "Emote_Dance_Pump", "none", "Emote_Dance_Pump", true);
 					case 21:
 					CreateEmote(client, "Emote_Dance_RideThePony", "none", "athena_emote_ridethepony_music_01", false);
 					case 22:
@@ -1113,7 +1162,7 @@ int MenuHandlerDances(Menu menu, MenuAction action, int client, int param2)
 			{
 				Menu_Dance(client);
 			}
-		}		
+		}
 	}
 }
 
@@ -1249,7 +1298,7 @@ Action RandomDance(int i)
 						case 13:
 						CreateEmote(i, "Emote_Dance_Shoot", "none", "athena_emotes_music_shoot_v7", true);
 						case 14:
-						CreateEmote(i, "Emote_Dance_SwipeIt", "none", "Emote_Dance_SwipeIt", true);
+						CreateEmote(i, "Emote_Dance_SwipeIt", "none", "Athena_Emotes_Music_SwipeIt", true);
 						case 15:
 						CreateEmote(i, "Emote_Dance_Disco_T3", "none", "athena_emote_disco", true);
 						case 16:
@@ -1261,7 +1310,7 @@ Action RandomDance(int i)
 						case 19:
 						CreateEmote(i, "Emote_Dance_Breakdance", "none", "athena_emote_breakdance_music", false);
 						case 20:
-						CreateEmote(i, "Emote_Dance_Pump", "none", "Emote_Dance_Pump.wav", true);
+						CreateEmote(i, "Emote_Dance_Pump", "none", "Emote_Dance_Pump", true);
 						case 21:
 						CreateEmote(i, "Emote_Dance_RideThePony", "none", "athena_emote_ridethepony_music_01", false);
 						case 22:
@@ -1321,11 +1370,12 @@ Action RandomDance(int i)
 					}	
 }
 
+
 Action Command_Admin_Emotes(int client, int args)
 {
 	if (args < 1)
 	{
-		CPrintToChat(client, "[SM] Usage: sm_setemotes <#userid|name> [Emote ID]");
+		CReplyToCommand(client, "[SM] Usage: sm_setemotes <#userid|name> [Emote ID]");
 		return Plugin_Handled;
 	}
 	
@@ -1339,7 +1389,7 @@ Action Command_Admin_Emotes(int client, int args)
 		GetCmdArg(2, arg2, sizeof(arg2));
 		if (StringToIntEx(arg2, amount) < 1 || StringToIntEx(arg2, amount) > 86)
 		{
-			CPrintToChat(client, "%t", "INVALID_EMOTE_ID");
+			CReplyToCommand(client, "%t", "INVALID_EMOTE_ID");
 			return Plugin_Handled;
 		}
 	}
@@ -1474,7 +1524,7 @@ void PerformEmote(int client, int target, int amount)
 					case 49:
 					CreateEmote(target, "Emote_Dance_Shoot", "none", "athena_emotes_music_shoot_v7", true);
 					case 50:
-					CreateEmote(target, "Emote_Dance_SwipeIt", "none", "Emote_Dance_SwipeIt", true);
+					CreateEmote(target, "Emote_Dance_SwipeIt", "none", "Athena_Emotes_Music_SwipeIt", true);
 					case 51:
 					CreateEmote(target, "Emote_Dance_Disco_T3", "none", "athena_emote_disco", true);
 					case 52:
@@ -1486,7 +1536,7 @@ void PerformEmote(int client, int target, int amount)
 					case 55:
 					CreateEmote(target, "Emote_Dance_Breakdance", "none", "athena_emote_breakdance_music", false);
 					case 56:
-					CreateEmote(target, "Emote_Dance_Pump", "none", "Emote_Dance_Pump.wav", true);
+					CreateEmote(target, "Emote_Dance_Pump", "none", "Emote_Dance_Pump", true);
 					case 57:
 					CreateEmote(target, "Emote_Dance_RideThePony", "none", "athena_emote_ridethepony_music_01", false);
 					case 58:
@@ -1639,7 +1689,7 @@ int MenuHandler_EmotePlayers(Menu menu, MenuAction action, int param1, int param
 			DisplayEmotePlayersMenu(param1);
 		}
 	}
-	
+
 	return;
 }
 
@@ -1813,6 +1863,6 @@ int GetEmotePeople()
 	for(int i = 1; i <= MaxClients; i++)
 		if (IsClientInGame(i) && g_bClientDancing[i])
 			count++;
-			
+
 	return count;
 }
