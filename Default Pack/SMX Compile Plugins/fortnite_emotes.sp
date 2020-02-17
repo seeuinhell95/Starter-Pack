@@ -82,7 +82,7 @@ public void OnPluginStart()
 
 	g_cvEmotesSounds = AutoExecConfig_CreateConVar("sm_emotes_sounds", "1", "Enable/Disable sounds for emotes.", _, true, 0.0, true, 1.0);
 	g_cvCooldown = AutoExecConfig_CreateConVar("sm_emotes_cooldown", "3.0", "Cooldown for emotes in seconds. -1 or 0 = no cooldown.");
-	g_cvSoundVolume = AutoExecConfig_CreateConVar("sm_emotes_soundvolume", "0.5", "Sound volume for the emotes.");
+	g_cvSoundVolume = AutoExecConfig_CreateConVar("sm_emotes_soundvolume", "0.6", "Sound volume for the emotes.");
 	g_cvFlagEmotesMenu = AutoExecConfig_CreateConVar("sm_emotes_admin_flag_menu", "", "admin flag for emotes (empty for all players)");
 	g_cvFlagDancesMenu = AutoExecConfig_CreateConVar("sm_dances_admin_flag_menu", "", "admin flag for dances (empty for all players)");
 	g_cvHideWeapons = AutoExecConfig_CreateConVar("sm_emotes_hide_weapons", "1", "Hide weapons when dancing", _, true, 0.0, true, 1.0);
@@ -376,31 +376,31 @@ Action CreateEmote(int client, const char[] anim1, const char[] anim2, const cha
 	
 	if (!IsPlayerAlive(client))
 	{
-		CReplyToCommand(client, "%t", "MUST_BE_ALIVE");
+		CPrintToChat(client, "%t", "MUST_BE_ALIVE");
 		return Plugin_Handled;
 	}
 
 	if (!(GetEntityFlags(client) & FL_ONGROUND))
 	{
-		CReplyToCommand(client, "%t", "STAY_ON_GROUND");
+		CPrintToChat(client, "%t", "STAY_ON_GROUND");
 		return Plugin_Handled;
 	}
 	
 	if (GetEntProp(client, Prop_Send, "m_bIsScoped"))
 	{
-		CReplyToCommand(client, "%t", "SCOPE_DETECTED");
+		CPrintToChat(client, "%t", "SCOPE_DETECTED");
 		return Plugin_Handled;
 	}
 
 	if (CooldownTimers[client])
 	{
-		CReplyToCommand(client, "%t", "COOLDOWN_EMOTES");
+		CPrintToChat(client, "%t", "COOLDOWN_EMOTES");
 		return Plugin_Handled;
 	}
 
 	if (StrEqual(anim1, ""))
 	{
-		CReplyToCommand(client, "%t", "AMIN_1_INVALID");
+		CPrintToChat(client, "%t", "AMIN_1_INVALID");
 		return Plugin_Handled;
 	}
 
@@ -409,7 +409,7 @@ Action CreateEmote(int client, const char[] anim1, const char[] anim2, const cha
 
 	if (GetEntityMoveType(client) == MOVETYPE_NONE)
 	{
-		CReplyToCommand(client, "%t", "CANNOT_USE_NOW");
+		CPrintToChat(client, "%t", "CANNOT_USE_NOW");
 		return Plugin_Handled;
 	}
 
@@ -1375,7 +1375,7 @@ Action Command_Admin_Emotes(int client, int args)
 {
 	if (args < 1)
 	{
-		CReplyToCommand(client, "[SM] Usage: sm_setemotes <#userid|name> [Emote ID]");
+		CPrintToChat(client, "[SM] Usage: sm_setemotes <#userid|name> [Emote ID]");
 		return Plugin_Handled;
 	}
 	
@@ -1389,7 +1389,7 @@ Action Command_Admin_Emotes(int client, int args)
 		GetCmdArg(2, arg2, sizeof(arg2));
 		if (StringToIntEx(arg2, amount) < 1 || StringToIntEx(arg2, amount) > 86)
 		{
-			CReplyToCommand(client, "%t", "INVALID_EMOTE_ID");
+			CPrintToChat(client, "%t", "INVALID_EMOTE_ID");
 			return Plugin_Handled;
 		}
 	}
