@@ -44,7 +44,7 @@ public void OnPluginStart()
 	cPos[1].AddChangeHook(convarChangeCallback);
 
 	resetStoredVariables();
-	AutoExecConfig(true, "displaye_hudname");
+	AutoExecConfig(true, "display_hudname");
 
 	CreateTimer(0.5, Timer_Display, _, TIMER_REPEAT);
 }
