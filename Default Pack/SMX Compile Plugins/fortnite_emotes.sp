@@ -3,9 +3,8 @@
 #include <sourcemod>
 #include <sdktools>
 #include <sdkhooks>
-#include <multicolors>
-#undef REQUIRE_PLUGIN
 #include <adminmenu>
+#include <colorvariables>
 
 #pragma newdecls required
 

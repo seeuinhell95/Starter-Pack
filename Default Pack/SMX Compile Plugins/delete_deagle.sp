@@ -1,27 +1,24 @@
 #pragma semicolon 1
 
-#include <cstrike>
 #include <sdkhooks>
-#include <sdktools>
+#undef REQUIRE_PLUGIN
 #include <custom_rounds>
-
-#pragma tabsize 0
 
 public Plugin myinfo =
 {
 	name = "[CSGO] Remove Deagle",
-	author = "Fr4nch | Edited: somebody.",
+	author = "Fr4nch & Grey83 | Edited: somebody.",
 	description = "Remove Deagle",
 	version = "1.0",
 	url = "http://sourcemod.net"
 }
 
-public void OnClientPutInServer(int iClient)
+public void OnClientPutInServer(int client)
 {
-	SDKHook(iClient, SDKHook_WeaponEquip, OnWeaponEquip);
+	SDKHook(client, SDKHook_WeaponEquip, OnWeaponEquip);
 }
 
-Action OnWeaponEquip(int iClient, int iWeapon)
+public Action OnWeaponEquip(int client, int weapon)
 {
-	return (!CR_IsCustomRound() && GetEntProp(iWeapon, Prop_Send, "m_iItemDefinitionIndex") == 1) ? Plugin_Handled:Plugin_Continue;
+	return (GetFeatureStatus(FeatureType_Native, "CR_IsCustomRound") || !CR_IsCustomRound()) && GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex") == 1 ? Plugin_Handled : Plugin_Continue;
 }
