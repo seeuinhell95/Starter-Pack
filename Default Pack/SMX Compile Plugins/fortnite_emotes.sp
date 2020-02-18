@@ -4,7 +4,6 @@
 #include <sdktools>
 #include <sdkhooks>
 #include <multicolors>
-#include <autoexecconfig>
 #undef REQUIRE_PLUGIN
 #include <adminmenu>
 
@@ -78,20 +77,16 @@ public void OnPluginStart()
 	HookEvent("player_hurt", 	Event_PlayerHurt, 	EventHookMode_Pre);
 	HookEvent("round_prestart",  Event_Start);
 
-	AutoExecConfig_SetFile("fortnite_emotes");
+	g_cvEmotesSounds = CreateConVar("sm_emotes_sounds", "1", "Enable/Disable sounds for emotes.", _, true, 0.0, true, 1.0);
+	g_cvCooldown = CreateConVar("sm_emotes_cooldown", "3.0", "Cooldown for emotes in seconds. -1 or 0 = no cooldown.");
+	g_cvSoundVolume = CreateConVar("sm_emotes_soundvolume", "0.6", "Sound volume for the emotes.");
+	g_cvFlagEmotesMenu = CreateConVar("sm_emotes_admin_flag_menu", "", "admin flag for emotes (empty for all players)");
+	g_cvFlagDancesMenu = CreateConVar("sm_dances_admin_flag_menu", "", "admin flag for dances (empty for all players)");
+	g_cvHideWeapons = CreateConVar("sm_emotes_hide_weapons", "1", "Hide weapons when dancing", _, true, 0.0, true, 1.0);
+	g_cvHidePlayers = CreateConVar("sm_emotes_hide_enemies", "0", "Hide enemy players when dancing", _, true, 0.0, true, 1.0);
+	g_cvTeleportBack = CreateConVar("sm_emotes_teleportonend", "0", "Teleport back to the exact position when he started to dance. (Some maps need this for teleport triggers)", _, true, 0.0, true, 1.0);
 
-	g_cvEmotesSounds = AutoExecConfig_CreateConVar("sm_emotes_sounds", "1", "Enable/Disable sounds for emotes.", _, true, 0.0, true, 1.0);
-	g_cvCooldown = AutoExecConfig_CreateConVar("sm_emotes_cooldown", "3.0", "Cooldown for emotes in seconds. -1 or 0 = no cooldown.");
-	g_cvSoundVolume = AutoExecConfig_CreateConVar("sm_emotes_soundvolume", "0.6", "Sound volume for the emotes.");
-	g_cvFlagEmotesMenu = AutoExecConfig_CreateConVar("sm_emotes_admin_flag_menu", "", "admin flag for emotes (empty for all players)");
-	g_cvFlagDancesMenu = AutoExecConfig_CreateConVar("sm_dances_admin_flag_menu", "", "admin flag for dances (empty for all players)");
-	g_cvHideWeapons = AutoExecConfig_CreateConVar("sm_emotes_hide_weapons", "1", "Hide weapons when dancing", _, true, 0.0, true, 1.0);
-	g_cvHidePlayers = AutoExecConfig_CreateConVar("sm_emotes_hide_enemies", "0", "Hide enemy players when dancing", _, true, 0.0, true, 1.0);
-	g_cvTeleportBack = AutoExecConfig_CreateConVar("sm_emotes_teleportonend", "0", "Teleport back to the exact position when he started to dance. (Some maps need this for teleport triggers)", _, true, 0.0, true, 1.0);
-
-	AutoExecConfig_ExecuteFile();
-
-	AutoExecConfig_CleanFile();
+	AutoExecConfig(true, "fortnite_emotes");
 
 	g_cvThirdperson = FindConVar("sv_allow_thirdperson");
 	if (!g_cvThirdperson) SetFailState("sv_allow_thirdperson not found!");
