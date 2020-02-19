@@ -1,7 +1,6 @@
-#pragma semicolon 1
-
 #include <SWGM>
 
+#pragma semicolon 1
 #pragma newdecls required
 
 public Plugin myinfo =

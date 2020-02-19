@@ -1,8 +1,7 @@
-#pragma semicolon 1
-
-#include <SteamWorks>
+#include <SteamWorksSWGM>
 #include <SWGM>
 
+#pragma semicolon 1
 #pragma newdecls required
 
 public Plugin myinfo =
@@ -38,13 +37,13 @@ public void OnPluginStart()
 {
 	ConVar CVAR;
 
-	(CVAR = CreateConVar("sm_swgm_groupid",		"0",	"Steam Group ID.",						_, 		true, 		0.0)).AddChangeHook(OnGroupChange);
+	(CVAR = CreateConVar("sm_swgm_groupid", "0", "Steam Group ID.", _, true, 0.0)).AddChangeHook(OnGroupChange);
 	g_iGroupID = CVAR.IntValue;
 
-	(CVAR = CreateConVar("sm_swgm_timer",		"60.0",	"Interval beetwen steam group checks.",	_, 		true, 		0.0)).AddChangeHook(OnTimeChange);
-	g_hTimer = CreateTimer(CVAR.FloatValue, 		Check_Timer, 									_, 	TIMER_REPEAT		);
+	(CVAR = CreateConVar("sm_swgm_timer", "60.0", "Interval beetwen steam group checks.", _, true, 0.0)).AddChangeHook(OnTimeChange);
+	g_hTimer = CreateTimer(CVAR.FloatValue, Check_Timer, _, TIMER_REPEAT);
 
-	RegAdminCmd("sm_swgm_check", 	CMD_Check, 	ADMFLAG_ROOT);
+	RegAdminCmd("sm_swgm_check", CMD_Check, ADMFLAG_ROOT);
 
 	AutoExecConfig(true, "SWGM");
 }
@@ -101,12 +100,12 @@ public void OnClientDisconnect(int iClient)
 	g_iPlayerStatus[iClient] = UNASSIGNED;
 }
 
-public int SteamWorks_OnValidateClient(int iOwnerAuthID, int iAccountID)
+public void SteamWorks_OnValidateClient(int iOwnerAuthID, int iAccountID)
 {
 	SteamWorks_GetUserGroupStatusAuthID(iAccountID, g_iGroupID);
 }
 
-public int SteamWorks_OnClientGroupStatus(int iAccountID, int iGroupID, bool bIsMember, bool bIsOfficer)
+public void SteamWorks_OnClientGroupStatus(int iAccountID, int iGroupID, bool bIsMember, bool bIsOfficer)
 {
 	static int iClient;
 	if(iGroupID == g_iGroupID && (iClient = GetUserFromAccountID(iAccountID)) != -1)
