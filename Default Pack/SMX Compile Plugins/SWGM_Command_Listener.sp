@@ -31,7 +31,7 @@ public Action Check(int iClient, const char[] sCommand, int iArgc)
 {
 	if(iClient != 0 && !SWGM_InGroup(iClient))
 	{
-		PrintToChat(iClient, "%t", "JoinSteam");
+		PrintToChat(iClient, "[\x02Steam\x01] \x06%t", "JoinSteam");
 		return Plugin_Stop;
 	}
 	return Plugin_Continue;
