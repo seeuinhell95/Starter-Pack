@@ -1,8 +1,0 @@
-"Phrases"
-{
-	"JoinSteam"
-	{
-		"en"		"Join our Steam group if you would like to use this command! - !steam"
-		"hu"		"Csatlakozz a Steam csoportunkba ha szeretnéd használni ezt a parancsot! - !steam"
-	}
-}
