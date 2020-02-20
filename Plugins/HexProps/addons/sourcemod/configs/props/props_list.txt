@@ -40,24 +40,24 @@
 		"model"		"models/props/de_inferno/de_inferno_boulder_01.mdl"
 	}
 
-	"Irattartó A"
+	"Irattartó (nagy)"
 	{
 		"model"		"models/props/cs_office/file_cabinet1.mdl"
 	}
 
-	"Irattartó B"
+	"Irattartó (hosszú)"
 	{
 		"model"		"models/props/cs_office/file_cabinet2.mdl"
 	}
 
-	"Irattartó C"
+	"Irattartó (kicsi)"
 	{
 		"model"		"models/props/cs_office/file_cabinet3.mdl"
 	}
 
 	"Hordó"
 	{
-		"model"		"models/props_c17/oildrum001.mdl"
+		"model"		"models/props/de_train/barrel.mdl"
 	}
 
 	"Szökőkút"
@@ -70,12 +70,12 @@
 		"model"		"models/props/de_train/processor_nobase.mdl"
 	}
 
-	"Kanapé 1"
+	"Kanapé (kockás)"
 	{
 		"model"		"models/props/cs_militia/couch.mdl"
 	}
 
-	"Kanapé 2"
+	"Kanapé (barna)"
 	{
 		"model"		"models/props/cs_office/sofa.mdl"
 	}
@@ -85,7 +85,12 @@
 		"model"		"models/props_pipes/pipecluster32d_001a.mdl"
 	}
 
-	"Kőtömb"
+	"Kőtömb (nagy)"
+	{
+		"model"		"models/props/de_dust/stoneblock01b.mdl"
+	}
+
+	"Kőtömb (kicsi)"
 	{
 		"model"		"models/props/de_dust/stoneblock01a.mdl"
 	}
@@ -95,9 +100,14 @@
 		"model"		"models/props_lab/monitor02.mdl"
 	}
 
-	"Pad"
+	"Pad (kicsi)"
 	{
 		"model"		"models/props/cs_militia/wood_bench.mdl"
+	}
+
+	"Pad (nagy)"
+	{
+		"model"		"models/props/de_inferno/bench_wood_new.mdl"
 	}
 
 	"Pózna"
@@ -115,7 +125,12 @@
 		"model"		"models/props/de_nuke/emergency_lighta.mdl"
 	}
 
-	"Könyvespolc"
+	"Könyvespolc (nagy)"
+	{
+		"model"		"models/props/cs_havana/bookcase_large.mdl"
+	}
+
+	"Könyvespolc (kicsi)"
 	{
 		"model"		"models/props/cs_office/Bookshelf1.mdl"
 	}
@@ -125,9 +140,19 @@
 		"model"		"models/props/cs_militia/food_stack.mdl"
 	}
 
+	"Cipős dobozok"
+	{
+		"model"		"models/props/cs_office/paperbox_pile_01.mdl"
+	}
+
+	"Farakás"
+	{
+		"model"		"models/props/de_inferno/hr_i/wood_pile_a/wood_pile_a.mdl"
+	}
+
 	"Talicska"
 	{
-		"model"		"models/props_junk/Wheebarrow01a.mdl"
+		"model"		"models/props/hr_massive/suvival_wheelbarrow/survival_wheelbarrow.mdl"
 	}
 
 	"Üveg"
@@ -137,12 +162,12 @@
 
 	"Bója"
 	{
-		"model"		"models/props_junk/TrafficCone001a.mdl"
+		"model"		"models/props/hr_vertigo/vertigo_traffic_cone/traffic_cone.mdl"
 	}
 
 	"Betontömb"
 	{
-		"model"		"models/props_junk/CinderBlock01a.mdl"
+		"model"		"models/props/ar_dizzy/dizzy_cinderblock/dizzy_cinderblock.mdl"
 	}
 
 	"Tábla"
@@ -157,7 +182,7 @@
 
 	"WC"
 	{
-		"model"		"models/props/cs_militia/toilet.mdl"
+		"model"		"models/props_interiors/toilet.mdl"
 	}
 
 	"Görögdinnye"
