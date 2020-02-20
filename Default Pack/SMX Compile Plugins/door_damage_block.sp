@@ -15,7 +15,6 @@ public Plugin myinfo =
 
 new String:doorlist[][32] =
 {
-	
 	"func_door",
 	"func_rotating",
 	"func_door_rotating",
@@ -25,11 +24,6 @@ new String:doorlist[][32] =
 	"func_elevator",
 	"\0"
 };
-
-public OnPluginStart()
-{
-
-}
 
 public OnClientPutInServer(client)
 {
