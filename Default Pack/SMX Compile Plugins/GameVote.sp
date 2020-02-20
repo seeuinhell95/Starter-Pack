@@ -322,7 +322,7 @@ public void PushKickedPlayer(int client)
 			strcopy(g_KickedPlayers[client][Steam], 32, auth);
 			
 		}
-		KickClient(client, "Kicked by GameVoting (wait: %dsec)", CONVAR_KICK_DURATION.IntValue);
+		KickClient(client, "A játékosok kirúgtak. Várj %d másodpercet", CONVAR_KICK_DURATION.IntValue);
 	}
 }
 
@@ -361,7 +361,7 @@ public void OnClientPostAdminCheck(int client)
 		#endif
 		
 		if(wait > 0) {
-			KickClient(client, "Kicked by GameVoting (Wait: %d sec)", wait);
+			KickClient(client, "A játékosok kirúgtak. Várj %d másodpercet", wait);
 		}
 	}
 }
@@ -942,7 +942,7 @@ public void DoAction(int client, int type, int last) {
 				strcopy(reason, sizeof(reason), "Empty reason");
 			}
 
-			ServerCommand("sm_ban #%d %d \"Gamevoting (%N)(%s)\"", GetClientUserId(client), CONVAR_BAN_DURATION.IntValue, last, reason);
+			ServerCommand("sm_ban #%d %d \"Játékosok szavazása\"", GetClientUserId(client), CONVAR_BAN_DURATION.IntValue, last, reason);
 		}
 		case VOTE_KICK: {
 			ClearChoise(client);
@@ -965,7 +965,7 @@ public void DoAction(int client, int type, int last) {
 				LogToFile(LogFilePath, "Player %N(%s) was muted by voting. (Last voted player: %N)",  client, auth,last);
 			}
 
-			ServerCommand("sm_silence #%d %d \"Muted by Gamevoting (%N)\"", GetClientUserId(client), CONVAR_MUTE_DURATION.IntValue, last);
+			ServerCommand("sm_silence #%d %d \"Játékosok szavazása\"", GetClientUserId(client), CONVAR_MUTE_DURATION.IntValue, last);
 			
 		}
 	}
