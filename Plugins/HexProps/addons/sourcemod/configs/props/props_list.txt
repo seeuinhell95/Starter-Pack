@@ -175,6 +175,11 @@
 		"model"		"models/props_c17/signpole001.mdl"
 	}
 
+	"Autó"
+	{
+		"model"		"models/props/de_nuke/hr_nuke/nuke_cars/nuke_sedan01.mdl"
+	}
+
 	"Roncsautó"
 	{
 		"model"		"models/props_vehicles/van001a.mdl"
