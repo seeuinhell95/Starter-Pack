@@ -29,7 +29,7 @@ public void OnClientConnected(int client)
 	{
 		if (IsClientConnected(i) && !IsClientInKickQueue(i) && !IsFakeClient(i) && ++g_iBuffer > g_iSlots && !CheckCommandAccess(client, "a_command_that_do_not_exist", ADMFLAG_RESERVATION))
 		{
-			KickClient(client, "A szerver jelenleg tele van. Próbáld újra később");
+			KickClient(client, "A szerver jelenleg tele van. Próbáld újra később vagy vásárolj ViP-t, hogy bármikor felcsatlakozhass");
 			return;
 		}
 	}
