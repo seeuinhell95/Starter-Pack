@@ -88,19 +88,19 @@ public void resetStoredVariables()
 
 public Action Timer_Display(Handle timer)
 {
-	for(int client = 1; client <= MaxClients; client++)
-	{
-		if(IsClientInGame(client) && !IsFakeClient(client))
-		{
-			int target = getClientAimPlayer(client);
-			if(target > 0 && target <= MaxClients 
-					&& IsClientInGame(target) && IsPlayerAlive(target))
-			{
-				showNameMessage(client, target);
-			}
-		}
-	}
-	return Plugin_Continue; 
+    for(int client = 1; client <= MaxClients; client++)
+    {
+        if(IsClientInGame(client) && !IsFakeClient(client)&&IsPlayerAlive(client))
+        {
+            int target = getClientAimPlayer(client);
+            if(target > 0 && target <= MaxClients
+                    && IsClientInGame(target) && IsPlayerAlive(target))
+            {
+                showNameMessage(client, target);
+            }
+        }
+    }
+    return Plugin_Continue;
 }
 
 public int showNameMessage(int client, int target)
