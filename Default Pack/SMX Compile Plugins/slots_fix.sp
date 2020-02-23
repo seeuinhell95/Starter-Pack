@@ -27,7 +27,7 @@ public void OnClientConnected(int client)
 	g_iBuffer = 0;
 	for(int i = 1; i <= MaxClients; ++i)
 	{
-		if (IsClientConnected(i) && !IsClientInKickQueue(i) && !IsFakeClient(i) && ++g_iBuffer > g_iSlots)
+		if (IsClientConnected(i) && !IsClientInKickQueue(i) && !IsFakeClient(i) && ++g_iBuffer > g_iSlots && !CheckCommandAccess(client, "a_command_that_do_not_exist", ADMFLAG_RESERVATION))
 		{
 			KickClient(client, "A szerver jelenleg tele van. Próbáld újra később");
 			return;
