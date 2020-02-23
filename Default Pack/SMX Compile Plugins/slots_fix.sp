@@ -8,7 +8,7 @@
 public Plugin myinfo =
 {
 	name = "[CSGO] Slots Fix (Console Connect Block)",
-	author = "R1KO & MaZa | Edited: somebody.",
+	author = "R1KO & MaZa | Edited: Cherry & somebody.",
 	description = "Slots Fix (Console Connect Block)",
 	version = "1.0",
 	url = "http://sourcemod.net"

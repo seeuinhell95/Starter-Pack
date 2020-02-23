@@ -98,11 +98,11 @@ PrintMSG(client, const char[] command)
 	char msg[128], msg2[128];
 
 	Format(msg, 128, "%T", "NoChance", client);
-	Format(msg2, 128, "[SBP] %s \n",msg);
+	Format(msg2, 128, "[SPB] %s \n",msg);
 
 	PrintToConsole(client, msg2);
 
-	Format(msg2, 128, " \x04[SBP]\x01 %s \n",msg);
+	Format(msg2, 128, " \x04[SPB]\x01 %s \n",msg);
 
 	PrintToChat(client, msg2);
 

@@ -18,7 +18,7 @@ int hudSyncRef = 0;
 public Plugin myinfo =
 {
 	name = "[CSGO] Display HUD Name",
-	author = "Mitchell | Edited: somebody.",
+	author = "Mitchell | Edited: Cherry & somebody.",
 	description = "Display HUD Name",
 	version = "1.0",
 	url = "http://sourcemod.net"
