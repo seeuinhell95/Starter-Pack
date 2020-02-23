@@ -129,7 +129,7 @@ Age=1347299939
 [no_knife_dmg.sp]
 Age=1344883887
 [playerlist.sp]
-Age=1347911757
+Age=1347913178
 [ProxyKiller.sp]
 Age=1335101451
 [push_fix.sp]
@@ -294,3 +294,5 @@ Age=1347651586
 Age=1347585179
 [block_walldamage.sp]
 Age=1347712290
+[playerlist másolata.sp]
+Age=1347911757
