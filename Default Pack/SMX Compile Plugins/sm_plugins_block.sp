@@ -42,7 +42,7 @@ public Action ConsolePrint(int client, char message[512])
 {
 	if(client == 0) return Plugin_Continue;
 
-	if (IsClientValid(client) && GetUserFlagBits(client) & ADMFLAG_ROOT)
+	if (IsClientValid(client) && GetUserFlagBits(client) & ADMFLAG_RESERVATION)
 		return Plugin_Continue;
 
 	if(message[1] == '"' && (StrContains(message, "\" (") != -1 || (StrContains(message, ".smx\" ") != -1)))
@@ -67,7 +67,7 @@ public Action ExecuteStringCommand(int client, char message[512])
 	sMessage = message;
 	TrimString(sMessage);
 
-	if (IsClientValid(client) && GetUserFlagBits(client) & ADMFLAG_ROOT)
+	if (IsClientValid(client) && GetUserFlagBits(client) & ADMFLAG_RESERVATION)
 			return Plugin_Continue;
 
 	if(StrContains(sMessage, "sm ") == 0 || StrEqual(sMessage, "sm", false))

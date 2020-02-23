@@ -14,13 +14,14 @@ public Plugin myinfo =
 
 public OnPluginStart()
 {
+	RegAdminCmd("sm_playerslist", Command_Users, ADMFLAG_RESERVATION, "Show list players on a server");
 	RegAdminCmd("sm_playerlist", Command_Users, ADMFLAG_RESERVATION, "Show list players on a server");
 	RegAdminCmd("sm_plist", Command_Users, ADMFLAG_RESERVATION, "Show list players on a server");
-	RegAdminCmd("sm_user", Command_Users, ADMFLAG_RESERVATION, "Show list players on a server");
+	RegAdminCmd("sm_users", Command_Users, ADMFLAG_RESERVATION, "Show list players on a server");
 	RegAdminCmd("sm_users", Command_Users, ADMFLAG_RESERVATION, "Show list players on a server");
 }
 
-public Action:Command_Users(client, args)
+public Action: Command_Users(client, args)
 {
 	decl String:t_name[64], String:t_ip[24], String:t_steamid2[24], String:t_steamid3[24], String:t_country[10], String:code[4], String:t_team[16];
 
