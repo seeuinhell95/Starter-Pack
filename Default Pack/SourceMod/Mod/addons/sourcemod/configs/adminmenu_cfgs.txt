@@ -1,3 +1,11 @@
 "Configs"
 {
+	"cfg/sourcemod/cmds/surf_on.cfg"			">>> SURF: ON <<<"
+	"cfg/sourcemod/cmds/surf_off.cfg"			">>> SURF: OFF <<<"
+	"cfg/sourcemod/cmds/falldamage_on.cfg"		">>> FALL DAMAGE: ON <<<"
+	"cfg/sourcemod/cmds/falldamage_off.cfg"		">>> FALL DAMAGE: OFF <<<"
+	"cfg/sourcemod/cmds/ffa_on.cfg"				">>> FFA: ON <<<"
+	"cfg/sourcemod/cmds/ffa_off.cfg"			">>> FFA: OFF <<<"
+	"cfg/sourcemod/cmds/ff_on.cfg"				">>> Friendly Fire: ON <<<"
+	"cfg/sourcemod/cmds/ff_off.cfg"				">>> Friendly Fire: OFF <<<"
 }
