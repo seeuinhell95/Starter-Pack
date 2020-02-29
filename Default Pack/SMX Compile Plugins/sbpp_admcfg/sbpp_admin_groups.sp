@@ -103,10 +103,8 @@ public SMCResult ReadGroups_KeyValue(SMCParser smc,
 		}
 	} else if (g_GroupPass == GroupPass_Second
 		 && g_GroupState == GroupState_InGroup) {
-		/* Check for immunity again, core should handle double inserts */
 		if (StrEqual(key, "immunity", false))
 		{
-			/* If it's a value we know about, use it */
 			if (StrEqual(value, "*"))
 			{
 				g_CurGrp.ImmunityLevel = 2;
@@ -141,7 +139,6 @@ public SMCResult ReadGroups_KeyValue(SMCParser smc,
 
 public SMCResult ReadGroups_EndSection(SMCParser smc)
 {
-	/* If we're ignoring, skip out */
 	if (g_IgnoreLevel)
 	{
 		g_IgnoreLevel--;
@@ -182,7 +179,6 @@ static void InitializeGroupParser()
 
 static void InternalReadGroups(const char[] path, GroupPass pass)
 {
-	/* Set states */
 	InitGlobalStates();
 	g_GroupState = GroupState_None;
 	g_CurGrp = INVALID_GROUP_ID;

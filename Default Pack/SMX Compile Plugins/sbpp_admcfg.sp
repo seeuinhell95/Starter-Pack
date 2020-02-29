@@ -6,9 +6,9 @@
 
 public Plugin myinfo =
 {
-	name = "[CSGO] SourceBans - Admin Config Loader",
+	name = "[CSGO] SB - Admin Config Loader",
 	author = "AlliedModders LLC & SourceBans++ Dev Team | Edited: somebody.",
-	description = "SourceBans - Admin Config Loader",
+	description = "SB - Admin Config Loader",
 	version = "1.0",
 	url = "http://sourcemod.net"
 };
@@ -27,8 +27,7 @@ public void OnRebuildAdminCache(AdminCachePart part)
 	if (part == AdminCache_Groups)
 	{
 		ReadGroups();
-	}
-	else if (part == AdminCache_Admins)
+	} else if (part == AdminCache_Admins)
 	{
 		ReadUsers();
 	}

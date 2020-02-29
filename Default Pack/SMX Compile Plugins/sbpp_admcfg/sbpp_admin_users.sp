@@ -121,7 +121,6 @@ public SMCResult ReadUsers_EndSection(SMCParser smc)
 
 	if (g_UserState == UserState_InAdmin)
 	{
-		/* Dump this user to memory */
 		if (g_CurIdent[0] != '\0' && g_CurAuth[0] != '\0')
 		{
 			AdminFlag flags[26];
@@ -199,7 +198,6 @@ void ReadUsers()
 
 	BuildPath(Path_SM, g_Filename, sizeof(g_Filename), "configs/sourcebans/sb_admins.cfg");
 
-	/* Set states */
 	InitGlobalStates();
 	g_UserState = UserState_None;
 

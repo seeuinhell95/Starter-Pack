@@ -4,11 +4,10 @@
 
 #pragma newdecls required
 
-#define VERSION "1.0"
 #define LISTBANS_USAGE "sm_listbans <#userid|name> - Lists a user's prior bans from Sourcebans"
 #define LISTCOMMS_USAGE "sm_listcomms <#userid|name> - Lists a user's prior comms from Sourcebans"
 #define INVALID_TARGET -1
-#define Prefix "\x04[SourceBans++]\x01 "
+#define Prefix "[\x04SourceBans\x01] "
 
 char g_DatabasePrefix[10] = "sb";
 SMCParser g_ConfigParser;
@@ -16,10 +15,10 @@ Database g_DB;
 
 public Plugin myinfo =
 {
-	name = "[CSGO] SourceBans - Bans Checker",
+	name = "[CSGO] SB - Bans Checker",
 	author = "Psychonic, Ca$h Munny & SourceBans++ Dev Team | Edited: somebody.",
-	description = "SourceBans - Bans Checker",
-	version = VERSION,
+	description = "SB - Bans Checker",
+	version = "1.0",
 	url = "http://sourcemod.net"
 };
 
@@ -27,8 +26,6 @@ public void OnPluginStart()
 {
 	LoadTranslations("common.phrases");
 	LoadTranslations("sbpp_checker.phrases");
-
-	CreateConVar("sbchecker_version", VERSION, "", FCVAR_NOTIFY);
 
 	RegAdminCmd("sm_listbans", OnListSourceBansCmd, ADMFLAG_GENERIC, LISTBANS_USAGE);
 	RegAdminCmd("sm_listcomms", OnListSourceCommsCmd, ADMFLAG_GENERIC, LISTCOMMS_USAGE);
@@ -61,7 +58,6 @@ public void OnClientAuthorized(int client, const char[] auth)
 	if (g_DB == null)
 		return;
 
-	/* Do not check bots nor check player with lan steamid. */
 	if (auth[0] == 'B' || auth[9] == 'L')
 		return;
 
@@ -210,7 +206,6 @@ public void OnListBans(Database db, DBResultSet results, const char[] error, Dat
 			}
 		}
 
-		// NOT NULL
 		int size_lenstring = sizeof(lenstring);
 		int length = results.FetchInt(3);
 		if (length == 0)
@@ -222,7 +217,6 @@ public void OnListBans(Database db, DBResultSet results, const char[] error, Dat
 			int len = IntToString(length, lenstring, size_lenstring);
 			if (len < size_lenstring - 1)
 			{
-				// change the '\0' to a ' '. the original \0 at the end will still be there
 				lenstring[len] = ' ';
 			}
 		}
@@ -232,7 +226,6 @@ public void OnListBans(Database db, DBResultSet results, const char[] error, Dat
 			FormatTime(enddate, sizeof(enddate), "%Y-%m-%d", results.FetchInt(2));
 		}
 
-		// NOT NULL
 		int reason_size = sizeof(reason);
 		results.FetchString(4, reason, reason_size);
 		int len = results.FetchSize(4);
@@ -376,7 +369,6 @@ public void OnListComms(Database db, DBResultSet results, const char[] error, Da
 			}
 		}
 
-		// NOT NULL
 		int size_lenstring = sizeof(lenstring);
 		int length = results.FetchInt(3);
 		if (length == 0)
@@ -388,7 +380,6 @@ public void OnListComms(Database db, DBResultSet results, const char[] error, Da
 			int len = IntToString(length, lenstring, size_lenstring);
 			if (len < size_lenstring - 1)
 			{
-				// change the '\0' to a ' '. the original \0 at the end will still be there
 				lenstring[len] = ' ';
 			}
 		}
@@ -398,7 +389,6 @@ public void OnListComms(Database db, DBResultSet results, const char[] error, Da
 			FormatTime(enddate, sizeof(enddate), "%Y-%m-%d", results.FetchInt(2));
 		}
 
-		// NOT NULL
 		int reason_size = sizeof(reason);
 		results.FetchString(4, reason, reason_size);
 		int len = results.FetchSize(4);
@@ -420,7 +410,6 @@ public void OnListComms(Database db, DBResultSet results, const char[] error, Da
 		{
 			results.FetchString(5, RemoveType, sizeof(RemoveType));
 		}
-		// NOT NULL
 		results.FetchString(6, CommType, sizeof(RemoveType));
 		if(StrEqual(CommType,"1"))
 			strcopy(CommType, sizeof(CommType), "M");

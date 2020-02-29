@@ -6,8 +6,6 @@
 
 #pragma newdecls required
 
-#define PLUGIN_VERSION "1.0"
-
 #define LENGTH_ORIGINAL 1
 #define LENGTH_CUSTOM 2
 #define LENGTH_DOUBLE 3
@@ -15,11 +13,9 @@
 
 #define PREFIX "[SourceSleuth] "
 
-//- Handles -//
 Database hDatabase = null;
 ArrayList g_hAllowedArray = null;
 
-//- ConVars -//
 ConVar g_cVar_actions;
 ConVar g_cVar_banduration;
 ConVar g_cVar_sbprefix;
@@ -29,23 +25,20 @@ ConVar g_cVar_bypass;
 ConVar g_cVar_excludeOld;
 ConVar g_cVar_excludeTime;
 
-//- Bools -//
 bool CanUseSourcebans = false;
 
 public Plugin myinfo =
 {
-	name = "[CSGO] SourceBans - SourceSleuth",
+	name = "[CSGO] SB - SourceSleuth",
 	author = "Ecca & SourceBans++ Dev Team | Edited: somebody.",
-	description = "SourceBans - SourceSleuth",
-	version = PLUGIN_VERSION,
+	description = "SB - SourceSleuth",
+	version = "1.0",
 	url = "http://sourcemod.net"
 };
 
 public void OnPluginStart()
 {
 	LoadTranslations("sbpp_sleuth.phrases");
-
-	CreateConVar("sm_sourcesleuth_version", PLUGIN_VERSION, "SourceSleuth plugin version", FCVAR_SPONLY | FCVAR_REPLICATED | FCVAR_NOTIFY | FCVAR_DONTRECORD);
 
 	g_cVar_actions = CreateConVar("sm_sleuth_actions", "3", "Sleuth Ban Type: 1 - Original Length, 2 - Custom Length, 3 - Double Length, 4 - Notify Admins Only", 0, true, 1.0, true, 4.0);
 	g_cVar_banduration = CreateConVar("sm_sleuth_duration", "0", "Required: sm_sleuth_actions 1: Bantime to ban player if we got a match (0 = permanent (defined in minutes) )", 0);
@@ -202,7 +195,6 @@ public void SQL_CheckHim(Database db, DBResultSet results, const char[] error, D
 				}
 				case LENGTH_NOTIFY:
 				{
-					/* Notify Admins when a client with an ip on the bans list connects */
 					PrintToAdmins("%s%t", PREFIX, "sourcesleuth_admintext", client, steamid, IP);
 				}
 			}

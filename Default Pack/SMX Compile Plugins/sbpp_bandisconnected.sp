@@ -17,9 +17,9 @@ ArrayList ga_IPs;
 
 public Plugin myinfo =
 {
-	name = "[CSGO] SourceBans - Disconnected Ban",
+	name = "[CSGO] SB - Disconnected Bans",
 	author = "HeadLine & MadHamster | Edited: Cherry & somebody.",
-	description = "SourceBans - Disconnected Ban",
+	description = "SB - Disconnected Bans",
 	version = "1.0",
 	url = "http://sourcemod.net"
 };

@@ -1,28 +1,20 @@
 #pragma semicolon 1
 
 #include <sourcemod>
-#include <basecomm_edited>
+#include <basecomm>
 #include <sourcecomms>
-
-#pragma newdecls required
 
 #undef REQUIRE_PLUGIN
 #include <adminmenu>
 
+#pragma newdecls required
+
 #define UNBLOCK_FLAG ADMFLAG_CHEATS
 #define DATABASE "sourcebans"
 
-// #define DEBUG
-// #define LOG_QUERIES
+#define PREFIX "[\x04SourceComms]\x01 "
 
-// Do not edit below this line //
-//-----------------------------//
-
-#define PLUGIN_VERSION "1.0"
-#define PREFIX "\x04[SourceComms++]\x01 "
-
-#define MAX_TIME_MULTI 30 // maximum mass-target punishment length
-// session mute will expire after this if it hasn't already (fallback)
+#define MAX_TIME_MULTI 30
 #define SESSION_MUTE_FALLBACK 120 * 60
 
 #define NOW 0
@@ -39,7 +31,7 @@ char g_sReasonDisplays[MAX_REASONS][DISPLAY_SIZE], g_sReasonKey[MAX_REASONS][REA
 int iNumTimes, g_iTimeMinutes[MAX_TIMES];
 char g_sTimeDisplays[MAX_TIMES][DISPLAY_SIZE];
 
-enum State/* ConfigState */
+enum State
 {
 	ConfigStateNone = 0,
 	ConfigStateConfig,
@@ -47,7 +39,7 @@ enum State/* ConfigState */
 	ConfigStateTimes,
 	ConfigStateServers,
 }
-enum DatabaseState/* Database connection state */
+enum DatabaseState
 {
 	DatabaseState_None = 0,
 	DatabaseState_Wait,
@@ -64,26 +56,21 @@ SMCParser ConfigParser;
 
 TopMenu hTopMenu = null;
 
-/* Cvar handle*/
 ConVar CvarHostIp;
 ConVar CvarPort;
 
 char ServerIp[24];
 char ServerPort[7];
 
-/* Database handle */
 Database g_hDatabase;
 Database SQLiteDB;
 
 char DatabasePrefix[10] = "sb";
 
-/* Timer handles */
 Handle g_hPlayerRecheck[MAXPLAYERS + 1] = { null, ... };
 Handle g_hGagExpireTimer[MAXPLAYERS + 1] = { null, ... };
 Handle g_hMuteExpireTimer[MAXPLAYERS + 1] = { null, ... };
 
-
-/* Log Stuff */
 #if defined LOG_QUERIES
 char logQuery[256];
 #endif
@@ -96,48 +83,47 @@ int ConfigMaxLength = 0;
 int ConfigWhiteListOnly = 0;
 int serverID = 0;
 
-/* List menu */
-enum PeskyPanels
+enum
 {
 	curTarget,
 	curIndex,
 	viewingMute,
 	viewingGag,
 	viewingList,
-}
+	PeskyPanels,
+};
 
 int g_iPeskyPanels[MAXPLAYERS + 1][PeskyPanels];
 
-bool g_bPlayerStatus[MAXPLAYERS + 1]; // Player block check status
+bool g_bPlayerStatus[MAXPLAYERS + 1];
 char g_sName[MAXPLAYERS + 1][MAX_NAME_LENGTH];
 
 bType g_MuteType[MAXPLAYERS + 1];
 int g_iMuteTime[MAXPLAYERS + 1];
-int g_iMuteLength[MAXPLAYERS + 1]; // in sec
-int g_iMuteLevel[MAXPLAYERS + 1]; // immunity level of admin
+int g_iMuteLength[MAXPLAYERS + 1];
+int g_iMuteLevel[MAXPLAYERS + 1];
 char g_sMuteAdminName[MAXPLAYERS + 1][MAX_NAME_LENGTH];
 char g_sMuteReason[MAXPLAYERS + 1][256];
 char g_sMuteAdminAuth[MAXPLAYERS + 1][64];
 
 bType g_GagType[MAXPLAYERS + 1];
 int g_iGagTime[MAXPLAYERS + 1];
-int g_iGagLength[MAXPLAYERS + 1]; // in sec
-int g_iGagLevel[MAXPLAYERS + 1]; // immunity level of admin
+int g_iGagLength[MAXPLAYERS + 1];
+int g_iGagLevel[MAXPLAYERS + 1];
 char g_sGagAdminName[MAXPLAYERS + 1][MAX_NAME_LENGTH];
 char g_sGagReason[MAXPLAYERS + 1][256];
 char g_sGagAdminAuth[MAXPLAYERS + 1][64];
 
 ArrayList g_hServersWhiteList = null;
 
-// Forward
 Handle g_hFwd_OnPlayerPunished;
 
 public Plugin myinfo =
 {
-	name = "[CSGO] SourceBans - SourceComms",
+	name = "[CSGO] SB - SourceComms",
 	author = "Alex & SourceBans++ Dev Team | Edited: somebody.",
-	description = "SourceBans - SourceComms",
-	version = PLUGIN_VERSION,
+	description = "SB - SourceComms",
+	version = "1.0",
 	url = "http://sourcemod.net"
 };
 
@@ -167,18 +153,17 @@ public void OnPluginStart()
 	CvarPort = FindConVar("hostport");
 	g_hServersWhiteList = new ArrayList();
 
-	CreateConVar("sourcecomms_version", PLUGIN_VERSION, _, FCVAR_SPONLY | FCVAR_REPLICATED | FCVAR_NOTIFY);
 	AddCommandListener(CommandCallback, "sm_gag");
 	AddCommandListener(CommandCallback, "sm_mute");
 	AddCommandListener(CommandCallback, "sm_silence");
 	AddCommandListener(CommandCallback, "sm_ungag");
 	AddCommandListener(CommandCallback, "sm_unmute");
 	AddCommandListener(CommandCallback, "sm_unsilence");
+
 	RegServerCmd("sc_fw_block", FWBlock, "Blocking player comms by command from sourceban web site");
 	RegServerCmd("sc_fw_ungag", FWUngag, "Ungagging player by command from sourceban web site");
 	RegServerCmd("sc_fw_unmute", FWUnmute, "Unmuting player by command from sourceban web site");
 	RegConsoleCmd("sm_comms", CommandComms, "Shows current player communications status");
-	RegConsoleCmd("sm_mutelist", CommandMuteList, "Shows current player mutelist status");
 
 	HookEvent("player_changename", Event_OnPlayerName, EventHookMode_Post);
 
@@ -187,10 +172,9 @@ public void OnPluginStart()
 	#endif
 
 	#if defined DEBUG
-	PrintToServer("Sourcecomms plugin loading. Version %s", PLUGIN_VERSION);
+	PrintToServer("Sourcecomms plugin loading. Version 1.0");
 	#endif
 
-	// Catch config error
 	if (!SQL_CheckConfig(DATABASE))
 	{
 		SetFailState("Database failure: could not find database config: %s", DATABASE);
@@ -221,16 +205,11 @@ public void OnMapStart()
 
 public void OnMapEnd()
 {
-	// Clean up on map end just so we can start a fresh connection when we need it later.
-	// Also it is necessary for using SQL_SetCharset
 	if (g_hDatabase)
 		delete g_hDatabase;
 
 	g_hDatabase = null;
 }
-
-
-// CLIENT CONNECTION FUNCTIONS //
 
 public void OnClientDisconnect(int client)
 {
@@ -360,22 +339,6 @@ public void BaseComm_OnClientGag(int client, bool gagState)
 // COMMAND CODE //
 
 public Action CommandComms(int client, int args)
-{
-	if (!client)
-	{
-		ReplyToCommand(client, "%s%t", PREFIX, "CommandComms_na");
-		return Plugin_Continue;
-	}
-
-	if (g_MuteType[client] > bNot || g_GagType[client] > bNot)
-		AdminMenu_ListTarget(client, client, 0);
-	else
-		ReplyToCommand(client, "%s%t", PREFIX, "CommandComms_nb");
-
-	return Plugin_Handled;
-}
-
-public Action CommandMuteList(int client, int args)
 {
 	if (!client)
 	{
@@ -1120,7 +1083,6 @@ void AdminMenu_ListTarget(int client, int target, int index, int viewMute = 0, i
 	g_iPeskyPanels[client][viewingGag] = viewGag;
 	g_iPeskyPanels[client][viewingMute] = viewMute;
 	hMenu.Display(client, MENU_TIME_FOREVER);
-	hMenu.ExitBackButton = true;
 }
 
 public int MenuHandler_MenuListTarget(Menu menu, MenuAction action, int param1, int param2)

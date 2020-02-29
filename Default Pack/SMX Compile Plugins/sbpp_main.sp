@@ -7,26 +7,16 @@
 #include <adminmenu>
 #tryinclude <updater>
 
-#define SB_VERSION "1.0"
-
 #if defined _updater_included
 #define UPDATE_URL "https://sbpp.github.io/updater/updatefile.txt"
 #endif
 
-//GLOBAL DEFINES
-#define YELLOW				0x01
-#define NAMECOLOR			0x02
-#define TEAMCOLOR			0x03
-#define GREEN				0x04
-
-#define DISABLE_ADDBAN		1
-#define DISABLE_UNBAN		2
+#define DISABLE_ADDBAN 1
+#define DISABLE_UNBAN 2
 
 #define FLAG_LETTERS_SIZE 26
 
-//#define DEBUG
-
-enum State/* ConfigState */
+enum State
 {
 	ConfigStateNone = 0,
 	ConfigStateConfig,
@@ -37,19 +27,16 @@ enum State/* ConfigState */
 
 State ConfigState;
 
-#define Prefix "[SourceBans++] "
+#define Prefix "[SourceBans] "
 
-/* Admin Stuff*/
 AdminCachePart loadPart;
 
 AdminFlag g_FlagLetters[FLAG_LETTERS_SIZE];
 
-/* Cvar handle*/
 ConVar
 	CvarHostIp
 	, CvarPort;
 
-/* Database handle */
 Database DB;
 Database SQLiteDB;
 
@@ -58,24 +45,24 @@ char
 	, ServerPort[7]
 	, DatabasePrefix[10] = "sb"
 	, WebsiteAddress[128]
-	, groupsLoc[128] /* Admin KeyValues */
+	, groupsLoc[128]
 	, adminsLoc[128]
 	, overridesLoc[128]
-	, logFile[256]; /* Log Stuff */
+	, logFile[256];
 
 float RetryTime = 15.0;
 
 bool
-	loadAdmins /* Admin Stuff*/
+	loadAdmins
 	, loadGroups
 	, loadOverrides
 	, LateLoaded
 	, AutoAdd
 	, g_bConnecting = false
-	, requireSiteLogin = false /* Require a lastvisited from SB site */
+	, requireSiteLogin = false
 	, backupConfig = true
 	, enableAdmins = true
-	, PlayerStatus[MAXPLAYERS + 1]; /* Player ban check status */
+	, PlayerStatus[MAXPLAYERS + 1];
 
 int
 	g_BanTarget[MAXPLAYERS + 1] =  { -1, ... }
@@ -83,8 +70,8 @@ int
 	, curLoading
 	, serverID = -1
 	, ProcessQueueTime = 5
-	, g_ownReasons[MAXPLAYERS + 1] =  { false, ... } /* Own Chat Reason */
-	, CommandDisable; /* Disable of addban and unban */
+	, g_ownReasons[MAXPLAYERS + 1] =  { false, ... }
+	, CommandDisable;
 
 
 SMCParser ConfigParser;
@@ -92,7 +79,7 @@ SMCParser ConfigParser;
 Handle
 	g_hFwd_OnBanAdded
 	, g_hFwd_OnReportAdded
-	, PlayerRecheck[MAXPLAYERS + 1] =  { INVALID_HANDLE, ... }; /* Timer handle */
+	, PlayerRecheck[MAXPLAYERS + 1] =  { INVALID_HANDLE, ... };
 
 DataPack PlayerDataPack[MAXPLAYERS + 1] =  { null, ... };
 
@@ -106,9 +93,9 @@ Menu
 public Plugin myinfo =
 {
 	name = "[CSGO] SourceBans - Main",
-	author = "SourceBans Development Team & SourceBans++ Dev Team | Edited: Cherry & somebody.",
+	author = "SourceBans Development Team & SourceBans++ Dev Team | Edited: somebody.",
 	description = "SourceBans - Main",
-	version = SB_VERSION,
+	version = "1.0",
 	url = "http://sourcemod.net"
 };
 
@@ -138,7 +125,7 @@ public void OnPluginStart()
 
 	CvarHostIp = FindConVar("hostip");
 	CvarPort = FindConVar("hostport");
-	CreateConVar("sb_version", SB_VERSION, _, FCVAR_SPONLY | FCVAR_REPLICATED | FCVAR_NOTIFY);
+
 	RegServerCmd("sm_rehash", sm_rehash, "Reload SQL admins");
 	RegAdminCmd("sm_ban", CommandBan, ADMFLAG_BAN, "sm_ban <#userid|name> <minutes|0> [reason]", "sourcebans");
 	RegAdminCmd("sm_banip", CommandBanIp, ADMFLAG_BAN, "sm_banip <ip|#userid|name> <time> [reason]", "sourcebans");
@@ -177,7 +164,6 @@ public void OnPluginStart()
 	BuildPath(Path_SM, logFile, sizeof(logFile), "logs/sourcebans.log");
 	g_bConnecting = true;
 
-	// Catch config error and show link to FAQ
 	if (!SQL_CheckConfig("sourcebans"))
 	{
 		if (ReasonMenuHandle != INVALID_HANDLE)
@@ -199,7 +185,6 @@ public void OnPluginStart()
 
 	InitializeBackupDB();
 
-	// This timer is what processes the SQLite queue when the database is unavailable
 	CreateTimer(float(ProcessQueueTime * 60), ProcessQueue);
 
 	if (LateLoaded)
@@ -265,13 +250,10 @@ public void OnMapEnd()
 	{
 		if (PlayerDataPack[i] != null)
 		{
-			/* Need to close reason pack */
 			delete PlayerDataPack[i];
 		}
 	}
 }
-
-// CLIENT CONNECTION FUNCTIONS //
 
 public Action OnClientPreAdminCheck(int client)
 {
@@ -358,7 +340,7 @@ public Action ChatHook(int client, int args)
 
 		if (StrEqual(reason[0], "!noreason"))
 		{
-			PrintToChat(client, "%c[%cSourceBans%c]%c %t", GREEN, NAMECOLOR, GREEN, NAMECOLOR, "Chat Reason Aborted");
+			PrintToChat(client, "%s%t", Prefix, "Chat Reason Aborted");
 			return Plugin_Handled;
 		}
 
@@ -441,10 +423,9 @@ public Action CommandBan(int client, int args)
 	if (!PlayerStatus[target])
 	{
 		// The target has not been banned verify. It must be completed before you can ban anyone.
-		ReplyToCommand(admin, "%c[%cSourceBans%c]%c %t", GREEN, NAMECOLOR, GREEN, NAMECOLOR, "Ban Not Verified");
+		ReplyToCommand(admin, "%s%t", Prefix, "Ban Not Verified");
 		return Plugin_Handled;
 	}
-
 
 	CreateBan(client, target, time, reason);
 	return Plugin_Handled;
@@ -454,20 +435,15 @@ public Action CommandBanDC(client, args)
 {
 	decl String:steamid[100];
 	GetCmdArg(1, steamid, sizeof(steamid));
-
 	decl String:ip[100];
 	GetCmdArg(2, ip, sizeof(ip));
-
 	decl String:name[100];
 	GetCmdArg(3, name, sizeof(name));
-
 	decl String:timo[20];
 	GetCmdArg(4, timo, sizeof(timo));
 	new time = StringToInt(timo);
-
 	decl String:reason[100];
 	GetCmdArg(5, reason, sizeof(reason));
-
 	decl String:adminIp[24], String:adminAuth[64];
 	new minutes = StringToInt(timo);
 	if (!minutes && client && !(CheckCommandAccess(client, "sm_unban", ADMFLAG_UNBAN | ADMFLAG_ROOT)))
@@ -483,11 +459,9 @@ public Action CommandBanDC(client, args)
 		GetClientIP(client, adminIp, sizeof(adminIp));
 		GetClientAuthId(client, AuthId_Steam2, adminAuth, sizeof(adminAuth));
 	}
-
 	new Handle:dataPack = CreateDataPack();
 	new Handle:reasonPack = CreateDataPack();
 	WritePackString(reasonPack, reason);
-
 	WritePackCell(dataPack, client);
 	WritePackCell(dataPack, time);
 	WritePackCell(dataPack, _:reasonPack);
@@ -496,7 +470,6 @@ public Action CommandBanDC(client, args)
 	WritePackString(dataPack, ip);
 	WritePackString(dataPack, adminAuth);
 	WritePackString(dataPack, adminIp);
-
 	ResetPack(dataPack);
 	ResetPack(reasonPack);
 	UTIL_InsertBan(time, name, steamid, ip, reason, adminAuth, adminIp, dataPack);
@@ -505,7 +478,6 @@ public Action CommandBanDC(client, args)
 	Call_PushCell(time);
 	Call_PushString(reason);
 	Call_Finish();
-
 	return Plugin_Handled;
 }
 
@@ -837,7 +809,7 @@ public int ReasonSelected(Menu menu, MenuAction action, int param1, int param2)
 			else if (StrEqual("Own Reason", key)) // admin wants to use his own reason
 			{
 				g_ownReasons[param1] = true;
-				PrintToChat(param1, "%c[%cSourceBans%c]%c %t", GREEN, NAMECOLOR, GREEN, NAMECOLOR, "Chat Reason");
+				PrintToChat(param1, "%s%t", Prefix, "Chat Reason");
 				return;
 			}
 
@@ -905,7 +877,7 @@ public int HackingSelected(Menu menu, MenuAction action, int param1, int param2)
 
 			else
 			{
-				SetMenuTitle(ReasonMenuHandle,"Kitiltás indoka:");
+				SetMenuTitle(ReasonMenuHandle, "Kitiltás indoka:");
 				DisplayMenu(ReasonMenuHandle, param1, MENU_TIME_FOREVER);
 			}
 		}
@@ -982,7 +954,7 @@ public int MenuHandler_BanTimeList(Menu menu, MenuAction action, int param1, int
 			g_BanTime[param1] = StringToInt(info);
 
 			//DisplayBanReasonMenu(param1);
-			SetMenuTitle(ReasonMenuHandle,"Kitiltás indoka:");
+			SetMenuTitle(ReasonMenuHandle, "Kitiltás indoka:");
 			ReasonMenuHandle.Display(param1, MENU_TIME_FOREVER);
 		}
 
@@ -1139,7 +1111,8 @@ public void VerifyInsert(Database db, DBResultSet results, const char[] error, D
 {
 	if (dataPack == INVALID_HANDLE)
 	{
-		LogToFile(logFile, "Ban Failed: %s", error);
+		LogToFile(logFile, "%t: %s", "Ban Fail", error);
+
 		return;
 	}
 
@@ -1195,20 +1168,20 @@ public void VerifyInsert(Database db, DBResultSet results, const char[] error, D
 	{
 		if (Reason[0] == '\0')
 		{
-			ShowActivityEx(admin, Prefix, "%t", "Permabanned player", Name);
+			ShowActivityEx(admin, Prefix, "%t", "Permabanned Player", Name);
 		} else {
-			ShowActivityEx(admin, Prefix, "%t", "Permabanned player reason", Name, Reason);
+			ShowActivityEx(admin, Prefix, "%t", "Permabanned Player Reason", Name, Reason);
 		}
 	} else {
 		if (Reason[0] == '\0')
 		{
-			ShowActivityEx(admin, Prefix, "%t", "Banned player", Name, time);
+			ShowActivityEx(admin, Prefix, "%t", "Banned Player", Name, time);
 		} else {
-			ShowActivityEx(admin, Prefix, "%t", "Banned player reason", Name, time, Reason);
+			ShowActivityEx(admin, Prefix, "%t", "Banned Player Reason", Name, time, Reason);
 		}
 	}
 
-	LogAction(admin, client, "\"%L\" banned \"%L\" (minutes \"%d\") (reason \"%s\")", admin, client, time, Reason);
+	LogAction(admin, client, "%t", "Ban Log", admin, client, time, Reason);
 
 	if (PlayerDataPack[admin] != INVALID_HANDLE)
 	{
@@ -1221,9 +1194,10 @@ public void VerifyInsert(Database db, DBResultSet results, const char[] error, D
 	{
 		char length[32];
 		if(time == 0)
-			FormatEx(length, sizeof(length), "permament");
+			FormatEx(length, sizeof(length), "%T", "permanent", client);
 		else
-			FormatEx(length, sizeof(length), "%d %s", time, time == 1 ? "minute" : "minutes");
+			FormatEx(length, sizeof(length), "%d %T", time, time == 1 ? "minute" : "minutes", client);
+
 		KickClient(client, "%t\n\n%t", "Banned Check Site", WebsiteAddress, "Kick Reason", admin, Reason, length);
 	}
 }
@@ -1247,17 +1221,19 @@ public void SelectBanIpCallback(Database db, DBResultSet results, const char[] e
 	{
 		LogToFile(logFile, "Ban IP Select Query Failed: %s", error);
 		if (admin && IsClientInGame(admin))
-			PrintToChat(admin, "%sFailed to ban %s.", Prefix, ip);
+			PrintToChat(admin, "%s%t", Prefix, "Ban Fail");
 		else
-			PrintToServer("%sFailed to ban %s.", Prefix, ip);
+			PrintToServer("%s%t", Prefix, "Ban Fail");
+
 		return;
 	}
 	if (results.RowCount)
 	{
 		if (admin && IsClientInGame(admin))
-			PrintToChat(admin, "%s%s is already banned.", Prefix, ip);
+			PrintToChat(admin, "%s%t", Prefix, "Already Banned", ip);
 		else
-			PrintToServer("%s%s is already banned.", Prefix, ip);
+			PrintToServer("%s%t", Prefix, "Already Banned", ip);
+
 		return;
 	}
 	if (serverID == -1)
@@ -1305,17 +1281,12 @@ public void InsertBanIpCallback(Database db, DBResultSet results, const char[] e
 		return;
 	}
 
-	LogAction(admin,
-		-1,
-		"\"%L\" added ban (minutes \"%d\") (ip \"%s\") (reason \"%s\")",
-		admin,
-		minutes,
-		arg,
-		reason);
+	LogAction(admin, -1, "%t", "Ban Added", admin, minutes, arg, reason);
+
 	if (admin && IsClientInGame(admin))
-		PrintToChat(admin, "%s%s successfully banned", Prefix, arg);
+		PrintToChat(admin, "%s%t", Prefix, "Ban Success Name", arg);
 	else
-		PrintToServer("%s%s successfully banned", Prefix, arg);
+		PrintToServer("%s%t", Prefix, "Ban Success Name", arg);
 }
 
 public void SelectUnbanCallback(Database db, DBResultSet results, const char[] error, DataPack dataPack)
@@ -1329,7 +1300,6 @@ public void SelectUnbanCallback(Database db, DBResultSet results, const char[] e
 	dataPack.ReadString(reason, sizeof(reason));
 	dataPack.ReadString(arg, sizeof(arg));
 	dataPack.ReadString(adminAuth, sizeof(adminAuth));
-	delete dataPack;
 
 	db.Escape(reason, unbanReason, sizeof(unbanReason));
 
@@ -1341,6 +1311,7 @@ public void SelectUnbanCallback(Database db, DBResultSet results, const char[] e
 		{
 			PrintToChat(admin, "%ssm_unban failed", Prefix);
 		}
+		delete dataPack;
 		return;
 	}
 
@@ -1348,11 +1319,12 @@ public void SelectUnbanCallback(Database db, DBResultSet results, const char[] e
 	if (!results.RowCount)
 	{
 		if (admin && IsClientInGame(admin))
-		{
-			PrintToChat(admin, "%sNo active bans found for that filter", Prefix);
-		} else {
-			PrintToServer("%sNo active bans found for that filter", Prefix);
-		}
+			PrintToChat(admin, "%s%t", Prefix, "No Active Ban");
+		else
+			PrintToServer("%s%t", Prefix, "No Active Ban");
+
+		delete dataPack;
+
 		return;
 	}
 
@@ -1401,13 +1373,12 @@ public void InsertUnbanCallback(Database db, DBResultSet results, const char[] e
 		return;
 	}
 
-	LogAction(admin, -1, "\"%L\" removed ban (filter \"%s\") (reason \"%s\")", admin, arg, reason);
+	LogAction(admin, -1, "%t", "Ban Removed", admin, arg, reason);
+	
 	if (admin && IsClientInGame(admin))
-	{
-		PrintToChat(admin, "%s%s successfully unbanned", Prefix, arg);
-	} else {
-		PrintToServer("%s%s successfully unbanned", Prefix, arg);
-	}
+		PrintToChat(admin, "%s%t", Prefix, "Unban Success Name", arg);
+	else
+		PrintToServer("%s%t", Prefix, "Unban Success Name", arg);
 }
 
 public void SelectAddbanCallback(Database db, DBResultSet results, const char[] error, DataPack dataPack)
@@ -1428,18 +1399,21 @@ public void SelectAddbanCallback(Database db, DBResultSet results, const char[] 
 	if (results == null)
 	{
 		LogToFile(logFile, "Add Ban Select Query Failed: %s", error);
+
 		if (admin && IsClientInGame(admin))
-			PrintToChat(admin, "%sFailed to ban %s.", Prefix, authid);
+			PrintToChat(admin, "%s%t", Prefix, "Ban Fail");
 		else
-			PrintToServer("%sFailed to ban %s.", Prefix, authid);
+			PrintToServer("%s%t", Prefix, "Ban Fail");
+
 		return;
 	}
 	if (results.RowCount)
 	{
 		if (admin && IsClientInGame(admin))
-			PrintToChat(admin, "%s%s is already banned.", Prefix, authid);
+			PrintToChat(admin, "%s%t", Prefix, "Already Banned", authid);
 		else
-			PrintToServer("%s%s is already banned.", Prefix, authid);
+			PrintToServer("%s%t", Prefix, "Already Banned", authid);
+
 		return;
 	}
 	if (serverID == -1)
@@ -1482,19 +1456,12 @@ public void InsertAddbanCallback(Database db, DBResultSet results, const char[] 
 		return;
 	}
 
-	LogAction(admin,
-		-1,
-		"\"%L\" added ban (minutes \"%i\") (id \"%s\") (reason \"%s\")",
-		admin,
-		minutes,
-		authid,
-		reason);
+	LogAction(admin, -1, "%t", "Ban Added", admin, minutes, authid, reason);
+
 	if (admin && IsClientInGame(admin))
-	{
-		PrintToChat(admin, "%s%s successfully banned", Prefix, authid);
-	} else {
-		PrintToServer("%s%s successfully banned", Prefix, authid);
-	}
+		PrintToChat(admin, "%s%t", Prefix, "Ban Success Name", authid);
+	else
+		PrintToServer("%s%t", Prefix, "Ban Success Name", authid);
 }
 
 // ProcessQueueCallback is called as the result of selecting all the rows from the queue table
@@ -2535,9 +2502,8 @@ public bool CreateBan(int client, int target, int time, const char[] reason)
 	} else {
 		// We need a reason so offer the administrator a menu of reasons
 		PlayerDataPack[admin] = dataPack;
-		SetMenuTitle(ReasonMenuHandle,"Kitiltás indoka:");
 		DisplayMenu(ReasonMenuHandle, admin, MENU_TIME_FOREVER);
-		ReplyToCommand(admin, "%c[%cSourceBans%c]%c %t", GREEN, NAMECOLOR, GREEN, NAMECOLOR, "Check Menu");
+		ReplyToCommand(admin, "%s%t", Prefix, "Check Menu");
 	}
 
 	Call_StartForward(g_hFwd_OnBanAdded);
@@ -2659,13 +2625,16 @@ stock void PrepareBan(int client, int target, int time, char[] reason, int size)
 	#if defined DEBUG
 	LogToFile(logFile, "PrepareBan()");
 	#endif
+
 	if (!target || !IsClientInGame(target))
 		return;
+
 	char authid[64], name[32], bannedSite[512];
+
 	if (!GetClientAuthId(target, AuthId_Steam2, authid, sizeof(authid)))
 		return;
-	GetClientName(target, name, sizeof(name));
 
+	GetClientName(target, name, sizeof(name));
 
 	if (CreateBan(client, target, time, reason))
 	{
@@ -2673,26 +2642,31 @@ stock void PrepareBan(int client, int target, int time, char[] reason, int size)
 		{
 			if (reason[0] == '\0')
 			{
-				ShowActivity(client, "%t", "Permabanned player", name);
+				ShowActivity(client, "%t", "Permabanned Player", name);
 			} else {
-				ShowActivity(client, "%t", "Permabanned player reason", name, reason);
+				ShowActivity(client, "%t", "Permabanned Player Reason", name, reason);
 			}
 		} else {
 			if (reason[0] == '\0')
 			{
-				ShowActivity(client, "%t", "Banned player", name, time);
+				ShowActivity(client, "%t", "Banned Player", name, time);
 			} else {
-				ShowActivity(client, "%t", "Banned player reason", name, time, reason);
+				ShowActivity(client, "%t", "Banned Player Reason", name, time, reason);
 			}
 		}
-		LogAction(client, target, "\"%L\" banned \"%L\" (minutes \"%d\") (reason \"%s\")", client, target, time, reason);
+
+		LogAction(client, target, "%t", "Ban Log", client, target, time, reason);
+
 		char length[32];
+
 		if(time == 0)
-			FormatEx(length, sizeof(length), "permament");
+			FormatEx(length, sizeof(length), "%T", "permanent", client);
 		else
-			FormatEx(length, sizeof(length), "%d %s", time, time == 1 ? "minute" : "minutes");
+			FormatEx(length, sizeof(length), "%d %t", time, time == 1 ? "minute" : "minutes", client);
+
 		if (time > 5 || time == 0)
 			time = 5;
+
 		Format(bannedSite, sizeof(bannedSite), "%t\n\n%t", "Banned Check Site", WebsiteAddress, "Kick Reason", client, reason, length);//temp
 		BanClient(target, time, BANFLAG_AUTO, bannedSite, bannedSite, "sm_ban", client);
 	}
