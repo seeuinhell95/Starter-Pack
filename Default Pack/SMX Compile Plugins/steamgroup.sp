@@ -24,6 +24,8 @@ public OnPluginStart()
 	RegConsoleCmd("sm_link", CMD_SteamGroup);
 
 	RegConsoleCmd("sm_discord", CMD_Discord);
+	RegConsoleCmd("sm_disc", CMD_Discord);
+	RegConsoleCmd("sm_dc", CMD_Discord);
 
 	RegConsoleCmd("sm_rules", CMD_Rules);
 
