@@ -61,6 +61,7 @@ public void OnPluginStart()
 
 	LoadTranslations("common.phrases");
 	LoadTranslations("RoundEndSounds.phrases");
+
 	AutoExecConfig(true, "RoundEndSounds");
 
 	RegAdminCmd("res_refresh", CommandLoad, ADMFLAG_SLAY, "Refresh sounds");

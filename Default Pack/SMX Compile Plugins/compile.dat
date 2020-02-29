@@ -151,7 +151,7 @@ Age=1335101451
 [rockthevote_extended.sp]
 Age=1347299943
 [RoundEndSounds.sp]
-Age=1345218020
+Age=1348306376
 [sbp.sp]
 Age=1347423342
 [sbpp_admcfg.sp]
@@ -302,3 +302,5 @@ Age=1347914856
 Age=1347983366
 [slots_fix_test.sp]
 Age=1347989253
+[rainbowchat.sp]
+Age=1348306731
