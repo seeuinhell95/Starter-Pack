@@ -1,0 +1,24 @@
+"convars"
+{
+	say								1
+	exec							1
+	sm_cvar							1
+	sm_say							1
+	sm_gravity						1
+	cs_enable_player_physics_box	1
+	zr_infect_mzombie_ratio			1
+	zr_infect_mzombie_respawn		1
+	zr_infect_spawntime_max			1
+	zr_infect_spawntime_min			1
+	zr_roundend_overlay				1
+	zr_roundend_overlays_zombie		1
+	zr_roundend_overlays_human		1
+	zr_ambientsounds_volume			1
+	zr_respawn						1
+	zr_respawn_delay				1
+	zr_respawn_team_zombie			1
+	zr_respawn_team_zombie_world	1
+	zr_class_modify					1
+	zr_roundend_overlays_zombie		1
+	zr_roundend_overlays_human		1
+}
