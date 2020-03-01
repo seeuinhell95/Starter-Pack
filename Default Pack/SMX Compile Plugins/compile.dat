@@ -233,7 +233,7 @@ Age=1335101451
 [noblock.sp]
 Age=1346771432
 [steamgroup másolata.sp]
-Age=1346772219
+Age=1348299891
 [mapchooser_redux.sp]
 Age=1347001210
 [maptimelimit_redux.sp]
@@ -304,3 +304,5 @@ Age=1347983366
 Age=1347989253
 [rainbowchat.sp]
 Age=1348306731
+[mapdelete.sp]
+Age=1348581092
