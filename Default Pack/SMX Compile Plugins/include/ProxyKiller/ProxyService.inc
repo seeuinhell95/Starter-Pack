@@ -1,58 +1,35 @@
+// ================== DOUBLE INCLUDE ========================= //
+
 #if defined _ProxyService_included_
 #endinput
 #endif
 #define _ProxyService_included_
 
-methodmap ProxyService < JSON_Object
+// =========================================================== //
+
+#define MAX_SERVICE_NAME_LENGTH 128
+
+// =========================================================== //
+
+methodmap ProxyService < ProxyHTTP
 {
-	public ProxyService()
+	public ProxyService(char[] url, ProxyHTTPMethod method, char[] name, ProxyServiceResponse response)
 	{
-		return view_as<ProxyService>(new JSON_Object());
+		ProxyHTTP service = new ProxyHTTP(url, method, true);
+		service.SetString("name", name);
+		service.SetValue("expected_response", response);
+		return view_as<ProxyService>(service);
 	}
 
-	public void SetUrl(char[] url)
+	public bool GetName(char[] buffer, int maxlength)
 	{
-		this.SetString("url", url);
+		return this.GetString("name", buffer, maxlength);
 	}
 
-	public void GetUrl(char[] buffer, int maxlength)
+	property ProxyServiceResponse ExpectedResponse
 	{
-		this.GetString("url", buffer, maxlength);
-	}
-
-	public void SetName(char[] name)
-	{
-		this.SetString("name", name);
-	}
-
-	public void GetName(char[] buffer, int maxlength)
-	{
-		this.GetString("name", buffer, maxlength);
-	}
-
-	public void SetToken(char[] token)
-	{
-		this.SetString("token", token);
-	}
-
-	public void GetToken(char[] buffer, int maxlength)
-	{
-		this.GetString("token", buffer, maxlength);
-	}
-
-	public void SetTokenValue(char[] tokenValue)
-	{
-		this.SetString("token_value", tokenValue);
-	}
-
-	public void GetTokenValue(char[] buffer, int maxlength)
-	{
-		this.GetString("token_value", buffer, maxlength);
-	}
-
-	property ProxyServiceParams Params
-	{
-		public get() { return view_as<ProxyServiceParams>(this.GetObject("params")); }
-		public set(ProxyServiceParams params) { this.SetObject("params", view_as<ProxyServiceParams>(params)); }
+		public get() { return this.GetAny("expected_response"); }
 	}
 }
+
+// =========================================================== //

@@ -1,26 +1,53 @@
-#pragma semicolon 1
+// =========================================================== //
 
 #include <json>
+#include <regex>
 #include <SteamWorks>
 #include <ProxyKiller>
+
+// ====================== FORMATTING ========================= //
 
 #pragma dynamic 131072
 #pragma newdecls required
 
-ConVar gCV_Enable = null;
-ConVar gCV_KickMsg = null;
-ConVar gCV_LogSteamId = null;
-ConVar gCV_CacheLifetime = null;
-ConVar gCV_IgnoreAppOwners = null;
+// ====================== VARIABLES ========================== //
 
+ProxyCache g_Cache = null;
+ProxyRules g_Rules = null;
 ProxyLogger g_Logger = null;
-ProxyDatabase g_Database = null;
-ProxyServices g_Services = null;
-ProxyCacheLayer g_cacheLayer = null;
+ProxyConfig g_Config = null;
 
-#include "ProxyKiller/http.sp"
-#include "ProxyKiller/cache.sp"
+// ======================= INCLUDES ========================== //
+
+#include "ProxyKiller/api/natives.sp"
+#include "ProxyKiller/api/convars.sp"
+#include "ProxyKiller/api/forwards.sp"
+
+#include "ProxyKiller/http/public/public.sp"
+#include "ProxyKiller/http/public/params.sp"
+#include "ProxyKiller/http/public/headers.sp"
+#include "ProxyKiller/http/public/rawbody.sp"
+
+#include "ProxyKiller/http/service/service.sp"
+#include "ProxyKiller/http/service/helpers.sp"
+#include "ProxyKiller/http/service/response.sp"
+
+#include "ProxyKiller/cache/cache.sp"
+#include "ProxyKiller/cache/mysql.sp"
+#include "ProxyKiller/cache/sqlite.sp"
+
+#include "ProxyKiller/rules/rules.sp"
+#include "ProxyKiller/rules/mysql.sp"
+#include "ProxyKiller/rules/sqlite.sp"
+
+#include "ProxyKiller/helpers.sp"
+#include "ProxyKiller/migrations.sp"
+#include "ProxyKiller/string_utils.sp"
+
 #include "ProxyKiller/config.sp"
+#include "ProxyKiller/commands.sp"
+
+// ====================== PLUGIN INFO ======================== //
 
 public Plugin myinfo =
 {
@@ -31,26 +58,41 @@ public Plugin myinfo =
 	url = PROXYKILLER_URL
 };
 
+// ======================= MAIN CODE ========================= //
+
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
 {
-	gCV_Enable = CreateConVar("ProxyKiller_Enable", "1", "Enable/disable ProxyKiller\n0 = Disable - 1 = Enable", _, true, 0.0, true, 1.0);
-	gCV_KickMsg = CreateConVar("ProxyKiller_KickMessage", "Kicked due to proxy usage!", "Message to be sent to clients when they're kicked");
-	gCV_LogSteamId = CreateConVar("ProxyKiller_LogSteamId", "1", "Logs steamid in addition of ip for a punished client", _, true, 0.0, true, 1.0);
-	gCV_CacheLifetime = CreateConVar("ProxyKiller_CacheLifetime", "43200", "Time in second(s) when to invalidate cache entries and re-query ip addresses\nIt is recommended that you set this to at least 1 hour (3600 seconds)", _, true, 0.0, false);
-	gCV_IgnoreAppOwners = CreateConVar("ProxyKiller_IgnoreAppOwners", "624820", "Ignore owners of these appids when checking for proxies\nChecking will occur if a client does not have any of these appids\nSeparate appids by a comma ex: \"123, 4444\"");
+	CreateNatives();
+	CreateConVars();
+	CreateForwards();
+	CreateCommands();
 
-	AutoExecConfig(true, "ProxyKiller");
+	RegPluginLibrary(PROXYKILLER_NAME);
+	AutoExecConfig(true, PROXYKILLER_NAME ... "-Convars");
+
+	g_Logger = new ProxyLogger(PROXYKILLER_SPEWMODE, PROXYKILLER_SPEWLEVEL);
+	Call_OnLogger();
 }
 
-public void OnPluginStart()
+public void OnConfigsExecuted()
 {
-	g_Logger = new ProxyLogger();
-	g_Database = new ProxyDatabase();
-	g_Services = new ProxyServices();
-	ParseConfig(DEFAULT_CONFIG, g_Services);
+	if (!ProxyKiller_Config_IsInit())
+	{
+		g_Config = ParseConfig(PROXYKILLER_CONFIG);
+		Call_OnConfig();
+	}
 
-	g_Database.Initialize();
-	g_cacheLayer = new ProxyCacheLayer(g_Database);
+	if (!ProxyKiller_Cache_IsInit())
+	{
+		g_Cache = CreateCache(gCV_CacheMode.IntValue);
+		Call_OnCache();
+	}
+
+	if (!ProxyKiller_Rules_IsInit())
+	{
+		g_Rules = CreateRules(gCV_RulesMode.IntValue);
+		Call_OnRules();
+	}
 }
 
 public void OnClientPostAdminCheck(int client)
@@ -60,77 +102,48 @@ public void OnClientPostAdminCheck(int client)
 		return;
 	}
 
+	Call_OnValidClient(client);
+	bool shouldIgnore = HasOverride(client);
+
+	char ignoreFlags[64];
+	gCV_IgnoreFlags.GetString(ignoreFlags, sizeof(ignoreFlags));
+
+	TrimString(ignoreFlags);
+	if (!shouldIgnore && strlen(ignoreFlags) > 0)
+	{
+		shouldIgnore = HasFlagFromFlagString(client, ignoreFlags);
+	}
+
 	char ignoreApps[256];
 	gCV_IgnoreAppOwners.GetString(ignoreApps, sizeof(ignoreApps));
 
 	TrimString(ignoreApps);
-	bool shouldCheck = true;
-
-	if (strlen(ignoreApps) > 0)
+	if (!shouldIgnore && strlen(ignoreApps) > 0)
 	{
-		char appIds[16][16];
-		int appCount = ExplodeString(ignoreApps, ",", appIds, sizeof(appIds), sizeof(appIds[]));
-
-		for (int i = 0; i < appCount; i++)
-		{
-			if (HasApp(client, StringToInt(appIds[i])))
-			{
-				shouldCheck = false;
-				break;
-			}
-		}
+		shouldIgnore = HasAppFromAppString(client, ignoreApps);
 	}
 
-	if (shouldCheck)
+	if (shouldIgnore)
 	{
-		char clientIpAddress[24];
-		char clientSteamId[32] = "Undefined";
-		GetClientIP(client, clientIpAddress, sizeof(clientIpAddress));
-
-		if (gCV_LogSteamId.BoolValue)
-		{
-			if (!GetClientAuthId(client, AuthId_Steam2, clientSteamId, sizeof(clientSteamId)))
-			{
-				clientSteamId = "Unknown";
-			}
-		}
-
-		DataPack data = new DataPack();
-		data.WriteString(clientIpAddress);
-		data.WriteString(clientSteamId);
-		g_cacheLayer.TryGetCache(clientIpAddress, OnCache, data);
+		// FUTURE FEATURE -> Check for blacklisted user
 	}
-}
-
-void ReplaceIP(char[] ipAddress, char[] buffer, int maxlength)
-{
-	ReplaceString(buffer, maxlength, IP_CONF_TOKEN, ipAddress);
-}
-
-bool HasApp(int client, int appid)
-{
-	return (SteamWorks_HasLicenseForApp(client, appid) == k_EUserHasLicenseResultHasLicense);
-}
-
-void KickClientsByIp(char[] ipAddress)
-{
-	for (int i = 1; i < MaxClients; i++)
+	else
 	{
-		if (!IsClientConnected(i))
-			continue;
-		
-		if (IsFakeClient(i))
-			continue;
-
-		char clientIp[24];
-		GetClientIP(i, clientIp, sizeof(clientIp));
-
-		if (StrEqual(ipAddress, clientIp))
+		if (Call_DoCheckClient(client))
 		{
-			char kickMsg[KICK_MESSAGE_LENGTH];
-			gCV_KickMsg.GetString(kickMsg, sizeof(kickMsg));
-			
-			KickClient(i, "%s", kickMsg);
+			ProxyKiller_CheckClient(client);
 		}
 	}
 }
+
+public void ProxyKiller_OnCache()
+{
+	// Every hour and immediately fired once
+	Handle timer = CreateTimer(3600.0, Timer_DeleteOldCacheEntries, _, TIMER_REPEAT);
+	if (timer != null)
+	{
+		TriggerTimer(timer);
+	}
+}
+
+// =========================================================== //

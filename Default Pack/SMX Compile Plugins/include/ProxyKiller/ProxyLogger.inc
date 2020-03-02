@@ -1,43 +1,123 @@
+// ================== DOUBLE INCLUDE ========================= //
+
 #if defined _ProxyLogger_included_
 #endinput
 #endif
 #define _ProxyLogger_included_
 
-#define DEFAULT_LOGGER_PATH "logs/ProxyKiller.log"
-#define MAX_LOG_MESSAGE_BUFFER 512
+// =========================================================== //
 
-methodmap ProxyLogger < JSON_Object
+/**
+ * Types of logging spewmodes available
+ */
+enum (<<= 1)
 {
-	public ProxyLogger()
-	{
-		char loggerPath[PLATFORM_MAX_PATH];
-		BuildPath(Path_SM, loggerPath, sizeof(loggerPath), DEFAULT_LOGGER_PATH);
-		
-		JSON_Object loggerObj = new JSON_Object();
-		loggerObj.SetString("file", loggerPath);
+	SPEWMODE_LOG = 1 << 0,		/**< Spew messages to logs */
+	SPEWMODE_CHAT = 1 << 1		/**< Spew messages to ingame chat */
+};
 
-		return view_as<ProxyLogger>(loggerObj);
+/**
+ * Types of logging spewlevels available
+ */
+enum (<<= 1)
+{
+	SPEWLEVEL_ERROR = 1 << 0,	/**< Spew error messages */
+	SPEWLEVEL_INFO = 1 << 1,	/**< Spew info messages */
+	SPEWLEVEL_DEBUG = 1 << 2	/**< Spew debugging messages */
+};
+
+// =========================================================== //
+
+methodmap ProxyLogger < StringMapEx
+{
+	public ProxyLogger(int spewMode, int spewLevel)
+	{
+		StringMapEx logger = new StringMapEx();
+		logger.SetValue("spewmode", spewMode);
+		logger.SetValue("spewlevel", spewLevel);
+		return view_as<ProxyLogger>(logger);
 	}
 
-	public void GetFile(char[] buffer, int maxlength)
+	property int SpewMode 
 	{
-		this.GetString("file", buffer, maxlength);
+		public get() { return this.GetInt("spewmode"); }
+	}
+	
+	property int SpewLevel
+	{
+		public get() { return this.GetInt("spewlevel"); }
 	}
 
-	public void WriteAndClose(char[] buffer)
+	public bool DoSpew(int spewType, char[] format, any ...)
 	{
-		char loggerPath[PLATFORM_MAX_PATH];
-		this.GetFile(loggerPath, sizeof(loggerPath));
-		
-		File file = OpenFile(loggerPath, "a");
-		LogToOpenFile(file, buffer);
-		file.Close();
+		if (this.SpewMode == 0) return false;
+		if (!(this.SpewLevel & spewType)) return false;
+
+		char buffer[600];
+		VFormat(buffer, sizeof(buffer), format, 4);
+
+		if (this.SpewMode & SPEWMODE_LOG)
+		{
+			if (spewType == SPEWLEVEL_ERROR)
+			{
+				LogError("%s", buffer);
+			}
+			else
+			{
+				LogMessage("%s", buffer);
+			}
+		}
+
+		if (this.SpewMode & SPEWMODE_CHAT)
+		{
+			PrintToChatAll("%s", buffer);
+		}
+
+		return true;
 	}
 
-	public void LogLine(char[] format, any ...)
+	public bool InfoMessage(char[] format, any ...)
 	{
-		char buffer[MAX_LOG_MESSAGE_BUFFER];
+		char buffer[512];
 		VFormat(buffer, sizeof(buffer), format, 3);
-		this.WriteAndClose(buffer);
+		return this.DoSpew(SPEWLEVEL_INFO, "[ INFO  ] %s", buffer);
+	}
+
+	public bool ErrorMessage(char[] format, any ...)
+	{
+		char buffer[512];
+		VFormat(buffer, sizeof(buffer), format, 3);
+		return this.DoSpew(SPEWLEVEL_ERROR, "[ ERROR ] %s", buffer);
+	}
+
+	public bool DebugMessage(char[] format, any ...)
+	{
+		char buffer[512];
+		VFormat(buffer, sizeof(buffer), format, 3);
+		return this.DoSpew(SPEWLEVEL_DEBUG, "[ DEBUG ] %s", buffer);
+	}
+
+	public void PrintFrame(char[] info = "")
+	{
+		if (this.SpewLevel & SPEWLEVEL_DEBUG)
+		{
+			FrameIterator iter = new FrameIterator();
+			// 0 = FrameIterator()
+			// 1 = ProxyLogger.PrintFrame
+			// 2 = Function we got called from
+			iter.Next();
+			iter.Next();
+
+			char funcName[128];
+			iter.GetFunctionName(funcName, sizeof(funcName));
+
+			char funcPath[PLATFORM_MAX_PATH];
+			iter.GetFilePath(funcPath, sizeof(funcPath));
+
+			this.DebugMessage("-> %s(%d)::%s(%s)", funcPath, iter.LineNumber, funcName, info);
+			delete iter;
+		}
 	}
 }
+
+// =========================================================== //
