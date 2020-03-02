@@ -55,9 +55,24 @@
 		"model"		"models/props/cs_office/file_cabinet3.mdl"
 	}
 
-	"Hordó"
+	"Hordó (fém)"
 	{
 		"model"		"models/props/de_train/barrel.mdl"
+	}
+
+	"Hordó (fa)"
+	{
+		"model"		"models/props/de_inferno/hr_i/barrel_a/barrel_a_full.mdl"
+	}
+
+	"Robbanóhordó"
+	{
+		"model"		"models/props/coop_cementplant/exloding_barrel/exploding_barrel.mdl"
+	}
+
+	"Vizes hordó"
+	{
+		"model"		"models/props_urban/highway_barrel001.mdl"
 	}
 
 	"Szökőkút"
@@ -80,6 +95,11 @@
 		"model"		"models/props/cs_office/sofa.mdl"
 	}
 
+	"Üdítő automata"
+	{
+		"model"		"models/props/cs_office/vending_machine.mdl"
+	}
+
 	"Csövek"
 	{
 		"model"		"models/props_pipes/pipecluster32d_001a.mdl"
@@ -95,9 +115,29 @@
 		"model"		"models/props/de_dust/stoneblock01a.mdl"
 	}
 
-	"Monitor"
+	"Monitor 1"
 	{
 		"model"		"models/props_lab/monitor02.mdl"
+	}
+
+	"Monitor 2"
+	{
+		"model"		"models/props/cs_office/computer_monitor.mdl"
+	}
+
+	"Gépház"
+	{
+		"model"		"models/props/cs_office/computer_caseb.mdl"
+	}
+
+	"Billentyűzet"
+	{
+		"model"		"models/props/cs_office/computer_keyboard.mdl"
+	}
+
+	"Egér"
+	{
+		"model"		"models/props/cs_office/computer_mouse.mdl"
 	}
 
 	"Pad (kicsi)"
@@ -113,11 +153,16 @@
 	"Pózna"
 	{
 		"model"		"models/props/cs_assault/pylon.mdl"
-    }
+	}
 
-	"Cső"
+	"Cső 1"
 	{
-		"model"		"models/props_pipes/concrete_pipe001c.mdl"
+		"model"		"models/props_pipes/concrete_pipe001b.mdl"
+	}
+
+	"Cső 2"
+	{
+		"model"		"models/props/hr_massive/survival_drainage_pipe/survival_concrete_pipe.mdl"
 	}
 
 	"Vészvilágítás"
@@ -155,14 +200,79 @@
 		"model"		"models/props/hr_massive/suvival_wheelbarrow/survival_wheelbarrow.mdl"
 	}
 
-	"Üveg"
+	"Vizes üveg"
 	{
-		"model"		"models/props_junk/garbage_glassbottle001a.mdl"
+		"model"		"models/props/cs_office/water_bottle.mdl"
 	}
 
-	"Bója"
+	"Üditős üveg"
+	{
+		"model"		"models/props_junk/garbage_plasticbottle003a.mdl"
+	}
+
+	"Bója (háromszög)"
 	{
 		"model"		"models/props/hr_vertigo/vertigo_traffic_cone/traffic_cone.mdl"
+	}
+
+	"Bója (henger) 1"
+	{
+		"model"		"models/props_fairgrounds/traffic_barrel.mdl"
+	}
+
+	"Bója (henger) 2"
+	{
+		"model"		"models/props/hr_vertigo/warning_barrel/warning_barrel.mdl"
+	}
+
+	"Bója (henger) 3"
+	{
+		"model"		"models/props/de_vertigo/barrelwarning_clean.mdl"
+	}
+
+	"Bója (kordon)"
+	{
+		"model"		"models/props_fortifications/traffic_barrier001.mdl"
+	}
+
+	"Fa barikád"
+	{
+		"model"		"models/props_unique/wooden_barricade.mdl"
+	}
+
+	"Beton akadály"
+	{
+		"model"		"models/props/de_nuke/hr_nuke/nuke_concrete_barrier/nuke_concrete_barrier.mdl"
+	}
+
+	"Szögesdrót"
+	{
+		"model"		"models/props_fortifications/barricade_razorwire001_128_reference.mdl"
+	}
+
+	"Pénz blokk"
+	{
+		"model"		"models/props_survival/cash/prop_cash_stack_block.mdl"
+	}
+
+	"Bicikli"
+	{
+		"model"		"models/props/de_dust/hr_dust/dust_bicycle/dust_bicycle_wall.mdl"
+	}
+
+	"Betonfal"
+	{
+		"model"		"models/props_fortifications/concrete_wall001_96_reference.mdl"
+	}
+
+	"Homokzsákok"
+	{
+		"model"		"models/props/gg_vietnam/sandbags_line3.mdl"
+	}
+
+	"Cementes zsákok"
+	{
+		"model"		"models/props/de_prodigy/concretebags2.mdl"
 	}
 
 	"Betontömb"
@@ -170,14 +280,54 @@
 		"model"		"models/props/ar_dizzy/dizzy_cinderblock/dizzy_cinderblock.mdl"
 	}
 
-	"Tábla"
+	"Tábla pózna"
 	{
-		"model"		"models/props_c17/signpole001.mdl"
+		"model"		"models/props_urban/metal_pole001.mdl"
 	}
 
-	"Autó"
+	"Tábla"
+	{
+		"model"		"models/props/hr_massive/road_signs/road_sign_5.mdl"
+	}
+
+	"Létra"
+	{
+		"model"		"models/props/cs_office/ladder_office.mdl"
+	}
+
+	"Rendőr kordon 1"
+	{
+		"model"		"models/props_fortifications/police_barrier001_128_reference.mdl"
+	}
+
+	"Rendőr kordon 2"
+	{
+		"model"		"models/props/de_venice/venice_police_barrier/venice_police_barrier_taped_02.mdl"
+	}
+
+	"Autó 1"
 	{
 		"model"		"models/props/de_nuke/hr_nuke/nuke_cars/nuke_sedan01.mdl"
+	}
+
+	"Autó 2"
+	{
+		"model"		"models/props/de_nuke/hr_nuke/nuke_cars/nuke_sedan02.mdl"
+	}
+
+	"Autó 3"
+	{
+		"model"		"models/props/de_nuke/hr_nuke/nuke_cars/nuke_compact01.mdl"
+	}
+
+	"Autó 4"
+	{
+		"model"		"models/props/de_nuke/hr_nuke/nuke_cars/nuke_station_wagon01.mdl"
+	}
+
+	"Autó 5"
+	{
+		"model"		"models/props/de_nuke/hr_nuke/nuke_cars/nuke_station_wagon02.mdl"
 	}
 
 	"Roncsautó"
@@ -185,13 +335,238 @@
 		"model"		"models/props_vehicles/van001a.mdl"
 	}
 
-	"WC"
+	"Furgon"
+	{
+		"model"		"models/props/cs_militia/van.mdl"
+	}
+
+	"Furgon SWAT 1"
+	{
+		"model"		"models/props/de_house/swat_van.mdl"
+	}
+
+	"Furgon SWAT 2"
+	{
+		"model"		"models/props/de_house/swat_van_generic.mdl"
+	}
+
+	"Terepjáró rendőrautó"
+	{
+		"model"		"models/props_vehicles/police_pickup_truck_02.mdl"
+	}
+
+	"Rendőrautó 1"
+	{
+		"model"		"models/props_vehicles/police_car_city.mdl"
+	}
+
+	"Rendőrautó 2"
+	{
+		"model"		"models/props_vehicles/police_car_lights_on.mdl"
+	}
+
+	"Rendőr villogó"
+	{
+		"model"		"models/props_vehicles/police_car_lightbar.mdl"
+	}
+
+	"Tank 1"
+	{
+		"model"		"models/props/de_piranesi/pi_apc.mdl"
+	}
+
+	"Tank 2"
+	{
+		"model"		"models/props/dust_massive/apc_wreck/apc_wreck.mdl"
+	}
+
+	"Biztonsági őr hulla"
+	{
+		"model"		"models/props/de_train/de_train_securityguard.mdl"
+	}
+
+	"Szekér"
+	{
+		"model"		"models/props/gg_tibet/ornatecart.mdl"
+	}
+
+	"WC 1"
+	{
+		"model"		"models/props/cs_militia/toilet.mdl"
+	}
+
+	"WC 2"
 	{
 		"model"		"models/props_interiors/toilet.mdl"
+	}
+
+	"Sörösrekesz"
+	{
+		"model"		"models/props/cs_militia/caseofbeer01.mdl"
 	}
 
 	"Görögdinnye"
 	{
 		"model"		"models/props_junk/watermelon01.mdl"
+	}
+
+	"Narancs"
+	{
+		"model"		"models/props/cs_italy/orange.mdl"
+	}
+
+	"Banán"
+	{
+		"model"		"models/props/cs_italy/bananna.mdl"
+	}
+
+	"Banán fürt"
+	{
+		"model"		"models/props/cs_italy/bananna_bunch.mdl"
+	}
+
+	"Mikró"
+	{
+		"model"		"models/props/cs_office/microwave.mdl"
+	}
+
+	"Rádió"
+	{
+		"model"		"models/props/cs_office/radio.mdl"
+	}
+
+	"Elefánt plüss"
+	{
+		"model"		"models/props_fairgrounds/elephant.mdl"
+	}
+
+	"Zsiráf plüss"
+	{
+		"model"		"models/props_fairgrounds/giraffe.mdl"
+	}
+
+	"TV (dobozos)"
+	{
+		"model"		"models/props_interiors/tv.mdl"
+	}
+
+	"TV (plazma)"
+	{
+		"model"		"models/props/de_train/hr_t/hr_tv_plasma/hr_tv_plasma.mdl"
+	}
+
+	"Szék (műanyag)"
+	{
+		"model"		"models/props_urban/plastic_chair001.mdl"
+	}
+
+	"Műanyag rekesz"
+	{
+		"model"		"models/props_junk/plasticcrate01a.mdl"
+	}
+
+	"Kávézóasztal"
+	{
+		"model"		"models/props_interiors/coffee_table_rectangular.mdl"
+	}
+
+	"Kávéfőző"
+	{
+		"model"		"models/props_interiors/coffee_maker.mdl"
+	}
+
+	"Bögre"
+	{
+		"model"		"models/props/cs_office/coffee_mug.mdl"
+	}
+
+	"Cserepes növény 1"
+	{
+		"model"		"models/props/cs_office/plant01a.mdl"
+	}
+
+	"Cserepes növény 2"
+	{
+		"model"		"models/props/cs_office/plant01_static.mdl"
+	}
+
+	"Cserepes virág"
+	{
+		"model"		"models/props/de_inferno/potted_plant1_simple.mdl"
+	}
+
+	"Tojás"
+	{
+		"model"		"models/chicken/festive_egg.mdl"
+	}
+
+	"Paradicsom"
+	{
+		"model"		"models/props/cs_italy/tomatoes01.mdl"
+	}
+
+	"Padlizsán"
+	{
+		"model"		"models/props/cs_italy/eggplant01.mdl"
+	}
+
+	"Kamera"
+	{
+		"model"		"models/props/coop_cementplant/phoenix/phoenix_camcorder.mdl"
+	}
+
+	"C4"
+	{
+		"model"		"models/weapons/w_c4_planted.mdl"
+	}
+
+	"Borosüveg"
+	{
+		"model"		"models/props/cs_italy/chianti_bottle.mdl"
+	}
+
+	"Propán tartály"
+	{
+		"model"		"models/props_junk/propanecanister001a.mdl"
+	}
+
+	"Kerekesszék"
+	{
+		"model"		"models/props/coop_kashbah/wheelchair/wheelchair.mdl"
+	}
+
+	"Irodai szék"
+	{
+		"model"		"models/props/cs_office/chair_office.mdl"
+	}
+
+	"Telefon"
+	{
+		"model"		"models/props/cs_office/phone.mdl"
+	}
+
+	"Szemetes"
+	{
+		"model"		"models/props_interiors/trashcankitchen01.mdl"
+	}
+
+	"Vízautomata"
+	{
+		"model"		"models/props_interiors/water_cooler.mdl"
+	}
+
+	"Poroltó (piros)"
+	{
+		"model"		"models/props/cs_office/fire_extinguisher.mdl"
+	}
+
+	"Poroltó (szürke)"
+	{
+		"model"		"models/props/de_nuke/hr_nuke/nuke_fire_extinguisher/nuke_fire_extinguisher.mdl"
+	}
+
+	"Tűzcsap"
+	{
+		"model"		"models/props_street/firehydrant.mdl"
 	}
 }
