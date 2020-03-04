@@ -102,7 +102,7 @@ public void retrieveColorValue(int index)
     if(ExplodeString(color, " ", pieces, sizeof(pieces), sizeof(pieces[])) >= 3)
     {
         for(int j = 0; j < 3; j++)
-		{
+        {
             colors[index][j] = StringToInt(pieces[j]);
         }
     }
