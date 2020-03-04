@@ -6,13 +6,9 @@
 #include <colorvariables>
 
 Handle kv;
-
 bool g_bEnd;
-
 ConVar cvar_end;
-
 int g_iCount;
-
 Handle timers;
 
 public Plugin myinfo =
