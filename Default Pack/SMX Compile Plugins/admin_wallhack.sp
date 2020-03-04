@@ -47,7 +47,7 @@ public OnPluginStart()
     cColor[1] = CreateConVar("sm_advanced_esp_ctcolor", "72 96 144", "Determines R G B glow colors for Counter-Terrorists team\nFormat should be \"R G B\" (with spaces)", 0);
     cDefault = CreateConVar("sm_advanced_esp_default", "0", "Set to 1 if admins should automatically be given ESP", 0);
     cLifeState = CreateConVar("sm_advanced_esp_lifestate", "0", "Set to 1 if admins should only see esp when dead, 2 to only see esp while alive, 0 dead or alive.", 0);
-    cNotify = CreateConVar("sm_advanced_esp_notify", "0", "Set to 1 if giving and setting esp should notify the rest of the server.", 0);
+    cNotify = CreateConVar("sm_advanced_esp_notify", "1", "Set to 1 if giving and setting esp should notify the rest of the server.", 0);
     cTeam = CreateConVar("sm_advanced_esp_team", "0", "0 - Display all teams, 1 - Display enemy, 2 - Display teammates", 0);
     cModel = CreateConVar("sm_advanced_esp_model", "0", "0 - Use current model (full body glow), 1 - Use facemask model on head", 0);
 
@@ -179,9 +179,9 @@ public void notifyServer(int client, char[] targetName, int status)
     {
         switch(status)
         {
-            case 0:  ShowActivity(client, " \x06[\x02ESP\x06] \x07%t", "ESP Off", targetName);
-            case 1:  ShowActivity(client, " \x06[\x02ESP\x06] \x07%t", "ESP On", targetName);
-            default: ShowActivity(client, " \x06[\x02ESP\x06] \x07%t", "ESP Toggle", targetName);
+            case 0:  PrintToChat(client, " \x06[\x02ESP\x06] \x07%t", "ESP Off", targetName);
+            case 1:  PrintToChat(client, " \x06[\x02ESP\x06] \x07%t", "ESP On", targetName);
+            default: PrintToChat(client, " \x06[\x02ESP\x06] \x07%t", "ESP Toggle", targetName);
         }
     }
 }

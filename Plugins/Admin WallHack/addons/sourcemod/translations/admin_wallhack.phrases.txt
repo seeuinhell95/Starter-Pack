@@ -4,14 +4,14 @@
 	{
 		"#format"		"{1:s}"
 		"en"			"Took ESP from '{1}'."
-		"hu"			"{1} WallHack programja: Bekapcsolva."
+		"hu"			"{1} WallHack programja: Kikapcsolva."
 	}
 
 	"ESP On"
 	{
 		"#format"		"{1:s}"
 		"en"			"Gave ESP to '{1}'."
-		"hu"			"{1} WallHack programja: Kikapcsolva."
+		"hu"			"{1} WallHack programja: Bekapcsolva."
 	}
 
 	"ESP Toggle"
