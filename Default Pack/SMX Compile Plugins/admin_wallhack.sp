@@ -101,7 +101,8 @@ public void retrieveColorValue(int index)
     cColor[index].GetString(color, sizeof(color));
     if(ExplodeString(color, " ", pieces, sizeof(pieces), sizeof(pieces[])) >= 3)
     {
-        for(int j = 0; j < 3; j++) {
+        for(int j = 0; j < 3; j++)
+		{
             colors[index][j] = StringToInt(pieces[j]);
         }
     }
