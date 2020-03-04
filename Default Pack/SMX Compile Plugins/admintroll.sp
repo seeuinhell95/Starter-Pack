@@ -137,7 +137,7 @@ public Troll_Menu_Handler(Handle:trollmenu, MenuAction:action, param1, param2)
 				SetMenuTitle(menu, "Troll Menü");
 
 				AddMenuItem(menu, "Damage", "0 sebzés");
-				AddMenuItem(menu, "Hide", "Láthatatlan játékosok");
+				AddMenuItem(menu, "Hide", "Láthatatlan ellenfelek");
 				AddMenuItem(menu, "Mirror", "Tükörsebzés");
 				SetMenuExitButton(menu, true);
 
@@ -271,8 +271,8 @@ public HideMenu_Handler(Handle:menu, MenuAction:action, param1, param2)
 	if(target > 0 && param1 > 0)
 	{
 		Punishment[target] = Hide;
-		PrintToChat(param1, " \x06[\x02Troll\x06] \x06%N \x07meglett trollkodva. (\x06Láthatatlan játékosok\x07)", target);
-		LogAction(param1, target, "%L hide other players from %L", param1, target);
+		PrintToChat(param1, " \x06[\x02Troll\x06] \x06%N \x07meglett trollkodva. (\x06Láthatatlan ellenfelek\x07)", target);
+		LogAction(param1, target, "%L hide enemy players from %L", param1, target);
 	}
 }
 
@@ -311,7 +311,7 @@ public Action:OnTakeDamage(victim, &attacker, &inflictor, &Float:damage, &damage
 
 PrintTrollsToConsole(client)
 {
-	PrintToChat(client, "\x06[\x02Troll\x06] \x07Nézd meg a konzolt az információkért.");
+	PrintToChat(client, " \x06[\x02Troll\x06] \x07Nézd meg a konzolt az információkért.");
 	PrintToConsole(client, "---------------------------------------------");
 	PrintToConsole(client, "------ Jelenlegi trollkodott játékosok ------");
 	PrintToConsole(client, "---------------------------------------------");

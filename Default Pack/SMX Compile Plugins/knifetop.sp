@@ -266,7 +266,7 @@ public void SQL_Knifetop_Callback(Handle owner, Handle hndl, const char[] error,
 	Menu menu = CreateMenu(MenuHandler_ShowSteamID3);
 	
 	char sTitle[32];
-	FormatEx(sTitle, 32, "Legjobb %d késelő:", gCV_TopLimit.IntValue, gCV_TopLimit.IntValue > 1? "s":"");
+	FormatEx(sTitle, 32, "Legjobb %d késelő:", gCV_TopLimit.IntValue);
 	
 	SetMenuTitle(menu, sTitle);
 
@@ -285,13 +285,13 @@ public void SQL_Knifetop_Callback(Handle owner, Handle hndl, const char[] error,
 		SQL_FetchString(hndl, 2, sAuth, 32);
 
 		char sDisplay[128];
-		FormatEx(sDisplay, 128, "#%d - %s (%d késölés)", iCount, sName, iKills, iKills > 1? "s":"");
+		FormatEx(sDisplay, 128, "#%d - %s (%d késölés)", iCount, sName, iKills);
 		AddMenuItem(menu, sAuth, sDisplay);
 	}
 
 	if(!iCount)
 	{
-		AddMenuItem(menu, "-1", "No results.");
+		AddMenuItem(menu, "-1", "Még nincsenek eredmények.");
 	}
 
 	SetMenuExitButton(menu, true);
