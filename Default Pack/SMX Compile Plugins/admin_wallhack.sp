@@ -179,9 +179,9 @@ public void notifyServer(int client, char[] targetName, int status)
 	{
 		switch(status)
 		{
-			case 0:  PrintToChat(client, " \x06[\x02ESP\x06] \x07%t", "ESP Off", targetName);
-			case 1:  PrintToChat(client, " \x06[\x02ESP\x06] \x07%t", "ESP On", targetName);
-			default: PrintToChat(client, " \x06[\x02ESP\x06] \x07%t", "ESP Toggle", targetName);
+			case 0:  ShowActivity2(client, " \x06[\x02ESP\x06] \x04", "\x07%t", "ESP Off", targetName, targetName);
+			case 1:  ShowActivity2(client, " \x06[\x02ESP\x06] \x04", "\x07%t", "ESP On", targetName, targetName);
+			default: ShowActivity2(client, " \x06[\x02ESP\x06] \x04", "\x07%t", "ESP Toggle", targetName, targetName);
 		}
 	}
 }
