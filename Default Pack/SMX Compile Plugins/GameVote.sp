@@ -942,7 +942,7 @@ public void DoAction(int client, int type, int last) {
 				strcopy(reason, sizeof(reason), "Empty reason");
 			}
 
-			ServerCommand("sm_ban #%d %d \"Játékosok szavazása\"", GetClientUserId(client), CONVAR_BAN_DURATION.IntValue, last, reason);
+			ServerCommand("sm_ban #%d %d \"Játékosok szavazása.\"", GetClientUserId(client), CONVAR_BAN_DURATION.IntValue, last, reason);
 		}
 		case VOTE_KICK: {
 			ClearChoise(client);
@@ -965,7 +965,7 @@ public void DoAction(int client, int type, int last) {
 				LogToFile(LogFilePath, "Player %N(%s) was muted by voting. (Last voted player: %N)",  client, auth,last);
 			}
 
-			ServerCommand("sm_silence #%d %d \"Játékosok szavazása\"", GetClientUserId(client), CONVAR_MUTE_DURATION.IntValue, last);
+			ServerCommand("sm_silence #%d %d \"Játékosok szavazása.\"", GetClientUserId(client), CONVAR_MUTE_DURATION.IntValue, last);
 			
 		}
 	}
