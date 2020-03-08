@@ -1,6 +1,7 @@
 #include <sourcemod>
-#include <cstrike>
+#include <sdktools>
 #include <sdkhooks>
+#include <cstrike>
 #undef REQUIRE_PLUGIN
 #include <basecomm>
 #define REQUIRE_PLUGIN

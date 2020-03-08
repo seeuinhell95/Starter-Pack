@@ -1,6 +1,7 @@
 #include <sourcemod>
-#include <cstrike>
+#include <sdktools>
 #include <sdkhooks>
+#include <cstrike>
 #include <hosties>
 
 new g_Offset_CollisionGroup = -1;

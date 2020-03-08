@@ -6,9 +6,8 @@
 
 #include <sourcemod>
 #include <sdktools>
-#include <cstrike>
 #include <sdkhooks>
-#include <sdktools>
+#include <cstrike>
 #include <hosties>
 #include <lastrequest>
 #include <smlib>

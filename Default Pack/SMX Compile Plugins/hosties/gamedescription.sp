@@ -1,8 +1,9 @@
 #include <sourcemod>
-#include <cstrike>
+#include <sdktools>
 #include <sdkhooks>
+#include <cstrike>
 #include <hosties>
-#include <steamworks>
+#include <SteamWorks>
 
 new Handle:gH_Cvar_GameDescriptionOn = INVALID_HANDLE;
 new bool:gShadow_GameDescriptionOn;
