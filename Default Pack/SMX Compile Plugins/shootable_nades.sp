@@ -50,7 +50,7 @@ public Action CS_OnCSWeaponDrop(int client, int iWeapon)
 	{
 		char[] sWeapon = new char[32];
 		GetEdictClassname(iWeapon, sWeapon, 32);
-		
+
 		if (sWeapon[7] == 'h' && sWeapon[8] == 'e' || sWeapon[7] == 'f' && sWeapon[8] == 'l' 
 		|| sWeapon[7] == 'i' && sWeapon[8] == 'n' || sWeapon[7] == 'm' && sWeapon[8] == 'o')
 			SDKHook(iWeapon, SDKHook_OnTakeDamage, OnEntityDamaged);
