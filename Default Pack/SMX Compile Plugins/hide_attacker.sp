@@ -2,6 +2,7 @@
 
 #include <sourcemod>
 #include <sdktools>
+#include <sdkhooks>
 
 new Handle:HideAttackerTs = INVALID_HANDLE;
 new Handle:HideAttackerCt = INVALID_HANDLE;

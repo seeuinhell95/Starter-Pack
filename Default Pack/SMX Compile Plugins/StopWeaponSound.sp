@@ -2,6 +2,7 @@
 
 #include <sourcemod>
 #include <sdktools>
+#include <sdkhooks>
 #include <clientprefs>
 
 new g_iStopSound[MAXPLAYERS+1], bool:g_bHooked, bool:g_bSilenceSound[MAXPLAYERS+1];

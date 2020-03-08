@@ -1,3 +1,6 @@
+#include <sourcemod>
+#include <sdktools>
+#include <sdkhooks>
 #include <sdktools_client>
 
 public Plugin myinfo =

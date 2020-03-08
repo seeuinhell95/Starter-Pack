@@ -1,6 +1,8 @@
 #pragma semicolon 1
 
 #include <sourcemod>
+#include <sdktools>
+#include <sdkhooks>
 #include <regex>
 #include <sdktools_sound>
 #include <umc-core>

@@ -2,8 +2,8 @@
 
 #include <sourcemod>
 #include <sdktools>
-#include <cstrike>
 #include <sdkhooks>
+#include <cstrike>
 
 int dead;
 int Ghost[MAXPLAYERS+1];

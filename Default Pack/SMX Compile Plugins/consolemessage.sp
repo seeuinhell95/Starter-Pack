@@ -2,6 +2,7 @@
 
 #include <sourcemod>
 #include <sdktools>
+#include <sdkhooks>
 #include <autoexecconfig>
 
 new Handle:g_hConsoleTag = INVALID_HANDLE;

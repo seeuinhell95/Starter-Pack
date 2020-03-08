@@ -2,6 +2,7 @@
 
 #include <sourcemod>
 #include <sdktools>
+#include <sdkhooks>
 
 #undef REQUIRE_EXTENSIONS
 #include <dhooks>

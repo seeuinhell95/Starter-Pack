@@ -2,6 +2,7 @@
 
 #include <sourcemod>
 #include <sdktools>
+#include <sdkhooks>
 
 new Handle:gH_Enabled = INVALID_HANDLE;
 new Handle:gH_LAW = INVALID_HANDLE;

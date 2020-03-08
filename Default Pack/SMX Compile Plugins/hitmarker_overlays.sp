@@ -1,6 +1,8 @@
 #pragma semicolon 1
 
 #include <sourcemod>
+#include <sdktools>
+#include <sdkhooks>
 #include <sdktools_stringtables>
 
 new bool:g_IsHitEnabled[MAXPLAYERS + 1] = {true,...},

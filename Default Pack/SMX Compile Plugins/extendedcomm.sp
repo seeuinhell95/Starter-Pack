@@ -2,6 +2,7 @@
 
 #include <sourcemod>
 #include <sdktools>
+#include <sdkhooks>
 #include <extendedcomm>
 #include <dbi>
 #include <basecomm>

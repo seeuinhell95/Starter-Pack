@@ -1,7 +1,8 @@
 #pragma semicolon 1
 
-#include <sdkhooks>
+#include <sourcemod>
 #include <sdktools>
+#include <sdkhooks>
 #include <lvl_ranks>
 
 #pragma newdecls required

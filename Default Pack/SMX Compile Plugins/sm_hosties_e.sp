@@ -2,8 +2,8 @@
 
 #include <sourcemod>
 #include <sdktools>
-#include <cstrike>
 #include <sdkhooks>
+#include <cstrike>
 #include <hosties>
 
 #undef REQUIRE_PLUGIN

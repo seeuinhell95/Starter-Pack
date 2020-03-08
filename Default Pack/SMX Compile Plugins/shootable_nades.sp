@@ -1,9 +1,10 @@
 #pragma semicolon 1
 
 #include <sourcemod>
+#include <sdktools>
+#include <sdkhooks>
 #include <sdktools_entinput>
 #include <sdktools_functions>
-#include <sdkhooks>
 #include <cstrike>
 
 #pragma newdecls required

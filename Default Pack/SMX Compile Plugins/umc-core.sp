@@ -1,9 +1,11 @@
 #pragma semicolon 1
 
+#include <sourcemod>
+#include <sdktools>
+#include <sdkhooks>
+#include <sdktools_sound>
 #include <umc-core>
 #include <umc_utils>
-#include <sourcemod>
-#include <sdktools_sound>
 
 #define NOTHING_OPTION "?nothing?"
 #define WEIGHT_KEY "___calculated-weight"

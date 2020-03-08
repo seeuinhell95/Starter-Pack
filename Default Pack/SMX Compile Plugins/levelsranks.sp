@@ -1,8 +1,9 @@
 #pragma semicolon 1
 
 #include <sourcemod>
-#include <clientprefs>
 #include <sdktools>
+#include <sdkhooks>
+#include <clientprefs>
 
 #if SOURCEMOD_V_MINOR < 10
 	#error This plugin can only compile on SourceMod 1.10.

@@ -2,8 +2,8 @@
 
 #include <sourcemod>
 #include <sdktools>
-#include <cstrike>
 #include <sdkhooks>
+#include <cstrike>
 
 #pragma newdecls required
 

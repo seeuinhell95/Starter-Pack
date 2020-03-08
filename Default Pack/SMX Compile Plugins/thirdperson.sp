@@ -2,6 +2,7 @@
 
 #include <sourcemod>
 #include <sdktools>
+#include <sdkhooks>
 #include <zephstocks>
 
 bool g_bThirdperson[MAXPLAYERS+1] = {false,...};

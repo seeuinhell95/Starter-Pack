@@ -1,9 +1,11 @@
 #pragma semicolon 1
 
 #include <sourcemod>
+#include <sdktools>
+#include <sdkhooks>
+#include <regex>
 #include <umc-core>
 #include <umc_utils>
-#include <regex>
 
 public Plugin myinfo =
 {

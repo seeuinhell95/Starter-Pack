@@ -4,8 +4,8 @@
 
 #include <sourcemod>
 #include <sdktools>
-#include <cstrike>
 #include <sdkhooks>
+#include <cstrike>
 #include <clientprefs>
 #include <zombiereloaded>
 

@@ -1,8 +1,9 @@
 #pragma semicolon 1
 
 #include <sourcemod>
-#include <cstrike>
 #include <sdktools>
+#include <sdkhooks>
+#include <cstrike>
 #include <colorvariables>
 
 Handle kv;

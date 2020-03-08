@@ -1,6 +1,8 @@
 #pragma semicolon 1
 
+#include <sourcemod>
 #include <sdktools>
+#include <sdkhooks>
 
 #pragma newdecls required
 

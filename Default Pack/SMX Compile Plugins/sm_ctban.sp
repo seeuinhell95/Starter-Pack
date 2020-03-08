@@ -1,6 +1,7 @@
 #include <sourcemod>
-#include <clientprefs>
 #include <sdktools>
+#include <sdkhooks>
+#include <clientprefs>
 #include <adminmenu>
 #include <cstrike>
 

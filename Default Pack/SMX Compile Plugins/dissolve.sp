@@ -2,6 +2,7 @@
 
 #include <sourcemod>
 #include <sdktools>
+#include <sdkhooks>
 
 new Handle:cvDelay = INVALID_HANDLE;
 new Handle:cvType = INVALID_HANDLE;

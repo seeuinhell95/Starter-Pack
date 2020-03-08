@@ -1,5 +1,8 @@
 // =========================================================== //
 
+#include <sourcemod>
+#include <sdktools>
+#include <sdkhooks>
 #include <json>
 #include <regex>
 #include <SteamWorks>

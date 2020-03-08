@@ -8,6 +8,8 @@
 #define PLUGIN_CONTACT "http://sourcemod.net"
 
 #include <sourcemod>
+#include <sdktools>
+#include <sdkhooks>
 #include <chat-processor>
 #include <colorvariables>
 

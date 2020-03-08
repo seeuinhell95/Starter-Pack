@@ -4,6 +4,7 @@
 
 #include <sourcemod>
 #include <sdktools>
+#include <sdkhooks>
 #include <chat-processor>
 
 #pragma newdecls required

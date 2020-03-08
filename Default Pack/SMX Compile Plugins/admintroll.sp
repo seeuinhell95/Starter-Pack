@@ -2,8 +2,8 @@
 
 #include <sourcemod>
 #include <adminmenu>
-#include <sdkhooks>
 #include <sdktools>
+#include <sdkhooks>
 
 enum Punishments
 {

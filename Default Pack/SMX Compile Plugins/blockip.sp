@@ -1,6 +1,8 @@
 #pragma semicolon 1
 
 #include <sourcemod>
+#include <sdktools>
+#include <sdkhooks>
 #include <regex>
 
 new Handle:ip_serv = INVALID_HANDLE,

@@ -1,9 +1,9 @@
 #pragma semicolon 1
 
 #include <sourcemod>
-#include <protobuf>
 #include <sdktools>
 #include <sdkhooks>
+#include <protobuf>
 #include <cstrike>
 #include <adminmenu>
 #include <clientprefs>
