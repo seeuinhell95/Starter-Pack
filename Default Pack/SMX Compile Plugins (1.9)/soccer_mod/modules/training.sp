@@ -354,7 +354,7 @@ public Action TrainingCannonShoot(Handle timer)
     else
     {
         trainingCannonBallIndex = -1;
-        KillTrainingCannonTimer()
+        KillTrainingCannonTimer();
 
         for (int player = 1; player <= MaxClients; player++)
         {

@@ -13,8 +13,11 @@ Handle db               = INVALID_HANDLE;
 char allowedMapsConfigFile[PLATFORM_MAX_PATH];
 char changeSetting[MAXPLAYERS + 1][32];
 
+#pragma semicolon 1
+
 #include <sourcemod>
 #include <sdktools>
+#include <sdkhooks>
 #include <cstrike>
 
 #pragma newdecls required

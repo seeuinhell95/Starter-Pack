@@ -757,7 +757,7 @@ stock bool getTimeString(char[] name, int time)
         if (hours < 10) Format(hoursString, sizeof(hoursString), "0%i", hours);
         else Format(hoursString, sizeof(hoursString), "%i", hours);
     }
-    if (minutes < 10) Format(minutesString, sizeof(minutesString), "0%i", minutes)
+    if (minutes < 10) Format(minutesString, sizeof(minutesString), "0%i", minutes);
     else Format(minutesString, sizeof(minutesString), "%i", minutes);
     if (seconds < 10) Format(secondsString, sizeof(secondsString), "0%i", seconds);
     else Format(secondsString, sizeof(secondsString), "%i", seconds);

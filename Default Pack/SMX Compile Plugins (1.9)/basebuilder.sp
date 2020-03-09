@@ -2,10 +2,10 @@
 
 #include <sourcemod>
 #include <sdktools>
+#include <sdkhooks>
 #include <cstrike>
 #include <basebuilder>
 #include <smlib>
-#include <sdkhooks>
 #include <multicolors>
 
 bool hasitem[MAXPLAYERS+1];
