@@ -57,6 +57,7 @@ public OnPluginStart()
 	RegAdminCmd("sm_extend",		CMD_Extend,			ADMFLAG_GENERIC,		"Extending the map");
 	RegAdminCmd("sm_extendmap",		CMD_Extend,			ADMFLAG_GENERIC,		"Extending the map");
 	RegAdminCmd("sm_clearmap",		CMD_ClearMap,		ADMFLAG_CONFIG,			"Deleting dropped weapons and items");
+	RegAdminCmd("sm_clearweapons",	CMD_ClearMap,		ADMFLAG_CONFIG,			"Deleting dropped weapons and items");
 	RegAdminCmd("sm_clearchicken",	CMD_ClearChicken,	ADMFLAG_RESERVATION,	"Deleting chickens");
 	RegAdminCmd("sm_restartgame",	CMD_RestartGame,	ADMFLAG_GENERIC,		"Restarting the game after the specified seconds");
 	RegAdminCmd("sm_rg",			CMD_RestartGame,	ADMFLAG_GENERIC,		"Restarting the game after the specified seconds");
