@@ -101,6 +101,7 @@ public OnPluginStart()
 	RegAdminCmd("sm_setstat",		CMD_SetStats,		ADMFLAG_GENERIC,		"Set the stats for the targets");
 	RegAdminCmd("sm_ss",			CMD_SetStats,		ADMFLAG_GENERIC,		"Set the stats for the targets");
 	RegAdminCmd("sm_cash",			CMD_Cash,			ADMFLAG_GENERIC,		"Set the cash for the targets");
+	RegAdminCmd("sm_money",			CMD_Cash,			ADMFLAG_GENERIC,		"Set the cash for the targets");
 	RegAdminCmd("sm_teamscores",	CMD_TeamScores,		ADMFLAG_GENERIC,		"Set the teams scores");
 	RegAdminCmd("sm_teamscore",		CMD_TeamScores,		ADMFLAG_GENERIC,		"Set the teams scores");
 
