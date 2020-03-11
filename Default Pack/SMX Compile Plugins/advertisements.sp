@@ -63,7 +63,7 @@ public void OnMapStart()
 	{
 		if(LibraryExists("SteamWorks") == false)
 		{
-			SetFailState("%s SteamWorks is not loaded",SA3);
+			SetFailState("%s SteamWorks is not loaded", SA3);
 		}
 	}
 }
