@@ -166,6 +166,8 @@ public void OnPluginStart()
 	RegServerCmd("sc_fw_ungag", FWUngag, "Ungagging player by command from sourceban web site");
 	RegServerCmd("sc_fw_unmute", FWUnmute, "Unmuting player by command from sourceban web site");
 	RegConsoleCmd("sm_comms", CommandComms, "Shows current player communications status");
+	RegConsoleCmd("sm_commslist", CommandComms, "Shows current player communications status");
+	RegConsoleCmd("sm_mutelist", CommandComms, "Shows current player communications status");
 
 	HookEvent("player_changename", Event_OnPlayerName, EventHookMode_Post);
 

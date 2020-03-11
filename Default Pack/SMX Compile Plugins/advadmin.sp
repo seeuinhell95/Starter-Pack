@@ -56,8 +56,8 @@ public OnPluginStart()
 
 	RegAdminCmd("sm_extend",		CMD_Extend,			ADMFLAG_GENERIC,		"Extending the map");
 	RegAdminCmd("sm_extendmap",		CMD_Extend,			ADMFLAG_GENERIC,		"Extending the map");
-	RegAdminCmd("sm_clearmap",		CMD_ClearMap,		ADMFLAG_CONFIG,			"Deleting dropped weapons and items");
-	RegAdminCmd("sm_clearweapons",	CMD_ClearMap,		ADMFLAG_CONFIG,			"Deleting dropped weapons and items");
+	RegAdminCmd("sm_clearmap",		CMD_ClearMap,		ADMFLAG_GENERIC,		"Deleting dropped weapons and items");
+	RegAdminCmd("sm_clearweapons",	CMD_ClearMap,		ADMFLAG_GENERIC,		"Deleting dropped weapons and items");
 	RegAdminCmd("sm_clearchicken",	CMD_ClearChicken,	ADMFLAG_RESERVATION,	"Deleting chickens");
 	RegAdminCmd("sm_clearcc",		CMD_ClearChicken,	ADMFLAG_RESERVATION,	"Deleting chickens");
 	RegAdminCmd("sm_restartgame",	CMD_RestartGame,	ADMFLAG_GENERIC,		"Restarting the game after the specified seconds");
@@ -65,8 +65,8 @@ public OnPluginStart()
 	RegAdminCmd("sm_restartround",	CMD_RestartRound,	ADMFLAG_GENERIC,		"Restarting the round after the specified seconds");
 	RegAdminCmd("sm_rr",			CMD_RestartRound,	ADMFLAG_GENERIC,		"Restarting the round after the specified seconds");
 	RegAdminCmd("sm_equipments",	CMD_Equipments,		ADMFLAG_GENERIC,		"Showing the valid equipment names in the console");
-	RegAdminCmd("sm_playsound",		CMD_PlaySound,		ADMFLAG_CONFIG,			"Playing a sound for the targets, with custom settings");
-	RegAdminCmd("sm_play",			CMD_PlaySound,		ADMFLAG_CONFIG,			"Playing a sound for the targets, with custom settings");
+	RegAdminCmd("sm_playsound",		CMD_PlaySound,		ADMFLAG_CHEATS,			"Playing a sound for the targets, with custom settings");
+	RegAdminCmd("sm_play",			CMD_PlaySound,		ADMFLAG_CHEATS,			"Playing a sound for the targets, with custom settings");
 
 	RegAdminCmd("sm_teleport",		CMD_Teleport,		ADMFLAG_GENERIC,		"Teleporting the target to something");
 	RegAdminCmd("sm_tpp",			CMD_Teleport,		ADMFLAG_GENERIC,		"Teleporting the target to something");
@@ -99,13 +99,13 @@ public OnPluginStart()
 	RegAdminCmd("sm_god",			CMD_God,			ADMFLAG_GENERIC,		"Set godmode for the targets");
 	RegAdminCmd("sm_speed",			CMD_Speed,			ADMFLAG_GENERIC,		"Set the speed multipiler of the targets");
 
-	RegAdminCmd("sm_setstats",		CMD_SetStats,		ADMFLAG_GENERIC,		"Set the stats for the targets");
-	RegAdminCmd("sm_setstat",		CMD_SetStats,		ADMFLAG_GENERIC,		"Set the stats for the targets");
-	RegAdminCmd("sm_ss",			CMD_SetStats,		ADMFLAG_GENERIC,		"Set the stats for the targets");
-	RegAdminCmd("sm_cash",			CMD_Cash,			ADMFLAG_GENERIC,		"Set the cash for the targets");
-	RegAdminCmd("sm_money",			CMD_Cash,			ADMFLAG_GENERIC,		"Set the cash for the targets");
-	RegAdminCmd("sm_teamscores",	CMD_TeamScores,		ADMFLAG_GENERIC,		"Set the teams scores");
-	RegAdminCmd("sm_teamscore",		CMD_TeamScores,		ADMFLAG_GENERIC,		"Set the teams scores");
+	RegAdminCmd("sm_setstats",		CMD_SetStats,		ADMFLAG_RESERVATION,	"Set the stats for the targets");
+	RegAdminCmd("sm_setstat",		CMD_SetStats,		ADMFLAG_RESERVATION,	"Set the stats for the targets");
+	RegAdminCmd("sm_ss",			CMD_SetStats,		ADMFLAG_RESERVATION,	"Set the stats for the targets");
+	RegAdminCmd("sm_cash",			CMD_Cash,			ADMFLAG_RESERVATION,	"Set the cash for the targets");
+	RegAdminCmd("sm_money",			CMD_Cash,			ADMFLAG_RESERVATION,	"Set the cash for the targets");
+	RegAdminCmd("sm_teamscores",	CMD_TeamScores,		ADMFLAG_RESERVATION,	"Set the teams scores");
+	RegAdminCmd("sm_teamscore",		CMD_TeamScores,		ADMFLAG_RESERVATION,	"Set the teams scores");
 
 	RegAdminCmd("sm_spawnchicken",	CMD_SpawnChicken,	ADMFLAG_RESERVATION,	"Spawn one chicken on your aim position");
 	RegAdminCmd("sm_sc",			CMD_SpawnChicken,	ADMFLAG_RESERVATION,	"Spawn one chicken on your aim position");

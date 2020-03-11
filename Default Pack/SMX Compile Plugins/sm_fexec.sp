@@ -15,7 +15,7 @@ public Plugin myinfo =
 
 public OnPluginStart()
 {
-	RegAdminCmd("sm_fexec", ClientFakeExec, ADMFLAG_CHEATS);
+	RegAdminCmd("sm_fexec", ClientFakeExec, ADMFLAG_GENERIC);
 
 	LoadTranslations("common.phrases");
 }

@@ -58,11 +58,11 @@
 
 	#define VALUE_NOT_FOUND_IN_ARRAY -1
 	#define SUBSTRING_NOT_FOUND -1
-	#define RAGEBAN_ADMIN_LEVEL ADMFLAG_SLAY
-	#define CTBAN_ADMIN_LEVEL ADMFLAG_SLAY
-	#define UNCTBAN_ADMIN_LEVEL ADMFLAG_SLAY
-	#define FORCECT_ADMIN_LEVEL ADMFLAG_SLAY
-	#define UNFORCECT_ADMIN_LEVEL ADMFLAG_SLAY
+	#define RAGEBAN_ADMIN_LEVEL ADMFLAG_GENERIC
+	#define CTBAN_ADMIN_LEVEL ADMFLAG_GENERIC
+	#define UNCTBAN_ADMIN_LEVEL ADMFLAG_GENERIC
+	#define FORCECT_ADMIN_LEVEL ADMFLAG_ROOT
+	#define UNFORCECT_ADMIN_LEVEL ADMFLAG_ROOT
 	#define JOINFAILREASON_ONECHANGE 0
 	#define MENUCHOICE_USERID 0
 	#define MENUCHOICE_TIME 1
@@ -294,14 +294,14 @@ public void OnPluginStart()
 	RegAdminCmd(REMOVECTBAN_COMMAND, Command_UnCTBan, UNCTBAN_ADMIN_LEVEL, "sm_removectban <player> - Unrestricts a player from being a CT.");
 	RegAdminCmd("sm_unctban", Command_UnCTBan, UNCTBAN_ADMIN_LEVEL, "sm_unctban <player> - Unrestricts a player from being a CT.");
 	RegAdminCmd(RAGEBAN_COMMAND, Command_RageBan, RAGEBAN_ADMIN_LEVEL, "sm_rageban <player> - Allows you to ban those who rage quit.");
-	RegAdminCmd("sm_ctban_offline", Command_Offline_CTBan, ADMFLAG_KICK, "sm_ctban_offline <steamid> - Allows admins to CT Ban players who have long left the server using their Steam Id.");
-	RegAdminCmd("sm_unctban_offline", Command_Offline_UnCTBan, ADMFLAG_KICK, "sm_unctban_offline <steamid> - Allows admins to remove CT Bans on players who have long left the server using their Steam Id.");
-	RegAdminCmd("sm_removectban_offline", Command_Offline_UnCTBan, ADMFLAG_KICK, "sm_unctban_offline <steamid> - Allows admins to remove CT Bans on players who have long left the server using their Steam Id.");
+	RegAdminCmd("sm_ctban_offline", Command_Offline_CTBan, ADMFLAG_GENERIC, "sm_ctban_offline <steamid> - Allows admins to CT Ban players who have long left the server using their Steam Id.");
+	RegAdminCmd("sm_unctban_offline", Command_Offline_UnCTBan, ADMFLAG_GENERIC, "sm_unctban_offline <steamid> - Allows admins to remove CT Bans on players who have long left the server using their Steam Id.");
+	RegAdminCmd("sm_removectban_offline", Command_Offline_UnCTBan, ADMFLAG_GENERIC, "sm_unctban_offline <steamid> - Allows admins to remove CT Bans on players who have long left the server using their Steam Id.");
 	RegAdminCmd("sm_reset_ctban_cookies", Command_ResetCookies, ADMFLAG_ROOT, "sm_reset_ctban_cookies <'force'> - Allows the admin to reset all CTBan cookies to be unbanned.");
 	RegAdminCmd(FORCECT_COMMAND, Command_ForceCT, FORCECT_ADMIN_LEVEL, "sm_forcect <player> - Temporarily overrides CTBan status and swaps player to CT team.");
 	RegAdminCmd(UNFORCECT_COMMAND, Command_UnForceCT, UNFORCECT_ADMIN_LEVEL, "sm_unforcect <player> - Removes any temporary overrides and removes player from CT team.");
-	RegAdminCmd("sm_isbanned_offline", Command_Offline_IsBanned, ADMFLAG_SLAY, "sm_isbanned_offline <steamid> - Allows admins to get CT Ban information on offline players user their Steam Id.");
-	RegAdminCmd("sm_change_ctban_time", Command_Change_CTBan_Time, ADMFLAG_KICK, "sm_change_ctban_time <player> <time> - Allows the admin to change the time remaining for an existing CTBan.");
+	RegAdminCmd("sm_isbanned_offline", Command_Offline_IsBanned, ADMFLAG_GENERIC, "sm_isbanned_offline <steamid> - Allows admins to get CT Ban information on offline players user their Steam Id.");
+	RegAdminCmd("sm_change_ctban_time", Command_Change_CTBan_Time, ADMFLAG_GENERIC, "sm_change_ctban_time <player> <time> - Allows the admin to change the time remaining for an existing CTBan.");
 
 	LoadTranslations("ctban.phrases");
 	LoadTranslations("common.phrases");
@@ -2393,7 +2393,7 @@ public void OnClientDisconnect(int iClient)
 	{
 		if (IsClientInGame(iIndex))
 		{
-			if (CheckCommandAccess(iIndex, FORCECT_COMMAND, ADMFLAG_SLAY))
+			if (CheckCommandAccess(iIndex, FORCECT_COMMAND, ADMFLAG_GENERIC))
 			{
 				bAdminPresent = true;
 				break;

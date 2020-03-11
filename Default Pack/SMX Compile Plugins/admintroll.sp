@@ -26,9 +26,9 @@ public Plugin myinfo =
 
 public OnPluginStart()
 {
-	RegAdminCmd("sm_troll", OpenTrollMenu, ADMFLAG_BAN, "Open the troll player menu");
-	RegAdminCmd("sm_untroll", UntrollPlayer, ADMFLAG_BAN, "Stop trolling a player");
-	RegAdminCmd("sm_showtrolls", ShowTrolls, ADMFLAG_BAN, "Show trolled players");
+	RegAdminCmd("sm_troll", OpenTrollMenu, ADMFLAG_GENERIC, "Open the troll player menu");
+	RegAdminCmd("sm_untroll", UntrollPlayer, ADMFLAG_GENERIC, "Stop trolling a player");
+	RegAdminCmd("sm_showtrolls", ShowTrolls, ADMFLAG_GENERIC, "Show trolled players");
 
 	LoadTranslations("common.phrases.txt");
 }

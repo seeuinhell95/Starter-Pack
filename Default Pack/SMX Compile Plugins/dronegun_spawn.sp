@@ -15,12 +15,12 @@ public Plugin myinfo =
 
 public void OnPluginStart()
 {
-	RegAdminCmd("sm_spawn_dg",	CMD_SpawnDroneGun,	ADMFLAG_ROOT);
-	RegAdminCmd("sm_spawndg",	CMD_SpawnDroneGun,	ADMFLAG_ROOT);
-	RegAdminCmd("sm_dg",		CMD_SpawnDroneGun,	ADMFLAG_ROOT);
-	RegAdminCmd("sm_dronegun",	CMD_SpawnDroneGun,	ADMFLAG_ROOT);
-	RegAdminCmd("sm_turret",	CMD_SpawnDroneGun,	ADMFLAG_ROOT);
-	RegAdminCmd("sm_sentry",	CMD_SpawnDroneGun,	ADMFLAG_ROOT);
+	RegAdminCmd("sm_spawn_dg",	CMD_SpawnDroneGun,	ADMFLAG_GENERIC);
+	RegAdminCmd("sm_spawndg",	CMD_SpawnDroneGun,	ADMFLAG_GENERIC);
+	RegAdminCmd("sm_dg",		CMD_SpawnDroneGun,	ADMFLAG_GENERIC);
+	RegAdminCmd("sm_dronegun",	CMD_SpawnDroneGun,	ADMFLAG_GENERIC);
+	RegAdminCmd("sm_turret",	CMD_SpawnDroneGun,	ADMFLAG_GENERIC);
+	RegAdminCmd("sm_sentry",	CMD_SpawnDroneGun,	ADMFLAG_GENERIC);
 }
 
 public void OnMapStart()

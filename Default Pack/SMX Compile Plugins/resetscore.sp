@@ -36,7 +36,9 @@ public void OnPluginStart()
 	RegConsoleCmd("resetscore", CommandResetScore);
 	RegConsoleCmd("rs", CommandResetScore);
 
-	RegAdminCmd("sm_reset", CommandResetPlayer, ADMFLAG_GENERIC);
+	RegAdminCmd("sm_resetstats", CommandResetPlayer, ADMFLAG_RESERVATION);
+	RegAdminCmd("sm_resetstat", CommandResetPlayer, ADMFLAG_RESERVATION);
+	RegAdminCmd("sm_reset", CommandResetPlayer, ADMFLAG_RESERVATION);
 	RegAdminCmd("sm_abner_setstars", CommandSetStars, ADMFLAG_ROOT);
 
 	LoadTranslations("common.phrases");

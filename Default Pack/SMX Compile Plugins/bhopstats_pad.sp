@@ -20,10 +20,10 @@ public Plugin myinfo =
 
 public void OnPluginStart()
 {
-	RegConsoleCmd("sm_pad", Command_Pad, "Toggle scroll pad.");
-	RegConsoleCmd("sm_pads", Command_Pad, "Toggle scroll pad.");
-	RegConsoleCmd("sm_bhopstat", Command_Pad, "Toggle scroll pad.");
-	RegConsoleCmd("sm_bhopstats", Command_Pad, "Toggle scroll pad.");
+	RegAdminCmd("sm_pad", Command_Pad, ADMFLAG_RESERVATION, "Toggle scroll pad.");
+	RegAdminCmd("sm_pads", Command_Pad, ADMFLAG_RESERVATION, "Toggle scroll pad.");
+	RegAdminCmd("sm_bhopstat", Command_Pad, ADMFLAG_RESERVATION, "Toggle scroll pad.");
+	RegAdminCmd("sm_bhopstats", Command_Pad, ADMFLAG_RESERVATION, "Toggle scroll pad.");
 }
 
 public Action Command_Pad(int client, int args)

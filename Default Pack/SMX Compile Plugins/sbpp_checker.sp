@@ -29,8 +29,8 @@ public void OnPluginStart()
 	LoadTranslations("common.phrases");
 	LoadTranslations("sbpp_checker.phrases");
 
-	RegAdminCmd("sm_listbans", OnListSourceBansCmd, ADMFLAG_GENERIC, LISTBANS_USAGE);
-	RegAdminCmd("sm_listcomms", OnListSourceCommsCmd, ADMFLAG_GENERIC, LISTCOMMS_USAGE);
+	RegAdminCmd("sm_listbans", OnListSourceBansCmd, ADMFLAG_RCON, LISTBANS_USAGE);
+	RegAdminCmd("sm_listcomms", OnListSourceCommsCmd, ADMFLAG_RCON, LISTCOMMS_USAGE);
 	RegAdminCmd("sb_reload", OnReloadCmd, ADMFLAG_RCON, "Reload sourcebans config and ban reason menu options");
 
 	Database.Connect(OnDatabaseConnected, "sourcebans");

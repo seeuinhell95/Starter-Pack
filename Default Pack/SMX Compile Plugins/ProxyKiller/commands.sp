@@ -2,10 +2,10 @@
 
 void CreateCommands()
 {
-	RegAdminCmd("sm_proxykiller_rules_add", Command_RulesAdd, ADMFLAG_RCON, "Adds an expression to ProxyKiller Rules");
-	RegAdminCmd("sm_proxykiller_rules_delete", Command_RulesDelete, ADMFLAG_RCON, "Deletes an expression from ProxyKiller Rules");
+	RegAdminCmd("sm_proxykiller_rules_add", Command_RulesAdd, ADMFLAG_ROOT, "Adds an expression to ProxyKiller Rules");
+	RegAdminCmd("sm_proxykiller_rules_delete", Command_RulesDelete, ADMFLAG_ROOT, "Deletes an expression from ProxyKiller Rules");
 
-	RegAdminCmd("sm_proxykiller_apply_migration", Command_ApplyMigration, ADMFLAG_RCON, "Applies a migration to ProxyKiller");
+	RegAdminCmd("sm_proxykiller_apply_migration", Command_ApplyMigration, ADMFLAG_ROOT, "Applies a migration to ProxyKiller");
 }
 
 // =========================================================== //

@@ -205,7 +205,7 @@ public OnPluginStart()
     RegAdminCmd("sm_umc_reload_mapcycles", Command_Reload, ADMFLAG_RCON, "Reloads the mapcycle file.");
     RegAdminCmd("sm_umc_stopvote", Command_StopVote, ADMFLAG_CHANGEMAP, "Stops all UMC votes that are in progress.");
     RegAdminCmd("sm_umc_maphistory", Command_MapHistory, ADMFLAG_CHANGEMAP, "Shows the most recent maps played");
-    RegAdminCmd("sm_umc_displaymaplists", Command_DisplayMapLists, ADMFLAG_CHANGEMAP, "Displays the current maplist for all UMC modules.");
+    RegAdminCmd("sm_umc_displaymaplists", Command_DisplayMapLists, ADMFLAG_RCON, "Displays the current maplist for all UMC modules.");
 
     //Hook round end events
     HookEvent("round_end",            Event_RoundEnd); //Generic

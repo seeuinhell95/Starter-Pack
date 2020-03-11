@@ -16,11 +16,11 @@ public Plugin myinfo =
 
 public OnPluginStart()
 {
-	RegAdminCmd("sm_playerslist", Command_Users, ADMFLAG_RESERVATION, "Show list players on a server");
-	RegAdminCmd("sm_playerlist", Command_Users, ADMFLAG_RESERVATION, "Show list players on a server");
-	RegAdminCmd("sm_plist", Command_Users, ADMFLAG_RESERVATION, "Show list players on a server");
-	RegAdminCmd("sm_users", Command_Users, ADMFLAG_RESERVATION, "Show list players on a server");
-	RegAdminCmd("sm_users", Command_Users, ADMFLAG_RESERVATION, "Show list players on a server");
+	RegAdminCmd("sm_playerslist", Command_Users, ADMFLAG_GENERIC, "Show list players on a server");
+	RegAdminCmd("sm_playerlist", Command_Users, ADMFLAG_GENERIC, "Show list players on a server");
+	RegAdminCmd("sm_plist", Command_Users, ADMFLAG_GENERIC, "Show list players on a server");
+	RegAdminCmd("sm_users", Command_Users, ADMFLAG_GENERIC, "Show list players on a server");
+	RegAdminCmd("sm_users", Command_Users, ADMFLAG_GENERIC, "Show list players on a server");
 }
 
 public Action: Command_Users(client, args)

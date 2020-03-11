@@ -81,11 +81,11 @@ public OnPluginStart()
 
 	AutoExecConfig(true, "mapchooser_extended_sounds");
 
-	RegAdminCmd("mce_sounds_reload", Command_Reload, ADMFLAG_CONVARS, "Reload Mapchooser Sound configuration file.");
-	RegAdminCmd("sm_mapvote_reload_sounds", Command_Reload, ADMFLAG_CONVARS, "Deprecated: use mce_sounds_reload");
+	RegAdminCmd("mce_sounds_reload", Command_Reload, ADMFLAG_ROOT, "Reload Mapchooser Sound configuration file.");
+	RegAdminCmd("sm_mapvote_reload_sounds", Command_Reload, ADMFLAG_ROOT, "Deprecated: use mce_sounds_reload");
 
-	RegAdminCmd("mce_sounds_list_soundsets", Command_List_Soundsets, ADMFLAG_CONVARS, "List available Mapchooser Extended sound sets.");
-	RegAdminCmd("sm_mapvote_list_soundsets", Command_List_Soundsets, ADMFLAG_CONVARS, "Deprecated: use mce_sounds_list_soundsets");
+	RegAdminCmd("mce_sounds_list_soundsets", Command_List_Soundsets, ADMFLAG_ROOT, "List available Mapchooser Extended sound sets.");
+	RegAdminCmd("sm_mapvote_list_soundsets", Command_List_Soundsets, ADMFLAG_ROOT, "Deprecated: use mce_sounds_list_soundsets");
 
 	PopulateTypeNamesArray();
 

@@ -354,9 +354,9 @@ LastRequest_OnPluginStart()
 	RegConsoleCmd("sm_lr", Command_LastRequest);
 	RegConsoleCmd("sm_lastrequest", Command_LastRequest);
 
-	RegAdminCmd("sm_stoplr", Command_CancelLR, ADMFLAG_RESERVATION);
-	RegAdminCmd("sm_cancellr", Command_CancelLR, ADMFLAG_RESERVATION);
-	RegAdminCmd("sm_abortlr", Command_CancelLR, ADMFLAG_RESERVATION);
+	RegAdminCmd("sm_stoplr", Command_CancelLR, ADMFLAG_GENERIC);
+	RegAdminCmd("sm_cancellr", Command_CancelLR, ADMFLAG_GENERIC);
+	RegAdminCmd("sm_abortlr", Command_CancelLR, ADMFLAG_GENERIC);
 
 	HookEvent("round_start", LastRequest_RoundStart);
 	HookEvent("round_end", LastRequest_RoundEnd);

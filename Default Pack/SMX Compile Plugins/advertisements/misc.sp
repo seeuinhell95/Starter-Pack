@@ -225,7 +225,7 @@ stock void CheckMessageVariables(char[] message, int len)
 
 		ReplaceString(message, len, "{VIPONLINE}", sAdminList);
 	}
-	}
+}
 
 stock void SA_GetClientLanguage(int client, char buffer[3])
 {
