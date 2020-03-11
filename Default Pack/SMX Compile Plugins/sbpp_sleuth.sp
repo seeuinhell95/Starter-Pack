@@ -207,7 +207,7 @@ public void SQL_CheckHim(Database db, DBResultSet results, const char[] error, D
 stock void BanPlayer(int client, int time)
 {
 	char Reason[255];
-	Format(Reason, sizeof(Reason), "%s%T", PREFIX, "sourcesleuth_banreason", client);
+	Format(Reason, sizeof(Reason), "%T", "sourcesleuth_banreason", client);
 	SBPP_BanPlayer(0, client, time, Reason);
 }
 

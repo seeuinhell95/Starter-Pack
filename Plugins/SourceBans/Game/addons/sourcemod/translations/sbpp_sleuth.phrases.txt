@@ -2,7 +2,6 @@
 {
 	"sourcesleuth_banreason"
 	{
-		"#format"	""
 		"en"		"Duplicate account"
 		"de"		"Zweitaccount"
 		"hu"		"Duplikált account"
