@@ -2,15 +2,15 @@
 {
 	"sourcesleuth_banreason"
 	{
-		"en"		"Duplicate account"
-		"de"		"Zweitaccount"
-		"hu"		"Duplikált account"
+		"en"		"Duplicate Steam account."
+		"hu"		"Duplikált Steam fiók."
+		"de"		"Zweitaccount."
 		"ru"		"Аккаунт дубликат."
-		"fr"		"Compte dupliquer"
-		"pl"		"Zduplikowane konto"
-		"pt"		"Conta duplicada"
-		"chi"		"马甲/多重账户"
-		"tr"		"Çift hesap"
+		"fr"		"Compte dupliquer."
+		"pl"		"Zduplikowane konto."
+		"pt"		"Conta duplicada."
+		"chi"		"马甲/多重账户."
+		"tr"		"Çift hesap."
 	}
 
 	"sourcesleuth_admintext"
