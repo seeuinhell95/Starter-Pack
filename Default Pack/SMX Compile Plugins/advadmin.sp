@@ -20,21 +20,22 @@ public Plugin myinfo =
 #define MODEL_CHICKEN			"models/chicken/chicken.mdl"
 #define MODEL_CHICKEN_ZOMBIE	"models/chicken/chicken_zombie.mdl"
 #define MODEL_BALL				"models/props/de_dust/hr_dust/dust_soccerball/dust_soccer_ball001.mdl"
+#define MODEL_SNOW				"models/props_holidays/snowball/snowball_pile.mdl"
 
-#define SOUND_RESPAWN			"player/pl_respawn.wav"
-#define SOUND_CHICKEN			"ambient/creatures/chicken_panic_03.wav"
+#define SOUND_SPAWN				"player/pl_respawn.wav"
 #define SOUND_BURY				"physics/concrete/boulder_impact_hard4.wav"
 
 new Handle: CVAR_INVALID = INVALID_HANDLE,
 	Handle: CVAR_LOG = INVALID_HANDLE;
 
-new Float: SaveVec[MAXPLAYERS + 1][2][3];
-new Float: g_DeathLocation[MAXPLAYERS+1][3];
+new Float: g_fSaveVec[MAXPLAYERS + 1][2][3],
+	Float: g_fDeathVec[MAXPLAYERS + 1][2][3];
 
 new String: WeaponsList[][] =
 {
-	"c4", "knife", "knifegg", "taser", "healthshot", "shield", "bumpmine", "breachcharge",
-	"decoy", "flashbang", "hegrenade", "molotov", "incgrenade", "smokegrenade", "tagrenade", "snowball",
+	"c4", "healthshot", "tablet", "shield",
+	"knife", "knifegg", "fists", "axe", "hammer", "spanner", "taser", "melee",
+	"decoy", "flashbang", "hegrenade", "molotov", "incgrenade", "smokegrenade", "tagrenade", "breachcharge", "snowball", "bumpmine",
 	"usp_silencer", "glock", "tec9", "p250", "hkp2000", "cz75a", "deagle", "revolver", "fiveseven", "elite",
 	"nova", "xm1014", "sawedoff", "mag7", "m249", "negev",
 	"mp9", "mp7", "mp5sd", "ump45", "p90", "bizon", "mac10",
@@ -51,8 +52,8 @@ new String: ItemsList[][] =
 
 public OnPluginStart()
 {
-	CVAR_INVALID		= CreateConVar("sm_advadmin_invalid",		"1",		"Invalid given item will show for all players just for fun, 0 - disable, 1 - enable", _, true, 0.0, true, 1.0);
-	CVAR_LOG			= CreateConVar("sm_advadmin_log",			"1",		"Enable logging for plugin, 0 - disable, 1 - enable", _, true, 0.0, true, 1.0);
+	CVAR_INVALID = CreateConVar("sm_advadmin_invalid", "1", "Invalid given item will show for all players just for fun, 0 - disable, 1 - enable", _, true, 0.0, true, 1.0);
+	CVAR_LOG = CreateConVar("sm_advadmin_log", "1", "Enable logging for plugin, 0 - disable, 1 - enable", _, true, 0.0, true, 1.0);
 
 	RegAdminCmd("sm_extend",		CMD_Extend,			ADMFLAG_GENERIC,		"Extending the map");
 	RegAdminCmd("sm_extendmap",		CMD_Extend,			ADMFLAG_GENERIC,		"Extending the map");
@@ -72,12 +73,12 @@ public OnPluginStart()
 	RegAdminCmd("sm_tpp",			CMD_Teleport,		ADMFLAG_GENERIC,		"Teleporting the target to something");
 	RegAdminCmd("sm_saveloc",		CMD_SaveVec,		ADMFLAG_GENERIC,		"Saving the current position for the teleport");
 	RegAdminCmd("sm_savevec",		CMD_SaveVec,		ADMFLAG_GENERIC,		"Saving the current position for the teleport");
+	RegAdminCmd("sm_savepos",		CMD_SaveVec,		ADMFLAG_GENERIC,		"Saving the current position for the teleport");
 
 	RegAdminCmd("sm_team",			CMD_Team,			ADMFLAG_GENERIC,		"Set the targets team");
 	RegAdminCmd("sm_swap",			CMD_Swap,			ADMFLAG_GENERIC,		"Swap the targets team");
 	RegAdminCmd("sm_spec",			CMD_Spec,			ADMFLAG_GENERIC,		"Set the targets team to spectator");
-	RegAdminCmd("sm_scramble",		CMD_Scramble,		ADMFLAG_CHEATS,			"Scramble the teams by scores");
-	RegAdminCmd("sm_balance",		CMD_Scramble,		ADMFLAG_CHEATS,			"Scramble the teams by scores");
+	RegAdminCmd("sm_scramble",		CMD_Scramble,		ADMFLAG_GENERIC,		"Scramble the teams by scores");
 
 	RegAdminCmd("sm_give",			CMD_Give,			ADMFLAG_GENERIC,		"Give something for the targets");
 	RegAdminCmd("sm_equip",			CMD_Equip,			ADMFLAG_GENERIC,		"Equipping something for the targets");
@@ -85,9 +86,6 @@ public OnPluginStart()
 	RegAdminCmd("sm_disarm",		CMD_Disarm,			ADMFLAG_GENERIC,		"Disarming the targets");
 
 	RegAdminCmd("sm_respawn",		CMD_Respawn,		ADMFLAG_GENERIC,		"Respawning the targets");
-	RegAdminCmd("sm_revive",		CMD_Respawn,		ADMFLAG_GENERIC,		"Respawning the targets");
-	RegAdminCmd("sm_hrespawn",		CMD_RespawnLast,	ADMFLAG_GENERIC,		"Respawning the targets last position");
-	RegAdminCmd("sm_hrevive",		CMD_RespawnLast,	ADMFLAG_GENERIC,		"Respawning the targets last position");
 	RegAdminCmd("sm_bury",			CMD_Bury,			ADMFLAG_GENERIC,		"Bury a player");
 
 	RegAdminCmd("sm_helmet",		CMD_Helmet,			ADMFLAG_GENERIC,		"Set helmet for the targets");
@@ -107,12 +105,10 @@ public OnPluginStart()
 	RegAdminCmd("sm_teamscores",	CMD_TeamScores,		ADMFLAG_RESERVATION,	"Set the teams scores");
 	RegAdminCmd("sm_teamscore",		CMD_TeamScores,		ADMFLAG_RESERVATION,	"Set the teams scores");
 
-	RegAdminCmd("sm_spawnchicken",	CMD_SpawnChicken,	ADMFLAG_RESERVATION,	"Spawn one chicken on your aim position");
-	RegAdminCmd("sm_sc",			CMD_SpawnChicken,	ADMFLAG_RESERVATION,	"Spawn one chicken on your aim position");
-	RegAdminCmd("sm_spawnball",		CMD_SpawnBall,		ADMFLAG_RESERVATION,	"Spawn one ball on your aim position");
-	RegAdminCmd("sm_sb",			CMD_SpawnBall,		ADMFLAG_RESERVATION,	"Spawn one ball on your aim position");
+	RegAdminCmd("sm_spawnent",		CMD_SpawnEnt,		ADMFLAG_RESERVATION,	"Spawning some entity on your aim position");
+	RegAdminCmd("sm_ent",			CMD_SpawnEnt,		ADMFLAG_RESERVATION,	"Spawning some entity on your aim position");
 
-	HookEvent("player_death", Respawn_PlayerDeath);
+	HookEvent("player_death", OnPlayerDeath, EventHookMode_Pre);
 
 	LoadTranslations("common.phrases");
 	LoadTranslations("advadmin.phrases");
@@ -120,29 +116,55 @@ public OnPluginStart()
 
 public OnMapStart()
 {
-	if(!StrEqual(SOUND_RESPAWN, "", false))
+	if(!StrEqual(SOUND_SPAWN, "", false))
 	{
-		PrecacheSound(SOUND_RESPAWN, true);
+		PrecacheSound(SOUND_SPAWN, true);
 	}
 	if(!StrEqual(SOUND_BURY, "", false))
 	{
 		PrecacheSound(SOUND_BURY, true);
 	}
-	if(!StrEqual(SOUND_CHICKEN, "", false))
-	{
-		PrecacheSound(SOUND_CHICKEN, true);
-	}
+
+	PrecacheSound("sound/survival/turret_death_01.wav", true);
+	PrecacheSound("sound/survival/turret_idle_01.wav", true);
+	PrecacheSound("sound/survival/turret_takesdamage_01.wav", true);
+	PrecacheSound("sound/survival/turret_takesdamage_02.wav", true);
+	PrecacheSound("sound/survival/turret_takesdamage_03.wav", true);
+	PrecacheSound("sound/survival/turret_lostplayer_01.wav", true);
+	PrecacheSound("sound/survival/turret_lostplayer_02.wav", true);
+	PrecacheSound("sound/survival/turret_lostplayer_03.wav", true);
+	PrecacheSound("sound/survival/turret_sawplayer_01.wav", true);
+
+	PrecacheModel("models/props_survival/dronegun/dronegun.mdl", true);
+	PrecacheModel("models/props_survival/dronegun/dronegun_gib1.mdl", true);
+	PrecacheModel("models/props_survival/dronegun/dronegun_gib2.mdl", true);
+	PrecacheModel("models/props_survival/dronegun/dronegun_gib3.mdl", true);
+	PrecacheModel("models/props_survival/dronegun/dronegun_gib4.mdl", true);
+	PrecacheModel("models/props_survival/dronegun/dronegun_gib5.mdl", true);
+	PrecacheModel("models/props_survival/dronegun/dronegun_gib6.mdl", true);
+	PrecacheModel("models/props_survival/dronegun/dronegun_gib7.mdl", true);
+	PrecacheModel("models/props_survival/dronegun/dronegun_gib8.mdl", true);
 
 	PrecacheModel(MODEL_CHICKEN, true);
 	PrecacheModel(MODEL_CHICKEN_ZOMBIE, true);
 	PrecacheModel(MODEL_BALL, true);
+	PrecacheModel(MODEL_SNOW, true);
+	PrecacheModel("models/props_survival/drone/br_drone.mdl", true);
+
+	for(new client = 1; client <= MaxClients; client++)
+    {
+		g_fSaveVec[client][0] = Float: {0, 0, 0};
+		g_fSaveVec[client][1] = Float: {0, 0, 0};
+		g_fDeathVec[client][0] = Float: {0, 0, 0};
+		g_fDeathVec[client][1] = Float: {0, 0, 0};
+	}
 }
 
-public Respawn_PlayerDeath(Handle:event, const String:name[], bool:dontBroadcast)
+public Action: OnPlayerDeath(Handle: event, const String: name[], bool: dontBroadcast)
 {
-	new victim = GetClientOfUserId(GetEventInt(event, "userid"));
-	GetClientAbsOrigin(victim, g_DeathLocation[victim]);
-	g_DeathLocation[victim][2] -= 45.0;
+	new client = GetClientOfUserId(GetEventInt(event, "userid"));
+	GetClientAbsOrigin(client, g_fDeathVec[client][0]);
+	GetClientEyeAngles(client, g_fDeathVec[client][1]);
 }
 
 public Action: CMD_Extend(client, args)
@@ -151,19 +173,19 @@ public Action: CMD_Extend(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if(args != 1)
 	{
 		ReplyToCommand(client, "%t", "CMD_Extend_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: buffer[6];
 	GetCmdArg(1, buffer, sizeof(buffer));
-	
+
 	new value = StringToInt(buffer);
 	ExtendMapTimeLimit(value * 60);
-	
+
 	ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Extend", value);
 	LogActionEx(client, "%t", "CMD_Extend", value);
 	return Plugin_Handled;
@@ -175,7 +197,7 @@ public Action: CMD_ClearMap(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	new String: buffer[64];
 	for(new entity = MaxClients; entity < GetMaxEntities(); entity++)
 	{
@@ -188,7 +210,7 @@ public Action: CMD_ClearMap(client, args)
 			}
 		}
 	}
-	
+
 	ShowActivity2(client, CMD_PREFIX, "%t", "CMD_ClearMap");
 	LogActionEx(client, "%t", "CMD_ClearMap");
 	return Plugin_Handled;
@@ -200,7 +222,7 @@ public Action: CMD_ClearChicken(client, args)
     {
         return Plugin_Handled;
     }
-   
+
     new String: classname[65];
     for(new entity = MaxClients; entity < GetMaxEntities(); entity++)
     {
@@ -213,7 +235,7 @@ public Action: CMD_ClearChicken(client, args)
             }
         }
     }
-   
+
     ShowActivity2(client, CMD_PREFIX, "%t", "CMD_ClearChicken");
     LogActionEx(client, "%t", "CMD_ClearChicken");
     return Plugin_Handled;
@@ -228,7 +250,7 @@ public Action: CMD_RestartGame(client, args)
 		GetCmdArg(1, buffer, sizeof(buffer));
 		time = StringToFloat(buffer);
 	}
-	
+
 	if(time > 0.0)
 	{
 		ServerCommand("mp_restartgame %i", time);
@@ -237,7 +259,7 @@ public Action: CMD_RestartGame(client, args)
 	{
 		CS_TerminateRound(0.0, CSRoundEnd_GameStart);
 	}
-	
+
 	ShowActivity2(client, CMD_PREFIX, "%t", "CMD_RestartGame");
 	LogActionEx(client, "%t", "CMD_RestartGame");
 	return Plugin_Handled;
@@ -253,7 +275,7 @@ public Action: CMD_RestartRound(client, args)
 		time = StringToFloat(buffer);
 	}
 	CS_TerminateRound(time, CSRoundEnd_Draw);
-	
+
 	ShowActivity2(client, CMD_PREFIX, "%t", "CMD_RestartRound");
 	LogActionEx(client, "%t", "CMD_RestartRound");
 	return Plugin_Handled;
@@ -265,7 +287,7 @@ public Action: CMD_Equipments(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	new String: buffer[512];
 	for(new i = 0; i < sizeof(WeaponsList); i++)
 	{
@@ -279,9 +301,9 @@ public Action: CMD_Equipments(client, args)
 		}
 	}
 	PrintToConsole(client, "%t", "CMD_Equipments_Weapons", buffer);
-	
+
 	buffer = "";
-	
+
 	for(new i = 0; i < sizeof(ItemsList); i++)
 	{
 		if(StrEqual(buffer, "", false))
@@ -305,20 +327,20 @@ public Action: CMD_PlaySound(client, args)
 		ReplyToCommand(client, "%t", "CMD_PlaySound_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[512],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-	
+
 	GetCmdArg(1, buffer, sizeof(buffer));	
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_CONNECTED, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	new value[3];
 	GetCmdArg(3, buffer, sizeof(buffer));
 	value[0] = StringToInt(buffer);
@@ -326,21 +348,21 @@ public Action: CMD_PlaySound(client, args)
 	{
 		value[0] = 100;
 	}
-	
+
 	GetCmdArg(4, buffer, sizeof(buffer));
 	value[1] = StringToInt(buffer);
 	if((value[1] < 1) || (value[1] > 100))
 	{
 		value[1] = 100;
 	}
-	
+
 	GetCmdArg(5, buffer, sizeof(buffer));
 	value[2] = StringToInt(buffer);
 	if((value[2] < 1) || (value[2] > 10))
 	{
 		value[2] = 1;
 	}
-	
+
 	new String: file[512];
 	GetCmdArg(2, buffer, sizeof(buffer));
 	Format(file, sizeof(file), "sound/%s", buffer);
@@ -349,9 +371,9 @@ public Action: CMD_PlaySound(client, args)
 		ReplyToCommand(client, "[SM] File is not exists: %s", buffer);
 		return Plugin_Handled;
 	}
-	
+
 	PrecacheSound(buffer, true);
-	
+
 	for(new i = 0; i < target_count; i++)
 	{
 		if(IsClientInGame(target_list[i]))
@@ -362,7 +384,7 @@ public Action: CMD_PlaySound(client, args)
 			}
 		}
 	}
-	
+
 	if(tn_is_ml)
 	{
 		ShowActivity2(client, CMD_PREFIX, "%t", "CMD_PlaySound", target_name, buffer, value[0], value[1], value[2]);
@@ -380,26 +402,26 @@ public Action: CMD_Teleport(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if((args != 1) && (args != 2))
 	{
 		ReplyToCommand(client, "%t", "CMD_Teleport_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[64],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-		
+
 	GetCmdArg(1, buffer, sizeof(buffer));
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_CONNECTED, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	new Float: vec[2][3];
 	GetCmdArg(2, buffer, sizeof(buffer));
 	if(!StrEqual(buffer, "", false))
@@ -408,7 +430,7 @@ public Action: CMD_Teleport(client, args)
 		{
 			GetClientEyePosition(client, vec[0]);
 			GetClientEyeAngles(client, vec[1]);
-			
+
 			new Handle: trace = TR_TraceRayFilterEx(vec[0], vec[1], MASK_SOLID, RayType_Infinite, Filter_ExcludePlayers);
 			if(!TR_DidHit(trace))
 			{
@@ -416,9 +438,9 @@ public Action: CMD_Teleport(client, args)
 			}
 			TR_GetEndPosition(vec[0], trace);
 			CloseHandle(trace);
-			
-			vec[1][0] = 0.0;
-			
+
+			vec[1][0] = vec[1][2] = 0.0;
+
 			if(tn_is_ml)
 			{
 				ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Teleport_To_Blink", target_name);
@@ -437,10 +459,10 @@ public Action: CMD_Teleport(client, args)
 			{
 				return Plugin_Handled;
 			}
-			
+
 			GetClientAbsOrigin(target, vec[0]);
 			GetClientEyeAngles(target, vec[1]);
-			
+
 			if(tn_is_ml)
 			{
 				ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Teleport_To_Player", target_name, target);
@@ -455,16 +477,16 @@ public Action: CMD_Teleport(client, args)
 	}
 	else
 	{
-		if((SaveVec[client][0][0] + SaveVec[client][0][1] + SaveVec[client][0][2]) == 0)
+		if((FloatAbs(g_fSaveVec[client][0][0]) + FloatAbs(g_fSaveVec[client][0][1]) + FloatAbs(g_fSaveVec[client][0][2])) == 0)
 		{
 			ReplyToCommand(client, "%t", "CMD_Teleport_NoSaved");
 			return Plugin_Handled;
 		}
 		else
 		{
-			vec[0] = SaveVec[client][0];
-			vec[1] = SaveVec[client][1];
-			
+			vec[0] = g_fSaveVec[client][0];
+			vec[1] = g_fSaveVec[client][1];
+
 			if(tn_is_ml)
 			{
 				ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Teleport_To_Saved", target_name);
@@ -477,20 +499,20 @@ public Action: CMD_Teleport(client, args)
 			}
 		}
 	}
-	
+
 	vec[0][2] = vec[0][2] + 2.0;
-	
+
 	for(new i = 0; i < target_count; i++)
 	{
 		if(IsClientInGame(target_list[i]))
 		{
-			TeleportEntity(target_list[i], vec[0], vec[1], Float: {0.0, 0.0, 0.0});
+			TeleportEntity(target_list[i], vec[0], vec[1], Float: {0, 0, 0});
 		}
 	}
-	
-	if(!StrEqual(SOUND_RESPAWN, "", false))
+
+	if(!StrEqual(SOUND_SPAWN, "", false))
 	{
-		EmitSoundToAll(SOUND_RESPAWN, target_list[target_count - 1]);
+		EmitSoundToAll(SOUND_SPAWN, target_list[target_count - 1]); //Only play the sound once, and only the last one teleported player.
 	}
 	return Plugin_Handled;
 }
@@ -501,9 +523,12 @@ public Action: CMD_SaveVec(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
-	GetClientAbsOrigin(client, SaveVec[client][0]);
-	GetClientEyeAngles(client, SaveVec[client][1]);
+
+	GetClientAbsOrigin(client, g_fSaveVec[client][0]);
+	GetClientEyeAngles(client, g_fSaveVec[client][1]);
+
+	g_fSaveVec[client][1][2] = 0.0;
+
 	ReplyToCommand(client, "%t", "CMD_SaveVec");
 	return Plugin_Handled;
 }
@@ -514,26 +539,26 @@ public Action: CMD_Team(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if((args != 2) && (args != 3))
 	{
 		ReplyToCommand(client, "%t", "CMD_Team_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[64],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-	
+
 	GetCmdArg(1, buffer, sizeof(buffer));
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_CONNECTED, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	new team;
 	GetCmdArg(2, buffer, sizeof(buffer));
 	if(StrEqual(buffer, "spectator", false) || StrEqual(buffer, "spec", false) || StrEqual(buffer, "1", false))
@@ -583,10 +608,10 @@ public Action: CMD_Team(client, args)
 		ReplyToCommand(client, "%t", "CMD_Invalid_Team");
 		return Plugin_Handled;
 	}
-	
+
 	GetCmdArg(3, buffer, sizeof(buffer));
 	new value = StringToInt(buffer);
-	
+
 	for(new i = 0; i < target_count; i++)
 	{
 		if(IsClientInGame(target_list[i]))
@@ -621,36 +646,36 @@ public Action: CMD_Swap(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if((args != 1) && (args != 2))
 	{
 		ReplyToCommand(client, "%t", "CMD_Swap_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[64],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-	
+
 	GetCmdArg(1, buffer, sizeof(buffer));
 	if(StrEqual(buffer, "@spec", false) || StrEqual(buffer, "@spectator", false))
 	{
 		ReplyToCommand(client, "%t", "CMD_OnlyInTeam");
 		return Plugin_Handled;
 	}
-	
+
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_CONNECTED, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	GetCmdArg(2, buffer, sizeof(buffer));
 	new value = StringToInt(buffer),
 		team;
-	
+
 	for(new i = 0; i < target_count; i++)
 	{
 		if(IsClientInGame(target_list[i]))
@@ -692,7 +717,7 @@ public Action: CMD_Swap(client, args)
 			}
 		}
 	}
-	
+
 	if(tn_is_ml)
 	{
 		ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Swap", target_name);
@@ -712,26 +737,26 @@ public Action: CMD_Spec(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if((args != 1) && (args != 2))
 	{
 		ReplyToCommand(client, "%t", "CMD_Team_Spec_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[64],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-	
+
 	GetCmdArg(1, buffer, sizeof(buffer));
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_CONNECTED, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	GetCmdArg(2, buffer, sizeof(buffer));
 	new value = StringToInt(buffer);
 	for(new i = 0; i < target_count; i++)
@@ -748,7 +773,7 @@ public Action: CMD_Spec(client, args)
 			}
 		}
 	}
-	
+
 	if(tn_is_ml)
 	{
 		ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Team_Spec", target_name);
@@ -768,9 +793,9 @@ public Action: CMD_Scramble(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	ServerCommand("mp_scrambleteams");
-	
+
 	ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Scramble");
 	LogActionEx(client, "%t", "CMD_Scramble");
 	return Plugin_Handled;
@@ -782,32 +807,32 @@ public Action: CMD_Give(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if((args != 1) && (args != 2))
 	{
 		ReplyToCommand(client, "%t", "CMD_Give_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[128],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-	
+
 	GetCmdArg(1, buffer, sizeof(buffer));
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_ALIVE, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	GetCmdArg(2, buffer, sizeof(buffer));
 	if(StrEqual(buffer, "", false))
 	{
 		Format(buffer, sizeof(buffer), "knife");
 	}
-	
+
 	new type = ItemType(buffer);
 	if(!type)
 	{
@@ -825,7 +850,7 @@ public Action: CMD_Give(client, args)
 		ReplyToCommand(client, "%t", "CMD_Invalid_Weapon");
 		return Plugin_Handled;
 	}
-	
+
 	for(new i = 0; i < target_count; i++)
 	{
 		if(StrEqual(buffer, "knife", false) && !GetConVarBool(FindConVar("mp_drop_knife_enable")))
@@ -841,7 +866,7 @@ public Action: CMD_Give(client, args)
 		}
 		GivePlayerWeapon(target_list[i], buffer, type);
 	}
-	
+
 	if(tn_is_ml)
 	{
 		ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Give", target_name, buffer);
@@ -861,32 +886,32 @@ public Action: CMD_Equip(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if((args != 1) && (args != 2))
 	{
 		ReplyToCommand(client, "%t", "CMD_Equip_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[128],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-		
+
 	GetCmdArg(1, buffer, sizeof(buffer));
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_ALIVE, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	GetCmdArg(2, buffer, sizeof(buffer));
 	if(StrEqual(buffer, "", false))
 	{
 		Format(buffer, sizeof(buffer), "knife");
 	}
-	
+
 	new type = ItemType(buffer);
 	if(!type)
 	{
@@ -904,13 +929,13 @@ public Action: CMD_Equip(client, args)
 		ReplyToCommand(client, "%t", "CMD_Invalid_Weapon");
 		return Plugin_Handled;
 	}
-	
+
 	for(new i = 0; i < target_count; i++)
 	{
 		DisarmPlayer(target_list[i]);
 		GivePlayerWeapon(target_list[i], buffer, type);
 	}
-	
+
 	if(tn_is_ml)
 	{
 		ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Equip", target_name, buffer);
@@ -930,31 +955,31 @@ public Action: CMD_Disarm(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if(args != 1)
 	{
 		ReplyToCommand(client, "%t", "CMD_Disarm_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[64],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-	
+
 	GetCmdArg(1, buffer, sizeof(buffer));
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_ALIVE, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	for(new i = 0; i < target_count; i++)
 	{
 		DisarmPlayer(target_list[i]);
 	}
-	
+
 	if(tn_is_ml)
 	{
 		ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Disarm", target_name);
@@ -975,7 +1000,7 @@ public Action: CMD_Respawn(client, args)
 		return Plugin_Handled;
 	}
 	
-	if(args != 1)
+	if((args != 1) && (args != 2))
 	{
 		ReplyToCommand(client, "%t", "CMD_Respawn_Usage");
 		return Plugin_Handled;
@@ -1000,6 +1025,9 @@ public Action: CMD_Respawn(client, args)
 		return Plugin_Handled;
 	}
 	
+	GetCmdArg(2, buffer, sizeof(buffer));
+	new value = StringToInt(buffer);
+	
 	for(new i = 0; i < target_count; i++)
 	{
 		if(IsClientInGame(target_list[i]))
@@ -1007,9 +1035,15 @@ public Action: CMD_Respawn(client, args)
 			if(GetClientTeam(target_list[i]) >= 2)
 			{
 				CS_RespawnPlayer(target_list[i]);
-				if(!StrEqual(SOUND_RESPAWN, "", false))
+				
+				if(value && ((FloatAbs(g_fDeathVec[target_list[i]][0][0]) + FloatAbs(g_fDeathVec[target_list[i]][0][1]) + FloatAbs(g_fDeathVec[target_list[i]][0][2])) != 0))
 				{
-					EmitSoundToAll(SOUND_RESPAWN, target_list[i]);
+					TeleportEntity(target_list[i], g_fDeathVec[target_list[i]][0], g_fDeathVec[target_list[i]][1], NULL_VECTOR);
+				}
+				
+				if(!StrEqual(SOUND_SPAWN, "", false))
+				{
+					EmitSoundToAll(SOUND_SPAWN, target_list[i]);
 				}
 			}
 			else if(!tn_is_ml)
@@ -1033,113 +1067,35 @@ public Action: CMD_Respawn(client, args)
 	return Plugin_Handled;
 }
 
-public Action: CMD_RespawnLast(client, args)
-{
-	if(!IsClientValid(client) || !IsClientInGame(client))
-	{
-		return Plugin_Handled;
-	}
-	
-	if(args != 1)
-	{
-		ReplyToCommand(client, "%t", "CMD_HRespawn_Usage");
-		return Plugin_Handled;
-	}
-	
-	new String: target_name[MAX_TARGET_LENGTH],
-		String: buffer[64],
-		target_list[MAXPLAYERS],
-		bool: tn_is_ml,
-		target_count;
-	
-	GetCmdArg(1, buffer, sizeof(buffer));
-	if(StrEqual(buffer, "@spec", false) || StrEqual(buffer, "@spectator", false))
-	{
-		ReplyToCommand(client, "%t", "CMD_OnlyInTeam");
-		return Plugin_Handled;
-	}
-	
-	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_CONNECTED, target_name, sizeof(target_name), tn_is_ml)) <= 0)
-	{
-		ReplyToTargetError(client, target_count);
-		return Plugin_Handled;
-	}
-	
-	for(new i = 0; i < target_count; i++)
-	{
-		if(IsClientInGame(target_list[i]))
-		{
-			if(GetClientTeam(target_list[i]) >= 2)
-			{
-				PerformRespawn(client, target_list[i]);
-				if(!StrEqual(SOUND_RESPAWN, "", false))
-				{
-					EmitSoundToAll(SOUND_RESPAWN, target_list[i]);
-				}
-			}
-			else if(!tn_is_ml)
-			{
-				ReplyToCommand(client, "%t", "CMD_OnlyInTeam");
-				return Plugin_Handled;
-			}
-		}
-	}
-	
-	if(tn_is_ml)
-	{
-		ShowActivity2(client, CMD_PREFIX, "%t", "CMD_HRespawn", target_name);
-		LogActionEx(client, "%t", "CMD_HRespawn", target_name);
-	}
-	else
-	{
-		ShowActivity2(client, CMD_PREFIX, "%t", "CMD_HRespawn", "_s", target_name);
-		LogActionEx(client, "%t", "CMD_HRespawn", "_s", target_name);
-	}
-	return Plugin_Handled;
-}
-
-PerformRespawn(client, target)
-{
-	CS_RespawnPlayer(target);
-	if (g_DeathLocation[target][0] == 0.0 && g_DeathLocation[target][1] == 0.0 && g_DeathLocation[target][2] == 0.0)
-	{
-		ReplyToCommand(client, "Respawn Data Unavailable", target);
-	}
-	else
-	{
-		TeleportEntity(target, g_DeathLocation[target], NULL_VECTOR, NULL_VECTOR);
-	}
-}
-
 public Action: CMD_Bury(client, args)
 {
 	if(!IsClientValid(client) || !IsClientInGame(client))
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if((args != 1) && (args != 2))
 	{
 		ReplyToCommand(client, "%t", "CMD_Bury_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[64],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-	
+
 	GetCmdArg(1, buffer, sizeof(buffer));
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_ALIVE, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	GetCmdArg(2, buffer, sizeof(buffer));
 	new value = StringToInt(buffer);
-	
+
 	new Float: pos[3];
 	for(new i = 0; i < target_count; i++)
 	{
@@ -1158,7 +1114,7 @@ public Action: CMD_Bury(client, args)
 			EmitSoundToAll(SOUND_BURY, target_list[i]);
 		}
 	}
-	
+
 	if(tn_is_ml)
 	{
 		ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Bury", target_name);
@@ -1178,26 +1134,26 @@ public Action: CMD_Speed(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if(args != 2)
 	{
 		ReplyToCommand(client, "%t", "CMD_Speed_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[64],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-	
+
 	GetCmdArg(1, buffer, sizeof(buffer));
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_ALIVE, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	GetCmdArg(2, buffer, sizeof(buffer));
 	new Float: value = StringToFloat(buffer);
 	if((value < 0.0) || (value > 500.0))
@@ -1205,12 +1161,12 @@ public Action: CMD_Speed(client, args)
 		ReplyToCommand(client, "%t", "CMD_Speed_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	for(new i = 0; i < target_count; i++)
 	{
 		SetEntPropFloat(target_list[i], Prop_Data, "m_flLaggedMovementValue", value);
 	}
-	
+
 	if(tn_is_ml)
 	{
 		ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Speed", target_name, buffer);
@@ -1230,40 +1186,40 @@ public Action: CMD_God(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if(args != 2)
 	{
 		ReplyToCommand(client, "%t", "CMD_God_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[64],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-	
+
 	GetCmdArg(1, buffer, sizeof(buffer));
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_ALIVE, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	GetCmdArg(2, buffer, sizeof(buffer));
 	new value = StringToInt(buffer);
-	
+
 	if((value != 0) && (value != 1))
 	{
 		ReplyToCommand(client, "%t", "CMD_God_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	for(new i = 0; i < target_count; i++)
 	{
 		SetEntProp(target_list[i], Prop_Data, "m_takedamage", value ? 0 : 2);
 	}
-	
+
 	if(tn_is_ml)
 	{
 		ShowActivity2(client, CMD_PREFIX, "%t", "CMD_God", target_name, value);
@@ -1283,35 +1239,35 @@ public Action: CMD_Helmet(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if(args != 2)
 	{
 		ReplyToCommand(client, "%t", "CMD_Helmet_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[64],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-	
+
 	GetCmdArg(1, buffer, sizeof(buffer));
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_ALIVE, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	GetCmdArg(2, buffer, sizeof(buffer));
 	new value = StringToInt(buffer);
-	
+
 	if((value != 0) && (value != 1))
 	{
 		ReplyToCommand(client, "%t", "CMD_Helmet_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	for(new i = 0; i < target_count; i++)
 	{
 		SetEntProp(target_list[i], Prop_Send, "m_bHasHelmet", value);
@@ -1336,29 +1292,29 @@ public Action: CMD_Health(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if(args != 2)
 	{
 		ReplyToCommand(client, "%t", "CMD_Health_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[64],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-	
+
 	GetCmdArg(1, buffer, sizeof(buffer));
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_ALIVE, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	GetCmdArg(2, buffer, sizeof(buffer));
 	new value = StringToInt(buffer);
-	
+
 	for(new i = 0; i < target_count; i++)
 	{
 		if((buffer[0] == '+') || (buffer[0] == '-'))
@@ -1366,9 +1322,8 @@ public Action: CMD_Health(client, args)
 			value = value + GetEntProp(target_list[i], Prop_Data, "m_iHealth");
 		}
 		SetEntProp(target_list[i], Prop_Data, "m_iHealth", value);
-		//SetEntProp(target_list[i], Prop_Data, "m_iMaxHealth", value);
 	}
-	
+
 	if(tn_is_ml)
 	{
 		ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Health", target_name, value);
@@ -1388,29 +1343,29 @@ public Action: CMD_Armor(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if(args != 2)
 	{
 		ReplyToCommand(client, "%t", "CMD_Armor_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[64],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-	
+
 	GetCmdArg(1, buffer, sizeof(buffer));
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_ALIVE, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	GetCmdArg(2, buffer, sizeof(buffer));
 	new value = StringToInt(buffer);
-	
+
 	for(new i = 0; i < target_count; i++)
 	{
 		if((buffer[0] == '+') || (buffer[0] == '-'))
@@ -1419,7 +1374,7 @@ public Action: CMD_Armor(client, args)
 		}
 		SetEntProp(target_list[i], Prop_Send, "m_ArmorValue", value);
 	}
-	
+
 	if(tn_is_ml)
 	{
 		ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Armor", target_name, value);
@@ -1439,29 +1394,29 @@ public Action: CMD_Cash(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if(args != 2)
 	{
 		ReplyToCommand(client, "%t", "CMD_Cash_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[64],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-	
+
 	GetCmdArg(1, buffer, sizeof(buffer));
 	if((target_count = ProcessTargetString(buffer, client, target_list, MAXPLAYERS, COMMAND_FILTER_CONNECTED, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	GetCmdArg(2, buffer, sizeof(buffer));
 	new value = StringToInt(buffer);
-	
+
 	for(new i = 0; i < target_count; i++)
 	{
 		if(IsClientInGame(target_list[i]))
@@ -1473,7 +1428,7 @@ public Action: CMD_Cash(client, args)
 			SetEntProp(target_list[i], Prop_Send, "m_iAccount", value);
 		}
 	}
-	
+
 	if(tn_is_ml)
 	{
 		ShowActivity2(client, CMD_PREFIX, "%t", "CMD_Cash", target_name, value);
@@ -1493,30 +1448,30 @@ public Action: CMD_SetStats(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if(args != 3)
 	{
 		ReplyToCommand(client, "%t", "CMD_SetStats_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: target_name[MAX_TARGET_LENGTH],
 		String: buffer[2][64],
 		target_list[MAXPLAYERS],
 		bool: tn_is_ml,
 		target_count;
-	
+
 	GetCmdArg(1, buffer[0], sizeof(buffer[]));
 	if((target_count = ProcessTargetString(buffer[0], client, target_list, MAXPLAYERS, COMMAND_FILTER_CONNECTED, target_name, sizeof(target_name), tn_is_ml)) <= 0)
 	{
 		ReplyToTargetError(client, target_count);
 		return Plugin_Handled;
 	}
-	
+
 	GetCmdArg(2, buffer[0], sizeof(buffer[]));
 	GetCmdArg(3, buffer[1], sizeof(buffer[]));
 	new value = StringToInt(buffer[1]);
-	
+
 	for(new i = 0; i < target_count; i++)
 	{
 		if(IsClientInGame(target_list[i]))
@@ -1597,20 +1552,20 @@ public Action: CMD_TeamScores(client, args)
 	{
 		return Plugin_Handled;
 	}
-	
+
 	if(args != 2)
 	{
 		ReplyToCommand(client, "%t", "CMD_TeamScores_Usage");
 		return Plugin_Handled;
 	}
-	
+
 	new String: team[8],
 		String: buffer[64];
-	
+
 	GetCmdArg(1, team, sizeof(team));
 	GetCmdArg(2, buffer, sizeof(buffer));
 	new value = StringToInt(buffer);
-	
+
 	if(StrEqual(team, "t", false) || StrEqual(team, "2", false))
 	{
 		if((buffer[0] == '+') || (buffer[0] == '-'))
@@ -1640,17 +1595,23 @@ public Action: CMD_TeamScores(client, args)
 	return Plugin_Handled;
 }
 
-public Action: CMD_SpawnChicken(client, args)
+public Action: CMD_SpawnEnt(client, args)
 {
 	if(!IsClientValid(client) || !IsClientInGame(client))
 	{
 		return Plugin_Handled;
 	}
-	
+
+	if(args < 1)
+	{
+		ReplyToCommand(client, "%t", "CMD_SpawnEnt_Usage");
+		return Plugin_Handled;
+	}
+
 	new Float: vec[2][3];
 	GetClientEyePosition(client, vec[0]);
 	GetClientEyeAngles(client, vec[1]);
-	
+
 	new Handle: trace = TR_TraceRayFilterEx(vec[0], vec[1], MASK_SOLID, RayType_Infinite, Filter_ExcludePlayers);
 	if(!TR_DidHit(trace))
 	{
@@ -1658,95 +1619,128 @@ public Action: CMD_SpawnChicken(client, args)
 	}
 	TR_GetEndPosition(vec[0], trace);
 	CloseHandle(trace);
-	
-	new String: buffer[6][4],
-		values[6];
-	
-	for(new i = 0; i <= 5; i++)
+
+	vec[1][0] = vec[1][2] = 0.0;
+
+	new String: buffer[2][16],
+		entity;
+
+	GetCmdArg(1, buffer[0], sizeof(buffer[]));
+
+	if(StrEqual(buffer[0], "chicken"))
 	{
-		GetCmdArg(i + 1, buffer[i], sizeof(buffer[]));
-		values[i] = StringToInt(buffer[i]);
+		entity = CreateEntityByName("chicken");
+		if(!IsValidEntity(entity))
+		{
+			return Plugin_Handled;
+		}
+		DispatchSpawn(entity);
+
+		new value;
+		GetCmdArg(2, buffer[1], sizeof(buffer[]));
+		value = StringToInt(buffer[1]);
+
+		if((value > 0) && (value <= 5)) 
+		{
+			SetEntProp(entity, Prop_Data, "m_nBody", value);
+			SetEntProp(entity, Prop_Data, "m_nSkin", GetRandomInt(0, 1));
+		}
+		else if(value == 6)
+		{
+			SetEntityModel(entity, MODEL_CHICKEN_ZOMBIE);
+		}
+
+		GetCmdArg(3, buffer[1], sizeof(buffer[]));
+		value = StringToInt(buffer[1]);
+
+		if((value > 0) && (value <= 9999))
+		{
+			SetEntPropFloat(entity, Prop_Data, "m_explodeDamage", float(value));
+			SetEntPropFloat(entity, Prop_Data, "m_explodeRadius", 0.0);
+		}
+		else if(value == -1)
+		{
+			SetEntProp(entity, Prop_Data, "m_takedamage", 0);
+		}
+
+		vec[0][2] = vec[0][2] + 10.0;
 	}
-	
-	if(((values[0] < 0) || (values[0] > 6)) || ((values[1] < -1) || (values[1] > 9999)) || ((values[2] < 0) || (values[2] > 255)) || ((values[3] < 0) || (values[3] > 255)) || ((values[4] < 0) || (values[4] > 255)) || ((values[5] < 0) || (values[5] > 3)))
+	else if(StrEqual(buffer[0], "ball"))
 	{
-		return Plugin_Handled;
+		entity = CreateEntityByName("prop_physics_multiplayer");
+		if(!IsValidEntity(entity))
+		{
+			return Plugin_Handled;
+		}
+
+		DispatchKeyValue(entity, "model", MODEL_BALL);
+		DispatchKeyValue(entity, "physicsmode", "2");
+		DispatchSpawn(entity);
+
+		new value;
+		GetCmdArg(2, buffer[1], sizeof(buffer[]));
+		value = StringToInt(buffer[1]);
+
+		if(value == 1)
+		{
+			SetEntProp(entity, Prop_Data, "m_nSkin", value);
+		}
+
+		vec[0][2] = vec[0][2] + 16.0;
 	}
-	
-	new chicken = CreateEntityByName("chicken");
-	if(!IsValidEntity(chicken))
+	else if(StrEqual(buffer[0], "snow"))
 	{
-		return Plugin_Handled;
+		entity = CreateEntityByName("ent_snowball_pile");
+		if(!IsValidEntity(entity))
+		{
+			return Plugin_Handled;
+		}
+		DispatchSpawn(entity);
 	}
-	
-	new String: color[16];
-	Format(color, sizeof(color), "%s %s %s", buffer[2], buffer[3], buffer[4]);
-	DispatchKeyValue(chicken, "glowcolor", color);
-	DispatchKeyValue(chicken, "glowdist", "640");
-	DispatchKeyValue(chicken, "glowstyle", buffer[5]);
-	DispatchKeyValue(chicken, "glowenabled", "1");
-	DispatchKeyValue(chicken, "ExplodeDamage", buffer[1]);
-	DispatchKeyValue(chicken, "ExplodeRadius", "0");
-	DispatchSpawn(chicken);
-	
-	if(values[1] < 0)
+	else if(StrEqual(buffer[0], "dronegun"))
 	{
-		SetEntProp(chicken, Prop_Data, "m_takedamage", 0);
+		entity = CreateEntityByName("dronegun");
+		if(!IsValidEntity(entity))
+		{
+			return Plugin_Handled;
+		}
+		DispatchSpawn(entity);
+
+		SetEntPropEnt(entity, Prop_Data, "m_hOwnerEntity", client);
+		SetEntProp(entity, Prop_Data, "m_nHighlightColorB", 255);
+
+		vec[0][2] = vec[0][2] + 8.0;
 	}
-	
-	if(values[0] == 6)
+	else if(StrEqual(buffer[0], "drone"))
 	{
-		SetEntityModel(chicken, MODEL_CHICKEN_ZOMBIE);
+		entity = CreateEntityByName("drone");
+		if(!IsValidEntity(entity))
+		{
+			return Plugin_Handled;
+		}
+		DispatchSpawn(entity);
+
+		SetEntProp(entity, Prop_Send, "m_bPilotTakeoverAllowed", 1);
+		SetEntPropEnt(entity, Prop_Send, "m_hCurrentPilot", client);
+		SetEntPropEnt(entity, Prop_Send, "m_hMoveToThisEntity", client);
+
+		vec[0][2] = vec[0][2] + 8.0;
 	}
 	else
 	{
-		SetEntProp(chicken, Prop_Data, "m_nSkin", GetRandomInt(0, 1));
-		SetEntProp(chicken, Prop_Data, "m_nBody", values[0]);
-	}
-	
-	vec[0][2] = vec[0][2] + 10.0;
-	TeleportEntity(chicken, vec[0], NULL_VECTOR, NULL_VECTOR);
-	
-	if(!StrEqual(SOUND_CHICKEN, "", false))
-	{
-		EmitSoundToAll(SOUND_CHICKEN, chicken);
-	}
-
-	return Plugin_Handled;
-}
-
-public Action: CMD_SpawnBall(client, args)
-{
-	if(!IsClientValid(client) || !IsClientInGame(client))
-	{
+		ReplyToCommand(client, "%t", "CMD_SpawnEnt_Usage");
 		return Plugin_Handled;
 	}
-	
-	new Float: vec[2][3];
-	GetClientEyePosition(client, vec[0]);
-	GetClientEyeAngles(client, vec[1]);
-	
-	new Handle: trace = TR_TraceRayFilterEx(vec[0], vec[1], MASK_SOLID, RayType_Infinite, Filter_ExcludePlayers);
-	if(!TR_DidHit(trace))
-	{
-		return Plugin_Handled;
-	}
-	TR_GetEndPosition(vec[0], trace);
-	CloseHandle(trace);
-	
-	new ball = CreateEntityByName("prop_physics_multiplayer");
-	if(!IsValidEntity(ball))
-	{
-		return Plugin_Handled;
-	}
-	
-	DispatchKeyValue(ball, "model", MODEL_BALL);
-	DispatchKeyValue(ball, "physicsmode", "2");
-	DispatchSpawn(ball);
-	
-	vec[0][2] = vec[0][2] + 16.0;
-	TeleportEntity(ball, vec[0], NULL_VECTOR, NULL_VECTOR);
 
+	TeleportEntity(entity, vec[0], vec[1], NULL_VECTOR);
+
+	if(!StrEqual(SOUND_SPAWN, "", false))
+	{
+		EmitSoundToAll(SOUND_SPAWN, entity);
+	}
+
+	ShowActivity2(client, CMD_PREFIX, "%t", "CMD_SpawnEnt", buffer[0]);
+	LogActionEx(client, "%t", "CMD_SpawnEnt", buffer[0]);
 	return Plugin_Handled;
 }
 
