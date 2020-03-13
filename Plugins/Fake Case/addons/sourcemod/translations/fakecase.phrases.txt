@@ -1,0 +1,158 @@
+"Phrases"
+{
+	"Chat message"
+	{
+		"en"		"has opened a container and found:"
+		"hu"		"kinyitott egy konténert és ezt találta:"
+	}
+
+	"Select knife:"
+	{
+		"en"		"Select knife:"
+		"hu"		"Válassz kést:"
+	}
+
+	"Select knife skin:"
+	{
+		"en"		"Select knife skin:"
+		"hu"		"Válassz kés festést:"
+	}
+
+	"Butterfly"
+	{
+		"en"		"Butterfly knife"
+		"hu"		"Pillangókés"
+	}
+
+	"Shadow Daggers"
+	{
+		"en"		"Shadow Daggers"
+		"hu"		"Árnyéktőr"
+	}
+
+	"Karambit"
+	{
+		"en"		"Karambit"
+		"hu"		"Karambit"
+	}
+
+	"Falchion knife"
+	{
+		"en"		"Falchion knife"
+		"hu"		"Handzsárkés"
+	}
+
+	"M9 Bayonet"
+	{
+		"en"		"M9 Bayonet"
+		"hu"		"M9 Bajonett"
+	}
+
+	"Bayonet"
+	{
+		"en"		"Bayonet"
+		"hu"		"Bajonett"
+	}
+
+	"Flip knife"
+	{
+		"en"		"Flip knife"
+		"hu"		"Összecsukható kés"
+	}
+
+	"Gut knife"
+	{
+		"en"		"Gut knife"
+		"hu"		"Zsigerelőkés"
+	}
+
+	"Huntsman knife"
+	{
+		"en"		"Huntsman knife"
+		"hu"		"Vadászkés"
+	}
+
+	"Blue Steel"
+	{
+		"en"		"Blue Steel"
+		"hu"		"Kék Acél"
+	}
+
+	"Boreal Forest"
+	{
+		"en"		"Boreal Forest"
+		"hu"		"Északi Erdő"
+	}
+
+	"Case Hardened"
+	{
+		"en"		"Case Hardened"
+		"hu"		"Edzett"
+	}
+
+	"Damascus Steel"
+	{
+		"en"		"Damascus Steel"
+		"hu"		"Damaszkuszi Acél"
+	}
+
+	"Doppler"
+	{
+		"en"		"Doppler"
+		"hu"		"Doppler"
+	}
+
+	"Fade"
+	{
+		"en"		"Fade"
+		"hu"		"Halványulás"
+	}
+
+	"Forest DDPAT"
+	{
+		"en"		"Forest DDPAT"
+		"hu"		"Erdei DDPAT"
+	}
+
+	"Marble Fade"
+	{
+		"en"		"Marble Fade"
+		"hu"		"Fakuló Márvány"
+	}
+
+	"Safari Mesh"
+	{
+		"en"		"Safari Mesh"
+		"hu"		"Szafari Háló"
+	}
+
+	"Scorched"
+	{
+		"en"		"Scorched"
+		"hu"		"Megperzselt"
+	}
+
+	"Slaughter"
+	{
+		"en"		"Slaughter"
+		"hu"		"Mészárlás"
+	}
+
+	"Stained"
+	{
+		"en"		"Stained"
+		"hu"		"Foltos"
+	}
+
+	"Tiger Tooth"
+	{
+		"en"		"Tiger Tooth"
+		"hu"		"Tigrisfog"
+	}
+
+	"Urban Masked"
+	{
+		"en"		"Urban Masked"
+		"hu"		"Városi Maszkolt"
+	}
+}

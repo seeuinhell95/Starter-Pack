@@ -62,21 +62,21 @@ public Action: CMD_DropMoney(client, args)
 	}
 	if(!IsPlayerAlive(client))
 	{
-		PrintToChat(client, " \x06[\xDropMoney06] \x07%t", "AliveOnly");
+		PrintToChat(client, " \x06[\x02DropMoney\x06] \x07%t", "AliveOnly");
 		return Plugin_Handled;
 	}
 
 	new account = GetEntProp(client, Prop_Send, "m_iAccount");
 	if(account <= 0)
 	{
-		PrintToChat(client, " \x06[\xDropMoney06] \x07%t", "NoMoney");
+		PrintToChat(client, " \x06[\x02DropMoney\x06] \x07%t", "NoMoney");
 		return Plugin_Handled;
 	}
 
 	new max = GetConVarInt(CVAR_MONEY_GROUND);
 	if((MONEY_ONGROUND >= max) && (max != 0))
 	{
-		PrintToChat(client, " \x06[\xDropMoney06] \x07%t", "TooManyOnGround");
+		PrintToChat(client, " \x06[\x02DropMoney\x06] \x07%t", "TooManyOnGround");
 		return Plugin_Handled;
 	}
 
@@ -145,7 +145,7 @@ public Action: CMD_DropMoney(client, args)
 
 	MONEY_ONGROUND ++;
 
-	PrintToChat(client, " \x06[\xDropMoney06] \x07%t", "MoneyDropped", value);
+	PrintToChat(client, " \x06[\x02DropMoney\x06] \x07%t", "MoneyDropped", value);
 	return Plugin_Handled;
 }
 
@@ -205,7 +205,7 @@ PickUpMoney(client, entity)
 
 	MONEY_ONGROUND --;
 
-	PrintToChat(client, " \x06[\xDropMoney06] \x07%t", "MoneyCollected", value);
+	PrintToChat(client, " \x06[\x02DropMoney\x06] \x07%t", "MoneyCollected", value);
 }
 
 public bool: Filter_ExcludeStarter(entity, contentsMask, any: data)

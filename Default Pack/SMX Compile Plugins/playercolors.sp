@@ -166,7 +166,7 @@ public DIDMenuHandler(Handle:menu, MenuAction:action, client, itemNum)
 		g_color[client] = g;
 		SetupRGBA(client);
 
-		PrintToChat(client, " \x06[\x0PlayerColorsx06] \x07%T", "choosen", client, g_sTColors[g]);
+		PrintToChat(client, " \x06[\x02PlayerColors\x06] \x07%T", "choosen", client, g_sTColors[g]);
 		Colores(client, 0);
 	}
 	else if (action == MenuAction_End)
