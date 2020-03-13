@@ -1,5 +1,5 @@
 [advadmin.sp]
-Age=1349300828
+Age=1349333714
 [advertisements.sp]
 Age=1349231264
 [afk.sp]
@@ -29,7 +29,7 @@ Age=1349031600
 [bombsite_locker.sp]
 Age=1349031609
 [chat-processor.sp]
-Age=1349031621
+Age=1349320722
 [chatspy.sp]
 Age=1349031640
 [clantagkick.sp]
@@ -51,7 +51,7 @@ Age=1349031674
 [door_damage_block.sp]
 Age=1349031676
 [dronegun_spawn.sp]
-Age=1349074956
+Age=1349339005
 [duck_fix.sp]
 Age=1349031682
 [extendedcomm.sp]
@@ -319,7 +319,7 @@ Age=1349031670
 [shootable_nades.sp]
 Age=1349032085
 [noscope_round.sp]
-Age=1349031958
+Age=1349335784
 [hs_impact_effect.sp]
 Age=1349065722
 [StealthRevived.sp]
@@ -327,6 +327,20 @@ Age=1349071121
 [ServerLagExploitFix.sp]
 Age=1349138835
 [chickenbig_spawner.sp]
-Age=1349300017
+Age=1349335312
 [VipMenu.sp]
 Age=1349300353
+[invisible.sp]
+Age=1349337832
+[giveweapon.sp]
+Age=1349328283
+[soccerball.sp]
+Age=1349339001
+[playercolors.sp]
+Age=1349330416
+[fix_angles.sp]
+Age=1349335561
+[dropmoney.sp]
+Age=1349337305
+[exojump.sp]
+Age=1349337770

@@ -363,8 +363,8 @@
 
 	"CMD_SpawnEnt_Usage"
 	{
-		"en"		"[SM] Usage: sm_spawnent <chicken [0-6] | ball [0-1] | snow | drone | dronegun>"
-		"hu"		"[SM] Használat: sm_spawnent <chicken [0-6] | ball [0-1] | snow | drone | dronegun>"
+		"en"		"[SM] Usage: sm_spawnent <chicken [1-6] | ball [1] | snow | drone>"
+		"hu"		"[SM] Használat: sm_spawnent <chicken [1-6] | ball [1] | snow | drone>"
 	}
 
 	"CMD_SpawnEnt"

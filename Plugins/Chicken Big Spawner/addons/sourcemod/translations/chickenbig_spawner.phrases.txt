@@ -2,19 +2,19 @@
 {
 	"ChickenSpawned"
 	{
-		"en"			"[SM] Big chicken spawned!"
-		"hu"			"[SM] Nagy csirke létrehozva!"
+		"en"			"Big chicken spawned!"
+		"hu"			"Nagy csirke létrehozva!"
 	}
 
 	"CantSpawnHere"
 	{
-		"en"			"[SM] You cant spawn big chicken here!"
-		"hu"			"[SM] Ide nem tehetsz le nagy csirkét!"
+		"en"			"You cant spawn big chicken here!"
+		"hu"			"Ide nem tehetsz le nagy csirkét!"
 	}
 
 	"OnlyAlive"
 	{
-		"en"			"[SM] Only alive player can use this command!"
-		"hu"			"[SM] Csak élő játékos használhatja ezt a parancsot!"
+		"en"			"Only alive player can use this command!"
+		"hu"			"Csak élő játékos használhatja ezt a parancsot!"
 	}
 }

@@ -1,0 +1,171 @@
+"Phrases"
+{
+	"color_normal"
+	{
+		"en"			"Normal"
+		"hu"			"Normális"
+	}
+
+	"color_black"
+	{
+		"en"			"Black"
+		"hu"			"Fekete"
+	}
+
+	"color_red"
+	{
+		"en"			"Red"
+		"hu"			"Piros"
+	}
+
+	"color_green"
+	{
+		"en"			"Green"
+		"hu"			"Zöld"
+	}
+
+	"color_blue"
+	{
+		"en"			"Blue"
+		"hu"			"Kék"
+	}
+
+	"color_yellow"
+	{
+		"en"			"Yellow"
+		"hu"			"Citromsárga"
+	}
+
+	"color_purple"
+	{
+		"en"			"Purple"
+		"hu"			"Lila"
+	}
+
+	"color_cyan"
+	{
+		"en"			"Cyan"
+		"hu"			"Ciánkék"
+	}
+
+	"color_orange"
+	{
+		"en"			"Orange"
+		"hu"			"Narancssárga"
+	}
+
+	"color_pink"
+	{
+		"en"			"Pink"
+		"hu"			"Rózsaszín"
+	}
+
+	"color_olive"
+	{
+		"en"			"Olive"
+		"hu"			"Oliva"
+	}
+
+	"color_lime"
+	{
+		"en"			"Lime"
+		"hu"			"Lime"
+	}
+
+	"color_violet"
+	{
+		"en"			"Violet"
+		"hu"			"Violet"
+	}
+
+	"color_lightblue"
+	{
+		"en"			"Light Blue"
+		"hu"			"Világoskék"
+	}
+
+	"color_silver"
+	{
+		"en"			"Silver"
+		"hu"			"Ezüst"
+	}
+
+	"color_chocolate"
+	{
+		"en"			"Chocolate"
+		"hu"			"Csokoládé"
+	}
+
+	"color_saddlebrown"
+	{
+		"en"			"Brown"
+		"hu"			"Barna"
+	}
+
+	"color_indigo"
+	{
+		"en"			"Indigo"
+		"hu"			"Indigó"
+	}
+
+	"color_ghostwhite"
+	{
+		"en"			"White"
+		"hu"			"Fehér"
+	}
+
+	"color_thistle"
+	{
+		"en"			"Thistle"
+		"hu"			"Bogáncs"
+	}
+
+	"color_aliceblue"
+	{
+		"en"			"Alice Blue"
+		"hu"			"Alízkék"
+	}
+
+	"color_steelblue"
+	{
+		"en"			"Steel Blue"
+		"hu"			"Acélkék"
+	}
+
+	"color_teal"
+	{
+		"en"			"Teal"
+		"hu"			"Kávé"
+	}
+
+	"color_gold"
+	{
+		"en"			"Gold"
+		"hu"			"Arany"
+	}
+
+	"color_tan"
+	{
+		"en"			"Tan"
+		"hu"			"Cser"
+	}
+
+	"color_tomato"
+	{
+		"en"			"Tomato"
+		"hu"			"Paradicsom"
+	}
+
+	"menu_title"
+	{
+		"en"			"Choose player color"
+		"hu"			"Válassz karakter színt"
+	}
+
+	"choosen"
+	{
+		"#format"		"{1:s}"
+		"en"			"You have choosen {1} color!"
+		"hu"			"Kiválasztottad a(z) {1} színt!"
+	}
+}

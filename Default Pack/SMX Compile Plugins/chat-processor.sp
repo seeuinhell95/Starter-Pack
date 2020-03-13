@@ -1,7 +1,7 @@
 #pragma semicolon 1
 #pragma newdecls required
 
-#define PLUGIN_NAME "[CSGO] Chat Processor | Edited: somebody."
+#define PLUGIN_NAME "[CSGO] Chat Processor"
 #define PLUGIN_AUTHOR "Drixevel | Edited: somebody."
 #define PLUGIN_DESCRIPTION "Chat Processor"
 #define PLUGIN_VERSION "1.0"

@@ -28,7 +28,7 @@ public OnPluginStart()
 	if (GetEngineVersion() != Engine_CSGO)
 		SetFailState("This plugin is for CSGO only.");
 
-	g_cvPathToSound = CreateConVar("noscope_sound_path", "", "Path of the sound played when Noscope round");
+	g_cvPathToSound = CreateConVar("noscope_sound_path", "noscope_round/test_your_might_v2.mp3", "Path of the sound played when Noscope round");
 	g_cvEnableSound = CreateConVar("noscope_sound_enabled", "0", "Enable (1)/Disable (0) the sound played when Noscope round");
 	g_cvEnableText = CreateConVar("noscope_message_enabled", "1", "Enable (1)/Disable (0) the alert message when Noscope round");
 	g_cvWarmup = CreateConVar("noscope_warmup_enabled", "0", "Enable (1)/Disable (0) the NoScope round during warmup");
@@ -84,7 +84,7 @@ public OnPlayerSpawn(Handle:event, const String:name[], bool:dontBroadcast)
 		{
 			if (g_cvEnableText.BoolValue && g_cvInterval.IntValue > 0)
 			PrintToChat(client, " \x02-===========================================-");
-			PrintToChat(client, " \x06> \x06No-Scope \x07Kör!");
+			PrintToChat(client, " \x06> \x09★★★★★★ \x06No-Scope \x07Kör! \x09★★★★★★");
 			PrintToChat(client, " \x02-===========================================-");
 			char commandBase[PLATFORM_MAX_PATH] = "play *";
 			char soundpath[PLATFORM_MAX_PATH];

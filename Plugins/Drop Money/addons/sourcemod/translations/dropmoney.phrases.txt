@@ -1,0 +1,34 @@
+"Phrases"
+{
+	"AliveOnly"
+	{
+		"en"			"Only alive players can drop money!"
+		"hu"			"Csak élve tudsz pénzt dobni!"
+	}
+
+	"NoMoney"
+	{
+		"en"			"You don't have money to drop!"
+		"hu"			"Nincs pénzed amit eldobhatsz!"
+	}
+
+	"TooManyOnGround"
+	{
+		"en"			"Too many money on the ground, you can't drop more at this time!"
+		"hu"			"Túl sok pénz van a földön, most nem tudsz többet dobni!"
+	}
+
+	"MoneyDropped"
+	{
+		"#format"		"{1:i}"
+		"en"			"You dropped ${1}"
+		"hu"			"Eldobtál ${1}-t"
+	}
+
+	"MoneyCollected"
+	{
+		"#format"		"{1:i}"
+		"en"			"You collected ${1}"
+		"hu"			"Felvettél ${1}-t"
+	}
+}

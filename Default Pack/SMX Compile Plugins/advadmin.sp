@@ -34,7 +34,7 @@ new Float: g_fSaveVec[MAXPLAYERS + 1][2][3],
 new String: WeaponsList[][] =
 {
 	"c4", "healthshot", "tablet", "shield",
-	"knife", "knifegg", "fists", "axe", "hammer", "spanner", "taser", "melee",
+	"knife", "knifegg", "fists", "axe", "hammer", "spanner", "taser",
 	"decoy", "flashbang", "hegrenade", "molotov", "incgrenade", "smokegrenade", "tagrenade", "breachcharge", "snowball", "bumpmine",
 	"usp_silencer", "glock", "tec9", "p250", "hkp2000", "cz75a", "deagle", "revolver", "fiveseven", "elite",
 	"nova", "xm1014", "sawedoff", "mag7", "m249", "negev",
@@ -125,31 +125,17 @@ public OnMapStart()
 		PrecacheSound(SOUND_BURY, true);
 	}
 
-	PrecacheSound("sound/survival/turret_death_01.wav", true);
-	PrecacheSound("sound/survival/turret_idle_01.wav", true);
-	PrecacheSound("sound/survival/turret_takesdamage_01.wav", true);
-	PrecacheSound("sound/survival/turret_takesdamage_02.wav", true);
-	PrecacheSound("sound/survival/turret_takesdamage_03.wav", true);
-	PrecacheSound("sound/survival/turret_lostplayer_01.wav", true);
-	PrecacheSound("sound/survival/turret_lostplayer_02.wav", true);
-	PrecacheSound("sound/survival/turret_lostplayer_03.wav", true);
-	PrecacheSound("sound/survival/turret_sawplayer_01.wav", true);
-
-	PrecacheModel("models/props_survival/dronegun/dronegun.mdl", true);
-	PrecacheModel("models/props_survival/dronegun/dronegun_gib1.mdl", true);
-	PrecacheModel("models/props_survival/dronegun/dronegun_gib2.mdl", true);
-	PrecacheModel("models/props_survival/dronegun/dronegun_gib3.mdl", true);
-	PrecacheModel("models/props_survival/dronegun/dronegun_gib4.mdl", true);
-	PrecacheModel("models/props_survival/dronegun/dronegun_gib5.mdl", true);
-	PrecacheModel("models/props_survival/dronegun/dronegun_gib6.mdl", true);
-	PrecacheModel("models/props_survival/dronegun/dronegun_gib7.mdl", true);
-	PrecacheModel("models/props_survival/dronegun/dronegun_gib8.mdl", true);
-
 	PrecacheModel(MODEL_CHICKEN, true);
 	PrecacheModel(MODEL_CHICKEN_ZOMBIE, true);
 	PrecacheModel(MODEL_BALL, true);
 	PrecacheModel(MODEL_SNOW, true);
 	PrecacheModel("models/props_survival/drone/br_drone.mdl", true);
+	PrecacheModel("models/props_survival/drone/drone_gib1.mdl", true);
+	PrecacheModel("models/props_survival/drone/drone_gib2.mdl", true);
+	PrecacheModel("models/props_survival/drone/drone_gib3.mdl", true);
+	PrecacheModel("models/props_survival/drone/drone_gib4.mdl", true);
+	PrecacheModel("models/props_survival/drone/drone_gib5.mdl", true);
+	PrecacheModel("models/props_survival/drone/drone_gib6.mdl", true);
 
 	for(new client = 1; client <= MaxClients; client++)
     {
@@ -1696,20 +1682,6 @@ public Action: CMD_SpawnEnt(client, args)
 			return Plugin_Handled;
 		}
 		DispatchSpawn(entity);
-	}
-	else if(StrEqual(buffer[0], "dronegun"))
-	{
-		entity = CreateEntityByName("dronegun");
-		if(!IsValidEntity(entity))
-		{
-			return Plugin_Handled;
-		}
-		DispatchSpawn(entity);
-
-		SetEntPropEnt(entity, Prop_Data, "m_hOwnerEntity", client);
-		SetEntProp(entity, Prop_Data, "m_nHighlightColorB", 255);
-
-		vec[0][2] = vec[0][2] + 8.0;
 	}
 	else if(StrEqual(buffer[0], "drone"))
 	{
