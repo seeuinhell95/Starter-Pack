@@ -255,6 +255,31 @@
 		"model"		"models/props_survival/cash/prop_cash_stack_block.mdl"
 	}
 
+	"Pénz"
+	{
+		"model"		"models/props/cs_assault/money.mdl"
+	}
+
+	"Pénz köteg"
+	{
+		"model"		"models/props_survival/cash/prop_cash_stack.mdl"
+	}
+
+	"Pénztárgép"
+	{
+		"model"		"models/props_interiors/cashregister01.mdl"
+	}
+
+	"Pénzes táska"
+	{
+		"model"		"models/props_survival/cash/dufflebag.mdl"
+	}
+
+	"Pénz raklap"
+	{
+		"model"		"models/props/cs_assault/moneypallet.mdl"
+	}
+
 	"Bicikli"
 	{
 		"model"		"models/props/de_dust/hr_dust/dust_bicycle/dust_bicycle_wall.mdl"
