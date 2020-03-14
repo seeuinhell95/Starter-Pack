@@ -41,6 +41,7 @@ public void OnPluginStart()
 	RegConsoleCmd("sm_rainbowmessage", Command_Message);
 	RegConsoleCmd("sm_rainbowmsg", Command_Message);
 	RegConsoleCmd("sm_rbm", Command_Message);
+	RegConsoleCmd("sm_rbc", Command_Message);
 }
 
 public void OnConfigsExecuted()

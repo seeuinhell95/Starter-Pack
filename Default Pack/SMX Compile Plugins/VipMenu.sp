@@ -8,12 +8,17 @@
 #define Choice_Chickens		0
 #define Choice_Balls		1
 #define Choice_Weapons		2
-#define Choice_Invis		3
-#define Choice_Models		4
-#define Choice_Colors		5
-#define Choice_FVK			6
-#define Choice_Case			7
-#define Choice_Users		8
+#define Choice_SLAM			3
+#define Choice_Invis		4
+#define Choice_Models		5
+#define Choice_Colors		6
+#define Choice_FVK			7
+#define Choice_Case			8
+#define Choice_RainBow		9
+#define Choice_DropMoney	10
+#define Choice_Wasted		11
+#define Choice_Users		12
+#define Choice_BhopStats	13
 
 public Plugin myinfo =
 {
@@ -49,6 +54,11 @@ public Handler_AdminMenu(Handle:hMenu, MenuAction:action, param1, param2)
 			DisplayWeaponsMenu(param1);
 		}
 
+		if(param2 == Choice_SLAM)
+		{
+			DisplaySLAMMenu(param1);
+		}
+
 		if(param2 == Choice_Invis)
 		{
 			DisplayInvisMenu(param1);
@@ -74,9 +84,29 @@ public Handler_AdminMenu(Handle:hMenu, MenuAction:action, param1, param2)
 			ClientCommand(param1, "sm_case");
 		}
 
+		if(param2 == Choice_RainBow)
+		{
+			DisplayRainBowMenu(param1);
+		}
+
+		if(param2 == Choice_DropMoney)
+		{
+			ClientCommand(param1, "sm_dm");
+		}
+
+		if(param2 == Choice_Wasted)
+		{
+			DisplayWastedMenu(param1);
+		}
+
 		if(param2 == Choice_Users)
 		{
 			ClientCommand(param1, "sm_users");
+		}
+
+		if(param2 == Choice_BhopStats)
+		{
+			ClientCommand(param1, "sm_pad");
 		}
 	}
 }
@@ -220,7 +250,7 @@ public int MenuHandler_ChickensMenu(Handle fMenu, MenuAction maAction, int clien
 
 		if(StrEqual(sChoice, "DefaultChicken"))
 		{
-			ClientCommand(client, "sm_sc 0");
+			ClientCommand(client, "sm_spawnent chicken");
 		}
 
 		if(StrEqual(sChoice, "DefaultChickenBig"))
@@ -230,32 +260,32 @@ public int MenuHandler_ChickensMenu(Handle fMenu, MenuAction maAction, int clien
 
 		if(StrEqual(sChoice, "BirthdayChicken"))
 		{
-			ClientCommand(client, "sm_sc 1");
+			ClientCommand(client, "sm_spawnent chicken 1");
 		}
 
 		if(StrEqual(sChoice, "GhostChicken"))
 		{
-			ClientCommand(client, "sm_sc 2");
+			ClientCommand(client, "sm_spawnent chicken 2");
 		}
 
 		if(StrEqual(sChoice, "ChristmasChicken"))
 		{
-			ClientCommand(client, "sm_sc 3");
+			ClientCommand(client, "sm_spawnent chicken 3");
 		}
 
 		if(StrEqual(sChoice, "BunnyChicken"))
 		{
-			ClientCommand(client, "sm_sc 4");
+			ClientCommand(client, "sm_spawnent chicken 4");
 		}
 
 		if(StrEqual(sChoice, "PumpkinChicken"))
 		{
-			ClientCommand(client, "sm_sc 5");
+			ClientCommand(client, "sm_spawnent chicken 5");
 		}
 
 		if(StrEqual(sChoice, "ZombieChicken"))
 		{
-			ClientCommand(client, "sm_sc 6");
+			ClientCommand(client, "sm_spawnent chicken 6");
 		}
 	}
 
@@ -268,11 +298,12 @@ public int MenuHandler_ChickensMenu(Handle fMenu, MenuAction maAction, int clien
 stock DisplayBallsMenu(client)
 {
 	Handle jMenu = CreateMenu(MenuHandler_BallsMenu, MENU_ACTIONS_ALL);
-	SetMenuTitle(jMenu, "Focilabda Menü");
+	SetMenuTitle(jMenu, "Focilabda/Hógolyó Menü");
 
 	AddMenuItem(jMenu, "CustomBall",			"Egyedi focilabda");
 	AddMenuItem(jMenu, "ValveBall",				"Valve sima focilabda");
 	AddMenuItem(jMenu, "ValveBallPumpkin",		"Valve tök focilabda");
+	AddMenuItem(jMenu, "SnowBalls",				"Hógolyó kupac");
 
 	SetMenuExitButton(jMenu, true);
 	DisplayMenu(jMenu, client, 30);
@@ -299,11 +330,124 @@ public int MenuHandler_BallsMenu(Handle jMenu, MenuAction maAction, int client, 
 		{
 			ClientCommand(client, "sm_spawnent ball 1");
 		}
+
+		if(StrEqual(sChoice, "SnowBalls"))
+		{
+			ClientCommand(client, "sm_spawnent snow");
+		}
 	}
 
 	else if(maAction == MenuAction_End)
 	{
 		CloseHandle(jMenu);
+	}
+}
+
+stock DisplaySLAMMenu(client)
+{
+	Handle oMenu = CreateMenu(MenuHandler_SLAMMenu, MENU_ACTIONS_ALL);
+	SetMenuTitle(oMenu, "SLAM engedélyek kezelése");
+
+	AddMenuItem(oMenu, "SLAMAllow",			"SLAM engedélyezése");
+	AddMenuItem(oMenu, "SLAMUnAllow",		"SLAM letiltása");
+
+	SetMenuExitButton(oMenu, true);
+	DisplayMenu(oMenu, client, 30);
+}
+
+public int MenuHandler_SLAMMenu(Handle oMenu, MenuAction maAction, int client, int choice)
+{
+	if(maAction == MenuAction_Select)
+	{
+		char sChoice[8];
+		GetMenuItem(oMenu, choice, sChoice, 8);
+
+		if(StrEqual(sChoice, "SLAMAllow"))
+		{
+			ClientCommand(client, "sm_slam");
+		}
+
+		if(StrEqual(sChoice, "SLAMUnAllow"))
+		{
+			ClientCommand(client, "sm_unslam");
+		}
+	}
+
+	else if(maAction == MenuAction_End)
+	{
+		CloseHandle(oMenu);
+	}
+}
+
+stock DisplayWastedMenu(client)
+{
+	Handle kMenu = CreateMenu(MenuHandler_WastedMenu, MENU_ACTIONS_ALL);
+	SetMenuTitle(kMenu, "Játékosok közös szerverideje");
+
+	AddMenuItem(kMenu, "WastedAll",			"Összes");
+	AddMenuItem(kMenu, "WastedMonth",		"Havi");
+
+	SetMenuExitButton(kMenu, true);
+	DisplayMenu(kMenu, client, 30);
+}
+
+public int MenuHandler_WastedMenu(Handle kMenu, MenuAction maAction, int client, int choice)
+{
+	if(maAction == MenuAction_Select)
+	{
+		char sChoice[8];
+		GetMenuItem(kMenu, choice, sChoice, 8);
+
+		if(StrEqual(sChoice, "WastedAll"))
+		{
+			ClientCommand(client, "sm_wasted");
+		}
+
+		if(StrEqual(sChoice, "WastedMonth"))
+		{
+			ClientCommand(client, "sm_wastedm");
+		}
+	}
+
+	else if(maAction == MenuAction_End)
+	{
+		CloseHandle(kMenu);
+	}
+}
+
+stock DisplayRainBowMenu(client)
+{
+	Handle zMenu = CreateMenu(MenuHandler_RainBowMenu, MENU_ACTIONS_ALL);
+	SetMenuTitle(zMenu, "Szivárvány írás és név");
+
+	AddMenuItem(zMenu, "RainBowChat",		"Szivárvány írás be/kikapcslás");
+	AddMenuItem(zMenu, "RainBowName",		"Szivárvány név be/kikapcsolás");
+
+	SetMenuExitButton(zMenu, true);
+	DisplayMenu(zMenu, client, 30);
+}
+
+public int MenuHandler_RainBowMenu(Handle zMenu, MenuAction maAction, int client, int choice)
+{
+	if(maAction == MenuAction_Select)
+	{
+		char sChoice[8];
+		GetMenuItem(zMenu, choice, sChoice, 8);
+
+		if(StrEqual(sChoice, "RainBowChat"))
+		{
+			ClientCommand(client, "sm_rbm");
+		}
+
+		if(StrEqual(sChoice, "RainBowName"))
+		{
+			ClientCommand(client, "sm_rbn");
+		}
+	}
+
+	else if(maAction == MenuAction_End)
+	{
+		CloseHandle(zMenu);
 	}
 }
 
@@ -314,7 +458,13 @@ stock DisplayWeaponsMenu(client)
 
 	AddMenuItem(gMenu, "Shield",		"Taktikai pajzs");
 	AddMenuItem(gMenu, "HealthShot",	"Elsősegély-injekció");
+	AddMenuItem(gMenu, "SnowBall",		"Hógolyó");
+	AddMenuItem(gMenu, "Knife",			"Kés");
+	AddMenuItem(gMenu, "C4",			"C4");
 	AddMenuItem(gMenu, "GoldKnife",		"Arany kés");
+	AddMenuItem(gMenu, "Tablet",		"Tablet");
+	AddMenuItem(gMenu, "NightVision",	"Éjjellátó szemüveg");
+
 
 	SetMenuExitButton(gMenu, true);
 	DisplayMenu(gMenu, client, 30);
@@ -337,9 +487,34 @@ public int MenuHandler_WeaponsMenu(Handle gMenu, MenuAction maAction, int client
 			ClientCommand(client, "sm_weapon @me healthshot");
 		}
 
+		if(StrEqual(sChoice, "SnowBall"))
+		{
+			ClientCommand(client, "sm_weapon @me snowball");
+		}
+
+		if(StrEqual(sChoice, "Knife"))
+		{
+			ClientCommand(client, "sm_weapon @me knife");
+		}
+
+		if(StrEqual(sChoice, "C4"))
+		{
+			ClientCommand(client, "sm_weapon @me c4");
+		}
+
 		if(StrEqual(sChoice, "GoldKnife"))
 		{
 			ClientCommand(client, "sm_weapon @me knifegg");
+		}
+
+		if(StrEqual(sChoice, "Tablet"))
+		{
+			ClientCommand(client, "sm_weapon @me tablet");
+		}
+
+		if(StrEqual(sChoice, "NightVision"))
+		{
+			ClientCommand(client, "sm_weapon @me nvgs");
 		}
 	}
 
@@ -393,14 +568,19 @@ public Action: Command_VipMenu(client, args)
 	SetMenuTitle(hMenu, "ViP Menü");
 
 	AddMenuItem(hMenu,		"Choice_Chickens",		"Csirkék lehívása");
-	AddMenuItem(hMenu,		"Choice_Balls",			"Focilabdák lehívása");
+	AddMenuItem(hMenu,		"Choice_Balls",			"Focilabdák/hógolyók lehívása");
 	AddMenuItem(hMenu,		"Choice_Weapons",		"Fegyver lehívás");
+	AddMenuItem(hMenu,		"Choice_SLAM",			"SLAM engedélyek");
 	AddMenuItem(hMenu,		"Choice_Invis",			"Láthatatlanság");
 	AddMenuItem(hMenu,		"Choice_Models",		"Karakter kinézetek");
 	AddMenuItem(hMenu,		"Choice_Colors",		"Karakter színezés");
 	AddMenuItem(hMenu,		"Choice_FVK",			"Hamis VAC kirúgás");
 	AddMenuItem(hMenu,		"Choice_Case",			"Hamis kés nyitás");
+	AddMenuItem(hMenu,		"Choice_RainBow",		"Szivárvány írás és név");
+	AddMenuItem(hMenu,		"Choice_DropMoney",		"Pénz dobálás");
+	AddMenuItem(hMenu,		"Choice_Wasted",		"Játékosok szerverideje");
 	AddMenuItem(hMenu,		"Choice_Users",			"Játékosok adatai");
+	AddMenuItem(hMenu,		"Choice_BhopStats",		"Bhop ellenőrzés be/kikapcsolása");
 
 	SetMenuExitButton(hMenu, true);
 	DisplayMenu(hMenu, client, MENU_TIME_FOREVER);
