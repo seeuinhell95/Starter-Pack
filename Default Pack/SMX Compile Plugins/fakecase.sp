@@ -158,7 +158,7 @@ public int Menu_Skin(Menu menu, MenuAction action, int param1, int param2)
 				Format(buffer2, sizeof(buffer2), "%T", skin_id, i);
 				Format(buffer, sizeof(buffer), "★ %s | %s", buffer1, buffer2);
 				Format(buffer3, sizeof(buffer3), "%T", "Chat message", i);
-				CPrintToChat(i, "%s{default} %s \x07%s", name, buffer3, buffer);
+				CPrintToChat(i, " %s{default} %s \x07%s", name, buffer3, buffer);
 			}
 		}
 	}

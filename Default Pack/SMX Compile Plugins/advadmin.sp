@@ -184,13 +184,33 @@ public Action: CMD_ClearMap(client, args)
 		return Plugin_Handled;
 	}
 
-	new String: buffer[64];
+	new String: buffer[64],
+		value;
+
+	GetCmdArg(1, buffer, sizeof(buffer));
+	if(StrEqual(buffer, "weapons", false))
+	{
+		value = 1;
+	}
+	else if(StrEqual(buffer, "chickens", false))
+	{
+		value = 2;
+	}
+	else
+	{
+		value = 0;
+	}
+
 	for(new entity = MaxClients; entity < GetMaxEntities(); entity++)
 	{
 		if(IsValidEntity(entity))
 		{
 			GetEntityClassname(entity, buffer, sizeof(buffer));
-			if(((StrContains(buffer, "weapon_", false) != -1) && (GetEntProp(entity, Prop_Data, "m_iState") == 0) && (GetEntProp(entity, Prop_Data, "m_spawnflags") != 1)) || StrEqual(buffer, "item_defuser", false) )
+			if((((StrContains(buffer, "game", false) == -1) && (StrContains(buffer, "weapon_", false) != -1) && (GetEntProp(entity, Prop_Data, "m_iState") == 0) && (GetEntProp(entity, Prop_Data, "m_spawnflags") != 1)) || (StrEqual(buffer, "item_", false))) && (value <= 1))
+			{
+				AcceptEntityInput(entity, "Kill");
+			}
+			if(StrEqual(buffer, "chicken", false) && (GetEntPropEnt(entity, Prop_Send, "m_leader") == -1) && (value != 1))
 			{
 				AcceptEntityInput(entity, "Kill");
 			}
@@ -1626,7 +1646,7 @@ public Action: CMD_SpawnEnt(client, args)
 		GetCmdArg(2, buffer[1], sizeof(buffer[]));
 		value = StringToInt(buffer[1]);
 
-		if((value > 0) && (value <= 5)) 
+		if((value >= 0) && (value <= 5)) 
 		{
 			SetEntProp(entity, Prop_Data, "m_nBody", value);
 			SetEntProp(entity, Prop_Data, "m_nSkin", GetRandomInt(0, 1));

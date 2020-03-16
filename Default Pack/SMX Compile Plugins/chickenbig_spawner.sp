@@ -20,6 +20,7 @@ public Plugin myinfo =
 public OnPluginStart()
 {
 	RegAdminCmd("sm_spawnchickenbig", CMD_SpawnChicken, ADMFLAG_RESERVATION, "Spawning chicken to the aim position.");
+	RegAdminCmd("sm_scbig", CMD_SpawnChicken, ADMFLAG_RESERVATION, "Spawning chicken to the aim position.");
 	RegAdminCmd("sm_scb", CMD_SpawnChicken, ADMFLAG_RESERVATION, "Spawning chicken to the aim position.");
 
 	LoadTranslations("chickenbig_spawner.phrases");
@@ -39,63 +40,56 @@ public Action: CMD_SpawnChicken(client, args)
 
 	if((args == 0) || (StringToInt(arg) == 0))
 	{
-		SpawnChicken(client, 0);
+		SpawnChicken(client, 1);
 	}
 	else
 	{
-		SpawnChicken(client, 1);
+		SpawnChicken(client, 0);
 	}
 	return Plugin_Handled;
 }
 
 SpawnChicken(client, type)
 {
-	if(IsClientValid(client) && IsClientInGame(client))
+	if(IsClientValid(client))
 	{
-		if(IsPlayerAlive(client))
+		new Float: eye_pos[3],
+			Float: eye_ang[3];
+
+		GetClientEyePosition(client, eye_pos);
+		GetClientEyeAngles(client, eye_ang);
+
+		new Handle: trace = TR_TraceRayFilterEx(eye_pos, eye_ang, MASK_SOLID, RayType_Infinite, Filter_DontHitPlayers);
+		if(TR_DidHit(trace))
 		{
-			new Float: eye_pos[3],
-				Float: eye_ang[3];
-
-			GetClientEyePosition(client, eye_pos);
-			GetClientEyeAngles(client, eye_ang);
-
-			new Handle: trace = TR_TraceRayFilterEx(eye_pos, eye_ang, MASK_SOLID, RayType_Infinite, Filter_DontHitPlayers);
-			if(TR_DidHit(trace))
+			if(TR_GetEntityIndex(trace) == 0)
 			{
-				if(TR_GetEntityIndex(trace) == 0)
+				new chicken = CreateEntityByName("chicken");
+				if(IsValidEntity(chicken))
 				{
-					new chicken = CreateEntityByName("chicken");
-					if(IsValidEntity(chicken))
+					new Float: end_pos[3];
+					TR_GetEndPosition(end_pos, trace);
+					end_pos[2] = (end_pos[2] + 10.0);
+
+					new String: skin[16];
+					Format(skin, sizeof(skin), "%i", GetRandomInt(0, 1));
+
+					DispatchKeyValue(chicken, "glowenabled", "0");
+					DispatchKeyValue(chicken, "glowcolor", "255 255 255");
+					DispatchKeyValue(chicken, "rendercolor", "255 255 255");
+					DispatchKeyValue(chicken, "modelscale", "2.0");
+					DispatchKeyValue(chicken, "skin", skin);
+					DispatchSpawn(chicken);
+
+					TeleportEntity(chicken, end_pos, NULL_VECTOR, NULL_VECTOR);
+
+					if(type == 0)
 					{
-						new Float: end_pos[3];
-						TR_GetEndPosition(end_pos, trace);
-						end_pos[2] = (end_pos[2] + 10.0);
-
-						new String: skin[16];
-						Format(skin, sizeof(skin), "%i", GetRandomInt(0, 1));
-
-						DispatchKeyValue(chicken, "glowenabled", "0");
-						DispatchKeyValue(chicken, "glowcolor", "255 255 255");
-						DispatchKeyValue(chicken, "rendercolor", "255 255 255");
-						DispatchKeyValue(chicken, "modelscale", "2.0");
-						DispatchKeyValue(chicken, "skin", skin);
-						DispatchSpawn(chicken);
-
-						TeleportEntity(chicken, end_pos, NULL_VECTOR, NULL_VECTOR);
-
-						if(type == 0)
-						{
-							SetEntityModel(chicken, MODEL_CHICKEN_ZOMBIE_BIG);
-						}
-
-						EmitSoundToAll(SOUND_SPAWN_BIG, chicken);
-						ReplyToCommand(client, " \x06[\x02BigChicken\x06] \x07%t", "ChickenSpawned");
+						SetEntityModel(chicken, MODEL_CHICKEN_ZOMBIE_BIG);
 					}
-				}
-				else
-				{
-					ReplyToCommand(client, " \x06[\x02BigChicken\x06] \x07%t", "CantSpawnHere");
+
+					EmitSoundToAll(SOUND_SPAWN_BIG, chicken);
+					ReplyToCommand(client, " \x06[\x02BigChicken\x06] \x07%t", "ChickenSpawned");
 				}
 			}
 			else
@@ -105,7 +99,7 @@ SpawnChicken(client, type)
 		}
 		else
 		{
-			ReplyToCommand(client, " \x06[\x02BigChicken\x06] \x07%t", "OnlyAlive");
+			ReplyToCommand(client, " \x06[\x02BigChicken\x06] \x07%t", "CantSpawnHere");
 		}
 	}
 }
