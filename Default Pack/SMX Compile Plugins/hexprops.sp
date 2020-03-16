@@ -44,6 +44,7 @@ public void OnPluginStart()
 	PropsArray = new ArrayList();
 
 	RegAdminCmd("sm_props", Cmd_Props, ADMFLAG_CHEATS);
+	RegAdminCmd("sm_prop", Cmd_Props, ADMFLAG_CHEATS);
 
 	if (!HookEventEx("round_poststart", Event_RoundStart))
 		if (!HookEventEx("round_start", Event_RoundStart))

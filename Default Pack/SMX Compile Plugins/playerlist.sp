@@ -20,7 +20,7 @@ public OnPluginStart()
 	RegAdminCmd("sm_playerlist", Command_Users, ADMFLAG_GENERIC, "Show list players on a server");
 	RegAdminCmd("sm_plist", Command_Users, ADMFLAG_GENERIC, "Show list players on a server");
 	RegAdminCmd("sm_users", Command_Users, ADMFLAG_GENERIC, "Show list players on a server");
-	RegAdminCmd("sm_users", Command_Users, ADMFLAG_GENERIC, "Show list players on a server");
+	RegAdminCmd("sm_user", Command_Users, ADMFLAG_GENERIC, "Show list players on a server");
 }
 
 public Action: Command_Users(client, args)

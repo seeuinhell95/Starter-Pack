@@ -11,4 +11,10 @@
 		"en"			"You cant spawn big chicken here!"
 		"hu"			"Ide nem tehetsz le nagy csirkét!"
 	}
+
+	"OnlyAlive"
+	{
+		"en"			"Only alive player can use this commands!"
+		"hu"			"Csak élő játékos használhatja ezt a parancsot!"
+	}
 }

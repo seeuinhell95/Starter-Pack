@@ -30,7 +30,7 @@ public Action Command_Pad(int client, int args)
 {
 	gB_PadEnabled[client] = !gB_PadEnabled[client];
 
-	ReplyToCommand(client, "Pad %s.", (gB_PadEnabled[client])? "enabled":"disabled");
+	PrintToChat(client, " \x06[\x02ViP\x06] \x07Bhop statisztika ellenőrző: \x06%s\x07.", (gB_PadEnabled[client])? "Bekapcsolva":"Kikapcsolva");
 
 	return Plugin_Handled;
 }

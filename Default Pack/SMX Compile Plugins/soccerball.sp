@@ -17,16 +17,13 @@ public OnPluginStart()
 {
 	RegAdminCmd("sm_ball", Bola, ADMFLAG_RESERVATION);
 	RegAdminCmd("sm_noball", NoBola, ADMFLAG_RESERVATION);
+	RegAdminCmd("sm_noballs", NoBola, ADMFLAG_RESERVATION);
+	RegAdminCmd("sm_clearball", NoBola, ADMFLAG_RESERVATION);
+	RegAdminCmd("sm_clearballs", NoBola, ADMFLAG_RESERVATION);
 }
 
 public Action: Bola(client,args)
 {
-	if(client == 0)
-	{
-		PrintToChat(client, " \x06[\x02Ball\x06] \x07Ez a parancs csak a játékban használható.");
-		return Plugin_Handled;
-	}
-
 	decl Float:start[3], Float:angle[3], Float:end[3], Float:normal[3];
 	GetClientEyePosition(client, start);
 	GetClientEyeAngles(client, angle);
@@ -54,6 +51,7 @@ public Action: Bola(client,args)
 		AcceptEntityInput(ent, "EnableCollision");
 		TeleportEntity(ent, end, normal, NULL_VECTOR);
 		SetEntProp(ent, Prop_Data, "m_CollisionGroup", 5);
+		SDKHook(ent, SDKHook_OnTakeDamage, OnTakeBallDamage);
 	}
 	PrintToChat(client, " \x06[\x02Ball\x06] \x07Sikeresen lehívtál egy \x06egyedi focilabdát\x07.");
 
@@ -80,14 +78,8 @@ public OnMapStart()
 	PrecacheModel("models/forlix/soccer/soccerball.mdl");
 }
 
-public Action: NoBola(client,args)
+public Action: NoBola(client, args)
 {
-	if(client == 0)
-	{
-		PrintToChat(client, " \x06[\x02Ball\x06] \x07Ez a parancs csak a játékban használható.");
-		return Plugin_Handled;
-	}
-
 	new index2 = -1;
 	while ((index2 = FindEntityByClassname2(index2, "models/forlix/soccer/soccerball.mdl")) != -1)
 	AcceptEntityInput(index2, "Kill");
@@ -100,4 +92,33 @@ stock FindEntityByClassname2(startEnt, const String:classname[])
 {
 	while (startEnt > -1 && !IsValidEntity(startEnt)) startEnt--;
 	return FindEntityByClassname(startEnt, classname);
+}
+
+public IsValidClient(client)
+{
+	if (!(1 <= client <= MaxClients) || !IsClientInGame(client))
+		return false;
+
+	return true;
+}
+
+public Action: OnTakeBallDamage(entity, &attacker, &inflictor, &Float:damage, &damagetype)
+{
+	if(!IsValidClient(attacker)) return Plugin_Continue;
+
+	if(damage > 45.0)
+	{
+		Elevar(entity);
+		return Plugin_Handled;
+	}
+	return Plugin_Continue;
+}
+
+Elevar(Bola)
+{
+	decl Float:normal[3], Float:velocidad[3];
+	GetVectorAngles(normal, normal);
+	normal[0] += 90.0;
+	velocidad[2] = 550.0;
+	TeleportEntity(Bola, NULL_VECTOR, normal, velocidad);
 }
