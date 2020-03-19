@@ -243,7 +243,7 @@ public int FindFreeSlot()
 
 public bool isadmin(int client)
 {
-	if(GetUserAdmin(client) != INVALID_ADMIN_ID) 
+	if(CheckCommandAccess(client, "sm_command", ADMFLAG_GENERIC))
 		return true;
 
 	return false;

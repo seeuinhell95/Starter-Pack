@@ -5,21 +5,6 @@
 #include <sdkhooks>
 #include <adminmenu>
 
-#define Choice_Chickens		0
-#define Choice_Balls		1
-#define Choice_Weapons		2
-#define Choice_SLAM			3
-#define Choice_DropMoney	4
-#define Choice_Models		5
-#define Choice_Colors		6
-#define Choice_FVK			7
-#define Choice_Case			8
-#define Choice_RainBow		9
-#define Choice_Invis		10
-#define Choice_Wasted		11
-#define Choice_Users		12
-#define Choice_BhopStats	13
-
 public Plugin myinfo =
 {
 	name = "[CSGO] ViP Menu",
@@ -39,79 +24,82 @@ public Handler_AdminMenu(Handle: VipMenu, MenuAction: action, param1, param2)
 {
 	if(action == MenuAction_Select)
 	{
-		if(param2 == Choice_Chickens)
+		char sChoice[64];
+		GetMenuItem(VipMenu, param2, sChoice, 64);
+
+		if(StrEqual(sChoice, "Choice_Chickens"))
 		{
 			DisplayChickensMenu(param1);
 		}
 
-		if(param2 == Choice_Balls)
+		if(StrEqual(sChoice, "Choice_Balls"))
 		{
 			DisplayBallsMenu(param1);
 		}
 
-		if(param2 == Choice_Weapons)
+		if(StrEqual(sChoice, "Choice_Weapons"))
 		{
-			DisplayWeaponsMenu(param1);
+			DisplayWeaponsMenu(param1); 
 		}
 
-		if(param2 == Choice_SLAM)
+		if(StrEqual(sChoice, "Choice_SLAM"))
 		{
 			DisplaySLAMMenu(param1);
 		}
 
-		if(param2 == Choice_DropMoney)
+		if(StrEqual(sChoice, "Choice_DropMoney"))
 		{
 			ClientCommand(param1, "sm_dm");
-			FakeClientCommand(param1, "sm_vip");
+			OpenMenu(param1);
 		}
 
-		if(param2 == Choice_Models)
+		if(StrEqual(sChoice, "Choice_Models"))
 		{
 			ClientCommand(param1, "sm_models");
 		}
 
-		if(param2 == Choice_Colors)
+		if(StrEqual(sChoice, "Choice_Colors"))
 		{
 			ClientCommand(param1, "sm_colors");
 		}
 
-		if(param2 == Choice_FVK)
+		if(StrEqual(sChoice, "Choice_FVK"))
 		{
 			DisplayFVKMenu(param1);
 		}
 
-		if(param2 == Choice_Case)
+		if(StrEqual(sChoice, "Choice_Case"))
 		{
 			ClientCommand(param1, "sm_case");
 		}
 
-		if(param2 == Choice_RainBow)
+		if(StrEqual(sChoice, "Choice_RainBow"))
 		{
 			DisplayRainBowMenu(param1);
 		}
 
-		if(param2 == Choice_Invis)
+		if(StrEqual(sChoice, "Choice_Invis"))
 		{
 			DisplayInvisMenu(param1);
 		}
 
-		if(param2 == Choice_Wasted)
+		if(StrEqual(sChoice, "Choice_Wasted"))
 		{
 			DisplayWastedMenu(param1);
 		}
 
-		if(param2 == Choice_Users)
+		if(StrEqual(sChoice, "Choice_Users"))
 		{
 			ClientCommand(param1, "sm_users");
 			PrintToChat(param1, " \x06[\x02ViP\x06] \x07Nézd meg a konzolt az információkért.");
-			FakeClientCommand(param1, "sm_vip");
+			OpenMenu(param1);
 		}
 
-		if(param2 == Choice_BhopStats)
+		if(StrEqual(sChoice, "Choice_BhopStats"))
 		{
 			ClientCommand(param1, "sm_pad");
 			PrintToChat(param1, " \x06[\x02ViP\x06] \x07Nézd meg a konzolt az információkért.");
-			FakeClientCommand(param1, "sm_vip");
+			OpenMenu(param1);
 		}
 	}
 }
@@ -129,7 +117,9 @@ stock DisplayChickensMenu(client)
 	AddMenuItem(ChickensMenu, "BunnyChicken",		"Húsvéti csirke");
 	AddMenuItem(ChickensMenu, "PumpkinChicken",		"Halloweeni csirke");
 	AddMenuItem(ChickensMenu, "ZombieChicken",		"Zombi csirke");
-	AddMenuItem(ChickensMenu, "ZombieChickenBig",	"Nagy zombi csirke");
+	AddMenuItem(ChickensMenu, "ZombieChickenBig",	"Nagy zombi csirke \n \n");
+
+	AddMenuItem(ChickensMenu, "BackVipMenu",		"Vissza a ViP menübe");
 
 	SetMenuExitButton(ChickensMenu, true);
 	DisplayMenu(ChickensMenu, client, MENU_TIME_FOREVER);
@@ -141,6 +131,11 @@ public int MenuHandler_ChickensMenu(Handle ChickensMenu, MenuAction ChickensActi
 	{
 		char sChoice[64];
 		GetMenuItem(ChickensMenu, choice, sChoice, 64);
+
+		if(StrEqual(sChoice, "BackVipMenu"))
+		{
+			OpenMenu(client);
+		}
 
 		if(StrEqual(sChoice, "DefaultChicken"))
 		{
@@ -211,7 +206,9 @@ stock DisplayBallsMenu(client)
 	AddMenuItem(BallsMenu, "CustomBall",		"Egyedi focilabda");
 	AddMenuItem(BallsMenu, "SnowBalls",			"Hógolyó kupac");
 	AddMenuItem(BallsMenu, "ValveBall",			"Valve focilabda");
-	AddMenuItem(BallsMenu, "ValveBallPumpkin",	"Valve tök focilabda");
+	AddMenuItem(BallsMenu, "ValveBallPumpkin",	"Valve tök focilabda \n \n");
+
+	AddMenuItem(BallsMenu, "BackVipMenu",		"Vissza a ViP menübe");
 
 	SetMenuExitButton(BallsMenu, true);
 	DisplayMenu(BallsMenu, client, MENU_TIME_FOREVER);
@@ -223,6 +220,11 @@ public int MenuHandler_BallsMenu(Handle BallsMenu, MenuAction BallsAction, int c
 	{
 		char sChoice[64];
 		GetMenuItem(BallsMenu, choice, sChoice, 64);
+
+		if(StrEqual(sChoice, "BackVipMenu"))
+		{
+			OpenMenu(client);
+		}
 
 		if(StrEqual(sChoice, "CustomBall"))
 		{
@@ -267,7 +269,9 @@ stock DisplayWeaponsMenu(client)
 	AddMenuItem(WeaponsMenu, "C4",			"C4");
 	AddMenuItem(WeaponsMenu, "GoldKnife",	"Arany kés");
 	AddMenuItem(WeaponsMenu, "Tablet",		"Tablet");
-	AddMenuItem(WeaponsMenu, "NightVision",	"Éjjellátó szemüveg");
+	AddMenuItem(WeaponsMenu, "NightVision",	"Éjjellátó szemüveg \n \n");
+
+	AddMenuItem(WeaponsMenu, "BackVipMenu",	"Vissza a ViP menübe");
 
 	SetMenuExitButton(WeaponsMenu, true);
 	DisplayMenu(WeaponsMenu, client, MENU_TIME_FOREVER);
@@ -279,6 +283,11 @@ public int MenuHandler_WeaponsMenu(Handle WeaponsMenu, MenuAction WeaponsAction,
 	{
 		char sChoice[64];
 		GetMenuItem(WeaponsMenu, choice, sChoice, 64);
+
+		if(StrEqual(sChoice, "BackVipMenu"))
+		{
+			OpenMenu(client);
+		}
 
 		if(StrEqual(sChoice, "Shield"))
 		{
@@ -341,7 +350,9 @@ stock DisplaySLAMMenu(client)
 	SetMenuTitle(SLAMMenu, "SLAM engedélyek kezelése");
 
 	AddMenuItem(SLAMMenu, "SLAMAllow",		"SLAM engedélyezése");
-	AddMenuItem(SLAMMenu, "SLAMUnAllow",	"SLAM letiltása");
+	AddMenuItem(SLAMMenu, "SLAMUnAllow",	"SLAM letiltása \n \n");
+
+	AddMenuItem(SLAMMenu, "BackVipMenu", "Vissza a ViP menübe");
 
 	SetMenuExitButton(SLAMMenu, true);
 	DisplayMenu(SLAMMenu, client, MENU_TIME_FOREVER);
@@ -353,6 +364,11 @@ public int MenuHandler_SLAMMenu(Handle SLAMMenu, MenuAction SLAMAction, int clie
 	{
 		char sChoice[64];
 		GetMenuItem(SLAMMenu, choice, sChoice, 64);
+
+		if(StrEqual(sChoice, "BackVipMenu"))
+		{
+			OpenMenu(client);
+		}
 
 		if(StrEqual(sChoice, "SLAMAllow"))
 		{
@@ -377,7 +393,9 @@ stock DisplayInvisMenu(client)
 	SetMenuTitle(InvisMenu, "Láthatatlanság Menü");
 
 	AddMenuItem(InvisMenu, "InvisOn", "Láthatatlanság bekapcsolása");
-	AddMenuItem(InvisMenu, "InvisOff", "Láthatatlanság kikapcsolása");
+	AddMenuItem(InvisMenu, "InvisOff", "Láthatatlanság kikapcsolása \n \n");
+
+	AddMenuItem(InvisMenu, "BackVipMenu", "Vissza a ViP menübe");
 
 	SetMenuExitButton(InvisMenu, true);
 	DisplayMenu(InvisMenu, client, MENU_TIME_FOREVER);
@@ -389,6 +407,11 @@ public int MenuHandler_InvisMenu(Handle InvisMenu, MenuAction InvisAction, int c
 	{
 		char sChoice[64];
 		GetMenuItem(InvisMenu, choice, sChoice, 64);
+
+		if(StrEqual(sChoice, "BackVipMenu"))
+		{
+			OpenMenu(client);
+		}
 
 		if(StrEqual(sChoice, "InvisOn"))
 		{
@@ -527,7 +550,9 @@ stock DisplayRainBowMenu(client)
 	SetMenuTitle(RainBowMenu, "Szivárvány írás és név");
 
 	AddMenuItem(RainBowMenu, "RainBowChat",		"Szivárvány írás be/kikapcslás");
-	AddMenuItem(RainBowMenu, "RainBowName",		"Szivárvány név be/kikapcsolás");
+	AddMenuItem(RainBowMenu, "RainBowName",		"Szivárvány név be/kikapcsolás \n \n");
+
+	AddMenuItem(RainBowMenu, "BackVipMenu",		"Vissza a ViP menübe");
 
 	SetMenuExitButton(RainBowMenu, true);
 	DisplayMenu(RainBowMenu, client, MENU_TIME_FOREVER);
@@ -539,6 +564,11 @@ public int MenuHandler_RainBowMenu(Handle RainBowMenu, MenuAction RainBowAction,
 	{
 		char sChoice[64];
 		GetMenuItem(RainBowMenu, choice, sChoice, 64);
+
+		if(StrEqual(sChoice, "BackVipMenu"))
+		{
+			OpenMenu(client);
+		}
 
 		if(StrEqual(sChoice, "RainBowChat"))
 		{
@@ -564,8 +594,10 @@ stock DisplayWastedMenu(client)
 	Handle WastedMenu = CreateMenu(MenuHandler_WastedMenu, MENU_ACTIONS_ALL);
 	SetMenuTitle(WastedMenu, "Játékosok közös szerverideje");
 
-	AddMenuItem(WastedMenu, "WastedAll", "Összes");
-	AddMenuItem(WastedMenu, "WastedMonth", "Havi");
+	AddMenuItem(WastedMenu, "WastedAll",	"Összes");
+	AddMenuItem(WastedMenu, "WastedMonth",	"Havi \n \n");
+
+	AddMenuItem(WastedMenu, "BackVipMenu",	"Vissza a ViP menübe");
 
 	SetMenuExitButton(WastedMenu, true);
 	DisplayMenu(WastedMenu, client, MENU_TIME_FOREVER);
@@ -577,6 +609,11 @@ public int MenuHandler_WastedMenu(Handle WastedMenu, MenuAction WastedAction, in
 	{
 		char sChoice[64];
 		GetMenuItem(WastedMenu, choice, sChoice, 64);
+
+		if(StrEqual(sChoice, "BackVipMenu"))
+		{
+			OpenMenu(client);
+		}
 
 		if(StrEqual(sChoice, "WastedAll"))
 		{
@@ -599,6 +636,12 @@ public int MenuHandler_WastedMenu(Handle WastedMenu, MenuAction WastedAction, in
 
 public Action: Command_VipMenu(client, args)
 {
+	OpenMenu(client);
+	return Plugin_Handled;
+}
+
+void OpenMenu(int client)
+{
 	new Handle: VipMenu = CreateMenu(Handler_AdminMenu, MENU_ACTIONS_ALL);
 	SetMenuTitle(VipMenu, ">> === ViP Menü === <<");
 
@@ -615,7 +658,7 @@ public Action: Command_VipMenu(client, args)
 	AddMenuItem(VipMenu,		"Choice_Models",		"Karakter kinézetek");
 	AddMenuItem(VipMenu,		"Choice_Colors",		"Karakter színezés");
 
-	if (CheckCommandAccess(client, "sm_command", ADMFLAG_GENERIC))
+	if (CheckCommandAccess(client, "sm_command", ADMFLAG_CUSTOM2))
 	{
 		AddMenuItem(VipMenu,	"Choice_FVK",			"Hamis VAC kirúgás");
 	}
@@ -630,7 +673,7 @@ public Action: Command_VipMenu(client, args)
 
 	AddMenuItem(VipMenu,		"Choice_Wasted",		"Játékosok szerverideje");
 
-	if (CheckCommandAccess(client, "sm_command", ADMFLAG_GENERIC))
+	if (CheckCommandAccess(client, "sm_command", ADMFLAG_CUSTOM2))
 	{
 		AddMenuItem(VipMenu,	"Choice_Users",			"Játékosok adatai");
 	}
@@ -639,5 +682,4 @@ public Action: Command_VipMenu(client, args)
 
 	SetMenuExitButton(VipMenu, true);
 	DisplayMenu(VipMenu, client, MENU_TIME_FOREVER);
-	return Plugin_Handled;
 }
